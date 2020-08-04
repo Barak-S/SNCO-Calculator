@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputGroup, Dropdown, DropdownButton } from 'react-bootstrap';
+import { FormControl, InputGroup, Dropdown, DropdownButton, Form } from 'react-bootstrap';
 
 export default class CalculatorCard extends Component {
 
@@ -30,6 +30,9 @@ export default class CalculatorCard extends Component {
                 <div style={{ border: '2px solid #B98757',width: "50%", borderRadius: 20, marginLeft: "25%", marginBottom: "1rem"}}>
                     <div>
                         <InputGroup>
+                            <FormControl placeholder="Address" style={{margin:7.5}}></FormControl>
+                        </InputGroup>
+                        <InputGroup>
                             <FormControl placeholder="Purchase Price" style={{margin:7.5}}></FormControl>
                             <FormControl placeholder="Requested Loan Amount" style={{margin:7.5}}></FormControl>
                         </InputGroup>
@@ -53,6 +56,21 @@ export default class CalculatorCard extends Component {
                             <FormControl placeholder="Hard Costs" style={{margin:7.5}}></FormControl>
                             <FormControl placeholder="Soft Costs" style={{margin:7.5}}></FormControl>
                         </InputGroup>
+
+                        {/* <Form.File
+
+                            FOR UPLOADING FILES
+
+                            className="position-relative"
+                            required
+                            name="file"
+                            label="File"
+                            onChange={handleChange}
+                            isInvalid={!!errors.file}
+                            feedback={errors.file}
+                            id="validationFormik107"
+                            feedbackTooltip
+                        /> */}
             
                     </div>
                 </div>
