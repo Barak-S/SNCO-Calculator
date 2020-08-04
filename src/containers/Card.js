@@ -4,7 +4,7 @@ import { FormControl, InputGroup, Dropdown, DropdownButton } from 'react-bootstr
 export default class CalculatorCard extends Component {
 
     state={
-        dropDownChoice: "Fix & Flip"
+        dropDownChoice: "Multifamily Max Refi"
     }
 
 
@@ -24,8 +24,8 @@ export default class CalculatorCard extends Component {
                         onSelect= {(e)=>this.changeDropDownChoice(e)}
                         style={{ margin:7.5 }}
                     >
+                        <Dropdown.Item eventKey="Multifamily Max Refi">Multifamily Max Refi</Dropdown.Item>
                         <Dropdown.Item eventKey="Fix & Flip">Fix & Flip</Dropdown.Item>
-                        <Dropdown.Item eventKey="Another Action">Another action</Dropdown.Item>
                     </DropdownButton>
                 <div style={{ border: '2px solid #B98757',width: "50%", borderRadius: 20, marginLeft: "25%", marginBottom: "1rem"}}>
                     <div>
