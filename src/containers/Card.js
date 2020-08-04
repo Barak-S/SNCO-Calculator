@@ -31,19 +31,27 @@ export default class CalculatorCard extends Component {
                     <div>
                         <InputGroup>
                             <FormControl placeholder="Purchase Price" style={{margin:7.5}}></FormControl>
+                            <FormControl placeholder="Requested Loan Amount" style={{margin:7.5}}></FormControl>
+                        </InputGroup>
+                        <InputGroup>
+                            <FormControl placeholder="Monthly Gross Rents" style={{margin:7.5}}></FormControl>
+                            <FormControl placeholder="Vacancy" style={{margin:7.5}}></FormControl>
+                        </InputGroup>
+                        <InputGroup>
+                            <FormControl placeholder="Taxes" style={{margin:7.5}}></FormControl>
+                            <FormControl placeholder="Insurance" style={{margin:7.5}}></FormControl>
+                        </InputGroup>
+                        <InputGroup>
+                            <FormControl placeholder="Water Sewer" style={{margin:7.5}}></FormControl>
+                            <FormControl placeholder="Utilities" style={{margin:7.5}}></FormControl>
+                        </InputGroup>
+                        <InputGroup>
+                            <FormControl placeholder="Management" style={{margin:7.5}}></FormControl>
+                            <FormControl placeholder="Reserves" style={{margin:7.5}}></FormControl>
+                        </InputGroup>
+                        <InputGroup>
                             <FormControl placeholder="Hard Costs" style={{margin:7.5}}></FormControl>
-                        </InputGroup>
-                        <InputGroup>
-                            <FormControl placeholder="" style={{margin:7.5}}></FormControl>
-                            <FormControl placeholder="" style={{margin:7.5}}></FormControl>
-                        </InputGroup>
-                        <InputGroup>
-                            <FormControl placeholder="" style={{margin:7.5}}></FormControl>
-                            <FormControl placeholder="" style={{margin:7.5}}></FormControl>
-                        </InputGroup>
-                        <InputGroup>
-                            <FormControl placeholder="" style={{margin:7.5}}></FormControl>
-                            <FormControl placeholder="" style={{margin:7.5}}></FormControl>
+                            <FormControl placeholder="Soft Costs" style={{margin:7.5}}></FormControl>
                         </InputGroup>
             
                     </div>
