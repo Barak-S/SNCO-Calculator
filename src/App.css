@@ -7,3 +7,8 @@
 .CalculatorCard{
   min-height: 100vh;
 }
+
+div.react-datepicker__wrapper{
+margin: 25px;
+
+}
