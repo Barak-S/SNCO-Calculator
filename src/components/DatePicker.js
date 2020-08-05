@@ -8,13 +8,13 @@ export default class DateChoose extends Component {
     date: new Date(),
   }
  
-  onChange = date => this.setState({ date })
+  dateChange = date => this.setState({ date })
  
   render() {
     return (
       <div>
         <DatePicker
-          onChange={this.onChange}
+          onChange={this.dateChange}
           value={this.state.date}
           style={{marginRight: 22}}
         />

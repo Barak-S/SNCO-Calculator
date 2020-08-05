@@ -9,7 +9,7 @@ export default class CalculatorCard extends Component {
         address: "",
         purchasePrice: "",
         requestLoanAmount: "",
-        purchaseDate: "",
+        purchaseDate: new Date(),
         monthlyGrossRent: "",
         units: "",
         vacancy: "",
@@ -58,10 +58,12 @@ export default class CalculatorCard extends Component {
              
     }
 
-    
+    dateChange = date => this.setState({ date })
 
 
     render() {
+
+       
         return (
             <div className="CalculatorCard" style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 20 }}>
                 <h3>SNCO Calculator</h3>
@@ -129,7 +131,7 @@ export default class CalculatorCard extends Component {
                         <div style={{ border: '2px solid #B98757',height: 350, width:"50%", borderRadius: 20, marginLeft: "25%", marginBottom: "1rem", backgroundColor: "lightgray"}}>
                             <h5>{`Total project cost: ${this.state.totalProjectCost}`}</h5>
                             <h5>{`Taxes: $${(parseInt(this.state.taxes) * .03)+ parseInt(this.state.taxes)}`}</h5>
-                            {/* <h5>Taxes: { parseInt(this.state.taxes) === NaN ? 0 : parseInt((this.state.taxes)* .03)+ parseInt(this.state.taxes)}</h5> */}
+                            <h5>Taxes: { parseInt(this.state.taxes) === NaN ? 0 : parseInt((this.state.taxes)* .03)+ parseInt(this.state.taxes)}</h5>
                             <h5>Office Expenses: ${this.state.units * 500}</h5>
 
                         </div>
