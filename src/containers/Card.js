@@ -45,14 +45,12 @@ export default class CalculatorCard extends Component {
 
     calculateTotalProjectCost(){
         let price = this.state.purchasePrice === "0" ? 0 : this.state.purchasePrice
-        let hard = this.state.purchasePrice === "0" ? 0 : this.state.hardCosts
-        let soft = this.state.purchasePrice === "0" ? 0 : this.state.softCosts
+        let hard = this.state.hardCosts === "0" ? 0 : this.state.hardCosts
+        let soft = this.state.softCosts === "0" ? 0 : this.state.softCosts
         
-        let total = ( price + hard + soft )
-        console.log(total)
-        
+        let total = ( price + hard + soft )        
         this.setState({
-            totalProjectCost: total
+            totalProjectCost: parseInt(total)
         },()=>console.log(this.state.totalProjectCost))
     }
 
