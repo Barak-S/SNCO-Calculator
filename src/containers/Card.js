@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { FormControl, InputGroup, Dropdown, DropdownButton, Form, ControlLabel } from 'react-bootstrap';
+import { FormControl, InputGroup, Dropdown, DropdownButton, Form, Card, Col, Row, Container } from 'react-bootstrap';
 
 import DatePicker from 'react-date-picker';
+
+import GeoCode from '../components/GeoCode'
 
 export default class CalculatorCard extends Component {
 
@@ -68,83 +70,104 @@ export default class CalculatorCard extends Component {
 
        
         return (
-            <div className="CalculatorCard" style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 20 }}>
-                <h3>SNCO Calculator</h3>
-                    <DropdownButton 
-                        variant="dark"
-                        title={this.state.dropDownChoice} 
-                        onSelect= {(e)=>this.changeDropDownChoice(e)}
-                        style={{ margin:7.5 }}
-                    >
-                        <Dropdown.Item eventKey="Multifamily Max Refi">Multifamily Max Refi</Dropdown.Item>
-                        <Dropdown.Item eventKey="Fix & Flip">Fix & Flip</Dropdown.Item>
-                    </DropdownButton>
-                <div style={{ border: '2px solid #B98757', minWidth:"45%", borderRadius: 20, marginBottom: "1rem", display: "inline-block" }}>
-                    <div>
+            <Card className="CalculatorCard" style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
+                <Card.Body>
+                    <Card.Text>SNCO Calculator</Card.Text>
+                        <DropdownButton 
+                            variant="dark"
+                            title={this.state.dropDownChoice} 
+                            onSelect= {(e)=>this.changeDropDownChoice(e)}
+                            style={{ margin:7.5 }}
+                        >
+                            <Dropdown.Item eventKey="Multifamily Max Refi">Multifamily Max Refi</Dropdown.Item>
+                            <Dropdown.Item eventKey="Fix & Flip">Fix & Flip</Dropdown.Item>
+                            <Dropdown.Item eventKey="Hard Money">Hard Money</Dropdown.Item>
+                        </DropdownButton>
+
+                        <Container fluid>
+                            <Row>
+
+                                <Col md={6}>
+                                    <Card style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15  }}>
+                                        <Card.Body>
+                                    
+                                                
+                                                    {/* <FormControl aria-label="Address" placeholder="Address" name="address" value={this.state.address} onChange={(e)=>this.handleAddressChange(e)} style={{margin:7.5}}></FormControl> */}
+
+                                                    <GeoCode></GeoCode>
+                                                
+                                                <InputGroup>
+                                                    <FormControl placeholder="Purchase Price" name="purchasePrice" value={this.state.purchasePrice} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Requested Loan Amount" name="requestLoanAmount" value={this.state.requestLoanAmount} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <DatePicker
+                                                    onChange={this.dateChange}
+                                                    value={this.state.date}
+                                                    />
+                                                </InputGroup>
+                                                <InputGroup>
+                                                    <FormControl placeholder="Monthly Gross Rent" name="monthlyGrossRent" value={this.state.monthlyGrossRent} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Units" name="units" value={this.state.units} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Vacancy" name="vacancy" disabled={true} value={(parseInt(this.state.monthlyGrossRent) * .03)} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                </InputGroup>
+                                                <InputGroup>
+                                                    <FormControl placeholder="Taxes" type="number" name="taxes" value={this.state.taxes} onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Insurance"  name="insurance" value={this.state.insurance} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                </InputGroup>
+                                                <InputGroup>
+                                                    <FormControl placeholder="Water Sewer" name="waterSewer" value={this.state.waterSewer} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Utilities" name="utilities" value={this.state.utilities} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                </InputGroup>
+                                                <InputGroup>
+                                                    <FormControl placeholder="Management" name="management" disabled={true} value={(parseInt(this.state.monthlyGrossRent) * .04)} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Replacement Reserves" name="replacementReserves" value={this.state.replacementReserves} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                </InputGroup>
+                                                <InputGroup>
+                                                    <FormControl placeholder="Hard Costs" name="hardCosts" value={this.state.hardCosts} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Soft Costs" name="softCosts" value={this.state.softCosts} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                </InputGroup>
+
+                                
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+
+                                <Col md={6}>
+                                    <Card style={{  border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
+                                        <Card.Body>
+                                            <Card.Text style={{textAlign: "left"}}>
+                                            <h5>{`Total project cost: ${this.state.totalProjectCost}`}</h5>
+                                            {/* <h5>{`Taxes: $${(parseInt(this.state.taxes) * .03)+ parseInt(this.state.taxes)}`}</h5> */}
+                                            <h5>Taxes: { parseInt(this.state.taxes) === NaN ? 0 : parseInt((this.state.taxes)* .03)+ parseInt(this.state.taxes)}</h5>
+                                            <h5>Office Expenses: ${this.state.units * 500}</h5>
+                                            <h5>Replacement Reserves: ${this.state.units * 250}</h5>
+                                            <h5>Management: ${this.state.monthlyGrossRent * .04}</h5>
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                                
+                                </Col>
+                            </Row>
+                        </Container>
+
+                </Card.Body>
                 
-                            <InputGroup>
-                                <FormControl aria-label="Address" placeholder="Address" name="address" value={this.state.address} onChange={(e)=>this.handleAddressChange(e)} style={{margin:7.5}}></FormControl>
-                            </InputGroup>
-                            <InputGroup>
-                                <FormControl placeholder="Purchase Price" name="purchasePrice" value={this.state.purchasePrice} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                <FormControl placeholder="Requested Loan Amount" name="requestLoanAmount" value={this.state.requestLoanAmount} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                <DatePicker
-                                onChange={this.dateChange}
-                                value={this.state.date}
-                                />
-                            </InputGroup>
-                            <InputGroup>
-                                <FormControl placeholder="Monthly Gross Rent" name="monthlyGrossRent" value={this.state.monthlyGrossRent} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                <FormControl placeholder="Units" name="units" value={this.state.units} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                <FormControl placeholder="Vacancy" name="vacancy" disabled={true} value={(parseInt(this.state.monthlyGrossRent) * .03)} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                            </InputGroup>
-                            <InputGroup>
-                                <FormControl placeholder="Taxes" type="number" name="taxes" value={this.state.taxes} onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                <FormControl placeholder="Insurance"  name="insurance" value={this.state.insurance} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                            </InputGroup>
-                            <InputGroup>
-                                <FormControl placeholder="Water Sewer" name="waterSewer" value={this.state.waterSewer} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                <FormControl placeholder="Utilities" name="utilities" value={this.state.utilities} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                            </InputGroup>
-                            <InputGroup>
-                                <FormControl placeholder="Management" name="management" disabled={true} value={(parseInt(this.state.monthlyGrossRent) * .04)} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                <FormControl placeholder="Replacement Reserves" name="replacementReserves" value={this.state.replacementReserves} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                            </InputGroup>
-                            <InputGroup>
-                                <FormControl placeholder="Hard Costs" name="hardCosts" value={this.state.hardCosts} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                <FormControl placeholder="Soft Costs" name="softCosts" value={this.state.softCosts} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                            </InputGroup>
 
-                        {/* <Form.File
-
-                            FOR UPLOADING FILES
-
-                            className="position-relative"
-                            required
-                            name="file"
-                            label="File"
-                            onChange={handleChange}
-                            isInvalid={!!errors.file}
-                            feedback={errors.file}
-                            id="validationFormik107"
-                            feedbackTooltip
-                        /> */}
-            
-                    </div>
-                </div>
-                    <div className="Results">
-                        <h5>Results</h5>
-                        <div style={{ border: '2px solid #B98757',height: 350, width:"50%", borderRadius: 20, marginLeft: "25%", marginBottom: "1rem", backgroundColor: "lightgray"}}>
-                            <h5>{`Total project cost: ${this.state.totalProjectCost}`}</h5>
-                            <h5>{`Taxes: $${(parseInt(this.state.taxes) * .03)+ parseInt(this.state.taxes)}`}</h5>
-                            <h5>Taxes: { parseInt(this.state.taxes) === NaN ? 0 : parseInt((this.state.taxes)* .03)+ parseInt(this.state.taxes)}</h5>
-                            <h5>Office Expenses: ${this.state.units * 500}</h5>
-                            <h5>Replacement Reserves: ${this.state.units * 250}</h5>
-                            <h5>Management: ${this.state.monthlyGrossRent * .04}</h5>
-
-                        </div>
-                    </div>
-            </div>
+            </Card>
         )
     }
 }
+
+{/* <Form.File
+
+    FOR UPLOADING FILES
+
+    className="position-relative"
+    required
+    name="file"
+    label="File"
+    onChange={handleChange}
+    isInvalid={!!errors.file}
+    feedback={errors.file}
+    id="validationFormik107"
+    feedbackTooltip
+/>  */}
