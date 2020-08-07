@@ -39,7 +39,7 @@ export default function GeoCode() {
                             {loading? <div>...loading</div> : null}
                             {suggestions.map((suggestion)=>{
                                 const style={
-                                    backgroundColor: suggestion.active ? "#41b6e6" : "#ffffff"
+                                    backgroundColor: suggestion.active ? "#B98757" : "#ffffff"
                                 };
                                 return(<div {...getSuggestionItemProps(suggestion, { style })}>{suggestion.description }</div>)
                             })}

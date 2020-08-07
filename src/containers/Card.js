@@ -10,7 +10,7 @@ export default class CalculatorCard extends Component {
     state={
         dropDownChoice: "Multifamily Max Refi",
         address: "",
-        purchasePrice: "",
+        purchasePrice: 0,
         requestLoanAmount: "",
         date: new Date(),
         monthlyGrossRent: "",
@@ -22,8 +22,8 @@ export default class CalculatorCard extends Component {
         utilities: "",
         management: "",
         replacementReserves: "",
-        hardCosts: "",
-        softCosts: "",
+        hardCosts: 0,
+        softCosts: 0,
         totalProjectCost: 0,
 
     }
@@ -135,7 +135,7 @@ export default class CalculatorCard extends Component {
                                     <Card style={{  border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
                                         <Card.Body>
                                             <Card.Text style={{textAlign: "left"}}>
-                                            <h5>{`Total project cost: ${this.state.totalProjectCost}`}</h5>
+                                            <h5>{`Total project cost: ${this.state.totalProjectCost.toLocaleString()}`}</h5>
                                             {/* <h5>{`Taxes: $${(parseInt(this.state.taxes) * .03)+ parseInt(this.state.taxes)}`}</h5> */}
                                             <h5>Taxes: { parseInt(this.state.taxes) === NaN ? 0 : parseInt((this.state.taxes)* .03)+ parseInt(this.state.taxes)}</h5>
                                             <h5>Office Expenses: ${this.state.units * 500}</h5>
