@@ -33,7 +33,7 @@ export default function GeoCode() {
                         {/* <p>Latitude: {coordinates.lat}</p>
                         <p>Longitude: {coordinates.lng}</p> */}
                         <InputGroup>
-                            <FormControl {...getInputProps({placeholder: "Address"})} style={{margin: 7.5}}></FormControl>
+                            <FormControl {...getInputProps({placeholder: "Address"})} style={{margin: 7.5}} autoComplete="new-password"></FormControl>
                         </InputGroup>
                         <div>
                             {loading? <div>...loading</div> : null}

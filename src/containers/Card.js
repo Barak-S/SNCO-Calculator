@@ -10,7 +10,7 @@ export default class CalculatorCard extends Component {
     state={
         dropDownChoice: "Multifamily Max Refi",
         address: "",
-        purchasePrice: 0,
+        purchasePrice: "",
         requestLoanAmount: "",
         date: new Date(),
         monthlyGrossRent: "",
@@ -22,9 +22,9 @@ export default class CalculatorCard extends Component {
         utilities: "",
         management: "",
         replacementReserves: "",
-        hardCosts: 0,
-        softCosts: 0,
-        totalProjectCost: 0,
+        hardCosts: "",
+        softCosts: "",
+        // totalProjectCost: 0,
 
     }
 
@@ -36,9 +36,14 @@ export default class CalculatorCard extends Component {
 
 
     handleNumberChange(e){
+
+        let typedValue = e.target.value
+        if (typedValue === ""){
+            typedValue = 0;
+        } 
         this.setState({
-            [e.target.name]: parseInt(e.target.value)
-        },()=>this.calculateTotalProjectCost())
+            [e.target.name]: parseInt(typedValue)
+        })
     }
 
 
@@ -51,17 +56,20 @@ export default class CalculatorCard extends Component {
     dateChange = date => this.setState({ date })
 
 
-    calculateTotalProjectCost(){
-        let price = this.state.purchasePrice === "0" ? 0 : this.state.purchasePrice
-        let hard = this.state.hardCosts === "0" ? 0 : this.state.hardCosts
-        let soft = this.state.softCosts === "0" ? 0 : this.state.softCosts
-        let total = ( price + hard + soft )
+    // calculateTotalProjectCost(){
+    //     // let price = this.state.purchasePrice === "0" ? 0 : this.state.purchasePrice
+    //     // let hard = this.state.hardCosts === "0" ? 0 : this.state.hardCosts
+    //     // let soft = this.state.softCosts === "0" ? 0 : this.state.softCosts
+    //     let price = typeof(this.state.purchasePrice) === NaN ? 0 : this.state.purchasePrice
+    //     let hard = typeof(this.state.hardCosts) === NaN ? 0 : this.state.hardCosts
+    //     let soft = typeof(this.state.softCosts) === NaN ? 0 : this.state.softCosts
+    //     let total = ( price + hard + soft )
 
-        this.setState({
-            totalProjectCost: total
-        },()=>console.log(this.state.totalProjectCost))
+    //     this.setState({
+    //         totalProjectCost: total
+    //     },()=>console.log(total))
              
-    }
+    // }
 
     dateChange = date => this.setState({ date })
 
@@ -135,9 +143,8 @@ export default class CalculatorCard extends Component {
                                     <Card style={{  border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
                                         <Card.Body>
                                             <Card.Text style={{textAlign: "left"}}>
-                                            <h5>{`Total project cost: ${this.state.totalProjectCost.toLocaleString()}`}</h5>
-                                            {/* <h5>{`Taxes: $${(parseInt(this.state.taxes) * .03)+ parseInt(this.state.taxes)}`}</h5> */}
-                                            <h5>Taxes: { parseInt(this.state.taxes) === NaN ? 0 : parseInt((this.state.taxes)* .03)+ parseInt(this.state.taxes)}</h5>
+                                            <h5>{`Total project cost: $${(((this.state.purchasePrice) + (this.state.hardCosts) + (this.state.softCosts))* 1).toLocaleString()}`}</h5>
+                                            <h5>Taxes: ${ (((this.state.taxes)* .03)+ this.state.taxes)}</h5>
                                             <h5>Office Expenses: ${this.state.units * 500}</h5>
                                             <h5>Replacement Reserves: ${this.state.units * 250}</h5>
                                             <h5>Management: ${this.state.monthlyGrossRent * .04}</h5>
