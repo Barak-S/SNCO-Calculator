@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { FormControl, InputGroup, Dropdown, DropdownButton, Form, ControlLabel } from 'react-bootstrap';
 
-import DatePicker from '../components/DatePicker'
+import DatePicker from 'react-date-picker';
+
 export default class CalculatorCard extends Component {
 
     state={
@@ -9,7 +10,7 @@ export default class CalculatorCard extends Component {
         address: "",
         purchasePrice: "",
         requestLoanAmount: "",
-        purchaseDate: new Date(),
+        date: new Date(),
         monthlyGrossRent: "",
         units: "",
         vacancy: "",
@@ -45,6 +46,8 @@ export default class CalculatorCard extends Component {
         })
     }
       
+    dateChange = date => this.setState({ date })
+
 
     calculateTotalProjectCost(){
         let price = this.state.purchasePrice === "0" ? 0 : this.state.purchasePrice
@@ -85,7 +88,10 @@ export default class CalculatorCard extends Component {
                             <InputGroup>
                                 <FormControl placeholder="Purchase Price" name="purchasePrice" value={this.state.purchasePrice} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                                 <FormControl placeholder="Requested Loan Amount" name="requestLoanAmount" value={this.state.requestLoanAmount} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                    <DatePicker/>
+                                <DatePicker
+                                onChange={this.dateChange}
+                                value={this.state.date}
+                                />
                             </InputGroup>
                             <InputGroup>
                                 <FormControl placeholder="Monthly Gross Rent" name="monthlyGrossRent" value={this.state.monthlyGrossRent} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
@@ -101,7 +107,7 @@ export default class CalculatorCard extends Component {
                                 <FormControl placeholder="Utilities" name="utilities" value={this.state.utilities} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                             </InputGroup>
                             <InputGroup>
-                                <FormControl placeholder="Management" name="management" value={this.state.management} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                <FormControl placeholder="Management" name="management" disabled={true} value={(parseInt(this.state.monthlyGrossRent) * .04)} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                                 <FormControl placeholder="Replacement Reserves" name="replacementReserves" value={this.state.replacementReserves} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                             </InputGroup>
                             <InputGroup>
@@ -133,6 +139,8 @@ export default class CalculatorCard extends Component {
                             <h5>{`Taxes: $${(parseInt(this.state.taxes) * .03)+ parseInt(this.state.taxes)}`}</h5>
                             <h5>Taxes: { parseInt(this.state.taxes) === NaN ? 0 : parseInt((this.state.taxes)* .03)+ parseInt(this.state.taxes)}</h5>
                             <h5>Office Expenses: ${this.state.units * 500}</h5>
+                            <h5>Replacement Reserves: ${this.state.units * 250}</h5>
+                            <h5>Management: ${this.state.monthlyGrossRent * .04}</h5>
 
                         </div>
                     </div>
