@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputGroup, Dropdown, DropdownButton, Form, Card, Col, Row, Container } from 'react-bootstrap';
+import { FormControl, InputGroup, Card, Col, Row, Container } from 'react-bootstrap';
 
 import DatePicker from 'react-date-picker';
 
@@ -9,18 +9,19 @@ export default class CalculatorCard extends Component {
 
     render() {
 
-        let officeExpenses = (this.props.units * 500)
-        let replacementReserves = (this.props.units * 250)
+        let officeExpenses = (this.props.units ) * 500
+        let replacementReserves = (this.props.units  ) * 250
 
         let management = (this.props.annualGrossRent * .04)
 
-        let taxes = parseInt(this.props.taxes *1)
-        let utilities = parseInt(this.props.utilities *1)
-        let waterSewer = parseInt(this.props.waterSewer *1)
+        let taxes = (this.props.taxes )
+        let utilities = (this.props.utilities )
+        let waterSewer = (this.props.waterSewer )
 
-        let totalIncomeGenerated = (((this.props.annualGrossRent + (officeExpenses) + (replacementReserves))) *1);
+        // let grossAnnualIncome = ((this.props.annualGrossRent + officeExpenses + replacementReserves) );
+        let grossAnnualIncome = ( this.props.annualGrossRent );
         let grossAnnualOperatingExpenses = (taxes + utilities + waterSewer + management);
-        let noi = (totalIncomeGenerated - grossAnnualOperatingExpenses);
+        let noi = (grossAnnualIncome - grossAnnualOperatingExpenses);
         let capRate = ((noi / this.props.purchasePrice) * 100)
 
        
@@ -52,33 +53,33 @@ export default class CalculatorCard extends Component {
                                                     <GeoCode></GeoCode>
                                                 
                                                 <InputGroup>
-                                                    <FormControl placeholder="Purchase Price" name="purchasePrice" value={this.props.purchasePrice} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                    <FormControl placeholder="Requested Loan Amount" name="requestLoanAmount" value={this.props.requestLoanAmount} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Purchase Price" name="purchasePrice" value={this.props.purchasePrice || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Units" name="units" value={this.props.units || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                                                     <DatePicker
                                                     onChange={this.dateChange}
                                                     value={this.props.date}
                                                     />
                                                 </InputGroup>
                                                 <InputGroup>
-                                                    <FormControl placeholder="Annual Gross Rent" name="annualGrossRent" value={this.props.annualGrossRent} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                    <FormControl placeholder="Units" name="units" value={this.props.units} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                    <FormControl placeholder="Vacancy" name="vacancy" disabled={true} value={(parseInt(this.props.annualGrossRent) * .03)} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Requested Loan Amount" name="requestLoanAmount" value={this.props.requestLoanAmount || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Annual Gross Rent" name="annualGrossRent" value={this.props.annualGrossRent || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Vacancy" name="vacancy" disabled={true} value={((this.props.annualGrossRent) * .03) || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                                                 </InputGroup>
                                                 <InputGroup>
-                                                    <FormControl placeholder="Taxes" type="number" name="taxes" value={this.props.taxes} onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                    <FormControl placeholder="Insurance"  name="insurance" value={this.props.insurance} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Taxes" type="number" name="taxes" value={this.props.taxes || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Insurance"  name="insurance" value={this.props.insurance || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                                                 </InputGroup>
                                                 <InputGroup>
-                                                    <FormControl placeholder="Water Sewer" name="waterSewer" value={this.props.waterSewer} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                    <FormControl placeholder="Utilities" name="utilities" value={this.props.utilities} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Water Sewer" name="waterSewer" value={this.props.waterSewer || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Utilities" name="utilities" value={this.props.utilities || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                                                 </InputGroup>
                                                 <InputGroup>
-                                                    <FormControl placeholder="Management" name="management" disabled={true} value={management} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                    <FormControl placeholder="Replacement Reserves" name="replacementReserves" value={this.props.replacementReserves} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Management" name="management" disabled={true} value={management || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Replacement Reserves" name="replacementReserves" value={this.props.replacementReserves || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                                                 </InputGroup>
                                                 <InputGroup>
-                                                    <FormControl placeholder="Hard Costs" name="hardCosts" value={this.props.hardCosts} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                    <FormControl placeholder="Soft Costs" name="softCosts" value={this.props.softCosts} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Hard Costs" name="hardCosts" value={this.props.hardCosts || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Soft Costs" name="softCosts" value={this.props.softCosts || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                                                 </InputGroup>
 
                                 
@@ -95,8 +96,8 @@ export default class CalculatorCard extends Component {
                                             <h5>Office Expenses: ${officeExpenses.toLocaleString()}</h5>
                                             <h5>Replacement Reserves: ${replacementReserves.toLocaleString()}</h5>
                                             <h5>Management: ${management.toLocaleString()}</h5>
-                                            <h5>Insurance: ${(this.props.insurance *1)}</h5>
-                                            <h5>Gross Annual Income: ${totalIncomeGenerated.toLocaleString()}</h5>
+                                            <h5>Insurance: ${(this.props.insurance )}</h5>
+                                            <h5>Gross Annual Income: ${grossAnnualIncome.toLocaleString()}</h5>
                                             <h5>Gross Annual Operating Expenses: ${ grossAnnualOperatingExpenses.toLocaleString()}</h5>
                                             <h5>NOI: ${noi.toLocaleString()}</h5>
                                             <h5>Cap Rate: { capRate ? Number((capRate).toFixed(2)) : 0  }</h5>

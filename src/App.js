@@ -11,21 +11,21 @@ class App extends React.Component {
 
   state={
     dropDownChoice: "Multifamily Max Refi",
-    address: "",
-    purchasePrice: "",
-    requestLoanAmount: "",
+    address: 0,
+    purchasePrice: 0,
+    requestLoanAmount: 0,
     date: new Date(),
-    annualGrossRent: "",
-    units: "",
-    vacancy: "",
-    taxes: "",
-    insurance: "",
-    waterSewer: "",
-    utilities: "",
-    management: "",
-    replacementReserves: "",
-    hardCosts: "",
-    softCosts: "",
+    annualGrossRent: 0,
+    units: 0,
+    vacancy: 0,
+    taxes: 0,
+    insurance: 0,
+    waterSewer: 0,
+    utilities: 0,
+    management: 0,
+    replacementReserves: 0,
+    hardCosts: 0,
+    softCosts: 0,
     // totalProjectCost: 0,
 
 }
@@ -44,7 +44,7 @@ handleNumberChange=(e)=>{
   //     typedValue = 0;
   // } 
   this.setState({
-      [e.target.name]: parseInt(e.target.value)
+      [e.target.name]: e.target.valueAsNumber
   })
 }
 
