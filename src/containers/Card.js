@@ -92,19 +92,19 @@ export default class CalculatorCard extends Component {
 
        
         return (
-            <Card className="CalculatorCard" style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
-                <Card.Body>
-                    <Card.Text>SNCO Calculator</Card.Text>
-                        <DropdownButton 
-                            variant="dark"
-                            title={this.props.dropDownChoice} 
-                            onSelect= {(e)=>this.props.changeDropDownChoice(e)}
-                            style={{ margin:7.5 }}
-                        >
-                            <Dropdown.Item eventKey="Multifamily Max Refi">Multifamily Max Refi</Dropdown.Item>
-                            <Dropdown.Item eventKey="Fix & Flip">Fix & Flip</Dropdown.Item>
-                            <Dropdown.Item eventKey="Hard Money">Hard Money</Dropdown.Item>
-                        </DropdownButton>
+            // <Card className="CalculatorCard" style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
+            //     <Card.Body>
+            //         <Card.Text>SNCO Calculator</Card.Text>
+            //             <DropdownButton 
+            //                 variant="dark"
+            //                 title={this.props.dropDownChoice} 
+            //                 onSelect= {(e)=>this.props.changeDropDownChoice(e)}
+            //                 style={{ margin:7.5 }}
+            //             >
+            //                 <Dropdown.Item eventKey="Multifamily Max Refi">Multifamily Max Refi</Dropdown.Item>
+            //                 <Dropdown.Item eventKey="Fix & Flip">Fix & Flip</Dropdown.Item>
+            //                 <Dropdown.Item eventKey="Hard Money">Hard Money</Dropdown.Item>
+            //             </DropdownButton>
 
                         <Container fluid>
                             <Row>
@@ -175,10 +175,10 @@ export default class CalculatorCard extends Component {
                             </Row>
                         </Container>
 
-                </Card.Body>
+            //     </Card.Body>
                 
 
-            </Card>
+            // </Card>
         )
     }
 }
