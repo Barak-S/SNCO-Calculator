@@ -4,13 +4,16 @@ import '../App.css';
 
  
 export default class DateChoose extends Component {
-  state = {
-    date: new Date(),
-  }
+  // state = {
+  //   date: new Date(),
+  // }
  
-  dateChange = date => this.setState({ date })
+  // dateChange = date => this.setState({ date })
  
   render() {
+
+    console.log(this.props.date)
+
     return (
       <div>
         <DatePicker

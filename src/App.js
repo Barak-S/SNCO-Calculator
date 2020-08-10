@@ -26,6 +26,8 @@ class App extends React.Component {
     replacementReserves: 0,
     hardCosts: 0,
     softCosts: 0,
+    rate: 0,
+    arm: 0
     // totalProjectCost: 0,
 
 }
@@ -38,11 +40,6 @@ handleAddressChange=(e)=>{
 
 
 handleNumberChange=(e)=>{
-
-  // let typedValue = e.target.value
-  // if (typedValue === ""){
-  //     typedValue = 0;
-  // } 
   this.setState({
       [e.target.name]: e.target.valueAsNumber
   })
@@ -60,6 +57,9 @@ dateChange = date => this.setState({ date })
 
 
   render(){
+
+    console.log(this.state.date)
+
     return (
       <div className="App">
         <SNCOLogo/>
@@ -96,6 +96,8 @@ dateChange = date => this.setState({ date })
                   replacementReserves= {this.state.replacementReserves}
                   hardCosts= {this.state.hardCosts}
                   softCosts= {this.state.softCosts}
+                  rate={this.state.rate}
+                  arm={this.state.arm}
 
                   dateChange={this.dateChange}
                   handleNumberChange={this.handleNumberChange}

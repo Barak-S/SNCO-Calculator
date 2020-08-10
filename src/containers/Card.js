@@ -9,6 +9,8 @@ export default class CalculatorCard extends Component {
 
     render() {
 
+        // console.log(this.props.date)
+
         let officeExpenses = (this.props.units ) * 500
         let replacementReserves = (this.props.units  ) * 250
 
@@ -26,19 +28,6 @@ export default class CalculatorCard extends Component {
 
        
         return (
-            // <Card className="CalculatorCard" style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
-            //     <Card.Body>
-            //         <Card.Text>SNCO Calculator</Card.Text>
-            //             <DropdownButton 
-            //                 variant="dark"
-            //                 title={this.props.dropDownChoice} 
-            //                 onSelect= {(e)=>this.props.changeDropDownChoice(e)}
-            //                 style={{ margin:7.5 }}
-            //             >
-            //                 <Dropdown.Item eventKey="Multifamily Max Refi">Multifamily Max Refi</Dropdown.Item>
-            //                 <Dropdown.Item eventKey="Fix & Flip">Fix & Flip</Dropdown.Item>
-            //                 <Dropdown.Item eventKey="Hard Money">Hard Money</Dropdown.Item>
-            //             </DropdownButton>
 
                         <Container fluid>
                             <Row>
@@ -56,14 +45,18 @@ export default class CalculatorCard extends Component {
                                                     <FormControl placeholder="Purchase Price" name="purchasePrice" value={this.props.purchasePrice || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                                                     <FormControl placeholder="Units" name="units" value={this.props.units || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                                                     <DatePicker
-                                                    onChange={this.dateChange}
-                                                    value={this.props.date}
+                                                        onChange={this.props.dateChange}
+                                                        value={this.props.date}
                                                     />
                                                 </InputGroup>
                                                 <InputGroup>
                                                     <FormControl placeholder="Requested Loan Amount" name="requestLoanAmount" value={this.props.requestLoanAmount || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                                                     <FormControl placeholder="Annual Gross Rent" name="annualGrossRent" value={this.props.annualGrossRent || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                                                     <FormControl placeholder="Vacancy" name="vacancy" disabled={true} value={((this.props.annualGrossRent) * .03) || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                </InputGroup>
+                                                <InputGroup>
+                                                    <FormControl placeholder="Arm" type="number" name="arm" value={this.props.arm || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                                    <FormControl placeholder="Rate"  name="rate" value={this.props.rate || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
                                                 </InputGroup>
                                                 <InputGroup>
                                                     <FormControl placeholder="Taxes" type="number" name="taxes" value={this.props.taxes || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
