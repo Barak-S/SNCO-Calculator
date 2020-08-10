@@ -7,73 +7,6 @@ import GeoCode from '../components/GeoCode'
 
 export default class CalculatorCard extends Component {
 
-    // state={
-    //     dropDownChoice: "Multifamily Max Refi",
-    //     address: "",
-    //     purchasePrice: "",
-    //     requestLoanAmount: "",
-    //     date: new Date(),
-    //     monthlyGrossRent: "",
-    //     units: "",
-    //     vacancy: "",
-    //     taxes: "",
-    //     insurance: "",
-    //     waterSewer: "",
-    //     utilities: "",
-    //     management: "",
-    //     replacementReserves: "",
-    //     hardCosts: "",
-    //     softCosts: "",
-        // totalProjectCost: 0,
-
-    // }
-
-    // handleAddressChange(e){
-    //     this.setState({
-    //         address: e.target.value
-    //     },()=>console.log(this.state.address))
-    // }
-
-
-    // handleNumberChange(e){
-
-    //     // let typedValue = e.target.value
-    //     // if (typedValue === ""){
-    //     //     typedValue = 0;
-    //     // } 
-    //     this.setState({
-    //         [e.target.name]: parseInt(e.target.value.toLocaleString())
-    //     })
-    // }
-
-
-    // changeDropDownChoice(e){
-    //     this.setState({
-    //         dropDownChoice: e
-    //     })
-    // }
-      
-    // dateChange = date => this.setState({ date })
-
-
-    // calculateTotalProjectCost(){
-    //     // let price = this.state.purchasePrice === "0" ? 0 : this.state.purchasePrice
-    //     // let hard = this.state.hardCosts === "0" ? 0 : this.state.hardCosts
-    //     // let soft = this.state.softCosts === "0" ? 0 : this.state.softCosts
-    //     let price = typeof(this.state.purchasePrice) === NaN ? 0 : this.state.purchasePrice
-    //     let hard = typeof(this.state.hardCosts) === NaN ? 0 : this.state.hardCosts
-    //     let soft = typeof(this.state.softCosts) === NaN ? 0 : this.state.softCosts
-    //     let total = ( price + hard + soft )
-
-    //     this.setState({
-    //         totalProjectCost: total
-    //     },()=>console.log(total))
-             
-    // }
-
-    // dateChange = date => this.setState({ date })
-
-
     render() {
 
         let officeExpenses = (this.props.units * 500)
@@ -166,7 +99,7 @@ export default class CalculatorCard extends Component {
                                             <h5>Gross Annual Income: ${totalIncomeGenerated.toLocaleString()}</h5>
                                             <h5>Gross Annual Operating Expenses: ${ grossAnnualOperatingExpenses.toLocaleString()}</h5>
                                             <h5>NOI: ${noi.toLocaleString()}</h5>
-                                            <h5>Cap Rate: { capRate ? capRate : 0  }</h5>
+                                            <h5>Cap Rate: { capRate ? Number((capRate).toFixed(2)) : 0  }</h5>
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
