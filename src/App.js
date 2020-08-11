@@ -67,7 +67,7 @@ dateChange = date => this.setState({ date })
 
         <Card className="CalculatorCard" style={{ border: '4px solid #B98757', margin: "1rem", borderRadius: 15 }}>
           <Card.Body>
-              <Card.Text>SNCO Calculator</Card.Text>
+              <Card.Text style={{fontWeight: "600", fontSize: 22}}>SNCO Calculator</Card.Text>
                   <DropdownButton 
                       variant="dark"
                       title={this.state.dropDownChoice} 
@@ -76,7 +76,7 @@ dateChange = date => this.setState({ date })
                   >
                       <Dropdown.Item eventKey="Multifamily Max Refi">Multifamily Max Refi</Dropdown.Item>
                       <Dropdown.Item eventKey="Fix & Flip">Fix & Flip</Dropdown.Item>
-                      <Dropdown.Item eventKey="Hard Money">Hard Money</Dropdown.Item>
+                      {/* <Dropdown.Item eventKey="Hard Money">Hard Money</Dropdown.Item> */}
                   </DropdownButton>
 
               {this.state.dropDownChoice === "Multifamily Max Refi" ?
