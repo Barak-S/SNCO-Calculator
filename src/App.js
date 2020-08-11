@@ -110,7 +110,7 @@ dateChange = date => this.setState({ date })
             
             }
 
-            {this.state.dropDownChoice === "Fix & Flip"? <FixAndFlip/> : null}
+            {this.state.dropDownChoice === "Fix & Flip"? <FixAndFlip handleNumberChange={this.handleNumberChange}/> : null}
 
           </Card.Body>
         </Card>

@@ -81,30 +81,25 @@ export default class CalculatorCard extends Component {
 
                                 <Col md={6}>
                                     <Card style={{  border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
-                                        <Card.Body>
-                                            <Card.Text style={{textAlign: "left"}}>
-                                            <h5>{`Total project cost: $${(((this.props.purchasePrice) + (this.props.hardCosts) + (this.props.softCosts))* 1).toLocaleString()}`}</h5>
-                                            <h5>Taxes: ${ (((this.props.taxes)* .03)+ this.props.taxes).toLocaleString()}</h5>
-                                            <h5>Office Expenses: ${officeExpenses.toLocaleString()}</h5>
-                                            <h5>Replacement Reserves: ${replacementReserves.toLocaleString()}</h5>
-                                            <h5>Management: ${management.toLocaleString()}</h5>
-                                            <h5>Insurance: ${(this.props.insurance ).toLocaleString()}</h5>
-                                            <h5>Gross Annual Income: ${grossAnnualIncome.toLocaleString()}</h5>
-                                            <h5>Gross Annual Operating Expenses: ${ grossAnnualOperatingExpenses.toLocaleString()}</h5>
-                                            <h5>NOI: ${noi.toLocaleString()}</h5>
-                                            <h5>Cap Rate: { capRate ? Number((capRate).toFixed(2)) : 0  }</h5>
-                                            </Card.Text>
+                                        <Card.Body style={{textAlign: "left"}}>
+                                            
+                                            <Card.Text>{`Total project cost: $${(((this.props.purchasePrice) + (this.props.hardCosts) + (this.props.softCosts))* 1).toLocaleString()}`}</Card.Text>
+                                            <Card.Text>Taxes: ${ (((this.props.taxes)* .03)+ this.props.taxes).toLocaleString()}</Card.Text>
+                                            <Card.Text>Office Expenses: ${officeExpenses.toLocaleString()}</Card.Text>
+                                            <Card.Text>Replacement Reserves: ${replacementReserves.toLocaleString()}</Card.Text>
+                                            <Card.Text>Management: ${management.toLocaleString()}</Card.Text>
+                                            <Card.Text>Insurance: ${(this.props.insurance ).toLocaleString()}</Card.Text>
+                                            <Card.Text>Gross Annual Income: ${grossAnnualIncome.toLocaleString()}</Card.Text>
+                                            <Card.Text>Gross Annual Operating Expenses: ${ grossAnnualOperatingExpenses.toLocaleString()}</Card.Text>
+                                            <Card.Text>NOI: ${noi.toLocaleString()}</Card.Text>
+                                            <Card.Text>Cap Rate: { capRate ? Number((capRate).toFixed(2)) : 0  }</Card.Text>
+                                            
                                         </Card.Body>
                                     </Card>
                                 
                                 </Col>
                             </Row>
                         </Container>
-
-            //     </Card.Body>
-                
-
-            // </Card>
         )
     }
 }
