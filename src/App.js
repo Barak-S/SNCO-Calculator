@@ -4,6 +4,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import MaxRefi from './containers/Card'
+import FixAndFlip from './containers/FixAndFlip'
 import SNCOLogo from './components/SNCOLogo'
 import { FormControl, InputGroup, Dropdown, DropdownButton, Form, Card, Col, Row, Container } from 'react-bootstrap';
 
@@ -104,10 +105,12 @@ dateChange = date => this.setState({ date })
                   handleAddressChange={this.handleAddressChange}
                 />
                 : 
-              < p>{this.state.dropDownChoice}</p>
+              null
               
             
             }
+
+            {this.state.dropDownChoice === "Fix & Flip"? <FixAndFlip/> : null}
 
           </Card.Body>
         </Card>
