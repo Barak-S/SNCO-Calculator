@@ -5,7 +5,7 @@ import DatePicker from 'react-date-picker';
 
 import GeoCode from '../components/GeoCode'
 
-export default class CalculatorCard extends Component {
+export default class MaxRefi extends Component {
 
     render() {
 
@@ -32,7 +32,7 @@ export default class CalculatorCard extends Component {
                             <Row>
 
                                 <Col md={6}>
-                                    <Card style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15  }}>
+                                    <Card style={{ border: '2.5px solid #B98757', margin: "1rem", borderRadius: 15  }}>
                                         <Card.Body>
                                     
                                             
@@ -80,8 +80,8 @@ export default class CalculatorCard extends Component {
                                 </Col>
 
                                 <Col md={6}>
-                                    <Card style={{  border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
-                                        <Card.Body style={{textAlign: "left"}}>
+                                    <Card style={{  border: '2.5px solid #B98757', margin: "1rem", borderRadius: 15 }}>
+                                        <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
                                             
                                             <Card.Text>{`Total project cost: $${(((this.props.purchasePrice) + (this.props.hardCosts) + (this.props.softCosts))* 1).toLocaleString()}`}</Card.Text>
                                             <Card.Text>Taxes: ${ (((this.props.taxes)* .03)+ this.props.taxes).toLocaleString()}</Card.Text>
