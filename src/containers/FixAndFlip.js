@@ -113,7 +113,7 @@ export default class FixAndFlip extends Component {
                                                 <InputGroup.Prepend>
                                             <InputGroup.Text>Closing Costs</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <FormControl name="closingCosts" value={ this.state.closingCosts || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <FormControl name="closingCosts" value={ this.state.closingCosts || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl>
                                         </InputGroup>
                                         <InputGroup className="mb-3">
                                             {/* <InputGroup.Prepend>
@@ -135,7 +135,7 @@ export default class FixAndFlip extends Component {
                                                 <InputGroup.Prepend>
                                             <InputGroup.Text>Credit Score</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <FormControl name="creditScore" value={ this.state.creditScore || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <FormControl name="creditScore" value={ this.state.creditScore || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} ></FormControl>
                                         </InputGroup>
                                         <InputGroup className="mb-3">
                                         {/* <InputGroup.Prepend>
@@ -158,7 +158,7 @@ export default class FixAndFlip extends Component {
                                                 <InputGroup.Prepend>
                                             <InputGroup.Text>Resell Costs</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <FormControl name="resellCosts" value={ this.state.resellCosts || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <FormControl name="resellCosts" value={ this.state.resellCosts || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl>
                                         </InputGroup>
                                     </div> 
                                         : 
