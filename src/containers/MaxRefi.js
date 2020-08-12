@@ -31,47 +31,47 @@ export default class MaxRefi extends Component {
                         <Container fluid>
                             <Row>
 
-                                <Col md={6}>
+                                <Col md={7}>
                                     <Card style={{ border: '2.5px solid #B98757', margin: "1rem", borderRadius: 15  }}>
                                         <Card.Body>
                                     
                                             
-                                                {/* <FormControl aria-label="Address" placeholder="Address" name="address" value={this.props.address} onChange={(e)=>this.handleAddressChange(e)} style={{margin:7.5}}></FormControl> */}
+                                                {/* <FormControl aria-label="Address" placeholder="Address" name="address" value={this.props.address} onChange={(e)=>this.handleAddressChange(e)} ></FormControl> */}
 
                                                 <GeoCode></GeoCode>
                                             
-                                            <InputGroup>
-                                                <FormControl placeholder="Purchase Price" name="purchasePrice" value={this.props.purchasePrice || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                <FormControl placeholder="Units" name="units" value={this.props.units || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                            <InputGroup className="mb-3">
+                                                <FormControl placeholder="Purchase Price" name="purchasePrice" value={this.props.purchasePrice || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
+                                                <FormControl placeholder="Units" name="units" value={this.props.units || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
                                                 <DatePicker
                                                     onChange={this.props.dateChange}
                                                     value={this.props.date}
                                                 />
                                             </InputGroup>
-                                            <InputGroup>
-                                                <FormControl placeholder="Requested Loan Amount" name="requestLoanAmount" value={this.props.requestLoanAmount || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                <FormControl placeholder="Annual Gross Rent" name="annualGrossRent" value={this.props.annualGrossRent || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                <FormControl placeholder="Vacancy" name="vacancy" disabled={true} value={((this.props.annualGrossRent) * .03) || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                            <InputGroup className="mb-3">
+                                                <FormControl placeholder="Requested Loan Amount" name="requestLoanAmount" value={this.props.requestLoanAmount || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
+                                                <FormControl placeholder="Annual Gross Rent" name="annualGrossRent" value={this.props.annualGrossRent || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
+                                                <FormControl placeholder="Vacancy" name="vacancy" disabled={true} value={((this.props.annualGrossRent) * .03) || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
                                             </InputGroup>
-                                            <InputGroup>
-                                                <FormControl placeholder="Arm" type="number" name="arm" value={this.props.arm || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                <FormControl placeholder="Rate"  name="rate" value={this.props.rate || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                            <InputGroup className="mb-3">
+                                                <FormControl placeholder="Arm" type="number" name="arm" value={this.props.arm || undefined} onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
+                                                <FormControl placeholder="Rate"  name="rate" value={this.props.rate || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
                                             </InputGroup>
-                                            <InputGroup>
-                                                <FormControl placeholder="Taxes" type="number" name="taxes" value={this.props.taxes || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                <FormControl placeholder="Insurance"  name="insurance" value={this.props.insurance || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                            <InputGroup className="mb-3">
+                                                <FormControl placeholder="Taxes" type="number" name="taxes" value={this.props.taxes || undefined} onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
+                                                <FormControl placeholder="Insurance"  name="insurance" value={this.props.insurance || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
                                             </InputGroup>
-                                            <InputGroup>
-                                                <FormControl placeholder="Water Sewer" name="waterSewer" value={this.props.waterSewer || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                <FormControl placeholder="Utilities" name="utilities" value={this.props.utilities || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                            <InputGroup className="mb-3">
+                                                <FormControl placeholder="Water Sewer" name="waterSewer" value={this.props.waterSewer || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
+                                                <FormControl placeholder="Utilities" name="utilities" value={this.props.utilities || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
                                             </InputGroup>
-                                            <InputGroup>
-                                                <FormControl placeholder="Management" name="management" disabled={true} value={management || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                <FormControl placeholder="Replacement Reserves" name="replacementReserves" value={this.props.replacementReserves || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                            <InputGroup className="mb-3">
+                                                <FormControl placeholder="Management" name="management" disabled={true} value={management || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
+                                                <FormControl placeholder="Replacement Reserves" name="replacementReserves" value={this.props.replacementReserves || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
                                             </InputGroup>
-                                            <InputGroup>
-                                                <FormControl placeholder="Hard Costs" name="hardCosts" value={this.props.hardCosts || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
-                                                <FormControl placeholder="Soft Costs" name="softCosts" value={this.props.softCosts || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{margin:7.5}}></FormControl>
+                                            <InputGroup className="mb-3">
+                                                <FormControl placeholder="Hard Costs" name="hardCosts" value={this.props.hardCosts || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
+                                                <FormControl placeholder="Soft Costs" name="softCosts" value={this.props.softCosts || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
                                             </InputGroup>
 
                             
@@ -79,7 +79,7 @@ export default class MaxRefi extends Component {
                                     </Card>
                                 </Col>
 
-                                <Col md={6}>
+                                <Col md={5}>
                                     <Card style={{  border: '2.5px solid #B98757', margin: "1rem", borderRadius: 15 }}>
                                         <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
                                             

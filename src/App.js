@@ -29,7 +29,6 @@ class App extends React.Component {
     softCosts: 0,
     rate: 0,
     arm: 0
-    // totalProjectCost: 0,
 
 }
 
