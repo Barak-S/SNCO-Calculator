@@ -6,26 +6,38 @@ import DatePicker from 'react-date-picker';
 import GeoCode from '../components/GeoCode'
 
 export default class MaxRefi extends Component {
+    numberFormat = (value) =>
+    new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(value);
 
     render() {
-
-        // console.log(this.props.date)
 
         let officeExpenses = (this.props.units ) * 500
         let replacementReserves = (this.props.units  ) * 250
 
         let management = (this.props.annualGrossRent * .04)
+        let vacancy = (this.props.annualGrossRent * .03)
 
         let taxes = (this.props.taxes )
         let utilities = (this.props.utilities )
         let waterSewer = (this.props.waterSewer )
 
+        let totalProjectCost  = (this.props.purchasePrice + this.props.hardCosts + this.props.softCosts);
+
         let grossAnnualIncome = ( this.props.annualGrossRent );
         let grossAnnualOperatingExpenses = (taxes + utilities + waterSewer + management);
+        let effectiveAnnualGross = grossAnnualIncome - vacancy
         let noi = (grossAnnualIncome - grossAnnualOperatingExpenses);
-        let capRate = ((noi / this.props.purchasePrice) * 100)
+        let capRate = ((noi / totalProjectCost) * 100)
+        let ratePercent = this.props.rate / 100
+        let annualDebtService = (this.props.requestLoanAmount + (this.props.requestLoanAmount * ratePercent)) / this.props.arm
+        let dscr = noi / annualDebtService
 
        
+
+
         return (
 
                         <Container fluid>
@@ -114,6 +126,17 @@ export default class MaxRefi extends Component {
                                                 <FormControl name="insurance" value={this.props.insurance || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
                                             </InputGroup>
                                             <InputGroup className="mb-3">
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>Annual Gross Rent</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl name="annualGrossRent" value={this.props.annualGrossRent || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>Taxes</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl type="number" name="taxes" value={this.props.taxes || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                
+                                            </InputGroup>
+                                            <InputGroup className="mb-3">
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Water Sewer</InputGroup.Text>
                                             </InputGroup.Prepend>
@@ -131,24 +154,14 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Vacancy</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <FormControl name="vacancy" disabled={true} value={((this.props.annualGrossRent) * .03) || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <FormControl name="vacancy" disabled={true} value={ vacancy || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
 
                                             </InputGroup>
-                                            {/* <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Hard Costs</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <FormControl name="hardCosts" value={this.props.hardCosts || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                                <InputGroup.Prepend>
-                                            <InputGroup.Text>Soft Costs</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <FormControl name="softCosts" value={this.props.softCosts || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                            </InputGroup> */}
                                              <InputGroup className="mb-3">
                                                 <InputGroup.Prepend>
-                                                <InputGroup.Text>DSCR</InputGroup.Text>
+                                                <InputGroup.Text>Debt Service Coverage Ratio (DSCR)</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                    <FormControl name="dscr" value={this.props.dscr || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                    <FormControl name="dscr" value={dscr.toFixed(1) || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
                                              </InputGroup>
 
                             
@@ -160,16 +173,18 @@ export default class MaxRefi extends Component {
                                     <Card style={{  border: '2.5px solid #B98757', margin: "1rem", borderRadius: 15 }}>
                                         <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
                                             
-                                            <Card.Text>{`Total project cost: $${(((this.props.purchasePrice) + (this.props.hardCosts) + (this.props.softCosts))* 1).toLocaleString()}`}</Card.Text>
-                                            <Card.Text>Taxes: ${ (((this.props.taxes)* .03)+ this.props.taxes).toLocaleString()}</Card.Text>
-                                            <Card.Text>Office Expenses: ${officeExpenses? officeExpenses.toLocaleString() : 0}</Card.Text>
-                                            <Card.Text>Replacement Reserves: ${replacementReserves? replacementReserves.toLocaleString() : 0}</Card.Text>
-                                            <Card.Text>Management: ${management ? management.toLocaleString() : 0}</Card.Text>
-                                            <Card.Text>Insurance: ${this.props.insurance ? (this.props.insurance ).toLocaleString() : 0}</Card.Text>
-                                            <Card.Text>Gross Annual Income: ${grossAnnualIncome? grossAnnualIncome.toLocaleString() : 0}</Card.Text>
-                                            <Card.Text>Gross Annual Operating Expenses: ${ grossAnnualOperatingExpenses? grossAnnualOperatingExpenses.toLocaleString() : 0}</Card.Text>
-                                            <Card.Text>NOI: ${noi? noi.toLocaleString() : 0}</Card.Text>
-                                            <Card.Text>Cap Rate: { capRate ? Number((capRate).toFixed(2)) : 0  }</Card.Text>
+                                            <Card.Text>Total project cost: {totalProjectCost? this.numberFormat(totalProjectCost) : 0}</Card.Text>
+                                            <Card.Text>Taxes: { (((this.props.taxes)* .03)+ this.props.taxes).toLocaleString()}</Card.Text>
+                                            <Card.Text>Office Expenses: {officeExpenses? this.numberFormat(officeExpenses) : 0}</Card.Text>
+                                            <Card.Text>Replacement Reserves: {replacementReserves? this.numberFormat(replacementReserves) : 0}</Card.Text>
+                                            <Card.Text>Management: {management ? this.numberFormat(management) : 0}</Card.Text>
+                                            <Card.Text>Insurance: {this.props.insurance ? this.numberFormat(this.props.insurance) : 0}</Card.Text>
+                                            <Card.Text>Gross Annual Income: {grossAnnualIncome? this.numberFormat(grossAnnualIncome) : 0}</Card.Text>
+                                            <Card.Text>Gross Annual Operating Expenses: { grossAnnualOperatingExpenses? this.numberFormat(grossAnnualOperatingExpenses) : 0}</Card.Text>
+                                            <Card.Text>Effective Annual Gross: { effectiveAnnualGross? this.numberFormat(effectiveAnnualGross) : 0}</Card.Text>
+                                            <Card.Text>NOI: {noi? this.numberFormat(noi) : 0}</Card.Text>
+                                            <Card.Text>Cap Rate: { capRate ? Number((capRate).toFixed(2)) : 0  }%</Card.Text>
+                                            <Card.Text>Annual Debt Service: { annualDebtService ? annualDebtService.toFixed(2) : 0  }</Card.Text>
                                             
                                         </Card.Body>
                                     </Card>
