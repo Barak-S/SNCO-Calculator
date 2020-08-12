@@ -11,7 +11,7 @@ import { FormControl, InputGroup, Dropdown, DropdownButton, Form, Card, Col, Row
 class App extends React.Component {
 
   state={
-    dropDownChoice: "Multifamily Max Refi",
+    dropDownChoice: "1-4 Calculator",
     address: 0,
     purchasePrice: 0,
     requestLoanAmount: 0,
@@ -74,7 +74,7 @@ dateChange = date => this.setState({ date })
                       style={{ margin:7.5 }}
                   >
                       <Dropdown.Item eventKey="Multifamily Max Refi">Multifamily Max Refi</Dropdown.Item>
-                      <Dropdown.Item eventKey="Fix & Flip">Fix & Flip</Dropdown.Item>
+                      <Dropdown.Item eventKey="1-4 Calculator">1-4 Calculator</Dropdown.Item>
                       {/* <Dropdown.Item eventKey="Hard Money">Hard Money</Dropdown.Item> */}
                   </DropdownButton>
 
@@ -109,7 +109,7 @@ dateChange = date => this.setState({ date })
             
             }
 
-            {this.state.dropDownChoice === "Fix & Flip"? <FixAndFlip handleNumberChange={this.handleNumberChange}/> : null}
+            {this.state.dropDownChoice === "1-4 Calculator"? <FixAndFlip handleNumberChange={this.handleNumberChange}/> : null}
 
           </Card.Body>
         </Card>
