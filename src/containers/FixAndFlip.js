@@ -70,13 +70,13 @@ export default class FixAndFlip extends Component {
                                     <InputGroup.Prepend>
                                     <InputGroup.Text>Renovation Costs</InputGroup.Text>
                                     </InputGroup.Prepend>
-                                        <FormControl name="renovation" value={ this.state.renovation || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                        <FormControl name="renovation" value={ this.state.renovation || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl>
                                 </InputGroup>
                                 <InputGroup className="mb-3">
                                 <InputGroup.Prepend>
                                     <InputGroup.Text>ARV</InputGroup.Text>
                                     </InputGroup.Prepend>
-                                    <FormControl name="arv" value={ this.state.arv || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                    <FormControl name="arv" value={ this.state.arv || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl>
                                 </InputGroup>
                                 <InputGroup className="mb-3">
                                 {/* <InputGroup.Prepend>

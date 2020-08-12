@@ -11,7 +11,7 @@ import { FormControl, InputGroup, Dropdown, DropdownButton, Form, Card, Col, Row
 class App extends React.Component {
 
   state={
-    dropDownChoice: "1-4 Calculator",
+    dropDownChoice: "Multifamily Max Refi",
     address: 0,
     purchasePrice: 0,
     requestLoanAmount: 0,
@@ -28,7 +28,9 @@ class App extends React.Component {
     hardCosts: 0,
     softCosts: 0,
     rate: 0,
-    arm: 0
+    arm: 0,
+    dscr: 0,
+    payoff: 0
 
 }
 
@@ -98,6 +100,8 @@ dateChange = date => this.setState({ date })
                   softCosts= {this.state.softCosts}
                   rate={this.state.rate}
                   arm={this.state.arm}
+                  dscr={this.state.dscr}
+                  payoff={this.state.payoff}
 
                   dateChange={this.dateChange}
                   handleNumberChange={this.handleNumberChange}

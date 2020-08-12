@@ -38,10 +38,18 @@ export default class MaxRefi extends Component {
                                                 <GeoCode></GeoCode>
                                             
                                             <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
+                                            {/* <InputGroup.Prepend>
                                             <InputGroup.Text>Purchase Price</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <FormControl name="purchasePrice" value={this.props.purchasePrice || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <FormControl name="purchasePrice" value={this.props.purchasePrice || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl> */}
+                                            
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>Units</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                                <FormControl name="units" value={this.props.units || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+
+                                            
+                                            
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Purchase Date</InputGroup.Text>
                                             </InputGroup.Prepend>
@@ -52,23 +60,47 @@ export default class MaxRefi extends Component {
                                             </InputGroup>
                                             <InputGroup className="mb-3">
                                             <InputGroup.Prepend>
-                                            <InputGroup.Text>Units</InputGroup.Text>
+                                            <InputGroup.Text>Purchase Price</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <FormControl name="units" value={this.props.units || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                                <InputGroup.Prepend>
+                                                <FormControl name="purchasePrice" value={this.props.purchasePrice || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                {/* <InputGroup.Prepend>
                                             <InputGroup.Text>Annual Gross Rent</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <FormControl name="annualGrossRent" value={this.props.annualGrossRent || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <FormControl name="annualGrossRent" value={this.props.annualGrossRent || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl> */}
+                                            </InputGroup>
+                                            <InputGroup className="mb-3">
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>Hard Costs</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl name="hardCosts" value={this.props.hardCosts || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>Soft Costs</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl name="softCosts" value={this.props.softCosts || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                            </InputGroup>
+                                            <InputGroup className="mb-3">
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>Payoff Amount</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl type="number" name="payoff" value={this.props.payoff || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>Request Loan Amount</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl name="requestLoanAmount" value={this.props.requestLoanAmount || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                {/* <InputGroup.Text>Taxes</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl type="number" name="taxes" value={this.props.taxes || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                </InputGroup> */}
                                             </InputGroup>
                                             <InputGroup className="mb-3">
                                             <InputGroup.Prepend>
-                                            <InputGroup.Text>Request Loan Amount</InputGroup.Text>
+                                            <InputGroup.Text>ARM</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <FormControl name="requestLoanAmount" value={this.props.requestLoanAmount || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <FormControl type="number" name="arm" value={this.props.arm || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
                                                 <InputGroup.Prepend>
-                                            <InputGroup.Text>Taxes</InputGroup.Text>
+                                            <InputGroup.Text>Rate</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <FormControl type="number" name="taxes" value={this.props.taxes || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <FormControl name="rate" value={this.props.rate || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
                                             </InputGroup>
 
                                             <InputGroup className="mb-3">
@@ -101,22 +133,8 @@ export default class MaxRefi extends Component {
                                             </InputGroup.Prepend>
                                                 <FormControl name="vacancy" disabled={true} value={((this.props.annualGrossRent) * .03) || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
 
-                                            
-                                            
-                                            
-                                            
                                             </InputGroup>
-                                            <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>ARM</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <FormControl type="number" name="arm" value={this.props.arm || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                                <InputGroup.Prepend>
-                                            <InputGroup.Text>Rate</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <FormControl name="rate" value={this.props.rate || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                            </InputGroup>
-                                            <InputGroup className="mb-3">
+                                            {/* <InputGroup className="mb-3">
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Hard Costs</InputGroup.Text>
                                             </InputGroup.Prepend>
@@ -125,7 +143,13 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Text>Soft Costs</InputGroup.Text>
                                             </InputGroup.Prepend>
                                                 <FormControl name="softCosts" value={this.props.softCosts || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                            </InputGroup>
+                                            </InputGroup> */}
+                                             <InputGroup className="mb-3">
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>DSCR</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl name="dscr" value={this.props.dscr || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                             </InputGroup>
 
                             
                                         </Card.Body>
