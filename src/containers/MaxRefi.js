@@ -85,13 +85,13 @@ export default class MaxRefi extends Component {
                                             
                                             <Card.Text>{`Total project cost: $${(((this.props.purchasePrice) + (this.props.hardCosts) + (this.props.softCosts))* 1).toLocaleString()}`}</Card.Text>
                                             <Card.Text>Taxes: ${ (((this.props.taxes)* .03)+ this.props.taxes).toLocaleString()}</Card.Text>
-                                            <Card.Text>Office Expenses: ${officeExpenses.toLocaleString()}</Card.Text>
-                                            <Card.Text>Replacement Reserves: ${replacementReserves.toLocaleString()}</Card.Text>
-                                            <Card.Text>Management: ${management.toLocaleString()}</Card.Text>
-                                            <Card.Text>Insurance: ${(this.props.insurance ).toLocaleString()}</Card.Text>
-                                            <Card.Text>Gross Annual Income: ${grossAnnualIncome.toLocaleString()}</Card.Text>
-                                            <Card.Text>Gross Annual Operating Expenses: ${ grossAnnualOperatingExpenses.toLocaleString()}</Card.Text>
-                                            <Card.Text>NOI: ${noi.toLocaleString()}</Card.Text>
+                                            <Card.Text>Office Expenses: ${officeExpenses? officeExpenses.toLocaleString() : 0}</Card.Text>
+                                            <Card.Text>Replacement Reserves: ${replacementReserves? replacementReserves.toLocaleString() : 0}</Card.Text>
+                                            <Card.Text>Management: ${management ? management.toLocaleString() : 0}</Card.Text>
+                                            <Card.Text>Insurance: ${this.props.insurance ? (this.props.insurance ).toLocaleString() : 0}</Card.Text>
+                                            <Card.Text>Gross Annual Income: ${grossAnnualIncome? grossAnnualIncome.toLocaleString() : 0}</Card.Text>
+                                            <Card.Text>Gross Annual Operating Expenses: ${ grossAnnualOperatingExpenses? grossAnnualOperatingExpenses.toLocaleString() : 0}</Card.Text>
+                                            <Card.Text>NOI: ${noi? noi.toLocaleString() : 0}</Card.Text>
                                             <Card.Text>Cap Rate: { capRate ? Number((capRate).toFixed(2)) : 0  }</Card.Text>
                                             
                                         </Card.Body>
