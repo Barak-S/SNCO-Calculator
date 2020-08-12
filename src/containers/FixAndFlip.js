@@ -44,6 +44,12 @@ export default class FixAndFlip extends Component {
         })
     }
 
+    numberFormat = (value) =>
+    new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(value);
+
     render() {
        
         let totalIn = this.state.purchasePrice + this.state.renovation + this.state.carryCosts + this.state.closingCosts;
@@ -166,8 +172,8 @@ export default class FixAndFlip extends Component {
                         <Card style={{  border: '2.5px solid #B98757', margin: "1rem", borderRadius: 15 }}>
                             <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
                                 
-                                <Card.Text>Total In: ${ totalIn.toLocaleString() }</Card.Text>
-                                <Card.Text>Total Profit on Flip: ${ totalProfit.toLocaleString() }</Card.Text>
+                                <Card.Text>Total In: { this.numberFormat(totalIn) }</Card.Text>
+                                <Card.Text>Total Profit on Flip: { this.numberFormat(totalProfit) }</Card.Text>
                                 <Card.Text>Profit Percent: %{ profitPercent ? profitPercent.toFixed(2) : 0 }</Card.Text>
                                     
                             </Card.Body>
