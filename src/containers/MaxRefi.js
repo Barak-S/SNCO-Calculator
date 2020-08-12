@@ -50,18 +50,10 @@ export default class MaxRefi extends Component {
                                                 <GeoCode></GeoCode>
                                             
                                             <InputGroup className="mb-3">
-                                            {/* <InputGroup.Prepend>
-                                            <InputGroup.Text>Purchase Price</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <FormControl name="purchasePrice" value={this.props.purchasePrice || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl> */}
-                                            
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Units</InputGroup.Text>
                                             </InputGroup.Prepend>
                                                 <FormControl name="units" value={this.props.units || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-
-                                            
-                                            
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Purchase Date</InputGroup.Text>
                                             </InputGroup.Prepend>
@@ -74,11 +66,7 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Purchase Price</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <FormControl name="purchasePrice" value={this.props.purchasePrice || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                                {/* <InputGroup.Prepend>
-                                            <InputGroup.Text>Annual Gross Rent</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <FormControl name="annualGrossRent" value={this.props.annualGrossRent || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl> */}
+                                                <FormControl name="purchasePrice" value={this.props.purchasePrice || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
                                             </InputGroup>
                                             <InputGroup className="mb-3">
                                                 <InputGroup.Prepend>
@@ -88,74 +76,67 @@ export default class MaxRefi extends Component {
                                                 <InputGroup.Prepend>
                                                 <InputGroup.Text>Soft Costs</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                    <FormControl name="softCosts" value={this.props.softCosts || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                    <FormControl name="softCosts" value={this.props.softCosts || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)}></FormControl>
                                             </InputGroup>
                                             <InputGroup className="mb-3">
                                                 <InputGroup.Prepend>
-                                                <InputGroup.Text>Payoff Amount</InputGroup.Text>
+                                                <InputGroup.Text>Payoff</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                    <FormControl type="number" name="payoff" value={this.props.payoff || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                                <InputGroup.Prepend>
-                                                <InputGroup.Text>Request Loan Amount</InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                    <FormControl name="requestLoanAmount" value={this.props.requestLoanAmount || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                                {/* <InputGroup.Text>Taxes</InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                    <FormControl type="number" name="taxes" value={this.props.taxes || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                                </InputGroup> */}
-                                            </InputGroup>
-                                            <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>ARM</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <FormControl type="number" name="arm" value={this.props.arm || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                                <InputGroup.Prepend>
-                                            <InputGroup.Text>Rate</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <FormControl name="rate" value={this.props.rate || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                            </InputGroup>
-
-                                            <InputGroup className="mb-3">
-                                                <InputGroup.Prepend>
-                                            <InputGroup.Text>Replacement Reserves</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <FormControl name="replacementReserves" value={this.props.replacementReserves || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                                <InputGroup.Prepend>
-                                            <InputGroup.Text>Insurance</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <FormControl name="insurance" value={this.props.insurance || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                            </InputGroup>
-                                            <InputGroup className="mb-3">
+                                                <FormControl type="number" name="payoff" value={this.props.payoff || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
                                                 <InputGroup.Prepend>
                                                 <InputGroup.Text>Annual Gross Rent</InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                     <FormControl name="annualGrossRent" value={this.props.annualGrossRent || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                </InputGroup>
+                                            <InputGroup className="mb-3">
                                                 <InputGroup.Prepend>
+                                                <InputGroup.Text>Vacancy</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl name="vacancy" disabled={true} value={ vacancy || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                    <InputGroup.Prepend>
                                                 <InputGroup.Text>Taxes</InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                     <FormControl type="number" name="taxes" value={this.props.taxes || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                                
                                             </InputGroup>
                                             <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Water Sewer</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <FormControl name="waterSewer" value={this.props.waterSewer || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
                                                 <InputGroup.Prepend>
-                                            <InputGroup.Text>Utilities</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <FormControl name="utilities" value={this.props.utilities || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <InputGroup.Text>Utilities</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl name="utilities" value={this.props.utilities || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>Insurance</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl name="insurance" value={this.props.insurance || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
                                             </InputGroup>
                                             <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Management</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <FormControl name="management" disabled={true} value={management || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Vacancy</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <FormControl name="vacancy" disabled={true} value={ vacancy || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>Water Sewer</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl name="waterSewer" value={this.props.waterSewer || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>Management</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl name="management" disabled={true} value={management || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                </InputGroup>
+                                            <InputGroup className="mb-3">
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>Replacement Reserves</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl name="replacementReserves" value={ replacementReserves || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>Loan Amount</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl name="requestLoanAmount" value={this.props.requestLoanAmount || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
+                                            </InputGroup>
+                                            <InputGroup className="mb-3">
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>ARM</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl type="number" name="arm" value={this.props.arm || undefined} onChange={(e)=>this.props.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>Rate</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                    <FormControl name="rate" value={this.props.rate || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)}></FormControl>
                                             </InputGroup>
                                              <InputGroup className="mb-3">
                                                 <InputGroup.Prepend>
@@ -173,15 +154,15 @@ export default class MaxRefi extends Component {
                                     <Card style={{  border: '2.5px solid #B98757', margin: "1rem", borderRadius: 15 }}>
                                         <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
                                             
-                                            <Card.Text>Total project cost: {totalProjectCost? this.numberFormat(totalProjectCost) : 0}</Card.Text>
+                                            {/* <Card.Text>Total project cost: {totalProjectCost? this.numberFormat(totalProjectCost) : 0}</Card.Text>
                                             <Card.Text>Taxes: { (((this.props.taxes)* .03)+ this.props.taxes).toLocaleString()}</Card.Text>
                                             <Card.Text>Office Expenses: {officeExpenses? this.numberFormat(officeExpenses) : 0}</Card.Text>
                                             <Card.Text>Replacement Reserves: {replacementReserves? this.numberFormat(replacementReserves) : 0}</Card.Text>
                                             <Card.Text>Management: {management ? this.numberFormat(management) : 0}</Card.Text>
-                                            <Card.Text>Insurance: {this.props.insurance ? this.numberFormat(this.props.insurance) : 0}</Card.Text>
+                                            <Card.Text>Insurance: {this.props.insurance ? this.numberFormat(this.props.insurance) : 0}</Card.Text> */}
                                             <Card.Text>Gross Annual Income: {grossAnnualIncome? this.numberFormat(grossAnnualIncome) : 0}</Card.Text>
-                                            <Card.Text>Gross Annual Operating Expenses: { grossAnnualOperatingExpenses? this.numberFormat(grossAnnualOperatingExpenses) : 0}</Card.Text>
-                                            <Card.Text>Effective Annual Gross: { effectiveAnnualGross? this.numberFormat(effectiveAnnualGross) : 0}</Card.Text>
+                                            {/* <Card.Text>Gross Annual Operating Expenses: { grossAnnualOperatingExpenses? this.numberFormat(grossAnnualOperatingExpenses) : 0}</Card.Text> */}
+                                            {/* <Card.Text>Effective Annual Gross: { effectiveAnnualGross? this.numberFormat(effectiveAnnualGross) : 0}</Card.Text> */}
                                             <Card.Text>NOI: {noi? this.numberFormat(noi) : 0}</Card.Text>
                                             <Card.Text>Cap Rate: { capRate ? Number((capRate).toFixed(2)) : 0  }%</Card.Text>
                                             <Card.Text>Annual Debt Service: { annualDebtService ? annualDebtService.toFixed(2) : 0  }</Card.Text>
