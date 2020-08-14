@@ -4,6 +4,12 @@
   
 }
 
+body{
+  background: rgb(185,135,87);
+  background: linear-gradient(0deg, rgba(185,135,87,1) 0%, rgba(255,255,255,1) 90%);
+
+}
+
 .CalculatorCard{
   min-height: 100vh;
 }
@@ -13,12 +19,6 @@ margin: 25px;
 
 }
 
-
-/* background: rgb(185,135,87);
-background: linear-gradient(0deg, rgba(185,135,87,1) 0%, rgba(255,255,255,1) 100%); */
-
-body{
-  background: rgb(185,135,87);
-  background: linear-gradient(0deg, rgba(185,135,87,1) 0%, rgba(255,255,255,1) 90%);
-
+#nav-dropdown{
+  /* background-color: #D9BEA3; */
 }

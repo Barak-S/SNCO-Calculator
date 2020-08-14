@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { FormControl, InputGroup, Card, Col, Row, Container } from 'react-bootstrap';
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 import DatePicker from 'react-date-picker';
-
 import GeoCode from '../components/GeoCode'
+
+import CurrencyInput from '../components/CurrencyInput'
 
 export default class MaxRefi extends Component {
     numberFormat = (value) =>
@@ -11,6 +13,12 @@ export default class MaxRefi extends Component {
         style: 'currency',
         currency: 'USD'
     }).format(value);
+
+
+    myFormat(num) {
+        return num + '$';
+    }
+
 
     render() {
 
@@ -47,7 +55,7 @@ export default class MaxRefi extends Component {
                             <Card style={{ border: '2.5px solid #B98757', margin: "1rem", borderRadius: 15  }}>
                                 <Card.Body>
                             
-                                        <GeoCode></GeoCode>
+                                    <GeoCode></GeoCode>
                                     
                                     <InputGroup className="mb-3">
                                     <InputGroup.Prepend>
@@ -66,7 +74,13 @@ export default class MaxRefi extends Component {
                                     <InputGroup.Prepend>
                                     <InputGroup.Text>Purchase Price</InputGroup.Text>
                                     </InputGroup.Prepend>
-                                        <FormControl name="purchasePrice" value={this.props.purchasePrice || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)} ></FormControl>
+                                        {/* <FormControl name="purchasePrice" value={this.props.purchasePrice || undefined} type="number" onChange={(e)=>this.props.handleNumberChange(e)}></FormControl> */}
+
+                                    <CurrencyInput
+                                        handleChange={this.props.handleNumberChange}
+                                        purchasePrice={this.props.purchasePrice}
+                                    />
+
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>

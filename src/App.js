@@ -34,33 +34,35 @@ class App extends React.Component {
 
 }
 
-handleAddressChange=(e)=>{
-  this.setState({
-      address: e.target.value
-  },()=>console.log(this.state.address))
-}
+  handleAddressChange=(e)=>{
+    this.setState({
+        address: e.target.value
+    },()=>console.log(this.state.address))
+  }
 
 
-handleNumberChange=(e)=>{
-  this.setState({
-      [e.target.name]: e.target.valueAsNumber
-  })
-}
+  handleNumberChange=(key, e)=>{
+    // console.log(key, e)
+    this.setState({
+      [key]: e
+    })
+  }
 
 
-changeDropDownChoice=(e)=>{
-  this.setState({
-      dropDownChoice: e
-  })
-}
+  changeDropDownChoice=(e)=>{
+    this.setState({
+        dropDownChoice: e
+    })
+  }
 
-dateChange = date => this.setState({ date })
+  dateChange = date => this.setState({ date })
 
 
 
   render(){
 
-    console.log(this.state.date)
+    console.log(this.state.purchasePrice)
+
 
     return (
       <div className="App">
@@ -74,7 +76,8 @@ dateChange = date => this.setState({ date })
                       title={this.state.dropDownChoice} 
                       onSelect= {(e)=>this.changeDropDownChoice(e)}
                       style={{ margin:7.5 }}
-                  >
+                      id="nav-dropdown">
+                  
                       <Dropdown.Item eventKey="Multifamily Max Refi">Multifamily Max Refi</Dropdown.Item>
                       <Dropdown.Item eventKey="1-4 Calculator">1-4 Calculator</Dropdown.Item>
                       {/* <Dropdown.Item eventKey="Hard Money">Hard Money</Dropdown.Item> */}
