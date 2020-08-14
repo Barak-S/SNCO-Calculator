@@ -4,6 +4,8 @@ import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownB
 // import DatePicker from 'react-date-picker';
 
 import GeoCode from '../components/GeoCode'
+import CurrencyInput from '../components/CurrencyInput'
+
 
 export default class FixAndFlip extends Component {
 
@@ -20,9 +22,10 @@ export default class FixAndFlip extends Component {
         exitStrategy : ""
     }
 
-    handleNumberChange=(e)=>{
+    handleNumberChange=(key, e)=>{
+        // console.log(key, e)
         this.setState({
-            [e.target.name]: e.target.valueAsNumber
+          [key]: parseInt(e)
         })
     }
 
@@ -72,17 +75,34 @@ export default class FixAndFlip extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Purchase Price</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                            <FormControl name="purchasePrice" value={ this.state.purchasePrice || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                        <CurrencyInput
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.purchasePrice}
+                                            name={"purchasePrice"}
+                                        />
+                                        {/* <FormControl name="purchasePrice" value={ this.state.purchasePrice || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl> */}
+                                    </InputGroup>
+                                    <InputGroup className="mb-3" >
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Renovation Costs</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                            <FormControl name="renovation" value={ this.state.renovation || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl>
+                                        <CurrencyInput
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.renovation}
+                                            name={"renovation"}
+                                        />
+                                            {/* <FormControl name="renovation" value={ this.state.renovation || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                     <InputGroup.Prepend>
                                         <InputGroup.Text>ARV</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <FormControl name="arv" value={ this.state.arv || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl>
+                                        <CurrencyInput
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.arv}
+                                            name={"arv"}
+                                        />
+                                        {/* <FormControl name="arv" value={ this.state.arv || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <DropdownButton
@@ -106,11 +126,23 @@ export default class FixAndFlip extends Component {
                                                 <InputGroup.Prepend>
                                                 <InputGroup.Text>Carrying Costs</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                    <FormControl name="carryCosts" value={ this.state.carryCosts || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <CurrencyInput
+                                                    handleChange={this.handleNumberChange}
+                                                    value={this.state.carryCosts}
+                                                    name={"carryCosts"}
+                                                />
+                                                {/* <FormControl name="carryCosts" value={ this.state.carryCosts || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl> */}
+                                            </InputGroup>
+                                            <InputGroup className="mb-3">   
                                                     <InputGroup.Prepend>
                                                 <InputGroup.Text>Closing Costs</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                    <FormControl name="closingCosts" value={ this.state.closingCosts || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl>
+                                                <CurrencyInput
+                                                    handleChange={this.handleNumberChange}
+                                                    value={this.state.closingCosts}
+                                                    name={"closingCosts"}
+                                                />
+                                                {/* <FormControl name="closingCosts" value={ this.state.closingCosts || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl> */}
                                             </InputGroup>
                                             <InputGroup className="mb-3">
                                                     <DropdownButton
@@ -146,10 +178,17 @@ export default class FixAndFlip extends Component {
                                                     <Dropdown.Item eventKey="24 Months">24 Months</Dropdown.Item>
                                                 </DropdownButton>
                                                     <FormControl name="turnaroundTime" value={ this.state.turnaroundTime || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                            </InputGroup>
+                                            <InputGroup className="mb-3">
                                                     <InputGroup.Prepend>
                                                 <InputGroup.Text>Resell Costs</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                    <FormControl name="resellCosts" value={ this.state.resellCosts || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl>
+                                                <CurrencyInput
+                                                    handleChange={this.handleNumberChange}
+                                                    value={this.state.resellCosts}
+                                                    name={"resellCosts"}
+                                                />
+                                                {/* <FormControl name="resellCosts" value={ this.state.resellCosts || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl> */}
                                             </InputGroup>
                                         </div> 
                                             : 
@@ -170,13 +209,21 @@ export default class FixAndFlip extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Total In:</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                            <FormControl value={ totalIn? (totalIn) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl>
+                                        <CurrencyInput
+                                            value={totalIn ? totalIn : 0}
+                                            disabled={true}
+                                        />
+                                        {/* <FormControl value={ totalIn? (totalIn) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Total Profit on Flip:</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                            <FormControl value={ totalProfit? (totalProfit) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl>
+                                            <CurrencyInput
+                                                value={totalProfit ? totalProfit : 0}
+                                                disabled={true}
+                                            />
+                                            {/* <FormControl value={ totalProfit? (totalProfit) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>

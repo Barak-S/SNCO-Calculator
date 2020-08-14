@@ -181,7 +181,9 @@ export default class MaxRefi extends Component {
                                             value={ replacementReserves }
                                             name={"replacementReserves"}
                                             disabled={true}
-                                        />                                             
+                                        />  
+                                    </InputGroup>  
+                                    <InputGroup className="mb-3">                                         
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Loan Amount</InputGroup.Text>
                                         </InputGroup.Prepend>
