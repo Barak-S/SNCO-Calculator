@@ -6,12 +6,12 @@ export default class CurrencyInput extends Component {
         return (
             <div>
                     <InputNumber
-                    name="purchasePrice "
-                    formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                    parser={ value => value.replace(/\$\s?|(,*)/g, '')}
-                    style={{ width: "100%" }}
-                    value={ this.props.purchasePrice }
-                    onChange={e => this.props.handleChange("purchasePrice",e)}
+                        name={this.props.name}
+                        formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                        parser={ value => value.replace(/\$\s?|(,*)/g, '')}
+                        style={{ width: "100%", height: 39, fontSize: 17, paddingTop: 4 }}
+                        value={ this.props.value }
+                        onChange={e => this.props.handleChange(this.props.name,e)}
                     />
             
             </div>

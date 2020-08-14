@@ -70,7 +70,8 @@ export default class MaxRefi extends Component {
                                             value={this.props.date}
                                         />
                                     </InputGroup>
-                                    <InputGroup className="mb-3">
+                                    
+                                    <InputGroup size="md" className="mb-3">
                                     <InputGroup.Prepend>
                                     <InputGroup.Text>Purchase Price</InputGroup.Text>
                                     </InputGroup.Prepend>
@@ -78,9 +79,9 @@ export default class MaxRefi extends Component {
 
                                     <CurrencyInput
                                         handleChange={this.props.handleNumberChange}
-                                        purchasePrice={this.props.purchasePrice}
+                                        value={this.props.purchasePrice}
+                                        name={"purchasePrice"}
                                     />
-
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
