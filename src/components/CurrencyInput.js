@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
-import { Form, Input, Row, Col, InputNumber, DatePicker } from "antd";
+import { Input, Row, Col, InputNumber } from "antd";
+import { InputGroup } from 'react-bootstrap';
+
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+
+
 
 export default class CurrencyInput extends Component {
     render() {
@@ -12,6 +17,7 @@ export default class CurrencyInput extends Component {
                         style={{ width: "100%", height: 39, fontSize: 17, paddingTop: 4 }}
                         value={ this.props.value }
                         onChange={e => this.props.handleChange(this.props.name,e)}
+                        disabled={this.props.disabled}
                     />
             
             </div>

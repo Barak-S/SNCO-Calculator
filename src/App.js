@@ -44,7 +44,7 @@ class App extends React.Component {
   handleNumberChange=(key, e)=>{
     // console.log(key, e)
     this.setState({
-      [key]: e
+      [key]: parseInt(e)
     })
   }
 
@@ -61,7 +61,7 @@ class App extends React.Component {
 
   render(){
 
-    console.log(this.state.purchasePrice)
+    console.log(this.state)
 
 
     return (
