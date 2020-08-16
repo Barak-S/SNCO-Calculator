@@ -22,3 +22,8 @@ margin: 25px;
 #nav-dropdown{
   /* background-color: #D9BEA3; */
 }
+
+
+div.ant-input-number-handler-wrap{
+  display: none;
+}
