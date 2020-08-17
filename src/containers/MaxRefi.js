@@ -6,6 +6,8 @@ import DatePicker from 'react-date-picker';
 import GeoCode from '../components/GeoCode'
 
 import CurrencyInput from '../components/CurrencyInput'
+import PercentageInput from '../components/PercentageInput'
+ 
 
 export default class MaxRefi extends Component {
     numberFormat = (value) =>
@@ -39,13 +41,15 @@ export default class MaxRefi extends Component {
         let effectiveAnnualGross = grossAnnualIncome - vacancy
         let noi = (grossAnnualIncome - grossAnnualOperatingExpenses);
         let capRate = ((noi / totalProjectCost) * 100)
-        let ratePercent = this.props.rate / 100
-        let annualDebtService = (this.props.requestLoanAmount + (this.props.requestLoanAmount * ratePercent)) / this.props.arm
+
+        let requestLoanAmount = this.props.requestLoanAmount? this.props.requestLoanAmount : 0;
+        let ratePercent = this.props.rate? (this.props.rate / 100) : 0;
+        let arm = this.props.arm ? this.props.arm : 1;
+
+        let annualDebtService = ((requestLoanAmount + (requestLoanAmount * ratePercent))/ arm)
         let dscr = noi / annualDebtService
 
        
-
-
         return (
 
                 <Container fluid>
@@ -203,13 +207,6 @@ export default class MaxRefi extends Component {
                                         </InputGroup.Prepend>
                                             <FormControl name="rate" value={this.props.rate || undefined} type="number" onChange={(e)=>this.props.handleNumberChange("rate",e.target.value)}></FormControl>
                                     </InputGroup>
-                                        {/* <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Debt Service Coverage Ratio (DSCR)</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                            <FormControl name="dscr" value={dscr.toFixed(1) || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl>
-                                        </InputGroup> */}
-
                     
                                 </Card.Body>
                             </Card>
@@ -231,6 +228,7 @@ export default class MaxRefi extends Component {
                                     {/* <Card.Text>NOI: {noi? this.numberFormat(noi) : 0}</Card.Text> */}
                                     {/* <Card.Text>Cap Rate: { capRate ? Number((capRate).toFixed(2)) : 0  }%</Card.Text> */}
                                     {/* <Card.Text>Annual Debt Service: { annualDebtService ? annualDebtService.toFixed(2) : 0  }</Card.Text> */}
+                                    
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Gross Annual Income: </InputGroup.Text>
@@ -271,7 +269,12 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Debt Service Coverage Ratio (DSCR):</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                            <FormControl name="dscr" value={dscr.toFixed(1) || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl>
+                                        <PercentageInput
+                
+                                            value={dscr}
+                                            disabled={true}
+                                        />
+                                        {/* <FormControl name="dscr" value={dscr.toFixed(1) || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                 </Card.Body>
                             </Card>
