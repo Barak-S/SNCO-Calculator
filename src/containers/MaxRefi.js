@@ -58,7 +58,7 @@ export default class MaxRefi extends Component {
                     <Row>
 
                         <Col md={7}>
-                            <Card style={{ border: '2.5px solid #B98757', margin: "1rem", borderRadius: 15  }}>
+                            <Card style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15  }}>
                                 <Card.Body>
                             
                                     <GeoCode></GeoCode>
@@ -220,7 +220,7 @@ export default class MaxRefi extends Component {
                         </Col>
 
                         <Col md={5}>
-                            <Card style={{  border: '2.5px solid #B98757', margin: "1rem", borderRadius: 15 }}>
+                            <Card style={{  border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
                                 <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
                                     
                                     {/* <Card.Text>Total project cost: {totalProjectCost? this.numberFormat(totalProjectCost) : 0}</Card.Text>
