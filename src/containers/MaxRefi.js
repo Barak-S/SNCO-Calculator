@@ -251,13 +251,17 @@ export default class MaxRefi extends Component {
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
-                                        <InputGroup.Text style={{fontWeight: "600"}}>Cap Rate: %</InputGroup.Text>
+                                        <InputGroup.Text style={{fontWeight: "600"}}>Cap Rate:</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                            <FormControl value={ capRate ? Number((capRate).toFixed(2)) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl>
+                                            <PercentageInput
+                                                value={capRate}
+                                                disabled={true}
+                                            />
+                                            {/* <FormControl value={ capRate ? Number((capRate).toFixed(2)) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
-                                        <InputGroup.Text style={{fontWeight: "600"}}>Annual Debt Service: </InputGroup.Text>
+                                        <InputGroup.Text style={{fontWeight: "600"}}>Annual Debt Service:</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <CurrencyInput
                                             value={ annualDebtService? annualDebtService : 0}
@@ -270,7 +274,6 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Text style={{fontWeight: "600"}}>Debt Service Coverage Ratio (DSCR):</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <PercentageInput
-                
                                             value={dscr}
                                             disabled={true}
                                         />
