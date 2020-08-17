@@ -27,7 +27,7 @@ class App extends React.Component {
     replacementReserves: 0,
     hardCosts: 0,
     softCosts: 0,
-    rate: 0,
+    rate: 0.0,
     arm: 0,
     dscr: 0,
     payoff: 0
@@ -45,13 +45,19 @@ class App extends React.Component {
     // console.log(key, e)
     this.setState({
       [key]: parseInt(e)
-    })
+    },()=>console.log(this.state.rate))
   }
 
 
   changeDropDownChoice=(e)=>{
     this.setState({
         dropDownChoice: e
+    })
+  }
+
+  formatRateInput=(num)=> {
+    this.setState({
+        rate: parseFloat(num).toFixed(2)
     })
   }
 
@@ -109,6 +115,7 @@ class App extends React.Component {
                   dateChange={this.dateChange}
                   handleNumberChange={this.handleNumberChange}
                   handleAddressChange={this.handleAddressChange}
+                  formatRateInput = {this.formatRateInput}
                 />
                 : 
               null

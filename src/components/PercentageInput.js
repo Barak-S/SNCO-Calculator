@@ -14,12 +14,11 @@ export default class PercentageInput extends Component {
                         formatter={value => `${value}%`}
                         parser={value => value.replace('%', '')}
                         style={{ width: "100%",  fontSize: 17, paddingTop: 4, display:"flex" }}
-                        value={this.props.value? this.props.value.toFixed(2) : 0}
+                        value={this.props.value? parseFloat(this.props.value).toFixed(2) : 0} 
                         min={0}
                         max={100}
                         onChange={e => this.props.handleChange(this.props.name,e)}
                         disabled={this.props.disabled}
-
                     />
 
                 </Col>

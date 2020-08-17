@@ -24,32 +24,34 @@ export default class MaxRefi extends Component {
 
     render() {
 
+        
         let officeExpenses = (this.props.units ) * 500
         let replacementReserves = (this.props.units  ) * 250
-
+        
         let management = (this.props.annualGrossRent * .04)
         let vacancy = (this.props.annualGrossRent * .03)
-
+        
         let taxes = (this.props.taxes )
         let utilities = (this.props.utilities )
         let waterSewer = (this.props.waterSewer )
-
+        
         let totalProjectCost  = (this.props.purchasePrice + this.props.hardCosts + this.props.softCosts);
-
+        
         let grossAnnualIncome = ( this.props.annualGrossRent );
         let grossAnnualOperatingExpenses = (taxes + utilities + waterSewer + management);
         let effectiveAnnualGross = grossAnnualIncome - vacancy
         let noi = (grossAnnualIncome - grossAnnualOperatingExpenses);
         let capRate = ((noi / totalProjectCost) * 100)
-
+        
         let requestLoanAmount = this.props.requestLoanAmount? this.props.requestLoanAmount : 0;
         let ratePercent = this.props.rate? (this.props.rate / 100) : 0;
         let arm = this.props.arm ? this.props.arm : 1;
-
+        
         let annualDebtService = ((requestLoanAmount + (requestLoanAmount * ratePercent))/ arm)
         let dscr = noi / annualDebtService
+        
+        console.log(this.props.rate)
 
-       
         return (
 
                 <Container fluid>
@@ -201,11 +203,16 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>ARM</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                            <FormControl type="number" name="arm" value={this.props.arm || undefined} onChange={(e)=>this.props.handleNumberChange("arm",e.target.value)}></FormControl>
+                                            <FormControl type="number" name="arm" value={this.props.arm || undefined} onChange={(e)=>this.props.handleNumberChange("arm",e.target.value)} style={{marginRight: 5}}></FormControl>
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Rate</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                            <FormControl name="rate" value={this.props.rate || undefined} type="number" onChange={(e)=>this.props.handleNumberChange("rate",e.target.value)}></FormControl>
+                                            <PercentageInput
+                                                handleChange={ this.props.formatRateInput }
+                                                value={this.props.rate}
+                                                name={"rate"}
+                                            />
+                                            {/* <FormControl name="rate" value={this.props.rate || undefined} type="number" onChange={(e)=>this.props.handleNumberChange("rate",e.target.value)}></FormControl> */}
                                     </InputGroup>
                     
                                 </Card.Body>

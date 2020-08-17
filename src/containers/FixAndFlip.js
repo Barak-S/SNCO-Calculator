@@ -5,6 +5,7 @@ import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownB
 
 import GeoCode from '../components/GeoCode'
 import CurrencyInput from '../components/CurrencyInput'
+import PercentageInput from '../components/PercentageInput'
 
 
 export default class FixAndFlip extends Component {
@@ -93,7 +94,7 @@ export default class FixAndFlip extends Component {
                                         />
                                             {/* <FormControl name="renovation" value={ this.state.renovation || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
-                                    <InputGroup className="mb-3">
+                                    { this.state.exitStrategy === "Fix & Flip" && <InputGroup className="mb-3">
                                     <InputGroup.Prepend>
                                         <InputGroup.Text>ARV</InputGroup.Text>
                                         </InputGroup.Prepend>
@@ -103,7 +104,7 @@ export default class FixAndFlip extends Component {
                                             name={"arv"}
                                         />
                                         {/* <FormControl name="arv" value={ this.state.arv || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl> */}
-                                    </InputGroup>
+                                    </InputGroup>}
                                     <InputGroup className="mb-3">
                                         <DropdownButton
                                             as={InputGroup.Append}
@@ -229,7 +230,11 @@ export default class FixAndFlip extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Profit Percent: %</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                            <FormControl value={ profitPercent? profitPercent.toFixed(2) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl>
+                                            <PercentageInput
+                                                value={profitPercent}
+                                                disabled={true}
+                                            />
+                                            {/* <FormControl value={ profitPercent? profitPercent.toFixed(2) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                 </Card.Body>
                             </Card>
