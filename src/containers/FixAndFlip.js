@@ -20,7 +20,17 @@ export default class FixAndFlip extends Component {
         arv: 0,
         turnaroundTime: "",
         resellCosts: 0,
-        exitStrategy : ""
+        exitStrategy : "",
+        interest: 0,
+        taxes: 0,
+        insurance: 0,
+        legalResale: 0,
+        transferTax: 0,
+        broker: 0,
+        points: 0,
+        titleBill: 0,
+        legalClosing: 0,
+        legalLender:0,
     }
 
     handleNumberChange=(key, e)=>{
@@ -94,17 +104,7 @@ export default class FixAndFlip extends Component {
                                         />
                                             {/* <FormControl name="renovation" value={ this.state.renovation || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
-                                    { this.state.exitStrategy === "Fix & Flip" && <InputGroup className="mb-3">
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>ARV</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <CurrencyInput
-                                            handleChange={this.handleNumberChange}
-                                            value={this.state.arv}
-                                            name={"arv"}
-                                        />
-                                        {/* <FormControl name="arv" value={ this.state.arv || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl> */}
-                                    </InputGroup>}
+                                    
                                     <InputGroup className="mb-3">
                                         <DropdownButton
                                             as={InputGroup.Append}
@@ -123,6 +123,17 @@ export default class FixAndFlip extends Component {
                                         
                                             
                                         <div>
+                                            <InputGroup className="mb-3">
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>ARV</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                <CurrencyInput
+                                                    handleChange={this.handleNumberChange}
+                                                    value={this.state.arv}
+                                                    name={"arv"}
+                                                />
+                                                {/* <FormControl name="arv" value={ this.state.arv || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl> */}
+                                            </InputGroup>
                                             <InputGroup className="mb-3">
                                                 <InputGroup.Prepend>
                                                 <InputGroup.Text>Carrying Costs</InputGroup.Text>
