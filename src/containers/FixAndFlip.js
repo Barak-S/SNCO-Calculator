@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownButton, Form } from 'react-bootstrap';
 
+import { InputNumber } from "antd";
 // import DatePicker from 'react-date-picker';
+// import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
-import GeoCode from '../components/GeoCode'
-import CurrencyInput from '../components/CurrencyInput'
-import PercentageInput from '../components/PercentageInput'
+
+import GeoCode from '../components/GeoCode';
+import CurrencyInput from '../components/CurrencyInput';
+import PercentageInput from '../components/PercentageInput';
+import SubmitButton from '../components/Submit';
 
 
 export default class FixAndFlip extends Component {
@@ -64,7 +68,6 @@ export default class FixAndFlip extends Component {
 
     render() {
        
-        
         let carryingCosts = this.state.interest + this.state.taxes + this.state.insurance
         let resaleCosts = this.state.legalResale + this.state.transferTax + this.state.broker
         let closingCosts = this.state.points + this.state.titleBill + this.state.legalClosing + this.state.legalLender
@@ -72,8 +75,6 @@ export default class FixAndFlip extends Component {
         let totalIn = this.state.purchasePrice + this.state.renovation + carryingCosts + closingCosts;
         let totalProfit = this.state.arv - totalIn - resaleCosts
         let profitPercent = (totalProfit / totalIn) * 100
-
-        console.log(totalIn)
 
         return (
 
@@ -96,6 +97,16 @@ export default class FixAndFlip extends Component {
                                             value={this.state.purchasePrice}
                                             name={"purchasePrice"}
                                         />
+                                        {/* <InputNumber
+                                            name={'purchasePrice'}
+                                            formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                            parser={ value => value.replace(/\$\s?|(,*)/g, '')}
+                                            style={{ width: "100%" }}
+                                            value={ this.props.purchasePrice? this.props.purchasePrice.toFixed(2) : 0}
+                                            onChange={e => this.handleChange(this.props.purchasePrice,e)}
+                                            
+
+                                        /> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3" >
                                         <InputGroup.Prepend>
@@ -347,7 +358,7 @@ export default class FixAndFlip extends Component {
                                     </InputGroup>
                                 </Card.Body>
                             </Card>
-                        
+                            <SubmitButton createLoan = {this.props.createLoan}/>
                         </Col>
                     </Row>
                 </Container>

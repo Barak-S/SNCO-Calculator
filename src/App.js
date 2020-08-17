@@ -11,7 +11,7 @@ import { FormControl, InputGroup, Dropdown, DropdownButton, Form, Card, Col, Row
 class App extends React.Component {
 
   state={
-    dropDownChoice: "Multifamily Max Refi",
+    propertyType: "Multifamily Max Refi",
     address: 0,
     purchasePrice: 0,
     requestLoanAmount: 0,
@@ -30,7 +30,8 @@ class App extends React.Component {
     rate: 0.0,
     arm: 0,
     dscr: 0,
-    payoff: 0
+    payoff: 0,
+    allLoans: []
 
 }
 
@@ -49,9 +50,9 @@ class App extends React.Component {
   }
 
 
-  changeDropDownChoice=(e)=>{
+  changePropertyType=(e)=>{
     this.setState({
-        dropDownChoice: e
+        propertyType: e
     })
   }
 
@@ -62,6 +63,18 @@ class App extends React.Component {
   }
 
   dateChange = date => this.setState({ date })
+
+
+  createLoan=(loan)=>{
+    fetch('http://localhost:5000/contacts',{
+      method: "POST",
+      headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
+      body: JSON.stringify(loan)
+    })
+    .then(res=>res.json())
+    .then(loans=>console.log(loans))
+    .catch(() => console.log("Can’t POST loan data"))
+  }
 
 
 
@@ -79,8 +92,8 @@ class App extends React.Component {
               <Card.Text style={{fontWeight: "600", fontSize: 22}}>SNCO Calculator</Card.Text>
                   <DropdownButton 
                       variant="dark"
-                      title={this.state.dropDownChoice} 
-                      onSelect= {(e)=>this.changeDropDownChoice(e)}
+                      title={this.state.propertyType} 
+                      onSelect= {(e)=>this.changePropertyType(e)}
                       style={{ margin:7.5 }}
                       id="nav-dropdown">
                   
@@ -89,9 +102,9 @@ class App extends React.Component {
                       {/* <Dropdown.Item eventKey="Hard Money">Hard Money</Dropdown.Item> */}
                   </DropdownButton>
 
-              {this.state.dropDownChoice === "Multifamily Max Refi" ?
+              {this.state.propertyType === "Multifamily Max Refi" ?
                 <MaxRefi
-                  dropDownChoice={this.state.dropDownChoice}
+                  propertyType={this.state.propertyType}
                   address= {this.state.address}
                   purchasePrice= {this.state.purchasePrice}
                   requestLoanAmount= {this.state.requestLoanAmount}
@@ -112,10 +125,11 @@ class App extends React.Component {
                   dscr={this.state.dscr}
                   payoff={this.state.payoff}
 
-                  dateChange={this.dateChange}
-                  handleNumberChange={this.handleNumberChange}
-                  handleAddressChange={this.handleAddressChange}
+                  dateChange = {this.dateChange}
+                  handleNumberChange = {this.handleNumberChange}
+                  handleAddressChange = {this.handleAddressChange}
                   formatRateInput = {this.formatRateInput}
+                  createLoan = {this.createLoan}
                 />
                 : 
               null
@@ -123,7 +137,7 @@ class App extends React.Component {
             
             }
 
-            {this.state.dropDownChoice === "1-4 Calculator"? <FixAndFlip handleNumberChange={this.handleNumberChange}/> : null}
+            {this.state.propertyType === "1-4 Calculator"? <FixAndFlip handleNumberChange={this.handleNumberChange}/> : null}
 
           </Card.Body>
         </Card>

@@ -3,10 +3,10 @@ import { FormControl, InputGroup, Card, Col, Row, Container } from 'react-bootst
 // import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 import DatePicker from 'react-date-picker';
-import GeoCode from '../components/GeoCode'
-
-import CurrencyInput from '../components/CurrencyInput'
-import PercentageInput from '../components/PercentageInput'
+import GeoCode from '../components/GeoCode';
+import SubmitButton from '../components/Submit'
+import CurrencyInput from '../components/CurrencyInput';
+import PercentageInput from '../components/PercentageInput';
  
 
 export default class MaxRefi extends Component {
@@ -50,8 +50,6 @@ export default class MaxRefi extends Component {
         let annualDebtService = ((requestLoanAmount + (requestLoanAmount * ratePercent))/ arm)
         let dscr = noi / annualDebtService
         
-        console.log(this.props.rate)
-
         return (
 
                 <Container fluid>
@@ -62,7 +60,7 @@ export default class MaxRefi extends Component {
                                 <Card.Body>
                             
                                     <GeoCode></GeoCode>
-                                    
+
                                     <InputGroup className="mb-3">
                                     <InputGroup.Prepend>
                                     <InputGroup.Text>Units</InputGroup.Text>
@@ -288,9 +286,10 @@ export default class MaxRefi extends Component {
                                     </InputGroup>
                                 </Card.Body>
                             </Card>
-                        
+                            <SubmitButton createLoan = {this.props.createLoan}/>
                         </Col>
                     </Row>
+
                 </Container>
         )
     }
