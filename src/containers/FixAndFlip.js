@@ -70,7 +70,7 @@ export default class FixAndFlip extends Component {
         let closingCosts = this.state.points + this.state.titleBill + this.state.legalClosing + this.state.legalLender
         
         let totalIn = this.state.purchasePrice + this.state.renovation + carryingCosts + closingCosts;
-        let totalProfit = this.state.arv - totalIn - this.state.resellCosts
+        let totalProfit = this.state.arv - totalIn - resaleCosts
         let profitPercent = (totalProfit / totalIn) * 100
 
         console.log(totalIn)
@@ -96,7 +96,6 @@ export default class FixAndFlip extends Component {
                                             value={this.state.purchasePrice}
                                             name={"purchasePrice"}
                                         />
-                                        {/* <FormControl name="purchasePrice" value={ this.state.purchasePrice || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3" >
                                         <InputGroup.Prepend>
@@ -107,7 +106,6 @@ export default class FixAndFlip extends Component {
                                             value={this.state.renovation}
                                             name={"renovation"}
                                         />
-                                            {/* <FormControl name="renovation" value={ this.state.renovation || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                     
                                     <InputGroup className="mb-3">
@@ -137,12 +135,10 @@ export default class FixAndFlip extends Component {
                                                     value={this.state.arv}
                                                     name={"arv"}
                                                 />
-                                                {/* <FormControl name="arv" value={ this.state.arv || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl> */}
                                             </InputGroup>
 
 
                                             <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 5, margin: 5   }}>
-                                            {/* <Form.Label >Carrying Costs</Form.Label> */}
                                                 <InputGroup className="mb-3">
                                                     <InputGroup.Prepend>
                                                     <InputGroup.Text>Carrying Costs</InputGroup.Text>
@@ -152,7 +148,6 @@ export default class FixAndFlip extends Component {
                                                         value={ carryingCosts }
                                                         disabled={true}
                                                     />
-                                                    {/* <FormControl name="carryCosts" value={ this.state.carryCosts || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl> */}
                                                 </InputGroup>
                                                 <InputGroup className="mb-3">
                                                     <InputGroup.Prepend>
@@ -174,7 +169,6 @@ export default class FixAndFlip extends Component {
                                                             name={"insurance"}
                                                         />
                                                 </InputGroup>
-                                                
                                                 <InputGroup className="mb-3">
                                                     <InputGroup.Prepend>
                                                         <InputGroup.Text>Interest</InputGroup.Text>
@@ -186,12 +180,9 @@ export default class FixAndFlip extends Component {
                                                         />
                                                     
                                                 </InputGroup>
-
-
                                             </Card>
 
                                             <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 5, margin: 5  }}>
-
                                                 <InputGroup className="mb-3">   
                                                         <InputGroup.Prepend>
                                                     <InputGroup.Text>Closing Costs</InputGroup.Text>
@@ -200,7 +191,6 @@ export default class FixAndFlip extends Component {
                                                         value={ closingCosts }  
                                                         disabled={true}
                                                     />
-                                                    {/* <FormControl name="closingCosts" value={ this.state.closingCosts || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl> */}
                                                 </InputGroup>
                                                 <InputGroup className="mb-3">
                                                     <InputGroup.Prepend>
@@ -232,13 +222,49 @@ export default class FixAndFlip extends Component {
                                                             name={"legalLender"}
                                                         />
                                                 </InputGroup>
-
-
-
-
-                                                
                                             </Card>
 
+                                            <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 5, margin: 5  }}>
+                                                <InputGroup className="mb-3">   
+                                                        <InputGroup.Prepend>
+                                                    <InputGroup.Text>Resale Costs</InputGroup.Text>
+                                                    </InputGroup.Prepend>
+                                                    <CurrencyInput
+                                                        value={ resaleCosts }  
+                                                        disabled={true}
+                                                    />
+                                                </InputGroup>
+                                                <InputGroup className="mb-3">
+                                                    <InputGroup.Prepend>
+                                                        <InputGroup.Text>Legal</InputGroup.Text>
+                                                        </InputGroup.Prepend>
+                                                        <CurrencyInput
+                                                            handleChange={this.handleNumberChange}
+                                                            value={this.state.legalResale}
+                                                            name={"legalResale"}
+                                                        />
+                                                </InputGroup>
+                                                <InputGroup className="mb-3">
+                                                    <InputGroup.Prepend>
+                                                        <InputGroup.Text>Transfer Tax</InputGroup.Text>
+                                                        </InputGroup.Prepend>
+                                                        <CurrencyInput
+                                                            handleChange={this.handleNumberChange}
+                                                            value={this.state.transferTax}
+                                                            name={"transferTax"}
+                                                        />
+                                                </InputGroup>
+                                                <InputGroup className="mb-3">
+                                                    <InputGroup.Prepend>
+                                                        <InputGroup.Text>Broker</InputGroup.Text>
+                                                        </InputGroup.Prepend>
+                                                        <CurrencyInput
+                                                            handleChange={this.handleNumberChange}
+                                                            value={this.state.broker}
+                                                            name={"broker"}
+                                                        />
+                                                </InputGroup>   
+                                            </Card>
 
                                             <InputGroup className="mb-3">
                                                     <DropdownButton
@@ -275,17 +301,8 @@ export default class FixAndFlip extends Component {
                                                 </DropdownButton>
                                                     <FormControl name="turnaroundTime" value={ this.state.turnaroundTime || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
                                             </InputGroup>
-                                            <InputGroup className="mb-3">
-                                                    <InputGroup.Prepend>
-                                                <InputGroup.Text>Resell Costs</InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <CurrencyInput
-                                                    handleChange={this.handleNumberChange}
-                                                    value={this.state.resellCosts}
-                                                    name={"resellCosts"}
-                                                />
-                                                {/* <FormControl name="resellCosts" value={ this.state.resellCosts || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)}></FormControl> */}
-                                            </InputGroup>
+
+
                                         </div> 
                                             : 
                                         null}
@@ -309,7 +326,6 @@ export default class FixAndFlip extends Component {
                                             value={totalIn ? totalIn : 0}
                                             disabled={true}
                                         />
-                                        {/* <FormControl value={ totalIn? (totalIn) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
@@ -319,7 +335,6 @@ export default class FixAndFlip extends Component {
                                                 value={totalProfit ? totalProfit : 0}
                                                 disabled={true}
                                             />
-                                            {/* <FormControl value={ totalProfit? (totalProfit) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
@@ -329,7 +344,6 @@ export default class FixAndFlip extends Component {
                                                 value={profitPercent}
                                                 disabled={true}
                                             />
-                                            {/* <FormControl value={ profitPercent? profitPercent.toFixed(2) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                 </Card.Body>
                             </Card>
