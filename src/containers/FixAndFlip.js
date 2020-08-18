@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownButton, Form } from 'react-bootstrap';
+import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownButton, Form, Button } from 'react-bootstrap';
 
 import { InputNumber } from "antd";
 // import DatePicker from 'react-date-picker';
@@ -364,7 +364,14 @@ export default class FixAndFlip extends Component {
                                     </InputGroup>
                                 </Card.Body>
                             </Card>
-                            <SubmitButton createLoan = {this.props.createLoan}/>
+                            {/* <SubmitButton 
+                                createLoan = {this.props.createLoan}
+                            /> */}
+                            <Button 
+                                variant="outline-dark" 
+                                style={{ marginBottom: 15 }} 
+                                onClick={()=>this.props.createLoan(this.props.address, this.state)}
+                            >Create Loan</Button>
                         </Col>
                     </Row>
                 </Container>

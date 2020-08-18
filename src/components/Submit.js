@@ -7,7 +7,11 @@ export default class Submit extends Component {
     render() {
         return (
             <div>
-                <Button variant="outline-dark" style={{ marginBottom: 15 }}>Create Loan</Button>
+                <Button 
+                    variant="outline-dark" 
+                    style={{ marginBottom: 15 }} 
+                    onClick={()=>this.props.createLoan()}
+                >Create Loan</Button>
             </div>
         )
     }
