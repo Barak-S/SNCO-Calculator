@@ -370,7 +370,7 @@ export default class FixAndFlip extends Component {
                             <Button 
                                 variant="outline-dark" 
                                 style={{ marginBottom: 15 }} 
-                                onClick={()=>this.props.createLoan(this.props.address, this.state)}
+                                onClick={()=>this.props.createLoan(this.props.address, this.props)}
                             >Create Loan</Button>
                         </Col>
                     </Row>

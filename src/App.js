@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -18,25 +17,8 @@ class App extends React.Component {
   state={
     propertyType: "Multifamily Max Refi",
     address: "",
-    purchasePrice: 0,
-    requestLoanAmount: 0,
     date: new Date(),
-    annualGrossRent: 0,
-    units: 0,
-    vacancy: 0,
-    taxes: 0,
-    insurance: 0,
-    waterSewer: 0,
-    utilities: 0,
-    management: 0,
-    replacementReserves: 0,
-    hardCosts: 0,
-    softCosts: 0,
-    rate: 0.0,
-    arm: 0,
-    dscr: 0,
-    payoff: 0,
-    allLoans: []
+    allLoans: [],
 
 }
 
@@ -44,21 +26,13 @@ class App extends React.Component {
     this.setState({ address },()=>console.log(this.state.address))
   }
 
-  handleAddressSelect = (address) => {
-    geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
-      this.setState({ address})
-      .then(latLng => console.log('Success', latLng))
-      .catch(error => console.error('Error', error));
-  };
-
-
-  handleNumberChange=(key, e)=>{
-    // console.log(key, e)
-    this.setState({
-      [key]: parseInt(e)
-    },()=>console.log(this.state.rate))
-  }
+  // handleAddressSelect = (address) => {
+  //   geocodeByAddress(address)
+  //     .then(results => getLatLng(results[0]))
+  //     this.setState({ address})
+  //     .then(latLng => console.log('Success', latLng))
+  //     .catch(error => console.error('Error', error));
+  // };
 
 
   changePropertyType=(e)=>{
@@ -93,18 +67,13 @@ class App extends React.Component {
   }
 
 
-
   render(){
-
-    // console.log(this.state)
 
 
     return (
       <div className="App">
         <SNCOLogo/>
 
-        {/* <Card className="CalculatorCard" style={{ border: '4px solid #B98757', margin: "1rem", borderRadius: 15 }}>
-          <Card.Body> */}
               <Card.Text style={{fontWeight: "600", fontSize: 22}}>SNCO Calculator</Card.Text>
                   <DropdownButton 
                       variant="dark"
@@ -115,36 +84,12 @@ class App extends React.Component {
                   
                       <Dropdown.Item eventKey="Multifamily Max Refi">Multifamily Max Refi</Dropdown.Item>
                       <Dropdown.Item eventKey="1-4 Calculator">1-4 Calculator</Dropdown.Item>
-                      {/* <Dropdown.Item eventKey="Hard Money">Hard Money</Dropdown.Item> */}
                   </DropdownButton>
 
               {this.state.propertyType === "Multifamily Max Refi" ?
                 <MaxRefi
-                  propertyType={this.state.propertyType}
-                  purchasePrice= {this.state.purchasePrice}
-                  requestLoanAmount= {this.state.requestLoanAmount}
                   date= {this.state.date}
-                  annualGrossRent= {this.state.annualGrossRent}
-                  units= {this.state.units}
-                  vacancy= {this.state.vacancy}
-                  taxes= {this.state.taxes}
-                  insurance= {this.state.insurance}
-                  waterSewer= {this.state.waterSewer}
-                  utilities= {this.state.utilities}
-                  management= {this.state.management}
-                  replacementReserves= {this.state.replacementReserves}
-                  hardCosts= {this.state.hardCosts}
-                  softCosts= {this.state.softCosts}
-                  rate={this.state.rate}
-                  arm={this.state.arm}
-                  dscr={this.state.dscr}
-                  payoff={this.state.payoff}
-                  
                   dateChange = {this.dateChange}
-                  handleNumberChange = {this.handleNumberChange}
-                  formatRateInput = {this.formatRateInput}
-                  createLoan = {this.createLoan}
-                  
                   address= {this.state.address}
                   handleAddressChange = {this.handleAddressChange}
                   handleAddressSelect = {this.handleAddressSelect}
@@ -157,17 +102,13 @@ class App extends React.Component {
 
             {this.state.propertyType === "1-4 Calculator"? 
               <FixAndFlip 
-                handleNumberChange={this.handleNumberChange} 
                 address= {this.state.address}
                 handleAddressChange = {this.handleAddressChange}
                 handleAddressSelect = {this.handleAddressSelect}
-                createLoan={this.createLoan}
               /> 
             : 
             null}
 
-          {/* </Card.Body>
-        </Card> */}
       </div>
     );
 

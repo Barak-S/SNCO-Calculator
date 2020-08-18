@@ -11,6 +11,35 @@ import LocationSearchInput from'../components/LocationSearchInput';
  
 
 export default class MaxRefi extends Component {
+
+    state={
+        purchasePrice: 0,
+        requestLoanAmount: 0,
+        date: new Date(),
+        annualGrossRent: 0,
+        units: 0,
+        vacancy: 0,
+        taxes: 0,
+        insurance: 0,
+        waterSewer: 0,
+        utilities: 0,
+        management: 0,
+        replacementReserves: 0,
+        hardCosts: 0,
+        softCosts: 0,
+        rate: 0.0,
+        arm: 0,
+        dscr: 0,
+        payoff: 0,
+
+    }
+
+    handleNumberChange=(key, e)=>{
+        this.setState({
+          [key]: parseInt(e)
+        })
+    }
+    
     numberFormat = (value) =>
     new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -26,27 +55,27 @@ export default class MaxRefi extends Component {
     render() {
 
         
-        let officeExpenses = (this.props.units ) * 500
-        let replacementReserves = (this.props.units  ) * 250
+        let officeExpenses = (this.state.units ) * 500
+        let replacementReserves = (this.state.units  ) * 250
         
-        let management = (this.props.annualGrossRent * .04)
-        let vacancy = (this.props.annualGrossRent * .03)
+        let management = (this.state.annualGrossRent * .04)
+        let vacancy = (this.state.annualGrossRent * .03)
         
-        let taxes = (this.props.taxes )
-        let utilities = (this.props.utilities )
-        let waterSewer = (this.props.waterSewer )
+        let taxes = (this.state.taxes )
+        let utilities = (this.state.utilities )
+        let waterSewer = (this.state.waterSewer )
         
-        let totalProjectCost  = (this.props.purchasePrice + this.props.hardCosts + this.props.softCosts);
+        let totalProjectCost  = (this.state.purchasePrice + this.state.hardCosts + this.state.softCosts);
         
-        let grossAnnualIncome = ( this.props.annualGrossRent );
+        let grossAnnualIncome = ( this.state.annualGrossRent );
         let grossAnnualOperatingExpenses = (taxes + utilities + waterSewer + management);
         let effectiveAnnualGross = grossAnnualIncome - vacancy
         let noi = (grossAnnualIncome - grossAnnualOperatingExpenses);
         let capRate = ((noi / totalProjectCost) * 100)
         
-        let requestLoanAmount = this.props.requestLoanAmount? this.props.requestLoanAmount : 0;
-        let ratePercent = this.props.rate? (this.props.rate / 100) : 0;
-        let arm = this.props.arm ? this.props.arm : 1;
+        let requestLoanAmount = this.state.requestLoanAmount? this.state.requestLoanAmount : 0;
+        let ratePercent = this.state.rate? (this.state.rate / 100) : 0;
+        let arm = this.state.arm ? this.state.arm : 1;
         
         let annualDebtService = ((requestLoanAmount + (requestLoanAmount * ratePercent))/ arm)
         let dscr = noi / annualDebtService
@@ -71,7 +100,7 @@ export default class MaxRefi extends Component {
                                     <InputGroup.Prepend>
                                     <InputGroup.Text>Units</InputGroup.Text>
                                     </InputGroup.Prepend>
-                                        <FormControl name="units" value={this.props.units || undefined} type="number" onChange={(e)=>this.props.handleNumberChange("units" ,e.target.value)}></FormControl>
+                                        <FormControl name="units" value={this.state.units || undefined} type="number" onChange={(e)=>this.handleNumberChange("units" ,e.target.value)}></FormControl>
                                     <InputGroup.Prepend>
                                     <InputGroup.Text>Purchase Date</InputGroup.Text>
                                     </InputGroup.Prepend>
@@ -85,8 +114,8 @@ export default class MaxRefi extends Component {
                                     <InputGroup.Text>Purchase Price</InputGroup.Text>
                                     </InputGroup.Prepend>
                                     <CurrencyInput
-                                        handleChange={this.props.handleNumberChange}
-                                        value={this.props.purchasePrice}
+                                        handleChange={this.handleNumberChange}
+                                        value={this.state.purchasePrice}
                                         name={"purchasePrice"}
                                     />
                                     </InputGroup>
@@ -95,16 +124,16 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Text>Hard Costs</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <CurrencyInput
-                                            handleChange={this.props.handleNumberChange}
-                                            value={this.props.hardCosts}
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.hardCosts}
                                             name={"hardCosts"}
                                         />                                        
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Soft Costs</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <CurrencyInput
-                                            handleChange={this.props.handleNumberChange}
-                                            value={this.props.softCosts}
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.softCosts}
                                             name={"softCosts"}
                                         />                                    
                                         </InputGroup>
@@ -113,16 +142,16 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Text>Payoff</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <CurrencyInput
-                                            handleChange={this.props.handleNumberChange}
-                                            value={this.props.payoff}
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.payoff}
                                             name={"payoff"}
                                         />                                        
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Annual Gross Rent</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <CurrencyInput
-                                            handleChange={this.props.handleNumberChange}
-                                            value={this.props.annualGrossRent}
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.annualGrossRent}
                                             name={"annualGrossRent"}
                                         />                                        
                                         </InputGroup>
@@ -131,7 +160,7 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Text>Vacancy</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <CurrencyInput
-                                            handleChange={this.props.handleNumberChange}
+                                            handleChange={this.handleNumberChange}
                                             value={ vacancy }
                                             name={"vacancy"}
                                             disabled={true}
@@ -140,8 +169,8 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Text>Taxes</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <CurrencyInput
-                                            handleChange={this.props.handleNumberChange}
-                                            value={this.props.taxes}
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.taxes}
                                             name={"taxes"}
                                         />                                      
                                         </InputGroup>
@@ -150,16 +179,16 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Text>Utilities</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <CurrencyInput
-                                            handleChange={this.props.handleNumberChange}
-                                            value={this.props.utilities}
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.utilities}
                                             name={"utilities"}
                                         />                                        
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Insurance</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <CurrencyInput
-                                            handleChange={this.props.handleNumberChange}
-                                            value={this.props.insurance}
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.insurance}
                                             name={"insurance"}
                                         />                                    
                                         </InputGroup>
@@ -168,15 +197,15 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Text>Water Sewer</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <CurrencyInput
-                                            handleChange={this.props.handleNumberChange}
-                                            value={this.props.waterSewer}
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.waterSewer}
                                             name={"waterSewer"}
                                         />                                          
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Management</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <CurrencyInput
-                                            handleChange={this.props.handleNumberChange}
+                                            handleChange={this.handleNumberChange}
                                             value={ management }
                                             name={"management"}
                                             disabled={true}
@@ -187,7 +216,7 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Text>Replacement Reserves</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <CurrencyInput
-                                            handleChange={ this.props.handleNumberChange }
+                                            handleChange={ this.handleNumberChange }
                                             value={ replacementReserves }
                                             name={"replacementReserves"}
                                             disabled={true}
@@ -198,8 +227,8 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Text>Loan Amount</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <CurrencyInput
-                                            handleChange={this.props.handleNumberChange}
-                                            value={this.props.requestLoanAmount}
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.requestLoanAmount}
                                             name={"requestLoanAmount"}
                                         />                                     
                                         </InputGroup>
@@ -207,16 +236,15 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>ARM</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                            <FormControl type="number" name="arm" value={this.props.arm || undefined} onChange={(e)=>this.props.handleNumberChange("arm",e.target.value)} style={{marginRight: 5}}></FormControl>
+                                            <FormControl type="number" name="arm" value={this.state.arm || undefined} onChange={(e)=>this.handleNumberChange("arm",e.target.value)} style={{marginRight: 5}}></FormControl>
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Rate</InputGroup.Text>
                                         </InputGroup.Prepend>
                                             <PercentageInput
-                                                handleChange={ this.props.handleNumberChange }
-                                                value={this.props.rate}
+                                                handleChange={ this.handleNumberChange }
+                                                value={this.state.rate}
                                                 name={"rate"}
                                             />
-                                            {/* <FormControl name="rate" value={this.props.rate || undefined} type="number" onChange={(e)=>this.props.handleNumberChange("rate",e.target.value)}></FormControl> */}
                                     </InputGroup>
                     
                                 </Card.Body>
@@ -227,19 +255,6 @@ export default class MaxRefi extends Component {
                             <Card style={{  border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
                                 <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
                                     
-                                    {/* <Card.Text>Total project cost: {totalProjectCost? this.numberFormat(totalProjectCost) : 0}</Card.Text>
-                                    <Card.Text>Taxes: { (((this.props.taxes)* .03)+ this.props.taxes).toLocaleString()}</Card.Text>
-                                    <Card.Text>Office Expenses: {officeExpenses? this.numberFormat(officeExpenses) : 0}</Card.Text>
-                                    <Card.Text>Replacement Reserves: {replacementReserves? this.numberFormat(replacementReserves) : 0}</Card.Text>
-                                    <Card.Text>Management: {management ? this.numberFormat(management) : 0}</Card.Text>
-                                    <Card.Text>Insurance: {this.props.insurance ? this.numberFormat(this.props.insurance) : 0}</Card.Text> */}
-                                    {/* <Card.Text>Gross Annual Income: {grossAnnualIncome? this.numberFormat(grossAnnualIncome) : 0}</Card.Text> */}
-                                    {/* <Card.Text>Gross Annual Operating Expenses: { grossAnnualOperatingExpenses? this.numberFormat(grossAnnualOperatingExpenses) : 0}</Card.Text> */}
-                                    {/* <Card.Text>Effective Annual Gross: { effectiveAnnualGross? this.numberFormat(effectiveAnnualGross) : 0}</Card.Text> */}
-                                    {/* <Card.Text>NOI: {noi? this.numberFormat(noi) : 0}</Card.Text> */}
-                                    {/* <Card.Text>Cap Rate: { capRate ? Number((capRate).toFixed(2)) : 0  }%</Card.Text> */}
-                                    {/* <Card.Text>Annual Debt Service: { annualDebtService ? annualDebtService.toFixed(2) : 0  }</Card.Text> */}
-                                    
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Gross Annual Income: </InputGroup.Text>
@@ -248,7 +263,6 @@ export default class MaxRefi extends Component {
                                             value={ grossAnnualIncome? grossAnnualIncome : 0}
                                             disabled={true}
                                         />
-                                        {/* <FormControl value={ grossAnnualIncome? (grossAnnualIncome) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
@@ -258,7 +272,6 @@ export default class MaxRefi extends Component {
                                             value={ noi? noi: 0}
                                             disabled={true}
                                         />
-                                        {/* <FormControl value={ noi? (noi) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
@@ -268,7 +281,6 @@ export default class MaxRefi extends Component {
                                                 value={capRate}
                                                 disabled={true}
                                             />
-                                            {/* <FormControl value={ capRate ? Number((capRate).toFixed(2)) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
@@ -278,7 +290,6 @@ export default class MaxRefi extends Component {
                                             value={ annualDebtService? annualDebtService : 0}
                                             disabled={true}
                                         />
-                                        {/* <FormControl value={ annualDebtService ? annualDebtService.toFixed(2) : 0 || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
@@ -288,7 +299,6 @@ export default class MaxRefi extends Component {
                                             value={dscr}
                                             disabled={true}
                                         />
-                                        {/* <FormControl name="dscr" value={dscr.toFixed(1) || undefined} type="number" disabled={true} onChange={(e)=>this.props.handleNumberChange(e)}></FormControl> */}
                                     </InputGroup>
                                 </Card.Body>
                             </Card>
