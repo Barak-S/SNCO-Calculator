@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputGroup, Card, Col, Row, Container } from 'react-bootstrap';
+import { FormControl, InputGroup, Card, Col, Row, Container, Button } from 'react-bootstrap';
 // import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 import DatePicker from 'react-date-picker';
@@ -51,9 +51,28 @@ export default class MaxRefi extends Component {
         return num + '$';
     }
 
+    createLoan=(address,properyType, date, loan)=>{
+        if (address !== ""){
+          fetch('http://localhost:5000/loans',{
+            method: "POST",
+            headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
+            body: JSON.stringify({address: address,
+                properyType: properyType, 
+                loan,
+                purchaseDate: date
+            })
+          })
+          .then(res=>res.json())
+          .then(loans=>console.log(loans))
+          .catch(() => console.log("Can’t POST loan data"))
+    
+        } else {
+          console.log("wont post without an address")
+        }
+    }
+
 
     render() {
-
         
         let officeExpenses = (this.state.units ) * 500
         let replacementReserves = (this.state.units  ) * 250
@@ -302,7 +321,11 @@ export default class MaxRefi extends Component {
                                     </InputGroup>
                                 </Card.Body>
                             </Card>
-                            <SubmitButton createLoan = {this.props.createLoan}/>
+                            <Button 
+                                variant="outline-dark" 
+                                style={{ marginBottom: 15 }} 
+                                onClick={()=>this.createLoan(this.props.address, this.props.propertyType, this.props.date, this.state)}
+                            >Create Loan</Button>                        
                         </Col>
                     </Row>
 

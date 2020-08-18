@@ -23,7 +23,7 @@ class App extends React.Component {
 }
 
   handleAddressChange= (address) => {
-    this.setState({ address },()=>console.log(this.state.address))
+    this.setState({ address })
   }
 
   // handleAddressSelect = (address) => {
@@ -48,23 +48,6 @@ class App extends React.Component {
   // }
 
   dateChange = date => this.setState({ date })
-
-
-  createLoan=(address, loan)=>{
-    if (address !== ""){
-      fetch('http://localhost:5000/loans',{
-        method: "POST",
-        headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-        body: JSON.stringify({address: address, loan})
-      })
-      .then(res=>res.json())
-      .then(loans=>console.log(loans))
-      .catch(() => console.log("Can’t POST loan data"))
-
-    } else {
-      console.log("wont post without an address")
-    }
-  }
 
 
   render(){
@@ -93,6 +76,7 @@ class App extends React.Component {
                   address= {this.state.address}
                   handleAddressChange = {this.handleAddressChange}
                   handleAddressSelect = {this.handleAddressSelect}
+                  propertyType = {this.state.propertyType}
                 />
                 : 
               null
@@ -102,9 +86,10 @@ class App extends React.Component {
 
             {this.state.propertyType === "1-4 Calculator"? 
               <FixAndFlip 
-                address= {this.state.address}
+                address = {this.state.address}
                 handleAddressChange = {this.handleAddressChange}
                 handleAddressSelect = {this.handleAddressSelect}
+                propertyType = {this.state.propertyType}
               /> 
             : 
             null}

@@ -61,6 +61,22 @@ export default class FixAndFlip extends Component {
         })
     }
 
+    createLoan=(address,properyType, loan)=>{
+        if (address !== ""){
+          fetch('http://localhost:5000/loans',{
+            method: "POST",
+            headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
+            body: JSON.stringify({address: address, properyType: properyType, loan})
+          })
+          .then(res=>res.json())
+          .then(loans=>console.log(loans))
+          .catch(() => console.log("Can’t POST loan data"))
+    
+        } else {
+          console.log("wont post without an address")
+        }
+    }
+
     numberFormat = (value) =>
     new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -364,13 +380,10 @@ export default class FixAndFlip extends Component {
                                     </InputGroup>
                                 </Card.Body>
                             </Card>
-                            {/* <SubmitButton 
-                                createLoan = {this.props.createLoan}
-                            /> */}
                             <Button 
                                 variant="outline-dark" 
                                 style={{ marginBottom: 15 }} 
-                                onClick={()=>this.props.createLoan(this.props.address, this.props)}
+                                onClick={()=>this.createLoan(this.props.address,this.props.propertyType,this.state)}
                             >Create Loan</Button>
                         </Col>
                     </Row>
