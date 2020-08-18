@@ -87,8 +87,8 @@ class App extends React.Component {
       <div className="App">
         <SNCOLogo/>
 
-        <Card className="CalculatorCard" style={{ border: '4px solid #B98757', margin: "1rem", borderRadius: 15 }}>
-          <Card.Body>
+        {/* <Card className="CalculatorCard" style={{ border: '4px solid #B98757', margin: "1rem", borderRadius: 15 }}>
+          <Card.Body> */}
               <Card.Text style={{fontWeight: "600", fontSize: 22}}>SNCO Calculator</Card.Text>
                   <DropdownButton 
                       variant="dark"
@@ -139,8 +139,8 @@ class App extends React.Component {
 
             {this.state.propertyType === "1-4 Calculator"? <FixAndFlip handleNumberChange={this.handleNumberChange}/> : null}
 
-          </Card.Body>
-        </Card>
+          {/* </Card.Body>
+        </Card> */}
       </div>
     );
 
