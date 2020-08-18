@@ -10,7 +10,7 @@ import {
   } from 'react-places-autocomplete';
 
 
-export default function GeoCode() {
+export default function GeoCode(props) {
 
     const [address, setAddress] = React.useState("");
     const [coordinates, setCoordinates] = React.useState({

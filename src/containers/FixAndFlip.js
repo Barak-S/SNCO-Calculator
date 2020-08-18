@@ -6,7 +6,8 @@ import { InputNumber } from "antd";
 // import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 
-import GeoCode from '../components/GeoCode';
+// import GeoCode from '../components/GeoCode';
+import LocationSearchInput from'../components/LocationSearchInput';
 import CurrencyInput from '../components/CurrencyInput';
 import PercentageInput from '../components/PercentageInput';
 import SubmitButton from '../components/Submit';
@@ -86,7 +87,12 @@ export default class FixAndFlip extends Component {
                             <Card style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15  }}>
                                 <Card.Body>
                             
-                                    <GeoCode></GeoCode>
+                                    {/* <GeoCode></GeoCode> */}
+                                    <LocationSearchInput 
+                                        handleAddressChange={this.props.handleAddressChange} 
+                                        address={this.props.address} 
+                                        // handleAddressSelect={this.props.handleAddressSelect}
+                                    />
                                     
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>

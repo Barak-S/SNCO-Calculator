@@ -3,6 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
+
 import MaxRefi from './containers/MaxRefi'
 import FixAndFlip from './containers/FixAndFlip'
 import SNCOLogo from './components/SNCOLogo'
@@ -12,7 +17,7 @@ class App extends React.Component {
 
   state={
     propertyType: "Multifamily Max Refi",
-    address: 0,
+    address: "",
     purchasePrice: 0,
     requestLoanAmount: 0,
     date: new Date(),
@@ -35,11 +40,17 @@ class App extends React.Component {
 
 }
 
-  handleAddressChange=(e)=>{
-    this.setState({
-        address: e.target.value
-    },()=>console.log(this.state.address))
+  handleAddressChange= (address) => {
+    this.setState({ address },()=>console.log(this.state.address))
   }
+
+  handleAddressSelect = (address) => {
+    geocodeByAddress(address)
+      .then(results => getLatLng(results[0]))
+      this.setState({ address})
+      .then(latLng => console.log('Success', latLng))
+      .catch(error => console.error('Error', error));
+  };
 
 
   handleNumberChange=(key, e)=>{
@@ -56,11 +67,11 @@ class App extends React.Component {
     })
   }
 
-  formatRateInput=(num)=> {
-    this.setState({
-        rate: parseFloat(num).toFixed(2)
-    })
-  }
+  // formatRateInput=(num)=> {
+  //   this.setState({
+  //       rate: parseFloat(num).toFixed(2)
+  //   })
+  // }
 
   dateChange = date => this.setState({ date })
 
@@ -105,7 +116,6 @@ class App extends React.Component {
               {this.state.propertyType === "Multifamily Max Refi" ?
                 <MaxRefi
                   propertyType={this.state.propertyType}
-                  address= {this.state.address}
                   purchasePrice= {this.state.purchasePrice}
                   requestLoanAmount= {this.state.requestLoanAmount}
                   date= {this.state.date}
@@ -124,12 +134,15 @@ class App extends React.Component {
                   arm={this.state.arm}
                   dscr={this.state.dscr}
                   payoff={this.state.payoff}
-
+                  
                   dateChange = {this.dateChange}
                   handleNumberChange = {this.handleNumberChange}
-                  handleAddressChange = {this.handleAddressChange}
                   formatRateInput = {this.formatRateInput}
                   createLoan = {this.createLoan}
+                  
+                  address= {this.state.address}
+                  handleAddressChange = {this.handleAddressChange}
+                  handleAddressSelect = {this.handleAddressSelect}
                 />
                 : 
               null
@@ -137,7 +150,15 @@ class App extends React.Component {
             
             }
 
-            {this.state.propertyType === "1-4 Calculator"? <FixAndFlip handleNumberChange={this.handleNumberChange}/> : null}
+            {this.state.propertyType === "1-4 Calculator"? 
+              <FixAndFlip 
+                handleNumberChange={this.handleNumberChange} 
+                address= {this.state.address}
+                handleAddressChange = {this.handleAddressChange}
+                handleAddressSelect = {this.handleAddressSelect}
+              /> 
+            : 
+            null}
 
           {/* </Card.Body>
         </Card> */}

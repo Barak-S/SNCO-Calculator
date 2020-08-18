@@ -3,10 +3,11 @@ import { FormControl, InputGroup, Card, Col, Row, Container } from 'react-bootst
 // import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 import DatePicker from 'react-date-picker';
-import GeoCode from '../components/GeoCode';
+// import GeoCode from '../components/GeoCode';
 import SubmitButton from '../components/Submit'
 import CurrencyInput from '../components/CurrencyInput';
 import PercentageInput from '../components/PercentageInput';
+import LocationSearchInput from'../components/LocationSearchInput';
  
 
 export default class MaxRefi extends Component {
@@ -59,7 +60,12 @@ export default class MaxRefi extends Component {
                             <Card style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15  }}>
                                 <Card.Body>
                             
-                                    <GeoCode></GeoCode>
+                                    {/* <GeoCode handleAddressChange={this.props.handleAddressChange}></GeoCode> */}
+                                    <LocationSearchInput 
+                                        handleAddressChange={this.props.handleAddressChange} 
+                                        address={this.props.address} 
+                                        // handleAddressSelect={this.props.handleAddressSelect}
+                                    />
 
                                     <InputGroup className="mb-3">
                                     <InputGroup.Prepend>
@@ -206,7 +212,7 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Text>Rate</InputGroup.Text>
                                         </InputGroup.Prepend>
                                             <PercentageInput
-                                                handleChange={ this.props.formatRateInput }
+                                                handleChange={ this.props.handleNumberChange }
                                                 value={this.props.rate}
                                                 name={"rate"}
                                             />
