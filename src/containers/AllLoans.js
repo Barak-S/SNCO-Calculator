@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { FormControl, InputGroup, Dropdown, DropdownButton, Form, Card, Col, Row, Container } from 'react-bootstrap';
+import SNCOLogo from '../components/SNCOLogo'
 
 export default class AllLoans extends Component {
 
@@ -20,6 +21,7 @@ export default class AllLoans extends Component {
     render() {
         return (
             <div>
+                <SNCOLogo/>
                 <h5 className="appHeader">All Loans Will render below</h5>
             </div>
         )
