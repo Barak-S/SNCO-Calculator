@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-
 import MaxRefi from '../containers/MaxRefi'
 import FixAndFlip from '../containers/FixAndFlip'
 import SNCOLogo from '../components/SNCOLogo'
@@ -13,17 +11,7 @@ export default class CalculatorContainer extends Component {
     state={
         propertyType: "Multifamily Max Refi",
         address: "",
-        date: new Date(),
-        allLoans: [],
-    
-      }
-    
-      componentDidMount(){
-        fetch("http://localhost:5000/loans")
-        .then(resp=>resp.json())
-        .then(allLoans=>this.setState({
-          allLoans
-        },()=>console.log(this.state.allLoans)))
+        date: new Date(),    
       }
     
       handleAddressChange= (address) => {
@@ -45,12 +33,6 @@ export default class CalculatorContainer extends Component {
         })
       }
     
-      // formatRateInput=(num)=> {
-      //   this.setState({
-      //       rate: parseFloat(num).toFixed(2)
-      //   })
-      // }
-    
       dateChange = date => this.setState({ date })
     
     
@@ -61,7 +43,7 @@ export default class CalculatorContainer extends Component {
           <div className="App">
             {/* <SNCOLogo/> */}
     
-                  <Card.Text style={{fontWeight: "600", fontSize: 22}}>SNCO Calculator</Card.Text>
+                  <Card.Text style={{fontWeight: "600", fontSize: 22, paddingTop: 15}}>SNCO Calculator</Card.Text>
                       <DropdownButton 
                           variant="dark"
                           title={this.state.propertyType} 

@@ -5,14 +5,15 @@
 .App {
   text-align: center;
   justify-content: center;
-  
+  min-height: 100vh;
 }
 
-/* body{
+body{
+  /* min-height: 100vh; */
   background: rgb(185,135,87);
-  background: linear-gradient(0deg, rgba(185,135,87,1) 0%, rgba(255,255,255,1) 90%);
+  background: linear-gradient(0deg, rgba(185,135,87,1) 0%, rgb(248,249,250) 90%);
 
-} */
+}
 
 .CalculatorCard{
   min-height: 100vh;
