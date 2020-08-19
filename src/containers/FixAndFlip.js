@@ -15,7 +15,9 @@ import SubmitButton from '../components/Submit';
 
 export default class FixAndFlip extends Component {
 
-    state={
+    constructor(props){
+        super(props)
+        this.state={
         purchasePrice: 0,
         renovation: 0,
         experienceLevel: "",
@@ -34,6 +36,12 @@ export default class FixAndFlip extends Component {
         titleBill: 0,
         legalClosing: 0,
         legalLender:0,
+        }
+        this.baseState = this.state 
+    }
+
+    resetForm = () => {
+        this.setState(this.baseState)
     }
 
     handleNumberChange=(key, e)=>{
@@ -69,7 +77,7 @@ export default class FixAndFlip extends Component {
             body: JSON.stringify({address: address, properyType: properyType, loan})
           })
           .then(res=>res.json())
-          .then(loans=>console.log(loans))
+          .then(loans=>this.resetForm())
           .catch(() => console.log("Can’t POST loan data"))
     
         } else {
@@ -359,6 +367,14 @@ export default class FixAndFlip extends Component {
                                             value={totalIn ? totalIn : 0}
                                             disabled={true}
                                         />
+                                        {/* <InputNumber
+                                            formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                            parser={ value => value.replace(/\$\s?|(,*)/g, '')}
+                                            style={{ width: "100%" }}
+                                            value={ totalIn ? totalIn : 0}
+                                            disabled={true}                                            
+
+                                        /> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>

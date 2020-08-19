@@ -4,18 +4,18 @@ import { FormControl, InputGroup, Card, Col, Row, Container, Button } from 'reac
 
 import DatePicker from 'react-date-picker';
 // import GeoCode from '../components/GeoCode';
-import SubmitButton from '../components/Submit'
 import CurrencyInput from '../components/CurrencyInput';
 import PercentageInput from '../components/PercentageInput';
 import LocationSearchInput from'../components/LocationSearchInput';
- 
+
 
 export default class MaxRefi extends Component {
 
-    state={
+    constructor(props){
+        super(props)
+        this.state ={
         purchasePrice: 0,
         requestLoanAmount: 0,
-        date: new Date(),
         annualGrossRent: 0,
         units: 0,
         vacancy: 0,
@@ -32,9 +32,15 @@ export default class MaxRefi extends Component {
         dscr: 0,
         payoff: 0,
 
+        }
+        this.baseState = this.state 
     }
 
-    handleNumberChange=(key, e)=>{
+    resetForm = () => {
+        this.setState(this.baseState)
+    }
+
+    handleNumberChange= (key, e) =>{
         this.setState({
           [key]: parseInt(e)
         })
@@ -63,7 +69,7 @@ export default class MaxRefi extends Component {
             })
           })
           .then(res=>res.json())
-          .then(loans=>console.log(loans))
+          .then(loans=>this.resetForm())
           .catch(() => console.log("Can’t POST loan data"))
     
         } else {

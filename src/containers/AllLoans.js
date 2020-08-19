@@ -20,7 +20,7 @@ export default class AllLoans extends Component {
     render() {
         return (
             <div>
-                <h4>All Loans Will render below</h4>
+                <h5 className="appHeader">All Loans Will render below</h5>
             </div>
         )
     }

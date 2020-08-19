@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import '../App.css';
 
-
 export default class Navigator extends React.Component{
 
     render(){
@@ -20,9 +19,6 @@ export default class Navigator extends React.Component{
                         <Link to="/Calculator" style={{ textDecoration: 'none' }}>
                             <Nav.Link href="#link" className="NavLinks" style={{color: "#B98757", fontSize: 17}}>Calculator</Nav.Link>   
                         </Link>
-                        {/* <Link to="/Projects" style={{ textDecoration: 'none' }}>
-                            <Nav.Link href="#link" className="NavLinks" style={{color: "#B98757"}}>Projects</Nav.Link>   
-                        </Link> */}
                     </Nav>
                     </Navbar.Collapse>
                 </Navbar>
