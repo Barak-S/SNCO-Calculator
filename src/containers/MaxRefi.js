@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { FormControl, InputGroup, Card, Col, Row, Container, Button } from 'react-bootstrap';
 // import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import { InputNumber } from "antd";
 
 import DatePicker from 'react-date-picker';
 // import GeoCode from '../components/GeoCode';
@@ -44,6 +45,10 @@ export default class MaxRefi extends Component {
         this.setState({
           [key]: parseInt(e)
         })
+    }
+
+    handleRateChange=(e)=>{
+        this.setState({ rate: e})
     }
     
     numberFormat = (value) =>
@@ -265,10 +270,20 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Rate</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                            <PercentageInput
+                                            {/* <PercentageInput
                                                 handleChange={ this.handleNumberChange }
                                                 value={this.state.rate}
                                                 name={"rate"}
+                                            /> */}
+                                            <InputNumber
+                                                name={"rate"}
+                                                formatter={value => `${value}%`}
+                                                parser={value => value.replace('%', '')}
+                                                style={{ width: "100%",  fontSize: 17, paddingTop: 4, display:"flex" }}
+                                                value={this.state.rate? this.state.rate : 0} 
+                                                min={0}
+                                                max={100}
+                                                onChange={e => this.handleRateChange(e)}
                                             />
                                     </InputGroup>
                     

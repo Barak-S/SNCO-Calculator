@@ -110,14 +110,11 @@ export default class FixAndFlip extends Component {
                         <Col md={7}>
                             <Card style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15  }}>
                                 <Card.Body>
-                            
-                                    {/* <GeoCode></GeoCode> */}
                                     <LocationSearchInput 
                                         handleAddressChange={this.props.handleAddressChange} 
                                         address={this.props.address} 
                                         // handleAddressSelect={this.props.handleAddressSelect}
                                     />
-                                    
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Purchase Price</InputGroup.Text>
@@ -132,10 +129,8 @@ export default class FixAndFlip extends Component {
                                             formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                             parser={ value => value.replace(/\$\s?|(,*)/g, '')}
                                             style={{ width: "100%" }}
-                                            value={ this.props.purchasePrice? this.props.purchasePrice.toFixed(2) : 0}
-                                            onChange={e => this.handleChange(this.props.purchasePrice,e)}
-                                            
-
+                                            value={ this.state.purchasePrice? this.state.purchasePrice : 0}
+                                            onChange={e => this.handleNumberChange("purchasePrice",e)}
                                         /> */}
                                     </InputGroup>
                                     <InputGroup className="mb-3" >
@@ -147,8 +142,15 @@ export default class FixAndFlip extends Component {
                                             value={this.state.renovation}
                                             name={"renovation"}
                                         />
+                                        {/* <InputNumber
+                                            name={'renovation'}
+                                            formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                            parser={ value => value.replace(/\$\s?|(,*)/g, '')}
+                                            style={{ width: "100%" }}
+                                            value={ this.state.renovation? this.state.renovation : 0}
+                                            onChange={e => this.handleNumberChange("renovation",e)}
+                                        /> */}
                                     </InputGroup>
-                                    
                                     <InputGroup className="mb-3">
                                         <DropdownButton
                                             as={InputGroup.Append}
@@ -165,7 +167,6 @@ export default class FixAndFlip extends Component {
 
                                         {this.state.exitStrategy === "Fix & Flip" ? 
                                         
-                                            
                                         <div>
                                             <InputGroup className="mb-3">
                                                 <InputGroup.Prepend>
@@ -342,7 +343,6 @@ export default class FixAndFlip extends Component {
                                                 </DropdownButton>
                                                     <FormControl name="turnaroundTime" value={ this.state.turnaroundTime || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
                                             </InputGroup>
-
 
                                         </div> 
                                             : 
