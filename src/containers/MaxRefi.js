@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputGroup, Card, Col, Row, Container, Button } from 'react-bootstrap';
+import { FormControl, InputGroup, Card, Col, Row, Container, Button, Form } from 'react-bootstrap';
 // import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import { InputNumber } from "antd";
 
@@ -47,7 +47,7 @@ export default class MaxRefi extends Component {
         })
     }
 
-    handleRateChange=(e)=>{
+    handleRateChange=(rate, e)=>{
         this.setState({ rate: e})
     }
     
@@ -127,27 +127,27 @@ export default class MaxRefi extends Component {
                                     />
 
                                     <InputGroup className="mb-3">
-                                    <InputGroup.Prepend>
-                                    <InputGroup.Text>Units</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                        <FormControl name="units" value={this.state.units || undefined} type="number" onChange={(e)=>this.handleNumberChange("units" ,e.target.value)}></FormControl>
-                                    <InputGroup.Prepend>
-                                    <InputGroup.Text>Purchase Date</InputGroup.Text>
-                                    </InputGroup.Prepend>
+                                        <InputGroup.Prepend>
+                                        <InputGroup.Text>Units</InputGroup.Text>
+                                        </InputGroup.Prepend>
+                                            <FormControl name="units" value={this.state.units || undefined} type="number" onChange={(e)=>this.handleNumberChange("units" ,e.target.value)}></FormControl>
+                                        <InputGroup.Prepend>
+                                        <InputGroup.Text>Purchase Date</InputGroup.Text>
+                                        </InputGroup.Prepend>
                                         <DatePicker
                                             onChange={this.props.dateChange}
                                             value={this.props.date}
                                         />
                                     </InputGroup>
                                     <InputGroup className="mb-3">
-                                    <InputGroup.Prepend>
-                                    <InputGroup.Text>Purchase Price</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                    <CurrencyInput
-                                        handleChange={this.handleNumberChange}
-                                        value={this.state.purchasePrice}
-                                        name={"purchasePrice"}
-                                    />
+                                        <InputGroup.Prepend>
+                                        <InputGroup.Text>Purchase Price</InputGroup.Text>
+                                        </InputGroup.Prepend>
+                                        <CurrencyInput
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.purchasePrice}
+                                            name={"purchasePrice"}
+                                        />
                                     </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
@@ -166,7 +166,7 @@ export default class MaxRefi extends Component {
                                             value={this.state.softCosts}
                                             name={"softCosts"}
                                         />                                    
-                                        </InputGroup>
+                                    </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Payoff</InputGroup.Text>
@@ -184,7 +184,7 @@ export default class MaxRefi extends Component {
                                             value={this.state.annualGrossRent}
                                             name={"annualGrossRent"}
                                         />                                        
-                                        </InputGroup>
+                                    </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Vacancy</InputGroup.Text>
@@ -203,7 +203,7 @@ export default class MaxRefi extends Component {
                                             value={this.state.taxes}
                                             name={"taxes"}
                                         />                                      
-                                        </InputGroup>
+                                    </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Utilities</InputGroup.Text>
@@ -221,7 +221,7 @@ export default class MaxRefi extends Component {
                                             value={this.state.insurance}
                                             name={"insurance"}
                                         />                                    
-                                        </InputGroup>
+                                    </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Water Sewer</InputGroup.Text>
@@ -240,7 +240,7 @@ export default class MaxRefi extends Component {
                                             name={"management"}
                                             disabled={true}
                                         />                                          
-                                        </InputGroup>
+                                    </InputGroup>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Replacement Reserves</InputGroup.Text>
@@ -279,7 +279,7 @@ export default class MaxRefi extends Component {
                                                 name={"rate"}
                                                 formatter={value => `${value}%`}
                                                 parser={value => value.replace('%', '')}
-                                                style={{ width: "100%",  fontSize: 17, paddingTop: 4, display:"flex" }}
+                                                style={{ fontSize: 17 }}
                                                 value={this.state.rate? this.state.rate : 0} 
                                                 min={0}
                                                 max={100}
@@ -351,6 +351,7 @@ export default class MaxRefi extends Component {
                     </Row>
 
                 </Container>
+                
         )
     }
 }
