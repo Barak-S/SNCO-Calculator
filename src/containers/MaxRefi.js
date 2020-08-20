@@ -118,14 +118,15 @@ export default class MaxRefi extends Component {
                         <Col md={7}>
                             <Card style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15  }}>
                                 <Card.Body>
-                            
+                                <Form>
+                                
                                     {/* <GeoCode handleAddressChange={this.props.handleAddressChange}></GeoCode> */}
                                     <LocationSearchInput 
                                         handleAddressChange={this.props.handleAddressChange} 
                                         address={this.props.address} 
                                         // handleAddressSelect={this.props.handleAddressSelect}
                                     />
-
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Units</InputGroup.Text>
@@ -139,6 +140,8 @@ export default class MaxRefi extends Component {
                                             value={this.props.date}
                                         />
                                     </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Purchase Price</InputGroup.Text>
@@ -149,6 +152,8 @@ export default class MaxRefi extends Component {
                                             name={"purchasePrice"}
                                         />
                                     </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Hard Costs</InputGroup.Text>
@@ -167,6 +172,8 @@ export default class MaxRefi extends Component {
                                             name={"softCosts"}
                                         />                                    
                                     </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Payoff</InputGroup.Text>
@@ -185,6 +192,8 @@ export default class MaxRefi extends Component {
                                             name={"annualGrossRent"}
                                         />                                        
                                     </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Vacancy</InputGroup.Text>
@@ -204,6 +213,8 @@ export default class MaxRefi extends Component {
                                             name={"taxes"}
                                         />                                      
                                     </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Utilities</InputGroup.Text>
@@ -222,6 +233,8 @@ export default class MaxRefi extends Component {
                                             name={"insurance"}
                                         />                                    
                                     </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Water Sewer</InputGroup.Text>
@@ -241,6 +254,8 @@ export default class MaxRefi extends Component {
                                             disabled={true}
                                         />                                          
                                     </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Replacement Reserves</InputGroup.Text>
@@ -252,6 +267,8 @@ export default class MaxRefi extends Component {
                                             disabled={true}
                                         />  
                                     </InputGroup>  
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3">                                         
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Loan Amount</InputGroup.Text>
@@ -261,7 +278,9 @@ export default class MaxRefi extends Component {
                                             value={this.state.requestLoanAmount}
                                             name={"requestLoanAmount"}
                                         />                                     
-                                        </InputGroup>
+                                    </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>ARM</InputGroup.Text>
@@ -286,7 +305,8 @@ export default class MaxRefi extends Component {
                                                 onChange={e => this.handleRateChange(e)}
                                             />
                                     </InputGroup>
-                    
+                                </Form.Row>
+                                </Form>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -294,7 +314,8 @@ export default class MaxRefi extends Component {
                         <Col md={5}>
                             <Card style={{  border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
                                 <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
-                                    
+                                <Form>
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Gross Annual Income: </InputGroup.Text>
@@ -304,6 +325,8 @@ export default class MaxRefi extends Component {
                                             disabled={true}
                                         />
                                     </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>NOI:</InputGroup.Text>
@@ -313,6 +336,8 @@ export default class MaxRefi extends Component {
                                             disabled={true}
                                         />
                                     </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Cap Rate:</InputGroup.Text>
@@ -322,6 +347,8 @@ export default class MaxRefi extends Component {
                                                 disabled={true}
                                             />
                                     </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Annual Debt Service:</InputGroup.Text>
@@ -331,6 +358,8 @@ export default class MaxRefi extends Component {
                                             disabled={true}
                                         />
                                     </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Debt Service Coverage Ratio (DSCR):</InputGroup.Text>
@@ -340,6 +369,8 @@ export default class MaxRefi extends Component {
                                             disabled={true}
                                         />
                                     </InputGroup>
+                                </Form.Row>
+                                </Form>
                                 </Card.Body>
                             </Card>
                             <Button 

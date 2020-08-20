@@ -110,11 +110,13 @@ export default class FixAndFlip extends Component {
                         <Col md={7}>
                             <Card style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15  }}>
                                 <Card.Body>
+                                <Form>
                                     <LocationSearchInput 
                                         handleAddressChange={this.props.handleAddressChange} 
                                         address={this.props.address} 
                                         // handleAddressSelect={this.props.handleAddressSelect}
                                     />
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Purchase Price</InputGroup.Text>
@@ -133,6 +135,8 @@ export default class FixAndFlip extends Component {
                                             onChange={e => this.handleNumberChange("purchasePrice",e)}
                                         /> */}
                                     </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3" >
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Renovation Costs</InputGroup.Text>
@@ -151,6 +155,8 @@ export default class FixAndFlip extends Component {
                                             onChange={e => this.handleNumberChange("renovation",e)}
                                         /> */}
                                     </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
                                     <InputGroup className="mb-3">
                                         <DropdownButton
                                             as={InputGroup.Append}
@@ -163,191 +169,220 @@ export default class FixAndFlip extends Component {
                                             <Dropdown.Item eventKey="Fix & Refinance">Fix & Refinance</Dropdown.Item>
                                         </DropdownButton>
                                         <FormControl name="exitStrategy" value={ this.state.exitStrategy || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)} ></FormControl>
-                                        </InputGroup>
-
+                                    </InputGroup>
+                                </Form.Row>
                                         {this.state.exitStrategy === "Fix & Flip" ? 
                                         
                                         <div>
-                                            <InputGroup className="mb-3">
+                                <Form.Row>
+                                    <InputGroup className="mb-3">
+                                        <InputGroup.Prepend>
+                                        <InputGroup.Text>ARV</InputGroup.Text>
+                                        </InputGroup.Prepend>
+                                        <CurrencyInput
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.arv}
+                                            name={"arv"}
+                                        />
+                                    </InputGroup>
+                                </Form.Row>
+
+
+                                <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 5, margin: 5   }}>
+                                <Form.Row>
+                                    <InputGroup className="mb-3">
+                                        <InputGroup.Prepend>
+                                        <InputGroup.Text>Carrying Costs</InputGroup.Text>
+                                        </InputGroup.Prepend>
+                                        <CurrencyInput
+                                            handleChange={this.handleNumberChange}
+                                            value={ carryingCosts }
+                                            disabled={true}
+                                        />
+                                    </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
+                                    <InputGroup className="mb-3">
+                                        <InputGroup.Prepend>
+                                            <InputGroup.Text>Taxes</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.taxes}
+                                                name={"taxes"}
+                                            />
+                                    </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
+                                    <InputGroup className="mb-3" >
+                                        <InputGroup.Prepend>
+                                            <InputGroup.Text>Insurance</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.insurance}
+                                                name={"insurance"}
+                                            />
+                                    </InputGroup>
+                                </Form.Row>
+                                <Form.Row>
+                                    <InputGroup className="mb-3">
+                                        <InputGroup.Prepend>
+                                            <InputGroup.Text>Interest</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.interest}
+                                                name={"interest"}
+                                            />
+                                        
+                                    </InputGroup>
+                                </Form.Row>
+                                </Card>
+
+                                    <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 5, margin: 5  }}>
+                                    <Form.Row>
+                                        <InputGroup className="mb-3">   
                                                 <InputGroup.Prepend>
-                                                <InputGroup.Text>ARV</InputGroup.Text>
+                                            <InputGroup.Text>Closing Costs</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                value={ closingCosts }  
+                                                disabled={true}
+                                            />
+                                        </InputGroup>
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text>Points</InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <CurrencyInput
                                                     handleChange={this.handleNumberChange}
-                                                    value={this.state.arv}
-                                                    name={"arv"}
+                                                    value={this.state.points}
+                                                    name={"points"}
                                                 />
-                                            </InputGroup>
-
-
-                                            <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 5, margin: 5   }}>
-                                                <InputGroup className="mb-3">
-                                                    <InputGroup.Prepend>
-                                                    <InputGroup.Text>Carrying Costs</InputGroup.Text>
-                                                    </InputGroup.Prepend>
-                                                    <CurrencyInput
-                                                        handleChange={this.handleNumberChange}
-                                                        value={ carryingCosts }
-                                                        disabled={true}
-                                                    />
-                                                </InputGroup>
-                                                <InputGroup className="mb-3">
-                                                    <InputGroup.Prepend>
-                                                        <InputGroup.Text>Taxes</InputGroup.Text>
-                                                        </InputGroup.Prepend>
-                                                        <CurrencyInput
-                                                            handleChange={this.handleNumberChange}
-                                                            value={this.state.taxes}
-                                                            name={"taxes"}
-                                                        />
-                                                </InputGroup>
-                                                <InputGroup className="mb-3" >
-                                                    <InputGroup.Prepend>
-                                                        <InputGroup.Text>Insurance</InputGroup.Text>
-                                                        </InputGroup.Prepend>
-                                                        <CurrencyInput
-                                                            handleChange={this.handleNumberChange}
-                                                            value={this.state.insurance}
-                                                            name={"insurance"}
-                                                        />
-                                                </InputGroup>
-                                                <InputGroup className="mb-3">
-                                                    <InputGroup.Prepend>
-                                                        <InputGroup.Text>Interest</InputGroup.Text>
-                                                        </InputGroup.Prepend>
-                                                        <CurrencyInput
-                                                            handleChange={this.handleNumberChange}
-                                                            value={this.state.interest}
-                                                            name={"interest"}
-                                                        />
-                                                    
-                                                </InputGroup>
-                                            </Card>
-
-                                            <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 5, margin: 5  }}>
-                                                <InputGroup className="mb-3">   
-                                                        <InputGroup.Prepend>
-                                                    <InputGroup.Text>Closing Costs</InputGroup.Text>
-                                                    </InputGroup.Prepend>
-                                                    <CurrencyInput
-                                                        value={ closingCosts }  
-                                                        disabled={true}
-                                                    />
-                                                </InputGroup>
-                                                <InputGroup className="mb-3">
-                                                    <InputGroup.Prepend>
-                                                        <InputGroup.Text>Points</InputGroup.Text>
-                                                        </InputGroup.Prepend>
-                                                        <CurrencyInput
-                                                            handleChange={this.handleNumberChange}
-                                                            value={this.state.points}
-                                                            name={"points"}
-                                                        />
-                                                </InputGroup>
-                                                <InputGroup className="mb-3">
-                                                    <InputGroup.Prepend>
-                                                        <InputGroup.Text>Title Bill</InputGroup.Text>
-                                                        </InputGroup.Prepend>
-                                                        <CurrencyInput
-                                                            handleChange={this.handleNumberChange}
-                                                            value={this.state.titleBill}
-                                                            name={"titleBill"}
-                                                        />
-                                                </InputGroup>
-                                                <InputGroup className="mb-3">
-                                                    <InputGroup.Prepend>
-                                                        <InputGroup.Text>Legal Lender</InputGroup.Text>
-                                                        </InputGroup.Prepend>
-                                                        <CurrencyInput
-                                                            handleChange={this.handleNumberChange}
-                                                            value={this.state.legalLender}
-                                                            name={"legalLender"}
-                                                        />
-                                                </InputGroup>
-                                            </Card>
-
-                                            <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 5, margin: 5  }}>
-                                                <InputGroup className="mb-3">   
-                                                        <InputGroup.Prepend>
-                                                    <InputGroup.Text>Resale Costs</InputGroup.Text>
-                                                    </InputGroup.Prepend>
-                                                    <CurrencyInput
-                                                        value={ resaleCosts }  
-                                                        disabled={true}
-                                                    />
-                                                </InputGroup>
-                                                <InputGroup className="mb-3">
-                                                    <InputGroup.Prepend>
-                                                        <InputGroup.Text>Legal</InputGroup.Text>
-                                                        </InputGroup.Prepend>
-                                                        <CurrencyInput
-                                                            handleChange={this.handleNumberChange}
-                                                            value={this.state.legalResale}
-                                                            name={"legalResale"}
-                                                        />
-                                                </InputGroup>
-                                                <InputGroup className="mb-3">
-                                                    <InputGroup.Prepend>
-                                                        <InputGroup.Text>Transfer Tax</InputGroup.Text>
-                                                        </InputGroup.Prepend>
-                                                        <CurrencyInput
-                                                            handleChange={this.handleNumberChange}
-                                                            value={this.state.transferTax}
-                                                            name={"transferTax"}
-                                                        />
-                                                </InputGroup>
-                                                <InputGroup className="mb-3">
-                                                    <InputGroup.Prepend>
-                                                        <InputGroup.Text>Broker</InputGroup.Text>
-                                                        </InputGroup.Prepend>
-                                                        <CurrencyInput
-                                                            handleChange={this.handleNumberChange}
-                                                            value={this.state.broker}
-                                                            name={"broker"}
-                                                        />
-                                                </InputGroup>   
-                                            </Card>
-
-                                            <InputGroup className="mb-3">
-                                                    <DropdownButton
-                                                        as={InputGroup.Append}
-                                                        variant="outline-secondary"
-                                                        onSelect= {(e)=>this.changeExperience(e)}
-                                                        title="Experience Level"
-                                                        id="input-group-dropdown-1"
-                                                        >
-                                                        <Dropdown.Item eventKey="0 properties">0 properties</Dropdown.Item>
-                                                        <Dropdown.Item eventKey="3 properties">3 properties</Dropdown.Item>
-                                                        <Dropdown.Item eventKey="6 properties">6 properties</Dropdown.Item>
-                                                    </DropdownButton>
-
-                                                    <FormControl name="experienceLevel" value={ this.state.experienceLevel || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                                    <InputGroup.Prepend>
-                                                <InputGroup.Text>Credit Score</InputGroup.Text>
+                                        </InputGroup>
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text>Title Bill</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                    <FormControl name="creditScore" value={ this.state.creditScore || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} ></FormControl>
-                                            </InputGroup>
-                                            <InputGroup className="mb-3">
+                                                <CurrencyInput
+                                                    handleChange={this.handleNumberChange}
+                                                    value={this.state.titleBill}
+                                                    name={"titleBill"}
+                                                />
+                                        </InputGroup>
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text>Legal Lender</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                <CurrencyInput
+                                                    handleChange={this.handleNumberChange}
+                                                    value={this.state.legalLender}
+                                                    name={"legalLender"}
+                                                />
+                                        </InputGroup>
+                                    </Form.Row>
+                                    </Card>
+
+                                    <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 5, margin: 5  }}>
+                                    <Form.Row>
+                                        <InputGroup className="mb-3">   
+                                                <InputGroup.Prepend>
+                                            <InputGroup.Text>Resale Costs</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                value={ resaleCosts }  
+                                                disabled={true}
+                                            />
+                                        </InputGroup>
+                                    </Form.Row>   
+                                    <Form.Row>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text>Legal</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                <CurrencyInput
+                                                    handleChange={this.handleNumberChange}
+                                                    value={this.state.legalResale}
+                                                    name={"legalResale"}
+                                                />
+                                        </InputGroup>
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text>Transfer Tax</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                <CurrencyInput
+                                                    handleChange={this.handleNumberChange}
+                                                    value={this.state.transferTax}
+                                                    name={"transferTax"}
+                                                />
+                                        </InputGroup>
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text>Broker</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                <CurrencyInput
+                                                    handleChange={this.handleNumberChange}
+                                                    value={this.state.broker}
+                                                    name={"broker"}
+                                                />
+                                        </InputGroup>  
+                                    </Form.Row> 
+                                    </Card>
+                                    <Form.Row>
+                                        <InputGroup className="mb-3">
                                                 <DropdownButton
                                                     as={InputGroup.Append}
                                                     variant="outline-secondary"
-                                                    onSelect= {(e)=>this.changeturnaroundTime(e)}
-                                                    title="Turnaround Time"
+                                                    onSelect= {(e)=>this.changeExperience(e)}
+                                                    title="Experience Level"
                                                     id="input-group-dropdown-1"
                                                     >
-                                                    <Dropdown.Item eventKey="3 Months">3 Months</Dropdown.Item>
-                                                    <Dropdown.Item eventKey="6 Months">6 Months</Dropdown.Item>
-                                                    <Dropdown.Item eventKey="12 Months">12 Months</Dropdown.Item>
-                                                    <Dropdown.Item eventKey="18 Months">18 Months</Dropdown.Item>
-                                                    <Dropdown.Item eventKey="24 Months">24 Months</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="0 properties">0 properties</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="3 properties">3 properties</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="6 properties">6 properties</Dropdown.Item>
                                                 </DropdownButton>
-                                                    <FormControl name="turnaroundTime" value={ this.state.turnaroundTime || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                            </InputGroup>
+
+                                                <FormControl name="experienceLevel" value={ this.state.experienceLevel || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                                <InputGroup.Prepend>
+                                            <InputGroup.Text>Credit Score</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                                <FormControl name="creditScore" value={ this.state.creditScore || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} ></FormControl>
+                                        </InputGroup>
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <InputGroup className="mb-3">
+                                            <DropdownButton
+                                                as={InputGroup.Append}
+                                                variant="outline-secondary"
+                                                onSelect= {(e)=>this.changeturnaroundTime(e)}
+                                                title="Turnaround Time"
+                                                id="input-group-dropdown-1"
+                                                >
+                                                <Dropdown.Item eventKey="3 Months">3 Months</Dropdown.Item>
+                                                <Dropdown.Item eventKey="6 Months">6 Months</Dropdown.Item>
+                                                <Dropdown.Item eventKey="12 Months">12 Months</Dropdown.Item>
+                                                <Dropdown.Item eventKey="18 Months">18 Months</Dropdown.Item>
+                                                <Dropdown.Item eventKey="24 Months">24 Months</Dropdown.Item>
+                                            </DropdownButton>
+                                                <FormControl name="turnaroundTime" value={ this.state.turnaroundTime || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
+                                        </InputGroup>
+                                    </Form.Row>
 
                                         </div> 
                                             : 
                                         null}
-
+                                </Form>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -355,45 +390,52 @@ export default class FixAndFlip extends Component {
                         <Col md={5}>
                             <Card style={{  border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
                                 <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
-                                    
+                                    <Form>
                                     {/* <Card.Text>Total In: { this.numberFormat(totalIn) }</Card.Text>
                                     <Card.Text>Total Profit on Flip: { this.numberFormat(totalProfit) }</Card.Text>
                                     <Card.Text>Profit Percent: %{ profitPercent ? profitPercent.toFixed(2) : 0 }</Card.Text> */}
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text style={{fontWeight: "600"}}>Total In:</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <CurrencyInput
-                                            value={totalIn ? totalIn : 0}
-                                            disabled={true}
-                                        />
-                                        {/* <InputNumber
-                                            formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                            parser={ value => value.replace(/\$\s?|(,*)/g, '')}
-                                            style={{ width: "100%" }}
-                                            value={ totalIn ? totalIn : 0}
-                                            disabled={true}                                            
-
-                                        /> */}
-                                    </InputGroup>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text style={{fontWeight: "600"}}>Total Profit on Flip:</InputGroup.Text>
-                                        </InputGroup.Prepend>
+                                    <Form.Row>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text style={{fontWeight: "600"}}>Total In:</InputGroup.Text>
+                                            </InputGroup.Prepend>
                                             <CurrencyInput
-                                                value={totalProfit ? totalProfit : 0}
+                                                value={totalIn ? totalIn : 0}
                                                 disabled={true}
                                             />
-                                    </InputGroup>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text style={{fontWeight: "600"}}>Profit Percent: %</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                            <PercentageInput
-                                                value={profitPercent}
-                                                disabled={true}
-                                            />
-                                    </InputGroup>
+                                            {/* <InputNumber
+                                                formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                                parser={ value => value.replace(/\$\s?|(,*)/g, '')}
+                                                style={{ width: "100%" }}
+                                                value={ totalIn ? totalIn : 0}
+                                                disabled={true}                                            
+
+                                            /> */}
+                                        </InputGroup>
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text style={{fontWeight: "600"}}>Total Profit on Flip:</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                                <CurrencyInput
+                                                    value={totalProfit ? totalProfit : 0}
+                                                    disabled={true}
+                                                />
+                                        </InputGroup>
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text style={{fontWeight: "600"}}>Profit Percent: %</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                                <PercentageInput
+                                                    value={profitPercent}
+                                                    disabled={true}
+                                                />
+                                        </InputGroup>
+                                    </Form.Row>
+                                    </Form>
                                 </Card.Body>
                             </Card>
                             <Button 
