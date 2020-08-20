@@ -19,19 +19,25 @@ export default class MaxRefi extends Component {
         requestLoanAmount: 0,
         annualGrossRent: 0,
         units: 0,
-        vacancy: 0,
         taxes: 0,
         insurance: 0,
         waterSewer: 0,
         utilities: 0,
-        management: 0,
-        replacementReserves: 0,
         hardCosts: 0,
         softCosts: 0,
-        rate: 0.0,
+        rate: 0,
         arm: 0,
-        dscr: 0,
         payoff: 0,
+        //
+        officeExpenses: 0,
+        replacementReserves: 0,
+        management: 0,
+        vacancy: 0,
+        totalProjectCost: 0,
+        noi: 0,
+        capRate: 0,
+        annualDebtService: 0,
+        dscr: 0
 
         }
         this.baseState = this.state 
@@ -62,15 +68,27 @@ export default class MaxRefi extends Component {
         return num + '$';
     }
 
-    createLoan=(address,properyType, date, loan)=>{
+    createLoan=(address,properyType, date, loan,officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)=>{
+        // this.setState({
+        //     officeExpenses,
+        //     replacementReserves,
+        //     management,
+        //     vacancy,
+        //     totalProjectCost,
+        //     noi,
+        //     capRate,
+        //     annualDebtService,
+        //     dscr
+        // })
         if (address !== ""){
           fetch('http://localhost:5000/loans',{
             method: "POST",
             headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
             body: JSON.stringify({address: address,
+                purchaseDate: date,
                 properyType: properyType, 
                 loan,
-                purchaseDate: date
+                officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr
             })
           })
           .then(res=>res.json())
@@ -302,7 +320,7 @@ export default class MaxRefi extends Component {
                                                 value={this.state.rate? this.state.rate : 0} 
                                                 min={0}
                                                 max={100}
-                                                onChange={e => this.handleRateChange(e)}
+                                                onChange={e => this.handleRateChange("rate", e)}
                                             />
                                     </InputGroup>
                                 </Form.Row>
@@ -376,7 +394,7 @@ export default class MaxRefi extends Component {
                             <Button 
                                 variant="outline-dark" 
                                 style={{ marginBottom: 15 }} 
-                                onClick={()=>this.createLoan(this.props.address, this.props.propertyType, this.props.date, this.state)}
+                                onClick={()=>this.createLoan(this.props.address, this.props.propertyType, this.props.date, this.state, officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)}
                             >Create Loan</Button>                        
                         </Col>
                     </Row>
