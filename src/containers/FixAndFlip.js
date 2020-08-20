@@ -17,7 +17,7 @@ export default class FixAndFlip extends Component {
 
     constructor(props){
         super(props)
-        this.state={
+        this.state = {
         purchasePrice: 0,
         renovation: 0,
         experienceLevel: "",
@@ -69,12 +69,12 @@ export default class FixAndFlip extends Component {
         })
     }
 
-    createLoan=(address,properyType, loan)=>{
+    createLoan=(address,properyType, loan, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent)=>{
         if (address !== ""){
           fetch('http://localhost:5000/loans',{
             method: "POST",
             headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-            body: JSON.stringify({address: address, properyType: properyType, loan})
+            body: JSON.stringify({address: address, properyType: properyType, loan, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent })
           })
           .then(res=>res.json())
           .then(loans=>this.resetForm())
@@ -168,7 +168,7 @@ export default class FixAndFlip extends Component {
                                             <Dropdown.Item eventKey="Fix & Flip">Fix & Flip</Dropdown.Item>
                                             <Dropdown.Item eventKey="Fix & Refinance">Fix & Refinance</Dropdown.Item>
                                         </DropdownButton>
-                                        <FormControl name="exitStrategy" value={ this.state.exitStrategy || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)} ></FormControl>
+                                        <FormControl name="exitStrategy" value={ this.state.exitStrategy || undefined} type="text" disabled={true} ></FormControl>
                                     </InputGroup>
                                 </Form.Row>
                                         {this.state.exitStrategy === "Fix & Flip" ? 
@@ -288,6 +288,18 @@ export default class FixAndFlip extends Component {
                                                 />
                                         </InputGroup>
                                     </Form.Row>
+                                    <Form.Row>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text>Legal Closing</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                <CurrencyInput
+                                                    handleChange={this.handleNumberChange}
+                                                    value={this.state.legalClosing}
+                                                    name={"legalClosing"}
+                                                />
+                                        </InputGroup>
+                                    </Form.Row>
                                     </Card>
 
                                     <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 5, margin: 5  }}>
@@ -357,7 +369,7 @@ export default class FixAndFlip extends Component {
                                                 <InputGroup.Prepend>
                                             <InputGroup.Text>Credit Score</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <FormControl name="creditScore" value={ this.state.creditScore || undefined} type="number" onChange={(e)=>this.handleNumberChange(e)} ></FormControl>
+                                                <FormControl name="creditScore" value={ this.state.creditScore || undefined} type="number" onChange={(e)=>this.handleNumberChange("creditScore", e.target.value)} ></FormControl>
                                         </InputGroup>
                                     </Form.Row>
                                     <Form.Row>
@@ -391,9 +403,6 @@ export default class FixAndFlip extends Component {
                             <Card style={{  border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
                                 <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
                                     <Form>
-                                    {/* <Card.Text>Total In: { this.numberFormat(totalIn) }</Card.Text>
-                                    <Card.Text>Total Profit on Flip: { this.numberFormat(totalProfit) }</Card.Text>
-                                    <Card.Text>Profit Percent: %{ profitPercent ? profitPercent.toFixed(2) : 0 }</Card.Text> */}
                                     <Form.Row>
                                         <InputGroup className="mb-3">
                                             <InputGroup.Prepend>
@@ -441,7 +450,7 @@ export default class FixAndFlip extends Component {
                             <Button 
                                 variant="outline-dark" 
                                 style={{ marginBottom: 15 }} 
-                                onClick={()=>this.createLoan(this.props.address,this.props.propertyType,this.state)}
+                                onClick={()=>this.createLoan(this.props.address,this.props.propertyType,this.state, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent )}
                             >Create Loan</Button>
                         </Col>
                     </Row>

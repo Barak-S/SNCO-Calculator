@@ -14,7 +14,7 @@ export default class MaxRefi extends Component {
 
     constructor(props){
         super(props)
-        this.state ={
+        this.state = {
         purchasePrice: 0,
         requestLoanAmount: 0,
         annualGrossRent: 0,
@@ -28,17 +28,6 @@ export default class MaxRefi extends Component {
         rate: 0,
         arm: 0,
         payoff: 0,
-        //
-        officeExpenses: 0,
-        replacementReserves: 0,
-        management: 0,
-        vacancy: 0,
-        totalProjectCost: 0,
-        noi: 0,
-        capRate: 0,
-        annualDebtService: 0,
-        dscr: 0
-
         }
         this.baseState = this.state 
     }
@@ -69,17 +58,6 @@ export default class MaxRefi extends Component {
     }
 
     createLoan=(address,properyType, date, loan,officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)=>{
-        // this.setState({
-        //     officeExpenses,
-        //     replacementReserves,
-        //     management,
-        //     vacancy,
-        //     totalProjectCost,
-        //     noi,
-        //     capRate,
-        //     annualDebtService,
-        //     dscr
-        // })
         if (address !== ""){
           fetch('http://localhost:5000/loans',{
             method: "POST",
