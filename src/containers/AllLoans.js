@@ -35,6 +35,7 @@ export default class AllLoans extends Component {
     render() {
         return (
             <div>
+                <Card.Text className="appHeader">All Loans</Card.Text>
                 {this.mapLoans()}
             </div>
         )
