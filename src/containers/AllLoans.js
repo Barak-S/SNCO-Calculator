@@ -12,7 +12,7 @@ export default class AllLoans extends Component {
     }
 
     componentDidMount(){
-        fetch("http://localhost:5000/loans")
+        fetch("https://snco-calculator-backend.herokuapp.com/loans")
         .then(resp=>resp.json())
         .then(allLoans=>this.setState({
           allLoans

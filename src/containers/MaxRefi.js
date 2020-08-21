@@ -59,7 +59,7 @@ export default class MaxRefi extends Component {
 
     createLoan=(address,properyType, date, loan,officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)=>{
         if (address !== ""){
-          fetch('http://localhost:5000/loans',{
+          fetch('https://snco-calculator-backend.herokuapp.com/loans',{
             method: "POST",
             headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
             body: JSON.stringify({address: address,

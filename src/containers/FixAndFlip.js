@@ -70,7 +70,7 @@ export default class FixAndFlip extends Component {
 
     createLoan=(address,properyType, loan, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent)=>{
         if (address !== ""){
-          fetch('http://localhost:5000/loans',{
+          fetch('https://snco-calculator-backend.herokuapp.com/loans',{
             method: "POST",
             headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
             body: JSON.stringify({address: address, properyType: properyType, loan, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent })
