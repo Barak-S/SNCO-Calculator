@@ -24,7 +24,6 @@ export default class FixAndFlip extends Component {
         creditScore: 0,
         arv: 0,
         turnaroundTime: "",
-        resellCosts: 0,
         exitStrategy : "",
         interest: 0,
         taxes: 0,

@@ -60,3 +60,19 @@ div.ant-input-number-handler-wrap{
   display: none;
 }
 
+.LoanCard{
+  margin: 1rem;
+  border: 2px solid #B98757;
+  border-radius: 15;
+}
+
+#LoanAddress{
+  font-weight: 600;
+  font-size: 16.5px;
+}
+
+#LoanAddress:hover{
+  color: rgba(185,135,87,1);
+  cursor: pointer;
+}
+
