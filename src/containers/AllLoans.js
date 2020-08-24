@@ -34,6 +34,7 @@ export default class AllLoans extends Component {
             this.state.allLoans.map(loan=>{
                 return (
                     <LoanCard
+                        key={loan._id}
                         loan={loan}
                         openLoan={this.openLoan}
                     />
