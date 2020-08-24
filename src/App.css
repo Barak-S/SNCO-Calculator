@@ -64,6 +64,7 @@ div.ant-input-number-handler-wrap{
   margin: 1rem;
   border: 2px solid #B98757;
   border-radius: 15;
+  cursor: pointer;
 }
 
 #LoanAddress{
@@ -73,6 +74,13 @@ div.ant-input-number-handler-wrap{
 
 #LoanAddress:hover{
   color: rgba(185,135,87,1);
-  cursor: pointer;
 }
 
+.SingleLoan{
+  min-height: 100vh;
+}
+
+div.googleMap{
+  height: 100px;
+  width: 100px;
+}
