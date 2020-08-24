@@ -5,10 +5,10 @@ import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownB
 export default class SingleLoan extends Component {
     render() {
         return (
-            <div>
-                <h4>{this.props.loan.address}</h4>
-                <button onClick={()=>this.props.closeLoan()}>Close</button>
-            </div>
+            <Card style={{ border: '1px solid #B98757', borderRadius: 12, margin: "1rem", padding: 10, fontWeight: "600", fontSize: 22, paddingTop: 15 }}>
+                <Card.Text>{this.props.loan.address}</Card.Text>
+                <Button variant="dark" onClick={()=>this.props.closeLoan()}>Close</Button>
+            </Card>
         )
     }
 }
