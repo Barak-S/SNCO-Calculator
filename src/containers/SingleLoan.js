@@ -23,18 +23,32 @@ export default class SingleLoan extends Component {
 
     }
 
+    numberFormat = (value) =>
+    new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(value);
+
 
     render() {
+
+        console.log(this.props.loan.loan.purchasePrice)
+
         return (
             <Card className="SingleLoan" style={{ border: '1px solid #B98757', borderRadius: 12, margin: "1rem", paddingTop: 15 }}>
                 <Card.Text style={{ fontWeight: "600", fontSize: 22, margin: 2.5 }}>{this.props.loan.address}</Card.Text>
                 <Card.Text><strong>Type: </strong>{this.props.loan.properyType}</Card.Text>
-                <Col xs={12} md={8}>
-                    <MapContainer
-                        lat={this.state.lat}
-                        lng={this.state.lng}
-                    />
-                </Col>
+                <Row>
+                    <Col xs={12} md={8}>
+                        <MapContainer
+                            lat={this.state.lat}
+                            lng={this.state.lng}
+                        />
+                    </Col>
+                    <Col xs={6} md={4} style={{textAlign: "left"}}>
+                        <Card.Text style={{fontSize: 20}}><strong>Purchase Price: </strong>{this.numberFormat(this.props.loan.loan.purchasePrice)}</Card.Text>
+                    </Col>
+                </Row>
                 
 
                 <Button variant="dark" style={{margin: "1rem" }} onClick={()=>this.props.closeLoan()}>Close</Button>

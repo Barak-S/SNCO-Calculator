@@ -46,11 +46,11 @@ export default class MaxRefi extends Component {
         this.setState({ rate: e})
     }
     
-    numberFormat = (value) =>
-    new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD'
-    }).format(value);
+    // numberFormat = (value) =>
+    // new Intl.NumberFormat('en-US', {
+    //     style: 'currency',
+    //     currency: 'USD'
+    // }).format(value);
 
 
     myFormat(num) {
