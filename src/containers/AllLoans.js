@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
-import { FormControl, InputGroup, Dropdown, DropdownButton, Form, Card, Col, Row, Container } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import SNCOLogo from '../components/SNCOLogo'
 import LoanCard from '../components/LoanCard'
+import SingleLoan from '../containers/SingleLoan'
 
 export default class AllLoans extends Component {
 
     state={
-        allLoans: []
+        allLoans: [],
+        singleLoan: {},
     }
 
     componentDidMount(){
@@ -19,13 +21,21 @@ export default class AllLoans extends Component {
         }))
     }
 
+    openLoan=(loan)=>{
+        this.setState({ singleLoan: loan })
+    }
+
+    closeLoan=()=>{
+        this.setState({ singleLoan: {} })
+    }
+
     mapLoans(){
         return(
             this.state.allLoans.map(loan=>{
                 return (
                     <LoanCard
-                        address={loan.address}
-                        properyType={loan.properyType}
+                        loan={loan}
+                        openLoan={this.openLoan}
                     />
                 )
             })
@@ -36,7 +46,14 @@ export default class AllLoans extends Component {
         return (
             <div>
                 <Card.Text className="appHeader">All Loans</Card.Text>
-                {this.mapLoans()}
+                {this.state.singleLoan.hasOwnProperty("address") ? 
+                    <SingleLoan
+                        loan={this.state.singleLoan}
+                        closeLoan={this.closeLoan}
+                    />
+                    : 
+                    this.mapLoans()
+                }
             </div>
         )
     }
