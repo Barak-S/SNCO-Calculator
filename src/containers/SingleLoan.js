@@ -32,8 +32,6 @@ export default class SingleLoan extends Component {
 
     render() {
 
-        console.log(this.props.loan.loan.purchasePrice)
-
         return (
             <Card className="SingleLoan" style={{ border: '1px solid #B98757', borderRadius: 12, margin: "1rem", paddingTop: 15 }}>
                 <Card.Text style={{ fontWeight: "600", fontSize: 22, margin: 2.5 }}>{this.props.loan.address}</Card.Text>
@@ -52,6 +50,7 @@ export default class SingleLoan extends Component {
                 
 
                 <Button variant="dark" style={{margin: "1rem" }} onClick={()=>this.props.closeLoan()}>Close</Button>
+                <Button variant="danger" style={{marginLeft: "1rem", marginRight: "1rem" }} onClick={()=>{this.props.deleteLoan(this.props.loan._id); this.props.closeLoan()}}>Delete</Button>
             </Card>
         )
     }

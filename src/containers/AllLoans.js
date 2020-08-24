@@ -14,11 +14,30 @@ export default class AllLoans extends Component {
     }
 
     componentDidMount(){
+        // Gets all Loans
         fetch("https://snco-calculator-backend.herokuapp.com/loans")
         .then(resp=>resp.json())
         .then(allLoans=>this.setState({
           allLoans
         }))
+    }
+
+    deleteLoan=(loanID)=>{
+        // Delete single loan
+        fetch('https://snco-calculator-backend.herokuapp.com/loans',{
+        method: 'delete',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: loanID })
+        })
+        // .then(resp=>resp.json())
+        // .then(dbLog=>console.log(dbLog))
+        this.removeLoanFromState(loanID)
+    }
+
+    removeLoanFromState(loanID){
+        this.setState({
+            allLoans: this.state.allLoans.filter(loan => loan._id !== loanID)
+        })
     }
 
     openLoan=(loan)=>{
@@ -51,6 +70,7 @@ export default class AllLoans extends Component {
                     <SingleLoan
                         loan={this.state.singleLoan}
                         closeLoan={this.closeLoan}
+                        deleteLoan={this.deleteLoan}
                     />
                     : 
                     this.mapLoans()
