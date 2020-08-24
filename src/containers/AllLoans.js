@@ -49,17 +49,54 @@ export default class AllLoans extends Component {
     }
 
     mapLoans(){
+        let loanGroupLength = this.state.allLoans.length
+
         return(
-            this.state.allLoans.map(loan=>{
-                return (
-                    <LoanCard
+
+            this.state.allLoans.map((loan, i)=>{
+                // return (
+                //     <LoanCard
+                //         key={loan._id}
+                //         loan={loan}
+                //         openLoan={this.openLoan}
+                //     />
+                // )
+                if (loanGroupLength === i+1){
+                    return(<LoanCard
                         key={loan._id}
                         loan={loan}
                         openLoan={this.openLoan}
-                    />
-                )
+                        new={"New"}
+                    />)
+                } else {
+                    return(<LoanCard
+                        key={loan._id}
+                        loan={loan}
+                        openLoan={this.openLoan}
+                    />)
+                }
             })
+
+
         )
+            
+            // for (let i=0; i<loanGroupLength; i++){
+            //     <LoanCard
+            //     key={i._id}
+            //         loan={i}
+            //         openLoan={this.openLoan}
+            //     />
+            //     if((i + 1) == (loanGroupLength)){
+            //         <LoanCard
+            //             key={i._id}
+            //             loan={i}
+            //             openLoan={this.openLoan}
+            //             new={"New"}
+            //         />
+            //     }
+            // }
+            
+        
     }
 
     render() {
