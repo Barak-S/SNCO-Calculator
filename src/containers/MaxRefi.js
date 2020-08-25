@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FormControl, InputGroup, Card, Col, Row, Container, Button, Form } from 'react-bootstrap';
-// import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import { InputNumber } from "antd";
 
 import DatePicker from 'react-date-picker';
@@ -123,12 +123,17 @@ export default class MaxRefi extends Component {
                                         // handleAddressSelect={this.props.handleAddressSelect}
                                     />
                                 <Form.Row>
+                                    <Col>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Units</InputGroup.Text>
                                         </InputGroup.Prepend>
                                             <FormControl name="units" value={this.state.units || undefined} type="number" onChange={(e)=>this.handleNumberChange("units" ,e.target.value)}></FormControl>
-                                        <InputGroup.Prepend>
+                                    </InputGroup>
+                                    </Col>
+                                    <Col>
+                                    <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
                                         <InputGroup.Text>Purchase Date</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <DatePicker
@@ -136,8 +141,10 @@ export default class MaxRefi extends Component {
                                             value={this.props.date}
                                         />
                                     </InputGroup>
+                                    </Col>
                                 </Form.Row>
                                 <Form.Row>
+                                    <Col>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Purchase Price</InputGroup.Text>
@@ -147,160 +154,209 @@ export default class MaxRefi extends Component {
                                             value={this.state.purchasePrice}
                                             name={"purchasePrice"}
                                         />
+                                        {/* <InputNumber
+                                            name={"purchasePrice"}
+                                            formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                            parser={ value => value.replace(/\$\s?|(,*)/g, '')}
+                                            style={{ fontSize: 17, width: "100%"  }}
+                                            value={ this.state.purchasePrice? this.state.purchasePrice.toFixed(2) : 0}
+                                            onChange={e => this.handleNumberChange(this.props.name,e)}
+                                            
+
+                                        /> */}
                                     </InputGroup>
+                                    </Col>
                                 </Form.Row>
                                 <Form.Row>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Hard Costs</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <CurrencyInput
-                                            handleChange={this.handleNumberChange}
-                                            value={this.state.hardCosts}
-                                            name={"hardCosts"}
-                                        />                                        
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Soft Costs</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <CurrencyInput
-                                            handleChange={this.handleNumberChange}
-                                            value={this.state.softCosts}
-                                            name={"softCosts"}
-                                        />                                    
-                                    </InputGroup>
+                                    <Col>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>Hard Costs</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.hardCosts}
+                                                name={"hardCosts"}
+                                            /> 
+                                        </InputGroup>
+                                    </Col>
+                                    <Col>   
+                                        <InputGroup className="mb-3">                                    
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>Soft Costs</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.softCosts}
+                                                name={"softCosts"}
+                                            />                                    
+                                        </InputGroup>
+                                    </Col>
                                 </Form.Row>
                                 <Form.Row>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Payoff</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <CurrencyInput
-                                            handleChange={this.handleNumberChange}
-                                            value={this.state.payoff}
-                                            name={"payoff"}
-                                        />                                        
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Annual Gross Rent</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <CurrencyInput
-                                            handleChange={this.handleNumberChange}
-                                            value={this.state.annualGrossRent}
-                                            name={"annualGrossRent"}
-                                        />                                        
-                                    </InputGroup>
+                                    <Col>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>Payoff</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.payoff}
+                                                name={"payoff"}
+                                            /> 
+                                        </InputGroup> 
+                                    </Col> 
+                                    <Col>
+                                        <InputGroup className="mb-3">                                     
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>Annual Gross Rent</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.annualGrossRent}
+                                                name={"annualGrossRent"}
+                                            />                                        
+                                        </InputGroup>
+                                    </Col>
                                 </Form.Row>
                                 <Form.Row>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Vacancy</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <CurrencyInput
-                                            handleChange={this.handleNumberChange}
-                                            value={ vacancy }
-                                            name={"vacancy"}
-                                            disabled={true}
-                                        />                                            
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Taxes</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <CurrencyInput
-                                            handleChange={this.handleNumberChange}
-                                            value={this.state.taxes}
-                                            name={"taxes"}
-                                        />                                      
-                                    </InputGroup>
+                                    <Col>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>Vacancy</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                handleChange={this.handleNumberChange}
+                                                value={ vacancy }
+                                                name={"vacancy"}
+                                                disabled={true}
+                                            /> 
+                                        </InputGroup> 
+                                    </Col> 
+                                    <Col>
+                                        <InputGroup className="mb-3">                                                    
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>Taxes</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.taxes}
+                                                name={"taxes"}
+                                            />                                      
+                                        </InputGroup>
+                                    </Col>
                                 </Form.Row>
                                 <Form.Row>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Utilities</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <CurrencyInput
-                                            handleChange={this.handleNumberChange}
-                                            value={this.state.utilities}
-                                            name={"utilities"}
-                                        />                                        
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Insurance</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <CurrencyInput
-                                            handleChange={this.handleNumberChange}
-                                            value={this.state.insurance}
-                                            name={"insurance"}
-                                        />                                    
-                                    </InputGroup>
+                                    <Col>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>Utilities</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.utilities}
+                                                name={"utilities"}
+                                            /> 
+                                        </InputGroup> 
+                                    </Col> 
+                                    <Col>
+                                        <InputGroup className="mb-3">                                                
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>Insurance</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.insurance}
+                                                name={"insurance"}
+                                            />                                    
+                                        </InputGroup>
+                                    </Col>
                                 </Form.Row>
                                 <Form.Row>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Water Sewer</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <CurrencyInput
-                                            handleChange={this.handleNumberChange}
-                                            value={this.state.waterSewer}
-                                            name={"waterSewer"}
-                                        />                                          
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Management</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <CurrencyInput
-                                            handleChange={this.handleNumberChange}
-                                            value={ management }
-                                            name={"management"}
-                                            disabled={true}
-                                        />                                          
-                                    </InputGroup>
+                                    <Col>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>Water Sewer</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.waterSewer}
+                                                name={"waterSewer"}
+                                            />     
+                                        </InputGroup> 
+                                    </Col> 
+                                    <Col>
+                                        <InputGroup className="mb-3">                                          
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>Management</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                handleChange={this.handleNumberChange}
+                                                value={ management }
+                                                name={"management"}
+                                                disabled={true}
+                                            />                                          
+                                        </InputGroup>
+                                    </Col>
                                 </Form.Row>
                                 <Form.Row>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Replacement Reserves</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <CurrencyInput
-                                            handleChange={ this.handleNumberChange }
-                                            value={ replacementReserves }
-                                            name={"replacementReserves"}
-                                            disabled={true}
-                                        />  
-                                    </InputGroup>  
-                                </Form.Row>
-                                <Form.Row>
-                                    <InputGroup className="mb-3">                                         
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Loan Amount</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <CurrencyInput
-                                            handleChange={this.handleNumberChange}
-                                            value={this.state.requestLoanAmount}
-                                            name={"requestLoanAmount"}
-                                        />                                     
-                                    </InputGroup>
-                                </Form.Row>
-                                <Form.Row>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>ARM</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                            <FormControl type="number" name="arm" value={this.state.arm || undefined} onChange={(e)=>this.handleNumberChange("arm",e.target.value)} style={{marginRight: 5}}></FormControl>
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Rate</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                            {/* <PercentageInput
+                                    <Col>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>Replacement Reserves</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
                                                 handleChange={ this.handleNumberChange }
-                                                value={this.state.rate}
-                                                name={"rate"}
-                                            /> */}
-                                            <InputNumber
-                                                name={"rate"}
-                                                formatter={value => `${value}%`}
-                                                parser={value => value.replace('%', '')}
-                                                style={{ fontSize: 17 }}
-                                                value={this.state.rate? this.state.rate : 0} 
-                                                min={0}
-                                                max={100}
-                                                onChange={e => this.handleRateChange("rate", e)}
-                                            />
-                                    </InputGroup>
+                                                value={ replacementReserves }
+                                                name={"replacementReserves"}
+                                                disabled={true}
+                                            />  
+                                        </InputGroup> 
+                                    </Col> 
+                                    <Col>
+                                        <InputGroup className="mb-3">                                         
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>Loan Amount</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                            <CurrencyInput
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.requestLoanAmount}
+                                                name={"requestLoanAmount"}
+                                            />                                     
+                                        </InputGroup>
+                                    </Col>
+                                </Form.Row>
+                                <Form.Row>
+                                    <Col>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>ARM</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                                <FormControl type="number" name="arm" value={this.state.arm || undefined} onChange={(e)=>this.handleNumberChange("arm",e.target.value)} style={{marginRight: 5}}></FormControl>
+                                        </InputGroup>
+                                    </Col>
+                                    <Col>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Prepend>
+                                            <InputGroup.Text>Rate</InputGroup.Text>
+                                            </InputGroup.Prepend>
+                                                {/* <PercentageInput
+                                                    handleChange={ this.handleNumberChange }
+                                                    value={this.state.rate}
+                                                    name={"rate"}
+                                                /> */}
+                                                <InputNumber
+                                                    name={"rate"}
+                                                    formatter={value => `${value}%`}
+                                                    parser={value => value.replace('%', '')}
+                                                    style={{ fontSize: 17 }}
+                                                    value={this.state.rate? this.state.rate : 0} 
+                                                    min={0}
+                                                    max={100}
+                                                    onChange={e => this.handleRateChange("rate", e)}
+                                                />
+                                        </InputGroup>
+                                    </Col>
                                 </Form.Row>
                                 </Form>
                                 </Card.Body>

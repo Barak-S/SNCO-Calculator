@@ -6,12 +6,15 @@
   text-align: center;
   justify-content: center;
   min-height: 100vh;
+  background: rgb(185,135,87);
+  background: linear-gradient(0deg, rgba(185,135,87,1) 0%, rgb(248,249,250) 90%);
+
 }
 
 body{
   /* min-height: 100vh; */
-  background: rgb(185,135,87);
-  background: linear-gradient(0deg, rgba(185,135,87,1) 0%, rgb(248,249,250) 90%);
+  /* background: rgb(185,135,87);
+  background: linear-gradient(0deg, rgba(185,135,87,1) 0%, rgb(248,249,250) 90%); */
 
 }
 
@@ -84,3 +87,40 @@ div.ant-input-number-handler-wrap{
   height: 100px;
   width: 100px;
 } */
+
+/* div.react-date-picker__wrapper{
+  width: 200px;
+} */
+
+div.react-date-picker__inputGroup{
+  font-size: 16.5px;
+}
+
+/* .react-date-picker__inputGroup__input{
+  background-color: #B98757;
+} */
+
+/* input.react-date-picker__inputGroup__year {
+  width: 42px;
+}
+
+input.react-date-picker__inputGroup__month {
+  width: 18px;
+}
+
+input.react-date-picker__inputGroup__day {
+  width: 23px;
+} */
+
+div.react-date-picker__inputGroup.react-date-picker__inputGroup__input.react-date-picker__inputGroup__year{
+  width: 48px;
+}
+
+.react-date-picker__inputGroup__input.react-date-picker__inputGroup__day{
+  width: 23px;
+}
+
+.react-date-picker__inputGroup__input.react-date-picker__inputGroup__month{
+  width: 30px;
+}
+
