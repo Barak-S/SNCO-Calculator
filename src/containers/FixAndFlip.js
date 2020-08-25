@@ -450,7 +450,7 @@ export default class FixAndFlip extends Component {
                                 variant="outline-dark" 
                                 style={{ marginBottom: 15 }} 
                                 onClick={()=>this.createLoan(this.props.address,this.props.propertyType,this.state, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent )}
-                            >Create Loan</Button>
+                            >Save</Button>
                         </Col>
                     </Row>
                 </Container>

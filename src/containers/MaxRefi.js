@@ -429,7 +429,7 @@ export default class MaxRefi extends Component {
                                 variant="outline-dark" 
                                 style={{ marginBottom: 15 }} 
                                 onClick={()=>this.createLoan(this.props.address, this.props.propertyType, this.props.date, this.state, officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)}
-                            >Create Loan</Button>                        
+                            >Save</Button>                        
                         </Col>
                     </Row>
 
