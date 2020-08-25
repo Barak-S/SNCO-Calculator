@@ -11,7 +11,7 @@ export default class PercentageInput extends Component {
                     name={this.props.name}
                     formatter={value => `${value}%`}
                     parser={value => value.replace('%', '')}
-                    style={{ minWidth:"50%", fontSize: 17 }}
+                    style={{ minWidth:"55%", fontSize: 17, paddingTop: 3 }}
                     value={this.props.value? this.props.value.toFixed(2) : 0} 
                     min={0}
                     max={100}
