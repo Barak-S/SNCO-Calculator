@@ -5,7 +5,7 @@ const MapContainer = (props) => {
   
     const mapStyles = {        
         width: '100%',
-        height: '400px'
+        height: '500px'
     };
   
     const defaultCenter = {

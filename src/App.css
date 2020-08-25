@@ -88,39 +88,23 @@ div.ant-input-number-handler-wrap{
   width: 100px;
 } */
 
-/* div.react-date-picker__wrapper{
-  width: 200px;
-} */
+div.react-date-picker__wrapper{
+  background-color: white;
+}
 
 div.react-date-picker__inputGroup{
   font-size: 16.5px;
 }
 
-/* .react-date-picker__inputGroup__input{
-  background-color: #B98757;
-} */
-
-/* input.react-date-picker__inputGroup__year {
-  width: 42px;
-}
-
-input.react-date-picker__inputGroup__month {
-  width: 18px;
-}
-
-input.react-date-picker__inputGroup__day {
-  width: 23px;
-} */
-
 div.react-date-picker__inputGroup.react-date-picker__inputGroup__input.react-date-picker__inputGroup__year{
-  width: 48px;
+  width: 42px !important;;
 }
 
 .react-date-picker__inputGroup__input.react-date-picker__inputGroup__day{
-  width: 23px;
+  width: 23px !important;;
 }
 
 .react-date-picker__inputGroup__input.react-date-picker__inputGroup__month{
-  width: 30px;
+  width: 20px !important;;
 }
 
