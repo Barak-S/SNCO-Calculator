@@ -9,7 +9,7 @@ export default class LoanCard extends Component {
                     <Row>
                         
                         <Col xs lg="4">
-        {this.props.new ? <Card.Text id="LoanAddress"><Badge variant="danger">{this.props.new}</Badge>{' '}{this.props.loan.address}</Card.Text> : <Card.Text id="LoanAddress">{this.props.loan.address}</Card.Text>}
+                        {this.props.new ? <Card.Text id="LoanAddress"><Badge variant="danger">{this.props.new}</Badge>{' '}{this.props.loan.address}</Card.Text> : <Card.Text id="LoanAddress">{this.props.loan.address}</Card.Text>}
                         </Col>
                         <Col xs lg="3">
                             <Card.Text><strong>Type: </strong>{this.props.loan.properyType}</Card.Text>
