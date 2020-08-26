@@ -101,7 +101,7 @@ export default class AllLoans extends Component {
 
     render() {
         return (
-            <div>
+            <div className="AllLoans">
                 { !this.state.singleLoan.hasOwnProperty("address") && <Card.Text className="appHeader">All Loans</Card.Text>}
                 {this.state.singleLoan.hasOwnProperty("address") ? 
                     <SingleLoan

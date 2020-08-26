@@ -54,7 +54,7 @@ export default class SingleLoan extends Component {
     render() {
 
         return (
-            <Card className="SingleLoan" style={{ border: '1px solid #B98757', borderRadius: 12, margin: "1rem", padding: 15 }}>
+            <Card className="SingleLoan" style={{ border: '1px solid #B98757', borderRadius: 12, margin: "1rem", padding: 15, marginBottom: "2rem" }}>
                 <Card.Text style={{ fontWeight: "600", fontSize: 22, margin: 2.5 }}>{this.props.loan.address}</Card.Text>
                 <Card.Text><strong>Type: </strong>{this.props.loan.properyType}</Card.Text>
                 <Row>
