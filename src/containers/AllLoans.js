@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { Card } from 'react-bootstrap';
-import SNCOLogo from '../components/SNCOLogo'
 import LoanCard from '../components/LoanCard'
 import SingleLoan from '../containers/SingleLoan'
 
@@ -54,13 +53,6 @@ export default class AllLoans extends Component {
         return(
 
             this.state.allLoans.map((loan, i)=>{
-                // return (
-                //     <LoanCard
-                //         key={loan._id}
-                //         loan={loan}
-                //         openLoan={this.openLoan}
-                //     />
-                // )
                 if (loanGroupLength === i+1){
                     return(<LoanCard
                         key={loan._id}
@@ -79,29 +71,12 @@ export default class AllLoans extends Component {
 
 
         )
-            
-            // for (let i=0; i<loanGroupLength; i++){
-            //     <LoanCard
-            //     key={i._id}
-            //         loan={i}
-            //         openLoan={this.openLoan}
-            //     />
-            //     if((i + 1) == (loanGroupLength)){
-            //         <LoanCard
-            //             key={i._id}
-            //             loan={i}
-            //             openLoan={this.openLoan}
-            //             new={"New"}
-            //         />
-            //     }
-            // }
-            
         
     }
 
     render() {
         return (
-            <div className="AllLoans">
+            <div className="AllLoans" style={{paddingBottom: 25}}>
                 { !this.state.singleLoan.hasOwnProperty("address") && <Card.Text className="appHeader">All Loans</Card.Text>}
                 {this.state.singleLoan.hasOwnProperty("address") ? 
                     <SingleLoan

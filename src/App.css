@@ -11,13 +11,6 @@
 
 }
 
-body{
-  min-height: 100vh;
-  /* background: rgb(185,135,87);
-  background: linear-gradient(0deg, rgba(185,135,87,1) 0%, rgb(248,249,250) 90%); */
-
-}
-
 .CalculatorCard{
   min-height: 100vh;
 }
@@ -79,8 +72,16 @@ div.ant-input-number-handler-wrap{
   color: rgba(185,135,87,1);
 }
 
-.AllLoans{
-  min-height: 105vh;
+/* .AllLoans{
+  min-height: 110vh;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+} */
+
+div.SingleLoan.Card{
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+
 }
 
 .SingleLoan{
