@@ -5,7 +5,7 @@ export default class LoanCard extends Component {
     render() {
         return (
             <Card className="LoanCard" style={{ border: '1px solid #B98757', borderRadius: 12 }} onClick={()=>this.props.openLoan(this.props.loan)}>
-                <Card.Body>
+                <Card.Body style={{color: "#000000"}}>
                     <Row>
                         
                         <Col xs lg="4">

@@ -13,7 +13,7 @@ export default class Navigator extends React.Component{
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Link to="/" style={{ textDecoration: 'none' }}>
+                        <Link to="/loans" style={{ textDecoration: 'none' }}>
                             <Nav.Link href="#link" className="NavLinks" style={{color: "#B98757", fontSize: 17}}>All Loans</Nav.Link>   
                         </Link>
                         <Link to="/Calculator" style={{ textDecoration: 'none' }}>

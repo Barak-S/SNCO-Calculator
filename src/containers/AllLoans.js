@@ -5,6 +5,9 @@ import { Card } from 'react-bootstrap';
 import LoanCard from '../components/LoanCard'
 import SingleLoan from '../containers/SingleLoan'
 
+import { Link } from 'react-router-dom';
+
+
 export default class AllLoans extends Component {
 
     state={
@@ -13,7 +16,6 @@ export default class AllLoans extends Component {
     }
 
     componentDidMount(){
-        // Gets all Loans
         fetch("https://snco-calculator-backend.herokuapp.com/loans")
         .then(resp=>resp.json())
         .then(allLoans=>this.setState({
@@ -33,39 +35,27 @@ export default class AllLoans extends Component {
         this.removeLoanFromState(loanID)
     }
 
-    removeLoanFromState(loanID){
-        this.setState({
-            allLoans: this.state.allLoans.filter(loan => loan._id !== loanID)
-        })
-    }
-
-    openLoan=(loan)=>{
-        this.setState({ singleLoan: loan })
-    }
-
-    closeLoan=()=>{
-        this.setState({ singleLoan: {} })
-    }
-
     mapLoans(){
         let loanGroupLength = this.state.allLoans.length
 
         return(
-
             this.state.allLoans.map((loan, i)=>{
                 if (loanGroupLength === i+1){
-                    return(<LoanCard
+                    return(<Link to={`/loans/${loan._id}`} onClick={()=>this.props.openLoan(loan)}>
+                        <LoanCard
                         key={loan._id}
                         loan={loan}
-                        openLoan={this.openLoan}
+                        openLoan={this.props.openLoan}
                         new={"New"}
-                    />)
+                        
+                    /></Link>)
                 } else {
-                    return(<LoanCard
+                    return(<Link to={`/loans/${loan._id}`} onClick={()=>this.props.openLoan(loan)}>
+                        <LoanCard
                         key={loan._id}
                         loan={loan}
-                        openLoan={this.openLoan}
-                    />)
+                        openLoan={this.props.openLoan}
+                    /></Link>)
                 }
             })
 
@@ -75,18 +65,14 @@ export default class AllLoans extends Component {
     }
 
     render() {
+
+        console.log(this.props.allLoans)
+
         return (
             <div className="AllLoans" style={{paddingBottom: 25}}>
-                { !this.state.singleLoan.hasOwnProperty("address") && <Card.Text className="appHeader">All Loans</Card.Text>}
-                {this.state.singleLoan.hasOwnProperty("address") ? 
-                    <SingleLoan
-                        loan={this.state.singleLoan}
-                        closeLoan={this.closeLoan}
-                        deleteLoan={this.deleteLoan}
-                    />
-                    : 
-                    this.mapLoans()
-                }
+                <Card.Text className="appHeader">All Loans</Card.Text>
+                {this.mapLoans()}
+                
             </div>
         )
     }
