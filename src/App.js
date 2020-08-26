@@ -17,6 +17,7 @@ class App extends React.Component {
         <div className="App">
           <NavBar/>
           <Switch>
+            <Redirect exact from="/" to="/loans" />
             <Route exact path = "/loans" render={(routerProps) => <AllLoans {...routerProps} />}/>
             <Route exact path = "/loans/:id" render={(routerProps) => <SingleLoan {...routerProps} />}/>
             <Route exact path = "/Calculator" render={(routerProps) => <Calculators {...routerProps} />}/>
