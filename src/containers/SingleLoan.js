@@ -81,9 +81,9 @@ export default class SingleLoan extends Component {
                                 lng={this.state.lng}
                             />
                         </Col>
-                        <Col xs={8} md={4} style={{textAlign: "left"}}>
-                            {/* <Card.Text style={{fontSize: 20}}><strong>Purchase Price: </strong>{this.numberFormat(this.state.loan.purchasePrice)}</Card.Text> */}
-                            <Card style={{ border: '1px solid #B98757', borderRadius: 10, padding: 5 }}>
+                        <Col xs={12} md={4} style={{textAlign: "left"}}>
+                            <Card style={{ border: '1px solid #B98757', borderRadius: 10, padding: 7, margin: 5 }}>
+                            <Card.Text style={{fontSize: 20, textAlign: "center", fontWeight: "600"}}>Loan Details</Card.Text>
                             {this.state.loanAttributes.map(loan=>{
                                 return(
                                     <Card.Text style={{fontSize: 18}}><strong>{loan.key}: </strong>{loan.value}</Card.Text>
@@ -93,9 +93,9 @@ export default class SingleLoan extends Component {
                         </Col>
                     </Row>
                     
-                    <Col >
-                        <Button variant="danger" style={{marginLeft: "1rem", marginRight: "1rem", width: "25%" }} onClick={()=>this.handleClose()}>Delete</Button>
-                    </Col>
+                    <Row style={{ justifyContent: "center", marginTop: 7 }} >
+                        <Button variant="danger" style={{marginLeft: "1rem", marginRight: "1rem" }} onClick={()=>this.handleClose()}>Delete</Button>
+                    </Row>
                     
                     
                     {this.state.deleteModal === true && 
