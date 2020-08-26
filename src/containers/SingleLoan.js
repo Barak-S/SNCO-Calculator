@@ -10,21 +10,30 @@ export default class SingleLoan extends Component {
     state={
         lat: 0,
         lng: 0,
+        loan:{},
         loanAttributes: [],
         deleteModal: false,
     }
 
     componentDidMount(){
-        geocodeByAddress(this.props.loan.address)
+        // console.log(window.location.pathname)
+
+        fetch(`https://snco-calculator-backend.herokuapp.com${window.location.pathname}`)
+        .then(resp=>resp.json())
+        .then(loan=>this.setState({ loan },()=>{
+            this.getAddressCoordinates(this.state.loan.address)
+            this.mapLoanAttributes(this.state.loan.loan)
+        }))
+    }
+
+    getAddressCoordinates=(address)=>{
+        geocodeByAddress(address)
         .then(results => getLatLng(results[0]))
         .then(latLng => this.setState({ 
             lat: latLng.lat,
             lng: latLng.lng,
         }))
         .catch(error => console.error('Error', error));
-
-        this.mapLoanAttributes(this.props.loan.loan)
-
     }
 
     numberFormat = (value) =>
@@ -36,13 +45,11 @@ export default class SingleLoan extends Component {
     mapLoanAttributes(loanAttributes){
         let attrributes=[]
         for (const [key, value] of Object.entries(loanAttributes)) {
-            // console.log(key, value);
             attrributes.push({key,value})
-            // return(<Card.Text style={{fontSize: 20}}><strong>{key}</strong>{value}</Card.Text>)
         }
         this.setState({
             loanAttributes: attrributes
-        },()=>console.log(this.state.loanAttributes))
+        })
     }
 
     handleClose=()=>{
@@ -56,9 +63,6 @@ export default class SingleLoan extends Component {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: loanID })
         })
-        // .then(resp=>resp.json())
-        // .then(dbLog=>console.log(dbLog))
-        // this.removeLoanFromState(loanID)
         this.props.history.push('/loans')
     }
 
@@ -68,8 +72,8 @@ export default class SingleLoan extends Component {
         return (
             <div style={{paddingBottom: 25}}>
                 <Card className="SingleLoan" style={{ border: '1px solid #B98757', borderRadius: 12, margin: "1rem", padding: 15 }}>
-                    <Card.Text style={{ fontWeight: "600", fontSize: 22, margin: 2.5 }}>{this.props.loan.address}</Card.Text>
-                    <Card.Text><strong>Type: </strong>{this.props.loan.properyType}</Card.Text>
+                    <Card.Text style={{ fontWeight: "600", fontSize: 22, margin: 2.5 }}>{this.state.loan.address}</Card.Text>
+                    <Card.Text><strong>Type: </strong>{this.state.loan.properyType}</Card.Text>
                     <Row>
                         <Col xs={12} md={8}>
                             <MapContainer
@@ -78,7 +82,7 @@ export default class SingleLoan extends Component {
                             />
                         </Col>
                         <Col xs={6} md={4} style={{textAlign: "left"}}>
-                            <Card.Text style={{fontSize: 20}}><strong>Purchase Price: </strong>{this.numberFormat(this.props.loan.loan.purchasePrice)}</Card.Text>
+                            {/* <Card.Text style={{fontSize: 20}}><strong>Purchase Price: </strong>{this.numberFormat(this.state.loan.purchasePrice)}</Card.Text> */}
 
                             {this.state.loanAttributes.map(loan=>{
                                 return(
@@ -107,7 +111,7 @@ export default class SingleLoan extends Component {
                         This loan record will permanently be removed.
                         </Modal.Body>
                         <Modal.Footer>
-                        <Button variant="danger" onClick={()=>this.deleteLoan(this.props.loan._id)}>
+                        <Button variant="danger" onClick={()=>this.deleteLoan(this.state.loan._id)}>
                             Delete
                         </Button>
                         <Button variant="secondary" onClick={this.handleClose}>Close</Button>

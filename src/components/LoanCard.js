@@ -4,10 +4,9 @@ import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownB
 export default class LoanCard extends Component {
     render() {
         return (
-            <Card className="LoanCard" style={{ border: '1px solid #B98757', borderRadius: 12 }} onClick={()=>this.props.openLoan(this.props.loan)}>
+            <Card className="LoanCard" style={{ border: '1px solid #B98757', borderRadius: 12 }}>
                 <Card.Body style={{color: "#000000"}}>
                     <Row>
-                        
                         <Col xs lg="4">
                         {this.props.new ? <Card.Text id="LoanAddress"><Badge variant="danger">{this.props.new}</Badge>{' '}{this.props.loan.address}</Card.Text> : <Card.Text id="LoanAddress">{this.props.loan.address}</Card.Text>}
                         </Col>
