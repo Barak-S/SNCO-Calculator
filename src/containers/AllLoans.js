@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { Card, Button } from 'react-bootstrap';
 import LoanCard from '../components/LoanCard'
-import SingleLoan from '../containers/SingleLoan'
 
 import { Link } from 'react-router-dom';
 
@@ -66,7 +65,10 @@ export default class AllLoans extends Component {
 
         return (
             <div className="AllLoans" style={{paddingBottom: 25}}>
-                <Card.Text className="appHeader">All Loans</Card.Text>
+                <div>
+                    <Card.Text className="appHeader">All Loans</Card.Text>
+                    {/* <Card.Text>results: {this.state.allLoans.length}</Card.Text> */}
+                </div>
                 {this.mapLoans()}
                 <Button variant="dark" onClick={()=>this.loadMoreLoans()}>Load More</Button>
 

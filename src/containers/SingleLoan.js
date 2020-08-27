@@ -4,6 +4,7 @@ import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, Modal, Fo
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
   
 import MapContainer from '../components/MapComponent'
+import CurrencyInput from '../components/CurrencyInput'
 
 export default class SingleLoan extends Component {
 
@@ -13,17 +14,20 @@ export default class SingleLoan extends Component {
         loan:{},
         loanAttributes: [],
         deleteModal: false,
+        editModal: false,
     }
 
     componentDidMount(){
-        // console.log(window.location.pathname)
-
         fetch(`https://snco-calculator-backend.herokuapp.com${window.location.pathname}`)
         .then(resp=>resp.json())
         .then(loan=>this.setState({ loan },()=>{
             this.getAddressCoordinates(this.state.loan.address)
             this.mapLoanAttributes(this.state.loan.loan)
         }))
+    }
+
+    editModal=()=>{
+        this.setState({ editModal: !this.state.editModal})
     }
 
     getAddressCoordinates=(address)=>{
@@ -94,7 +98,8 @@ export default class SingleLoan extends Component {
                     </Row>
                     
                     <Row style={{ justifyContent: "center", marginTop: 7 }} >
-                        <Button variant="danger" style={{marginLeft: "1rem", marginRight: "1rem" }} onClick={()=>this.handleClose()}>Delete</Button>
+                        <Button variant="danger" style={{marginLeft: "1rem", marginRight: "0.5rem" }} onClick={()=>this.handleClose()}>Delete</Button>
+                        <Button variant="success" style={{marginLeft: "0.5rem", marginRight: "1rem" }} onClick={()=>this.editModal()}>Edit</Button>
                     </Row>
                     
                     
@@ -117,6 +122,50 @@ export default class SingleLoan extends Component {
                             Delete
                         </Button>
                         <Button variant="secondary" onClick={this.handleClose}>Close</Button>
+                        </Modal.Footer>
+                    </Modal>
+                    </>
+                    }
+
+                    {this.state.editModal === true && 
+                    <>
+                    <Modal
+                        show={this.state.editModal}
+                        onHide={this.editModal}
+                        backdrop="static"
+                        keyboard={false}
+                    >
+                        <Modal.Header closeButton>
+                        <Modal.Title>Edit Loan</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form>
+                                {this.state.loanAttributes.map(attr=>{
+                                    return(
+                                        <Form.Row>
+                                            <Col>
+                                            <InputGroup className="mb-3">
+                                                <InputGroup.Prepend>
+                                                <InputGroup.Text>{attr.key}</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                <FormControl
+                                                    // handleChange={this.handleNumberChange}
+                                                    value={attr.value}
+                                                    // name={"purchasePrice"}
+                                                />
+                                            </InputGroup>
+                                            </Col>
+                                        </Form.Row>
+                                    )
+                                })}
+                            </Form>
+
+                        </Modal.Body>
+                        <Modal.Footer>
+                        <Button variant="success" onClick={()=>this.saveEdit(this.state.loan._id)}>
+                            Save
+                        </Button>
+                        <Button variant="secondary" onClick={this.editModal}>Close</Button>
                         </Modal.Footer>
                     </Modal>
                     </>
