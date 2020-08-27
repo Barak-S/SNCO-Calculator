@@ -66,6 +66,18 @@ export default class SingleLoan extends Component {
 
     }
 
+    mapOtherAttributes=(details)=>{
+        // only gets max refi calculations
+        let otherAttributes=[]
+        details.map(attr=> {
+            if (attr.key === "purchaseDate" || attr.key === "totalProjectCost" || attr.key === "noi" || attr.key === "annualDebtService" || attr.key=== "dscr"){
+                otherAttributes.push(attr)
+            }
+            
+        })
+        console.log(otherAttributes)
+    }
+
     handleClose=()=>{
         this.setState({ deleteModal: !this.state.deleteModal })
     }
@@ -87,7 +99,8 @@ export default class SingleLoan extends Component {
 
     render() {
 
-        console.log(this.state.loan)
+        this.mapOtherAttributes(this.state.otherAttributes)
+
 
         return (
             <div style={{paddingBottom: 25}}>
@@ -167,12 +180,16 @@ export default class SingleLoan extends Component {
                                                 <InputGroup.Prepend>
                                                 <InputGroup.Text>{attr.key}</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <Input
-                                                    // handleChange={this.handleNumberChange}
-                                                    value={attr.value}
-                                                    
-                                                    // name={"purchasePrice"}
-                                                />
+                                                    <Input
+                                                        // handleChange={this.handleNumberChange}
+                                                        value={attr.value}
+                                                        //input="currency"
+                                                        // name={"purchasePrice"}
+                                                        input={attr.key === "arm" || attr.key === "rate" || attr.key === "units" || attr.key==="creditScore" || attr.key==="exitStrategy" || attr.key === "turnaroundTime" || attr.key === "experienceLevel"?
+                                                            null : 
+                                                            "currency"}
+                                                    />
+                                                
                                             </InputGroup>
                                             </Col>
                                         </Form.Row>
@@ -182,7 +199,8 @@ export default class SingleLoan extends Component {
 
                         </Modal.Body>
                         <Modal.Footer>
-                        <Button variant="success" onClick={()=>this.saveEdit(this.state.loan._id)}>
+                        <Button variant="success">
+                            {/* onclick not ready */}
                             Save
                         </Button>
                         <Button variant="secondary" onClick={this.editModal}>

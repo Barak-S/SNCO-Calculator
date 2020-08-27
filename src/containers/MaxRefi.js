@@ -422,7 +422,7 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Text style={{fontWeight: "600"}}>Annual Debt Service:</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <Input
-                                            value={ annualDebtService? annualDebtService : 0}
+                                            value={ annualDebtService? annualDebtService.toFixed(2) : 0}
                                             disabled={true}
                                             input="currency"
                                         />
