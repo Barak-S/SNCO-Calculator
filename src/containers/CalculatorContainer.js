@@ -25,6 +25,10 @@ export default class CalculatorContainer extends Component {
     
     dateChange = date => this.setState({ date })
 
+    clearAddressFromState=()=>{
+        this.setState({ address: "" },()=>console.log(this.state.address))
+    }
+
 
     render(){
 
@@ -53,6 +57,7 @@ export default class CalculatorContainer extends Component {
                     handleAddressChange = {this.handleAddressChange}
                     handleAddressSelect = {this.handleAddressSelect}
                     propertyType = {this.state.propertyType}
+                    clearAddressFromState={this.clearAddressFromState}
                 />
                 }
 
@@ -62,6 +67,7 @@ export default class CalculatorContainer extends Component {
                         handleAddressChange = {this.handleAddressChange}
                         handleAddressSelect = {this.handleAddressSelect}
                         propertyType = {this.state.propertyType}
+                        clearAddressFromState={this.clearAddressFromState}
                     /> 
                 }
 

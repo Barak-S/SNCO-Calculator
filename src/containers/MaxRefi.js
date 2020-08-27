@@ -34,6 +34,8 @@ export default class MaxRefi extends Component {
 
     resetForm = () => {
         this.setState(this.baseState)
+        this.props.clearAddressFromState()
+
     }
 
     handleNumberChange= (key, e) =>{

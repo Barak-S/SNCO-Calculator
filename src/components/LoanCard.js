@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownButton, Form, Badge} from 'react-bootstrap';
 
 export default class LoanCard extends Component {
+
+      
     render() {
+        
         return (
             <Card className="LoanCard" style={{ border: '1px solid #B98757', borderRadius: 12 }}>
                 <Card.Body style={{color: "#000000"}}>

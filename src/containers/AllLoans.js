@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import LoanCard from '../components/LoanCard'
 import SingleLoan from '../containers/SingleLoan'
 
@@ -12,6 +12,7 @@ export default class AllLoans extends Component {
 
     state={
         allLoans: [],
+        start: 0
     }
 
     componentDidMount(){
@@ -22,26 +23,42 @@ export default class AllLoans extends Component {
         }))
     }
 
+    loadMoreLoans=()=>{
+        if (this.state.start > this.state.allLoans.length-10){
+          this.setState({
+            start: 0,
+          })
+        } else {
+          this.setState({
+            start: this.state.start + 5,
+          })
+        }
+    }
+
+    loadLoans(start){
+        return this.state.allLoans.slice(start, start + 10)
+    }
+
     mapLoans(){
         let loanGroupLength = this.state.allLoans.length
         return(
-            this.state.allLoans.map((loan, i)=>{
-                if (loanGroupLength === i+1){
-                    return(<Link to={`/loans/${loan._id}`}>
-                        <LoanCard
-                        key={loan._id}
-                        loan={loan}
-                        new={"New"}
+            this.loadLoans(this.state.start).map((loan, i)=>{
+                // if (loanGroupLength === i+1){
+                //     return(<Link to={`/loans/${loan._id}`}>
+                //         <LoanCard
+                //         key={loan._id}
+                //         loan={loan}
+                //         new={"New"}
                         
-                    /></Link>)
-                } else {
+                //     /></Link>)
+                // } else {
                     return(<Link to={`/loans/${loan._id}`}>
                         <LoanCard
                         key={loan._id}
                         loan={loan}
                     /></Link>)
-                }
-            })
+                    // }
+                })
         ) 
     }
 
@@ -51,6 +68,8 @@ export default class AllLoans extends Component {
             <div className="AllLoans" style={{paddingBottom: 25}}>
                 <Card.Text className="appHeader">All Loans</Card.Text>
                 {this.mapLoans()}
+                <Button variant="dark" onClick={()=>this.loadMoreLoans()}>Load More</Button>
+
 
             </div>
         )
