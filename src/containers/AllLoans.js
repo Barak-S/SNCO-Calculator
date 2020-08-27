@@ -30,7 +30,7 @@ export default class AllLoans extends Component {
           })
         } else {
           this.setState({
-            start: this.state.start + 5,
+            start: this.state.start + 10,
           })
         }
     }
