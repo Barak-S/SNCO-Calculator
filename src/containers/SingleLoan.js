@@ -4,9 +4,7 @@ import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, Modal, Fo
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
   
 import MapContainer from '../components/MapComponent'
-import CurrencyInput from '../components/CurrencyInput'
-
-import Input from '../components/CurrencyInput'
+import Input from '../components/InputComponent'
 
 export default class SingleLoan extends Component {
 
@@ -172,7 +170,7 @@ export default class SingleLoan extends Component {
                                                 <Input
                                                     // handleChange={this.handleNumberChange}
                                                     value={attr.value}
-                                                    input="currency"
+                                                    
                                                     // name={"purchasePrice"}
                                                 />
                                             </InputGroup>

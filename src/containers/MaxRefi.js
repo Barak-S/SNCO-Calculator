@@ -5,7 +5,7 @@ import { InputNumber } from "antd";
 
 import DatePicker from 'react-date-picker';
 // import GeoCode from '../components/GeoCode';
-import Input from '../components/CurrencyInput';
+import Input from '../components/InputComponent';
 import LocationSearchInput from'../components/LocationSearchInput';
 
 export default class MaxRefi extends Component {
@@ -404,7 +404,7 @@ export default class MaxRefi extends Component {
                                         />
                                     </InputGroup>
                                 </Form.Row>
-                                <Form.Row>
+                                {/* <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Cap Rate:</InputGroup.Text>
@@ -415,7 +415,7 @@ export default class MaxRefi extends Component {
                                                 input="percent"
                                             />
                                     </InputGroup>
-                                </Form.Row>
+                                </Form.Row> */}
                                 <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>

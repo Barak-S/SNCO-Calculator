@@ -6,9 +6,7 @@ import { InputNumber } from "antd";
 
 // import GeoCode from '../components/GeoCode';
 import LocationSearchInput from'../components/LocationSearchInput';
-import Input from '../components/CurrencyInput';
-import PercentageInput from '../components/PercentageInput';
-
+import Input from '../components/InputComponent';
 export default class FixAndFlip extends Component {
 
     constructor(props){
@@ -453,7 +451,7 @@ export default class FixAndFlip extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text style={{fontWeight: "600"}}>Profit Percent: %</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <PercentageInput
+                                                <Input
                                                     value={profitPercent}
                                                     disabled={true}
                                                     input="percent"
