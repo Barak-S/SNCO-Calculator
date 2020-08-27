@@ -45,13 +45,13 @@ export default class LocationSearchInput extends React.Component {
                     })}>
                     </FormControl>
                 </InputGroup>
-            <div style={{cursor: "pointer"}}>
+            <div style={{cursor: "pointer", fontSize: 15.5}}>
               {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
                 const style={
                     backgroundColor: suggestion.active ? "#B98757" : "#ffffff"
                 };
-                return(<div {...getSuggestionItemProps(suggestion, { style })}>{suggestion.description }</div>)
+                return(<div {...getSuggestionItemProps(suggestion, { style })} key={suggestion.description}>{suggestion.description }</div>)
               })}
             </div>
           </div>
