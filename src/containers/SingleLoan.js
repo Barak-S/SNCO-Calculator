@@ -6,6 +6,8 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 import MapContainer from '../components/MapComponent'
 import CurrencyInput from '../components/CurrencyInput'
 
+import Input from '../components/CurrencyInput'
+
 export default class SingleLoan extends Component {
 
     state={
@@ -13,6 +15,7 @@ export default class SingleLoan extends Component {
         lng: 0,
         loan:{},
         loanAttributes: [],
+        otherAttributes: [],
         deleteModal: false,
         editModal: false,
     }
@@ -22,7 +25,7 @@ export default class SingleLoan extends Component {
         .then(resp=>resp.json())
         .then(loan=>this.setState({ loan },()=>{
             this.getAddressCoordinates(this.state.loan.address)
-            this.mapLoanAttributes(this.state.loan.loan)
+            this.mapLoanAttributes(this.state.loan.loan, this.state.loan)
         }))
     }
 
@@ -46,14 +49,23 @@ export default class SingleLoan extends Component {
         currency: 'USD'
     }).format(value);
 
-    mapLoanAttributes(loanAttributes){
-        let attrributes=[]
-        for (const [key, value] of Object.entries(loanAttributes)) {
-            attrributes.push({key,value})
+    
+    mapLoanAttributes(loanAttr, otherAttr){
+        let loanAttributes=[]
+        for (const [key, value] of Object.entries(loanAttr)) {
+            loanAttributes.push({key,value})
         }
         this.setState({
-            loanAttributes: attrributes
+            loanAttributes
         })
+        let otherAttributes=[]
+        for (const [key, value] of Object.entries(otherAttr)) {
+            otherAttributes.push({key,value})
+        }
+        this.setState({
+            otherAttributes
+        })
+
     }
 
     handleClose=()=>{
@@ -70,8 +82,14 @@ export default class SingleLoan extends Component {
         this.props.history.push('/loans')
     }
 
+    saveEdit=()=>{
+        console.log("saving")
+    }
+
 
     render() {
+
+        console.log(this.state.loan)
 
         return (
             <div style={{paddingBottom: 25}}>
@@ -84,6 +102,9 @@ export default class SingleLoan extends Component {
                                 lat={this.state.lat}
                                 lng={this.state.lng}
                             />
+                            <Card style={{ border: '1px solid #B98757', borderRadius: 10, padding: 7, margin: 5 }}>
+                                <Card.Text>Loan Calculation Details...</Card.Text>                                
+                            </Card>
                         </Col>
                         <Col xs={12} md={4} style={{textAlign: "left"}}>
                             <Card style={{ border: '1px solid #B98757', borderRadius: 10, padding: 7, margin: 5 }}>
@@ -148,9 +169,10 @@ export default class SingleLoan extends Component {
                                                 <InputGroup.Prepend>
                                                 <InputGroup.Text>{attr.key}</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <FormControl
+                                                <Input
                                                     // handleChange={this.handleNumberChange}
                                                     value={attr.value}
+                                                    input="currency"
                                                     // name={"purchasePrice"}
                                                 />
                                             </InputGroup>
@@ -165,7 +187,9 @@ export default class SingleLoan extends Component {
                         <Button variant="success" onClick={()=>this.saveEdit(this.state.loan._id)}>
                             Save
                         </Button>
-                        <Button variant="secondary" onClick={this.editModal}>Close</Button>
+                        <Button variant="secondary" onClick={this.editModal}>
+                            Close
+                        </Button>
                         </Modal.Footer>
                     </Modal>
                     </>

@@ -41,7 +41,7 @@ export default class AllLoans extends Component {
     mapLoans(){
         let loanGroupLength = this.state.allLoans.length
         return(
-            this.loadLoans(this.state.start).map((loan, i)=>{
+            this.state.allLoans.map((loan, i)=>{
                 // if (loanGroupLength === i+1){
                 //     return(<Link to={`/loans/${loan._id}`}>
                 //         <LoanCard
@@ -70,7 +70,7 @@ export default class AllLoans extends Component {
                     {/* <Card.Text>results: {this.state.allLoans.length}</Card.Text> */}
                 </div>
                 {this.mapLoans()}
-                <Button variant="dark" onClick={()=>this.loadMoreLoans()}>Load More</Button>
+                {/* <Button variant="dark" onClick={()=>this.loadMoreLoans()}>Load More</Button> */}
 
 
             </div>

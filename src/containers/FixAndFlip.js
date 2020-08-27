@@ -2,16 +2,12 @@ import React, { Component } from 'react'
 import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownButton, Form, Button } from 'react-bootstrap';
 
 import { InputNumber } from "antd";
-// import DatePicker from 'react-date-picker';
 // import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
-
 
 // import GeoCode from '../components/GeoCode';
 import LocationSearchInput from'../components/LocationSearchInput';
-import CurrencyInput from '../components/CurrencyInput';
+import Input from '../components/CurrencyInput';
 import PercentageInput from '../components/PercentageInput';
-import SubmitButton from '../components/Submit';
-
 
 export default class FixAndFlip extends Component {
 
@@ -121,10 +117,12 @@ export default class FixAndFlip extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Purchase Price</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <CurrencyInput
+                                        <Input
                                             handleChange={this.handleNumberChange}
                                             value={this.state.purchasePrice}
                                             name={"purchasePrice"}
+                                            input="currency"
+
                                         />
                                         {/* <InputNumber
                                             name={'purchasePrice'}
@@ -141,10 +139,11 @@ export default class FixAndFlip extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Renovation Costs</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <CurrencyInput
+                                        <Input
                                             handleChange={this.handleNumberChange}
                                             value={this.state.renovation}
                                             name={"renovation"}
+                                            input="currency"
                                         />
                                         {/* <InputNumber
                                             name={'renovation'}
@@ -179,10 +178,11 @@ export default class FixAndFlip extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>ARV</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <CurrencyInput
+                                        <Input
                                             handleChange={this.handleNumberChange}
                                             value={this.state.arv}
                                             name={"arv"}
+                                            input="currency"
                                         />
                                     </InputGroup>
                                 </Form.Row>
@@ -194,10 +194,11 @@ export default class FixAndFlip extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Carrying Costs</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <CurrencyInput
+                                        <Input
                                             handleChange={this.handleNumberChange}
                                             value={ carryingCosts }
                                             disabled={true}
+                                            input="currency"
                                         />
                                     </InputGroup>
                                 </Form.Row>
@@ -206,10 +207,11 @@ export default class FixAndFlip extends Component {
                                         <InputGroup.Prepend>
                                             <InputGroup.Text>Taxes</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.taxes}
                                                 name={"taxes"}
+                                                input="currency"
                                             />
                                     </InputGroup>
                                 </Form.Row>
@@ -218,10 +220,11 @@ export default class FixAndFlip extends Component {
                                         <InputGroup.Prepend>
                                             <InputGroup.Text>Insurance</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.insurance}
                                                 name={"insurance"}
+                                                input="currency"
                                             />
                                     </InputGroup>
                                 </Form.Row>
@@ -230,10 +233,11 @@ export default class FixAndFlip extends Component {
                                         <InputGroup.Prepend>
                                             <InputGroup.Text>Interest</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.interest}
                                                 name={"interest"}
+                                                input="currency"
                                             />
                                         
                                     </InputGroup>
@@ -246,9 +250,10 @@ export default class FixAndFlip extends Component {
                                                 <InputGroup.Prepend>
                                             <InputGroup.Text>Closing Costs</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 value={ closingCosts }  
                                                 disabled={true}
+                                                input="currency"
                                             />
                                         </InputGroup>
                                     </Form.Row>
@@ -257,10 +262,11 @@ export default class FixAndFlip extends Component {
                                             <InputGroup.Prepend>
                                                 <InputGroup.Text>Points</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <CurrencyInput
+                                                <Input
                                                     handleChange={this.handleNumberChange}
                                                     value={this.state.points}
                                                     name={"points"}
+                                                    input="currency"
                                                 />
                                         </InputGroup>
                                     </Form.Row>
@@ -269,10 +275,11 @@ export default class FixAndFlip extends Component {
                                             <InputGroup.Prepend>
                                                 <InputGroup.Text>Title Bill</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <CurrencyInput
+                                                <Input
                                                     handleChange={this.handleNumberChange}
                                                     value={this.state.titleBill}
                                                     name={"titleBill"}
+                                                    input="currency"
                                                 />
                                         </InputGroup>
                                     </Form.Row>
@@ -281,10 +288,11 @@ export default class FixAndFlip extends Component {
                                             <InputGroup.Prepend>
                                                 <InputGroup.Text>Legal Lender</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <CurrencyInput
+                                                <Input
                                                     handleChange={this.handleNumberChange}
                                                     value={this.state.legalLender}
                                                     name={"legalLender"}
+                                                    input="currency"
                                                 />
                                         </InputGroup>
                                     </Form.Row>
@@ -293,10 +301,11 @@ export default class FixAndFlip extends Component {
                                             <InputGroup.Prepend>
                                                 <InputGroup.Text>Legal Closing</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <CurrencyInput
+                                                <Input
                                                     handleChange={this.handleNumberChange}
                                                     value={this.state.legalClosing}
                                                     name={"legalClosing"}
+                                                    input="currency"
                                                 />
                                         </InputGroup>
                                     </Form.Row>
@@ -308,9 +317,10 @@ export default class FixAndFlip extends Component {
                                                 <InputGroup.Prepend>
                                             <InputGroup.Text>Resale Costs</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 value={ resaleCosts }  
                                                 disabled={true}
+                                                input="currency"
                                             />
                                         </InputGroup>
                                     </Form.Row>   
@@ -319,10 +329,11 @@ export default class FixAndFlip extends Component {
                                             <InputGroup.Prepend>
                                                 <InputGroup.Text>Legal</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <CurrencyInput
+                                                <Input
                                                     handleChange={this.handleNumberChange}
                                                     value={this.state.legalResale}
                                                     name={"legalResale"}
+                                                    input="currency"
                                                 />
                                         </InputGroup>
                                     </Form.Row>
@@ -331,10 +342,11 @@ export default class FixAndFlip extends Component {
                                             <InputGroup.Prepend>
                                                 <InputGroup.Text>Transfer Tax</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <CurrencyInput
+                                                <Input
                                                     handleChange={this.handleNumberChange}
                                                     value={this.state.transferTax}
                                                     name={"transferTax"}
+                                                    input="currency"
                                                 />
                                         </InputGroup>
                                     </Form.Row>
@@ -343,10 +355,11 @@ export default class FixAndFlip extends Component {
                                             <InputGroup.Prepend>
                                                 <InputGroup.Text>Broker</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <CurrencyInput
+                                                <Input
                                                     handleChange={this.handleNumberChange}
                                                     value={this.state.broker}
                                                     name={"broker"}
+                                                    input="currency"
                                                 />
                                         </InputGroup>  
                                     </Form.Row> 
@@ -369,7 +382,7 @@ export default class FixAndFlip extends Component {
                                                 <InputGroup.Prepend>
                                             <InputGroup.Text>Credit Score</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <FormControl name="creditScore" value={ this.state.creditScore || undefined} type="number" onChange={(e)=>this.handleNumberChange("creditScore", e.target.value)} ></FormControl>
+                                                <Input name="creditScore" value={ this.state.creditScore || undefined} type="number" handleChange={this.handleNumberChange} />
                                         </InputGroup>
                                     </Form.Row>
                                     <Form.Row>
@@ -408,9 +421,10 @@ export default class FixAndFlip extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text style={{fontWeight: "600"}}>Total In:</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 value={totalIn ? totalIn : 0}
                                                 disabled={true}
+                                                input="currency"
                                             />
                                             {/* <InputNumber
                                                 formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
@@ -427,9 +441,10 @@ export default class FixAndFlip extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text style={{fontWeight: "600"}}>Total Profit on Flip:</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <CurrencyInput
+                                                <Input
                                                     value={totalProfit ? totalProfit : 0}
                                                     disabled={true}
+                                                    input="currency"
                                                 />
                                         </InputGroup>
                                     </Form.Row>
@@ -441,6 +456,7 @@ export default class FixAndFlip extends Component {
                                                 <PercentageInput
                                                     value={profitPercent}
                                                     disabled={true}
+                                                    input="percent"
                                                 />
                                         </InputGroup>
                                     </Form.Row>

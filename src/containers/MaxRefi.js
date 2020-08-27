@@ -5,10 +5,8 @@ import { InputNumber } from "antd";
 
 import DatePicker from 'react-date-picker';
 // import GeoCode from '../components/GeoCode';
-import CurrencyInput from '../components/CurrencyInput';
-import PercentageInput from '../components/PercentageInput';
+import Input from '../components/CurrencyInput';
 import LocationSearchInput from'../components/LocationSearchInput';
-
 
 export default class MaxRefi extends Component {
 
@@ -130,7 +128,7 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Units</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                            <FormControl name="units" value={this.state.units || undefined} type="number" onChange={(e)=>this.handleNumberChange("units" ,e.target.value)}></FormControl>
+                                            <Input name="units" value={this.state.units || undefined} type="number" handleChange={this.handleNumberChange}/>
                                     </InputGroup>
                                     </Col>
                                     <Col>
@@ -151,10 +149,11 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text>Purchase Price</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <CurrencyInput
+                                        <Input
                                             handleChange={this.handleNumberChange}
                                             value={this.state.purchasePrice}
                                             name={"purchasePrice"}
+                                            input="currency"
                                         />
                                         {/* <InputNumber
                                             name={"purchasePrice"}
@@ -175,10 +174,11 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Hard Costs</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.hardCosts}
                                                 name={"hardCosts"}
+                                                input="currency"
                                             /> 
                                         </InputGroup>
                                     </Col>
@@ -187,10 +187,11 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Soft Costs</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.softCosts}
                                                 name={"softCosts"}
+                                                input="currency"
                                             />                                    
                                         </InputGroup>
                                     </Col>
@@ -201,10 +202,11 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Payoff</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.payoff}
                                                 name={"payoff"}
+                                                input="currency"
                                             /> 
                                         </InputGroup> 
                                     </Col> 
@@ -213,10 +215,11 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Annual Gross Rent</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.annualGrossRent}
                                                 name={"annualGrossRent"}
+                                                input="currency"
                                             />                                        
                                         </InputGroup>
                                     </Col>
@@ -227,11 +230,12 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Vacancy</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={ vacancy }
                                                 name={"vacancy"}
                                                 disabled={true}
+                                                input="currency"
                                             /> 
                                         </InputGroup> 
                                     </Col> 
@@ -240,10 +244,11 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Taxes</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.taxes}
                                                 name={"taxes"}
+                                                input="currency"
                                             />                                      
                                         </InputGroup>
                                     </Col>
@@ -254,10 +259,11 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Utilities</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.utilities}
                                                 name={"utilities"}
+                                                input="currency"
                                             /> 
                                         </InputGroup> 
                                     </Col> 
@@ -266,10 +272,11 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Insurance</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.insurance}
                                                 name={"insurance"}
+                                                input="currency"
                                             />                                    
                                         </InputGroup>
                                     </Col>
@@ -280,10 +287,11 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Water Sewer</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.waterSewer}
                                                 name={"waterSewer"}
+                                                input="currency"
                                             />     
                                         </InputGroup> 
                                     </Col> 
@@ -292,11 +300,12 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Management</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={ management }
                                                 name={"management"}
                                                 disabled={true}
+                                                input="currency"
                                             />                                          
                                         </InputGroup>
                                     </Col>
@@ -307,11 +316,12 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Replacement Reserves</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={ this.handleNumberChange }
                                                 value={ replacementReserves }
                                                 name={"replacementReserves"}
                                                 disabled={true}
+                                                input="currency"
                                             />  
                                         </InputGroup> 
                                     </Col> 
@@ -320,10 +330,11 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>Loan Amount</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                            <CurrencyInput
+                                            <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.requestLoanAmount}
                                                 name={"requestLoanAmount"}
+                                                input="currency"
                                             />                                     
                                         </InputGroup>
                                     </Col>
@@ -334,7 +345,7 @@ export default class MaxRefi extends Component {
                                             <InputGroup.Prepend>
                                             <InputGroup.Text>ARM</InputGroup.Text>
                                             </InputGroup.Prepend>
-                                                <FormControl type="number" name="arm" value={this.state.arm || undefined} onChange={(e)=>this.handleNumberChange("arm",e.target.value)} style={{marginRight: 5}}></FormControl>
+                                                <Input type="number" name="arm" value={ this.state.arm } handleChange={this.handleNumberChange}/>
                                         </InputGroup>
                                     </Col>
                                     <Col>
@@ -374,9 +385,10 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Gross Annual Income: </InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <CurrencyInput
+                                        <Input
                                             value={ grossAnnualIncome? grossAnnualIncome : 0}
                                             disabled={true}
+                                            input="currency"
                                         />
                                     </InputGroup>
                                 </Form.Row>
@@ -385,9 +397,10 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>NOI:</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <CurrencyInput
+                                        <Input
                                             value={ noi? noi: 0}
                                             disabled={true}
+                                            input="currency"
                                         />
                                     </InputGroup>
                                 </Form.Row>
@@ -396,9 +409,10 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Cap Rate:</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                            <PercentageInput
+                                            <Input
                                                 value={capRate}
                                                 disabled={true}
+                                                input="percent"
                                             />
                                     </InputGroup>
                                 </Form.Row>
@@ -407,9 +421,10 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Annual Debt Service:</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <CurrencyInput
+                                        <Input
                                             value={ annualDebtService? annualDebtService : 0}
                                             disabled={true}
+                                            input="currency"
                                         />
                                     </InputGroup>
                                 </Form.Row>
@@ -418,9 +433,10 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Prepend>
                                         <InputGroup.Text style={{fontWeight: "600"}}>Debt Service Coverage Ratio (DSCR):</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <PercentageInput
+                                        <Input
                                             value={dscr}
                                             disabled={true}
+                                            input="percent"
                                         />
                                     </InputGroup>
                                 </Form.Row>
