@@ -126,7 +126,10 @@ export default class SingleLoan extends Component {
                                     // <Card.Text style={{fontSize: 18}}><strong>{loan.key}: </strong>{loan.value}</Card.Text>
                                     <div>
                                         <Form.Label style={{fontSize: 16}}>{loan.key}</Form.Label>
-                                        <Input name={loan.key} value={loan.value}/>
+                                        <Input input={loan.key === "arm" || loan.key === "rate" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel"? null : "currency"}
+                                            name={loan.key} value={loan.value}
+                                        />
+                                        
                                     </div>
                                 )
                             })}
@@ -182,19 +185,17 @@ export default class SingleLoan extends Component {
                                         <Form.Row>
                                             <Col>
                                             <InputGroup className="mb-3">
-                                                <InputGroup.Prepend>
-                                                <InputGroup.Text>{attr.key}</InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                    <Input
-                                                        // handleChange={this.handleNumberChange}
-                                                        value={attr.value}
-                                                        name={attr.key}
-                                                        //input="currency"
-                                                        // name={"purchasePrice"}
-                                                        input={attr.key === "arm" || attr.key === "rate" || attr.key === "units" || attr.key==="creditScore" || attr.key==="exitStrategy" || attr.key === "turnaroundTime" || attr.key === "experienceLevel"?
-                                                            null : 
-                                                            "currency"}
-                                                    />
+                                                <Form.Label>{attr.key}</Form.Label>
+                                                <Input
+                                                    // handleChange={this.handleNumberChange}
+                                                    value={attr.value}
+                                                    name={attr.key}
+                                                    //input="currency"
+                                                    // name={"purchasePrice"}
+                                                    input={attr.key === "arm" || attr.key === "rate" || attr.key === "units" || attr.key==="creditScore" || attr.key==="exitStrategy" || attr.key === "turnaroundTime" || attr.key === "experienceLevel"?
+                                                        null : 
+                                                        "currency"}
+                                                />
                                                 
                                             </InputGroup>
                                             </Col>

@@ -433,7 +433,7 @@ export default class FixAndFlip extends Component {
                                             <InputGroup.Text style={{fontWeight: "600"}}>Profit Percent: %</InputGroup.Text>
                                             </InputGroup.Prepend>
                                                 <Input
-                                                    value={profitPercent}
+                                                    value={profitPercent? profitPercent.toFixed(2) : 0}
                                                     disabled={true}
                                                     input="percent"
                                                 />

@@ -99,7 +99,7 @@ div.react-date-picker__wrapper{
 
 div.react-date-picker__inputGroup{
   font-size: 16.5px;
-  padding: 0px, 0px;
+  width: 100% !important;
 }
 
 /* .react-date-picker__button{
@@ -111,10 +111,13 @@ div.react-date-picker__inputGroup.react-date-picker__inputGroup__input.react-dat
 }
 
 .react-date-picker__inputGroup__input.react-date-picker__inputGroup__day{
-  max-width: 23px !important;
+  max-width: 25px !important;
 }
 
 .react-date-picker__inputGroup__input.react-date-picker__inputGroup__month{
-  max-width: 20px !important;
+  max-width: 23px !important;
 }
 
+/* svg.react-date-picker__clear-button__icon.react-date-picker__button__icon{
+  display: none;
+} */

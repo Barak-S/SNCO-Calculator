@@ -352,7 +352,7 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Text style={{fontWeight: "600"}}>Gross Annual Income: </InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <Input
-                                            value={ grossAnnualIncome? grossAnnualIncome : 0}
+                                            value={ grossAnnualIncome? grossAnnualIncome.toFixed(2) : 0}
                                             disabled={true}
                                             input="currency"
                                         />
@@ -364,7 +364,7 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Text style={{fontWeight: "600"}}>NOI:</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <Input
-                                            value={ noi? noi: 0}
+                                            value={ noi? noi.toFixed(2) : 0}
                                             disabled={true}
                                             input="currency"
                                         />
@@ -400,7 +400,7 @@ export default class MaxRefi extends Component {
                                         <InputGroup.Text style={{fontWeight: "600"}}>Debt Service Coverage Ratio (DSCR):</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <Input
-                                            value={dscr}
+                                            value={dscr? dscr.toFixed(2) : 0}
                                             disabled={true}
                                             input="percent"
                                         />
