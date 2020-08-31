@@ -65,7 +65,6 @@ export default class SingleLoan extends Component {
 
 
     deleteLoan=(loanID)=>{
-        // Delete single loan
         fetch('https://snco-calculator-backend.herokuapp.com/loans',{
         method: 'delete',
         headers: { 'Content-Type': 'application/json' },
@@ -76,7 +75,6 @@ export default class SingleLoan extends Component {
     
 
     saveEdit=(loan)=>{
-        // console.log("saving")
         fetch(`https://snco-calculator-backend.herokuapp.com/loans/${this.state.loan._id}`,{
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -85,17 +83,17 @@ export default class SingleLoan extends Component {
     
     }
 
-    // copyAndReplaceStateAfterUpdate=(newLoan)=>{
-    //     let copy = this.state.loan.loan
-    //     console.log(this.state.loan)
-    // }
-
     handleChange=(key, value)=>{
         let loan = this.state.loan.loan
         loan[key] = parseInt(value)
         this.setState({
             editedLoan: loan
         })
+    }
+
+    parseKeyString=(str)=>{
+        let result = str.replace(/([a-z])([A-Z]+[a-z])/g, "$1 $2");
+        return result.charAt(0).toUpperCase() + result.slice(1)
     }
 
 
@@ -121,8 +119,7 @@ export default class SingleLoan extends Component {
                             <Card.Text style={{fontSize: 20, textAlign: "center", fontWeight: "600"}}>Loan Details</Card.Text>
                             {this.state.loanAttributes.map(loan=>{
                                 return(
-                                    // console.log(loan)
-                                    <Card.Text style={{fontSize: 18}}><strong>{loan.key}: </strong>{loan.key === "arm" || loan.key === "rate" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel" ? loan.value : this.numberFormat(loan.value)}</Card.Text>
+                                    <Card.Text style={{fontSize: 18}}><strong>{this.parseKeyString(loan.key)}: </strong>{loan.key === "arm" || loan.key === "rate" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel" ? loan.value : this.numberFormat(loan.value)}</Card.Text>
                                 )
                             })}
                             </Card>
@@ -144,11 +141,9 @@ export default class SingleLoan extends Component {
                         keyboard={false}
                     >
                         <Modal.Header closeButton>
-                        <Modal.Title>Are you sure you want to delete?</Modal.Title>
+                            <Modal.Title>Are you sure you want to delete?</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>
-                        This loan record will permanently be removed.
-                        </Modal.Body>
+                        <Modal.Body>This loan record will permanently be removed.</Modal.Body>
                         <Modal.Footer>
                         <Button variant="danger" onClick={()=>this.deleteLoan(this.state.loan._id)}>
                             Delete
@@ -177,14 +172,13 @@ export default class SingleLoan extends Component {
                                         <Form.Row>
                                             <Col>
                                             <InputGroup className="mb-3">
-                                                <Form.Label>{attr[0]}</Form.Label>
+                                                <Form.Label>{this.parseKeyString(attr[0])}</Form.Label>
                                                 <Input
                                                     handleChange = {this.handleChange}
                                                     value={attr[1]}
                                                     name={attr[0]}
                                                     input={attr[0] === "arm" || attr[0] === "rate" || attr[0] === "units" || attr[0]==="creditScore" || attr[0]==="exitStrategy" || attr[0] === "turnaroundTime" || attr[0] === "experienceLevel"? null : "currency"}
                                                 />
-                                                
                                             </InputGroup>
                                             </Col>
                                         </Form.Row>
