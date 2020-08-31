@@ -11,7 +11,7 @@ export default class SingleLoan extends Component {
     state={
         lat: 0,
         lng: 0,
-        loan:{},
+        loan: {},
         editedLoan: {},
         loanAttributes: [],
         deleteModal: false,
@@ -76,14 +76,19 @@ export default class SingleLoan extends Component {
     
 
     saveEdit=(loan)=>{
-        console.log("saving")
+        // console.log("saving")
         fetch(`https://snco-calculator-backend.herokuapp.com/loans/${this.state.loan._id}`,{
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id: this.state.loan._id, loan })
-        }).then(resp=>resp.json())
+        }).then(this.mapLoanAttributes(this.state.loan.loan))
     
     }
+
+    // copyAndReplaceStateAfterUpdate=(newLoan)=>{
+    //     let copy = this.state.loan.loan
+    //     console.log(this.state.loan)
+    // }
 
     handleChange=(key, value)=>{
         let loan = this.state.loan.loan
