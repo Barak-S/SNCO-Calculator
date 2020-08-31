@@ -100,7 +100,7 @@ export default class SingleLoan extends Component {
     render() {
 
         // this.mapOtherAttributes(this.state.otherAttributes)
-        console.log(this.state.loan.loan)
+        console.log(this.state.loan)
 
 
         return (
@@ -123,13 +123,7 @@ export default class SingleLoan extends Component {
                             <Card.Text style={{fontSize: 20, textAlign: "center", fontWeight: "600"}}>Loan Details</Card.Text>
                             {this.state.loanAttributes.map(loan=>{
                                 return(
-                                    // <Card.Text style={{fontSize: 18}}><strong>{loan.key}: </strong>{loan.value}</Card.Text>
-                                    <InputGroup className="mb-3">
-                                        <Form.Label>{loan.key}</Form.Label>
-                                        <Input input={loan.key === "arm" || loan.key === "rate" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel"? null : "currency"}
-                                            name={loan.key} value={loan.value}
-                                        />  
-                                    </InputGroup>
+                                    <Card.Text style={{fontSize: 18}}><strong>{loan.key}: </strong>{loan.key === "arm" || loan.key === "rate" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel" ? loan.value : this.numberFormat(loan.value)}</Card.Text>
                                 )
                             })}
                             </Card>
