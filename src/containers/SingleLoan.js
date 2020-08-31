@@ -12,8 +12,8 @@ export default class SingleLoan extends Component {
         lat: 0,
         lng: 0,
         loan:{},
+        editedLoan: {},
         loanAttributes: [],
-        // otherAttributes: [],
         deleteModal: false,
         editModal: false,
     }
@@ -21,9 +21,9 @@ export default class SingleLoan extends Component {
     componentDidMount(){
         fetch(`https://snco-calculator-backend.herokuapp.com${window.location.pathname}`)
         .then(resp=>resp.json())
-        .then(loan=>this.setState({ loan },()=>{
-            this.getAddressCoordinates(this.state.loan.address)
+        .then(loan=>this.setState({ loan: loan, editedLoan: loan.loan },()=>{
             this.mapLoanAttributes(this.state.loan.loan)
+            this.getAddressCoordinates(this.state.loan.address)
         }))
     }
 
@@ -41,13 +41,6 @@ export default class SingleLoan extends Component {
         .catch(error => console.error('Error', error));
     }
 
-    numberFormat = (value) =>
-    new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD'
-    }).format(value);
-
-    
     mapLoanAttributes(loan){
         let loanAttributes=[]
         for (const [key, value] of Object.entries(loan)) {
@@ -56,31 +49,20 @@ export default class SingleLoan extends Component {
         this.setState({
             loanAttributes
         })
-        // let otherAttributes=[]
-        // for (const [key, value] of Object.entries(otherAttr)) {
-        //     otherAttributes.push({key,value})
-        // }
-        // this.setState({
-        //     otherAttributes
-        // })
 
     }
 
-    mapOtherAttributes=(details)=>{
-        // only gets max refi calculations
-        let otherAttributes=[]
-        details.map(attr=> {
-            if (attr.key === "purchaseDate" || attr.key === "totalProjectCost" || attr.key === "noi" || attr.key === "annualDebtService" || attr.key=== "dscr"){
-                otherAttributes.push(attr)
-            }
-            
-        })
-        console.log(otherAttributes)
-    }
+    numberFormat = (value) =>
+    new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(value);
+
 
     handleClose=()=>{
         this.setState({ deleteModal: !this.state.deleteModal })
     }
+
 
     deleteLoan=(loanID)=>{
         // Delete single loan
@@ -91,17 +73,28 @@ export default class SingleLoan extends Component {
         })
         this.props.history.push('/loans')
     }
+    
 
-    saveEdit=()=>{
+    saveEdit=(loan)=>{
         console.log("saving")
+        fetch(`https://snco-calculator-backend.herokuapp.com/loans/${this.state.loan._id}`,{
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: this.state.loan._id, loan })
+        }).then(resp=>resp.json())
+    
+    }
+
+    handleChange=(key, value)=>{
+        let loan = this.state.loan.loan
+        loan[key] = parseInt(value)
+        this.setState({
+            editedLoan: loan
+        })
     }
 
 
     render() {
-
-        // this.mapOtherAttributes(this.state.otherAttributes)
-        console.log(this.state.loan)
-
 
         return (
             <div style={{paddingBottom: 25}}>
@@ -123,6 +116,7 @@ export default class SingleLoan extends Component {
                             <Card.Text style={{fontSize: 20, textAlign: "center", fontWeight: "600"}}>Loan Details</Card.Text>
                             {this.state.loanAttributes.map(loan=>{
                                 return(
+                                    // console.log(loan)
                                     <Card.Text style={{fontSize: 18}}><strong>{loan.key}: </strong>{loan.key === "arm" || loan.key === "rate" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel" ? loan.value : this.numberFormat(loan.value)}</Card.Text>
                                 )
                             })}
@@ -173,19 +167,17 @@ export default class SingleLoan extends Component {
                         </Modal.Header>
                         <Modal.Body>
                             <Form>
-                                {this.state.loanAttributes.map(attr=>{
+                                {Object.entries(this.state.editedLoan).map(attr=>{
                                     return(
                                         <Form.Row>
                                             <Col>
                                             <InputGroup className="mb-3">
-                                                <Form.Label>{attr.key}</Form.Label>
+                                                <Form.Label>{attr[0]}</Form.Label>
                                                 <Input
-                                                    // handleChange={this.handleNumberChange}
-                                                    value={attr.value}
-                                                    name={attr.key}
-                                                    //input="currency"
-                                                    // name={"purchasePrice"}
-                                                    input={attr.key === "arm" || attr.key === "rate" || attr.key === "units" || attr.key==="creditScore" || attr.key==="exitStrategy" || attr.key === "turnaroundTime" || attr.key === "experienceLevel"? null : "currency"}
+                                                    handleChange = {this.handleChange}
+                                                    value={attr[1]}
+                                                    name={attr[0]}
+                                                    input={attr[0] === "arm" || attr[0] === "rate" || attr[0] === "units" || attr[0]==="creditScore" || attr[0]==="exitStrategy" || attr[0] === "turnaroundTime" || attr[0] === "experienceLevel"? null : "currency"}
                                                 />
                                                 
                                             </InputGroup>
@@ -197,7 +189,7 @@ export default class SingleLoan extends Component {
 
                         </Modal.Body>
                         <Modal.Footer>
-                        <Button variant="success">
+                        <Button variant="success" onClick={()=>{this.saveEdit(this.state.editedLoan); this.editModal()}}>
                             {/* onclick not ready */}
                             Save
                         </Button>
