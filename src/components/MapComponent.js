@@ -16,13 +16,10 @@ const MapContainer = (props) => {
      
         <GoogleMap
           mapContainerStyle={mapStyles}
-          zoom={18}
+          zoom={19}
           center={defaultCenter}
         >
-            <Marker
-                lat={props.lat}
-                lng={props.lng}
-            />
+            <Marker position={{ lat: props.lat, lng: props.lng }} />
         </GoogleMap>
      
   )

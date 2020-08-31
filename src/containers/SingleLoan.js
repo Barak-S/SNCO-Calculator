@@ -49,7 +49,6 @@ export default class SingleLoan extends Component {
         this.setState({
             loanAttributes
         })
-
     }
 
     numberFormat = (value) =>
@@ -110,9 +109,9 @@ export default class SingleLoan extends Component {
                                 lat={this.state.lat}
                                 lng={this.state.lng}
                             />
-                            <Card style={{ border: '1px solid #B98757', borderRadius: 10, padding: 7, margin: 5 }}>
+                            {/* <Card style={{ border: '1px solid #B98757', borderRadius: 10, padding: 7, margin: 5 }}>
                                 <Card.Text>Loan Calculation Details...</Card.Text>                                
-                            </Card>
+                            </Card> */}
                         </Col>
                         <Col xs={12} md={4} style={{textAlign: "left"}}>
                             <Card style={{ border: '1px solid #B98757', borderRadius: 10, padding: 7, margin: 5 }}>
