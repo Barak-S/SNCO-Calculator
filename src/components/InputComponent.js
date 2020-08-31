@@ -17,7 +17,7 @@ export default class CurrencyInput extends Component {
                     name={this.props.name}
                     formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                     parser={ value => value.replace(/\$\s?|(,*)/g, '')}
-                    style={{ minWidth: "55%",  fontSize: 17, paddingTop: 3 }}
+                    style={{ minWidth: "100%",  fontSize: 17, paddingTop: 3 }}
                     value={ this.props.value? this.props.value : 0}
                     onChange={e => this.props.handleChange(this.props.name,e)}
                     disabled={this.props.disabled}
@@ -29,7 +29,7 @@ export default class CurrencyInput extends Component {
                     name={this.props.name}
                     formatter={value => `${value}%`}
                     parser={value => value.replace('%', '')}
-                    style={{ minWidth:"55%", fontSize: 17, paddingTop: 3 }}
+                    style={{ minWidth:"100%", fontSize: 17, paddingTop: 3 }}
                     value={this.props.value? this.props.value : 0} 
                     min={0}
                     max={100}
@@ -37,7 +37,7 @@ export default class CurrencyInput extends Component {
                     disabled={this.props.disabled}
                 />
         } else {
-            input = <FormControl autoComplete="new-password" name={this.props.name} value={this.props.value || undefined} onChange={(e)=>this.props.handleChange(this.props.name ,e.target.value)}></FormControl>
+            input = <FormControl autoComplete="new-password" style={{width: "100%"}} name={this.props.name} value={this.props.value || undefined} onChange={(e)=>this.props.handleChange(this.props.name ,e.target.value)}></FormControl>
         }
         return (
                 input

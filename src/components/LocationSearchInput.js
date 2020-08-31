@@ -4,7 +4,7 @@ import PlacesAutocomplete, {
   getLatLng,
 } from 'react-places-autocomplete';
 
-import { FormControl, InputGroup } from 'react-bootstrap';
+import { FormControl, InputGroup, Form } from 'react-bootstrap';
 
  
 export default class LocationSearchInput extends React.Component {
@@ -37,9 +37,7 @@ export default class LocationSearchInput extends React.Component {
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
                 <InputGroup className="mb-3">
-                    <InputGroup.Prepend>
-                    <InputGroup.Text>Address</InputGroup.Text>
-                    </InputGroup.Prepend> 
+                <Form.Label style={{width: "100%", textAlign: "left"}}>Address</Form.Label>
                     <FormControl {...getInputProps({
                         autoComplete: "new-password"
                     })}>

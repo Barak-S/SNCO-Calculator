@@ -112,9 +112,7 @@ export default class FixAndFlip extends Component {
                                     />
                                 <Form.Row>
                                     <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Purchase Price</InputGroup.Text>
-                                        </InputGroup.Prepend>
+                                        <Form.Label>Purchase Price</Form.Label>
                                         <Input
                                             handleChange={this.handleNumberChange}
                                             value={this.state.purchasePrice}
@@ -134,9 +132,7 @@ export default class FixAndFlip extends Component {
                                 </Form.Row>
                                 <Form.Row>
                                     <InputGroup className="mb-3" >
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Renovation Costs</InputGroup.Text>
-                                        </InputGroup.Prepend>
+                                        <Form.Label>Renovation Costs</Form.Label>
                                         <Input
                                             handleChange={this.handleNumberChange}
                                             value={this.state.renovation}
@@ -173,9 +169,7 @@ export default class FixAndFlip extends Component {
                                         <div>
                                 <Form.Row>
                                     <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>ARV</InputGroup.Text>
-                                        </InputGroup.Prepend>
+                                        <Form.Label>ARV</Form.Label>
                                         <Input
                                             handleChange={this.handleNumberChange}
                                             value={this.state.arv}
@@ -186,11 +180,11 @@ export default class FixAndFlip extends Component {
                                 </Form.Row>
 
 
-                                <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 5, margin: 5   }}>
+                                <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 7.5, marginBottom: 10 }}>
                                 <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
-                                        <InputGroup.Text>Carrying Costs</InputGroup.Text>
+                                            <InputGroup.Text>Carrying Costs</InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <Input
                                             handleChange={this.handleNumberChange}
@@ -202,47 +196,41 @@ export default class FixAndFlip extends Component {
                                 </Form.Row>
                                 <Form.Row>
                                     <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                            <InputGroup.Text>Taxes</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                            <Input
-                                                handleChange={this.handleNumberChange}
-                                                value={this.state.taxes}
-                                                name={"taxes"}
-                                                input="currency"
-                                            />
+                                        <Form.Label>Taxes</Form.Label>
+                                        <Input
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.taxes}
+                                            name={"taxes"}
+                                            input="currency"
+                                        />
                                     </InputGroup>
                                 </Form.Row>
                                 <Form.Row>
                                     <InputGroup className="mb-3" >
-                                        <InputGroup.Prepend>
-                                            <InputGroup.Text>Insurance</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                            <Input
-                                                handleChange={this.handleNumberChange}
-                                                value={this.state.insurance}
-                                                name={"insurance"}
-                                                input="currency"
-                                            />
+                                        <Form.Label>Insurance</Form.Label>
+                                        <Input
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.insurance}
+                                            name={"insurance"}
+                                            input="currency"
+                                        />
                                     </InputGroup>
                                 </Form.Row>
                                 <Form.Row>
                                     <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                            <InputGroup.Text>Interest</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                            <Input
-                                                handleChange={this.handleNumberChange}
-                                                value={this.state.interest}
-                                                name={"interest"}
-                                                input="currency"
-                                            />
+                                        <Form.Label>Interest</Form.Label>
+                                        <Input
+                                            handleChange={this.handleNumberChange}
+                                            value={this.state.interest}
+                                            name={"interest"}
+                                            input="currency"
+                                        />
                                         
                                     </InputGroup>
                                 </Form.Row>
                                 </Card>
 
-                                    <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 5, margin: 5  }}>
+                                    <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 7.5, marginBottom: 10 }}>
                                     <Form.Row>
                                         <InputGroup className="mb-3">   
                                                 <InputGroup.Prepend>
@@ -257,63 +245,55 @@ export default class FixAndFlip extends Component {
                                     </Form.Row>
                                     <Form.Row>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text>Points</InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <Input
-                                                    handleChange={this.handleNumberChange}
-                                                    value={this.state.points}
-                                                    name={"points"}
-                                                    input="currency"
-                                                />
+                                            <Form.Label>Points</Form.Label>
+                                            <Input
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.points}
+                                                name={"points"}
+                                                input="currency"
+                                            />
                                         </InputGroup>
                                     </Form.Row>
                                     <Form.Row>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text>Title Bill</InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <Input
-                                                    handleChange={this.handleNumberChange}
-                                                    value={this.state.titleBill}
-                                                    name={"titleBill"}
-                                                    input="currency"
-                                                />
+                                            <Form.Label>Title Bill</Form.Label>
+                                            <Input
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.titleBill}
+                                                name={"titleBill"}
+                                                input="currency"
+                                            />
                                         </InputGroup>
                                     </Form.Row>
                                     <Form.Row>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text>Legal Lender</InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <Input
-                                                    handleChange={this.handleNumberChange}
-                                                    value={this.state.legalLender}
-                                                    name={"legalLender"}
-                                                    input="currency"
-                                                />
+                                            <Form.Label>Legal Lender</Form.Label>
+                                            <Input
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.legalLender}
+                                                name={"legalLender"}
+                                                input="currency"
+                                            />
                                         </InputGroup>
                                     </Form.Row>
                                     <Form.Row>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text>Legal Closing</InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <Input
-                                                    handleChange={this.handleNumberChange}
-                                                    value={this.state.legalClosing}
-                                                    name={"legalClosing"}
-                                                    input="currency"
-                                                />
+                                            <Form.Label>Legal Closing</Form.Label>
+                                            <Input
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.legalClosing}
+                                                name={"legalClosing"}
+                                                input="currency"
+                                            />
                                         </InputGroup>
                                     </Form.Row>
                                     </Card>
 
-                                    <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 5, margin: 5  }}>
+                                    <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 7.5, marginBottom: 10 }}>
                                     <Form.Row>
                                         <InputGroup className="mb-3">   
-                                                <InputGroup.Prepend>
-                                            <InputGroup.Text>Resale Costs</InputGroup.Text>
+                                            <InputGroup.Prepend>
+                                                <InputGroup.Text>Resale Costs</InputGroup.Text>
                                             </InputGroup.Prepend>
                                             <Input
                                                 value={ resaleCosts }  
@@ -324,46 +304,41 @@ export default class FixAndFlip extends Component {
                                     </Form.Row>   
                                     <Form.Row>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text>Legal</InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <Input
-                                                    handleChange={this.handleNumberChange}
-                                                    value={this.state.legalResale}
-                                                    name={"legalResale"}
-                                                    input="currency"
-                                                />
+                                            <Form.Label>Legal</Form.Label>
+                                            <Input
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.legalResale}
+                                                name={"legalResale"}
+                                                input="currency"
+                                            />
                                         </InputGroup>
                                     </Form.Row>
                                     <Form.Row>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text>Transfer Tax</InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <Input
-                                                    handleChange={this.handleNumberChange}
-                                                    value={this.state.transferTax}
-                                                    name={"transferTax"}
-                                                    input="currency"
-                                                />
+                                            <Form.Label>Transfer Tax</Form.Label>
+                                            <Input
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.transferTax}
+                                                name={"transferTax"}
+                                                input="currency"
+                                            />
                                         </InputGroup>
                                     </Form.Row>
                                     <Form.Row>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text>Broker</InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <Input
-                                                    handleChange={this.handleNumberChange}
-                                                    value={this.state.broker}
-                                                    name={"broker"}
-                                                    input="currency"
-                                                />
+                                            <Form.Label>Broker</Form.Label>
+                                            <Input
+                                                handleChange={this.handleNumberChange}
+                                                value={this.state.broker}
+                                                name={"broker"}
+                                                input="currency"
+                                            />
                                         </InputGroup>  
                                     </Form.Row> 
                                     </Card>
                                     <Form.Row>
-                                        <InputGroup className="mb-3">
+                                        <Col xs={12} md={6}>
+                                            <InputGroup className="mb-3">
                                                 <DropdownButton
                                                     as={InputGroup.Append}
                                                     variant="outline-secondary"
@@ -376,16 +351,12 @@ export default class FixAndFlip extends Component {
                                                     <Dropdown.Item eventKey="6 properties">6 properties</Dropdown.Item>
                                                 </DropdownButton>
 
-                                                <FormControl name="experienceLevel" value={ this.state.experienceLevel || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                                <InputGroup.Prepend>
-                                            <InputGroup.Text>Credit Score</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <Input name="creditScore" value={ this.state.creditScore || undefined} type="number" handleChange={this.handleNumberChange} />
-                                        </InputGroup>
-                                    </Form.Row>
-                                    <Form.Row>
-                                        <InputGroup className="mb-3">
-                                            <DropdownButton
+                                                <FormControl name="experienceLevel" value={ this.state.experienceLevel || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)}></FormControl>
+                                            </InputGroup>
+                                        </Col>  
+                                        <Col xs={12} md={6}>
+                                            <InputGroup className="mb-3">
+                                                <DropdownButton
                                                 as={InputGroup.Append}
                                                 variant="outline-secondary"
                                                 onSelect= {(e)=>this.changeturnaroundTime(e)}
@@ -398,8 +369,18 @@ export default class FixAndFlip extends Component {
                                                 <Dropdown.Item eventKey="18 Months">18 Months</Dropdown.Item>
                                                 <Dropdown.Item eventKey="24 Months">24 Months</Dropdown.Item>
                                             </DropdownButton>
-                                                <FormControl name="turnaroundTime" value={ this.state.turnaroundTime || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)} style={{marginRight: 7}}></FormControl>
-                                        </InputGroup>
+                                            <FormControl name="turnaroundTime" value={ this.state.turnaroundTime || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)}></FormControl>
+
+                                            </InputGroup>
+                                        </Col>
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <Col xs lg="2">
+                                            <InputGroup className="mb-3">
+                                                <Form.Label>Credit Score</Form.Label>
+                                                <Input name="creditScore" value={ this.state.creditScore || undefined} type="number" handleChange={this.handleNumberChange} />
+                                            </InputGroup>
+                                        </Col>
                                     </Form.Row>
 
                                         </div> 

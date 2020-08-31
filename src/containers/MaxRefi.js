@@ -125,17 +125,13 @@ export default class MaxRefi extends Component {
                                 <Form.Row>
                                     <Col>
                                     <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Units</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                            <Input name="units" value={this.state.units || undefined} type="number" handleChange={this.handleNumberChange}/>
+                                        <Form.Label>Units</Form.Label>
+                                        <Input name="units" value={this.state.units || undefined} type="number" handleChange={this.handleNumberChange}/>
                                     </InputGroup>
                                     </Col>
                                     <Col>
                                     <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                        <InputGroup.Text>Purchase Date</InputGroup.Text>
-                                        </InputGroup.Prepend>
+                                    <Form.Label style={{width: "100%", textAlign: "left"}}>Purchase Date</Form.Label>
                                         <DatePicker
                                             onChange={this.props.dateChange}
                                             value={this.props.date}
@@ -146,9 +142,7 @@ export default class MaxRefi extends Component {
                                 <Form.Row>
                                     <Col>
                                     <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text>Purchase Price</InputGroup.Text>
-                                        </InputGroup.Prepend>
+                                        <Form.Label>Puchase Price</Form.Label>
                                         <Input
                                             handleChange={this.handleNumberChange}
                                             value={this.state.purchasePrice}
@@ -171,9 +165,7 @@ export default class MaxRefi extends Component {
                                 <Form.Row>
                                     <Col>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Hard Costs</InputGroup.Text>
-                                            </InputGroup.Prepend>
+                                            <Form.Label>Hard Costs</Form.Label>
                                             <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.hardCosts}
@@ -184,9 +176,7 @@ export default class MaxRefi extends Component {
                                     </Col>
                                     <Col>   
                                         <InputGroup className="mb-3">                                    
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Soft Costs</InputGroup.Text>
-                                            </InputGroup.Prepend>
+                                            <Form.Label>Soft Costs</Form.Label>
                                             <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.softCosts}
@@ -199,9 +189,7 @@ export default class MaxRefi extends Component {
                                 <Form.Row>
                                     <Col>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Payoff</InputGroup.Text>
-                                            </InputGroup.Prepend>
+                                            <Form.Label>Payoff</Form.Label>
                                             <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.payoff}
@@ -212,9 +200,7 @@ export default class MaxRefi extends Component {
                                     </Col> 
                                     <Col>
                                         <InputGroup className="mb-3">                                     
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Annual Gross Rent</InputGroup.Text>
-                                            </InputGroup.Prepend>
+                                            <Form.Label>Annual Gross Rent</Form.Label>
                                             <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.annualGrossRent}
@@ -227,9 +213,7 @@ export default class MaxRefi extends Component {
                                 <Form.Row>
                                     <Col>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Vacancy</InputGroup.Text>
-                                            </InputGroup.Prepend>
+                                        <Form.Label>Vacancy</Form.Label>
                                             <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={ vacancy }
@@ -241,9 +225,7 @@ export default class MaxRefi extends Component {
                                     </Col> 
                                     <Col>
                                         <InputGroup className="mb-3">                                                    
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Taxes</InputGroup.Text>
-                                            </InputGroup.Prepend>
+                                        <Form.Label>Taxes</Form.Label>
                                             <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.taxes}
@@ -256,9 +238,7 @@ export default class MaxRefi extends Component {
                                 <Form.Row>
                                     <Col>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Utilities</InputGroup.Text>
-                                            </InputGroup.Prepend>
+                                            <Form.Label>Utilities</Form.Label>
                                             <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.utilities}
@@ -269,9 +249,7 @@ export default class MaxRefi extends Component {
                                     </Col> 
                                     <Col>
                                         <InputGroup className="mb-3">                                                
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Insurance</InputGroup.Text>
-                                            </InputGroup.Prepend>
+                                            <Form.Label>Insurance</Form.Label>
                                             <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.insurance}
@@ -284,9 +262,7 @@ export default class MaxRefi extends Component {
                                 <Form.Row>
                                     <Col>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Water Sewer</InputGroup.Text>
-                                            </InputGroup.Prepend>
+                                            <Form.Label>Water Sewer</Form.Label>
                                             <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.waterSewer}
@@ -297,9 +273,7 @@ export default class MaxRefi extends Component {
                                     </Col> 
                                     <Col>
                                         <InputGroup className="mb-3">                                          
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Management</InputGroup.Text>
-                                            </InputGroup.Prepend>
+                                            <Form.Label>Management</Form.Label>
                                             <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={ management }
@@ -313,9 +287,7 @@ export default class MaxRefi extends Component {
                                 <Form.Row>
                                     <Col>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Replacement Reserves</InputGroup.Text>
-                                            </InputGroup.Prepend>
+                                            <Form.Label>Replacement Reserves</Form.Label>
                                             <Input
                                                 handleChange={ this.handleNumberChange }
                                                 value={ replacementReserves }
@@ -327,9 +299,7 @@ export default class MaxRefi extends Component {
                                     </Col> 
                                     <Col>
                                         <InputGroup className="mb-3" >                                         
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Loan Amount</InputGroup.Text>
-                                            </InputGroup.Prepend>
+                                            <Form.Label>Loan Amount</Form.Label>
                                             <Input
                                                 handleChange={this.handleNumberChange}
                                                 value={this.state.requestLoanAmount}
@@ -342,17 +312,13 @@ export default class MaxRefi extends Component {
                                 <Form.Row>
                                     <Col>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>ARM</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                                <Input type="number" name="arm" value={ this.state.arm } handleChange={this.handleNumberChange}/>
+                                            <Form.Label>ARM</Form.Label>
+                                            <Input type="number" name="arm" value={ this.state.arm } handleChange={this.handleNumberChange}/>
                                         </InputGroup>
                                     </Col>
                                     <Col>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <InputGroup.Text>Rate</InputGroup.Text>
-                                            </InputGroup.Prepend>
+                                            <Form.Label style={{width: "100%", textAlign: "left"}}>Rate</Form.Label>
                                                 {/* <PercentageInput
                                                     handleChange={ this.handleNumberChange }
                                                     value={this.state.rate}
