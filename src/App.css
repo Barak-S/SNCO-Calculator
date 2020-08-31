@@ -51,7 +51,6 @@ a.NavLinks.nav-link:hover{
   padding-top: 15px;
 }
 
-
 div.ant-input-number-handler-wrap{
   display: none;
 }
@@ -61,6 +60,10 @@ div.ant-input-number-handler-wrap{
   border: 2px solid #B98757;
   border-radius: 15;
   cursor: pointer;
+}
+
+label.form-label{
+  font-size: 16.5px;
 }
 
 #LoanAddress{

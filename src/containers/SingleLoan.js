@@ -107,7 +107,7 @@ export default class SingleLoan extends Component {
             <div style={{paddingBottom: 25}}>
                 <Card className="SingleLoan" style={{ border: '1px solid #B98757', borderRadius: 12, margin: "1rem", padding: 15 }}>
                     <Card.Text style={{ fontWeight: "600", fontSize: 22, margin: 2.5 }}>{this.state.loan.address}</Card.Text>
-                    <Card.Text><strong>Type: </strong>{this.state.loan.properyType}</Card.Text>
+                    <Card.Text style={{fontSize: 17}}><strong>Type: </strong>{this.state.loan.properyType}</Card.Text>
                     <Row>
                         <Col xs={12} md={8}>
                             <MapContainer
@@ -124,13 +124,12 @@ export default class SingleLoan extends Component {
                             {this.state.loanAttributes.map(loan=>{
                                 return(
                                     // <Card.Text style={{fontSize: 18}}><strong>{loan.key}: </strong>{loan.value}</Card.Text>
-                                    <div>
-                                        <Form.Label style={{fontSize: 16}}>{loan.key}</Form.Label>
+                                    <InputGroup className="mb-3">
+                                        <Form.Label>{loan.key}</Form.Label>
                                         <Input input={loan.key === "arm" || loan.key === "rate" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel"? null : "currency"}
                                             name={loan.key} value={loan.value}
-                                        />
-                                        
-                                    </div>
+                                        />  
+                                    </InputGroup>
                                 )
                             })}
                             </Card>
@@ -192,9 +191,7 @@ export default class SingleLoan extends Component {
                                                     name={attr.key}
                                                     //input="currency"
                                                     // name={"purchasePrice"}
-                                                    input={attr.key === "arm" || attr.key === "rate" || attr.key === "units" || attr.key==="creditScore" || attr.key==="exitStrategy" || attr.key === "turnaroundTime" || attr.key === "experienceLevel"?
-                                                        null : 
-                                                        "currency"}
+                                                    input={attr.key === "arm" || attr.key === "rate" || attr.key === "units" || attr.key==="creditScore" || attr.key==="exitStrategy" || attr.key === "turnaroundTime" || attr.key === "experienceLevel"? null : "currency"}
                                                 />
                                                 
                                             </InputGroup>
