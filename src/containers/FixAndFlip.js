@@ -333,7 +333,7 @@ export default class FixAndFlip extends Component {
                                         </Col>
                                     </Form.Row>
                                     <Form.Row>
-                                        <Col xs lg="2">
+                                        <Col xs lg="6">
                                             <InputGroup className="mb-3">
                                                 <Form.Label>Credit Score</Form.Label>
                                                 <Input name="creditScore" value={ this.state.creditScore || undefined} type="number" handleChange={this.handleNumberChange} />

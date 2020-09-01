@@ -37,7 +37,7 @@ export default class CurrencyInput extends Component {
                     disabled={this.props.disabled}
                 />
         } else if (this.props.input === "turnaroundTime"){
-            input = <div>
+            input = <div style={{width: "100%"}}>
                     <DropdownButton
                         as={InputGroup.Append}
                         variant="outline-secondary"
@@ -55,7 +55,7 @@ export default class CurrencyInput extends Component {
                     </div>
         
         } else if (this.props.input === "experienceLevel"){
-            input = <div>
+            input = <div style={{width: "100%"}}>
                         <DropdownButton
                             as={InputGroup.Append}
                             variant="outline-secondary"

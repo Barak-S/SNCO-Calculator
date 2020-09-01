@@ -302,16 +302,11 @@ export default class MaxRefi extends Component {
                                     <Col>
                                         <InputGroup className="mb-3">
                                             <Form.Label style={{width: "100%", textAlign: "left"}}>Rate</Form.Label>
-                                                {/* <PercentageInput
-                                                    handleChange={ this.handleNumberChange }
-                                                    value={this.state.rate}
-                                                    name={"rate"}
-                                                /> */}
                                                 <InputNumber
                                                     name={"rate"}
                                                     formatter={value => `${value}%`}
                                                     parser={value => value.replace('%', '')}
-                                                    style={{ width: "35%",fontSize: 17, paddingTop: 3 }}
+                                                    style={{ width: "55%",fontSize: 17, paddingTop: 3 }}
                                                     value={this.state.rate? this.state.rate : 0} 
                                                     min={0}
                                                     max={100}
