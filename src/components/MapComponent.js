@@ -13,7 +13,7 @@ const MapContainer = (props) => {
     }
   
   return (
-      <div className="mapWrapper"style={{border: '2.75px solid #B98757', padding: 3}}>
+      <div className="mapWrapper"style={{border: '2.75px solid #B98757', padding: 3, marginBottom: 5}}>
         <GoogleMap
           mapContainerStyle={mapStyles}
           zoom={19}
