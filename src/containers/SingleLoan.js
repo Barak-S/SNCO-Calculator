@@ -93,6 +93,21 @@ export default class SingleLoan extends Component {
         })
     }
 
+    changeExperience=(e)=>{
+        let expCopy = this.state.loan.loan
+        let changeExp = expCopy.experienceLevel = e
+        console.log(expCopy)
+        this.setState({
+            editedLoan: expCopy
+        })
+    }
+
+    changeturnaroundTime=(e)=>{
+        this.setState({
+            turnaroundTime: e
+        })
+    }
+
     parseKeyString=(str)=>{
         let result = str.replace(/([a-z])([A-Z]+[a-z])/g, "$1 $2");
         return result.charAt(0).toUpperCase() + result.slice(1)
@@ -170,23 +185,56 @@ export default class SingleLoan extends Component {
                         <Modal.Body>
                             <Form>
                                 {Object.entries(this.state.editedLoan).map(attr=>{
-                                    if (attr[0] !== "exitStrategy"){
-                                        return(
-                                            <Form.Row>
-                                                <Col>
-                                                <InputGroup className="mb-3">
-                                                    <Form.Label>{this.parseKeyString(attr[0])}</Form.Label>
-                                                    <Input
-                                                        handleChange = {this.handleChange}
-                                                        value={attr[1]}
-                                                        name={attr[0]}
-                                                        input={attr[0] === "arm" || attr[0] === "rate" || attr[0] === "units" || attr[0]==="creditScore" || attr[0]==="exitStrategy" || attr[0] === "turnaroundTime" || attr[0] === "experienceLevel"? null : "currency"}
-                                                    />
-                                                </InputGroup>
-                                                </Col>
-                                            </Form.Row>
-                                        )
-                                    }
+                                    if (attr[0] !== "exitStrategy" ){
+                                        if (attr[0] === "turnaroundTime"){
+                                            return (
+                                                <Form.Row>
+                                                    <Col>
+                                                    <InputGroup className="mb-3">
+                                                        <Input
+                                                            handleChange = {this.handleChange}
+                                                            value={attr[1]}
+                                                            name={attr[0]}
+                                                            input={"turnaroundTime"}
+                                                        />
+                                                    </InputGroup>
+                                                    </Col>
+                                                </Form.Row>
+                                            )
+                                        } else if (attr[0] === "experienceLevel"){
+                                            return(
+                                                <Form.Row>
+                                                    <Col>
+                                                    <InputGroup className="mb-3">
+                                                        <Input
+                                                            changeExperience = {this.changeExperience}
+                                                            value={attr[1]}
+                                                            name={attr[0]}
+                                                            input={"experienceLevel"}
+                                                        />
+                                                    </InputGroup>
+                                                    </Col>
+                                                </Form.Row>
+                                            )
+                                        } else {
+                                            return(
+                                                <Form.Row>
+                                                    <Col>
+                                                    <InputGroup className="mb-3">
+                                                        <Form.Label>{this.parseKeyString(attr[0])}</Form.Label>
+                                                        <Input
+                                                            handleChange = {this.handleChange}
+                                                            value={attr[1]}
+                                                            name={attr[0]}
+                                                            input={attr[0] === "arm" || attr[0] === "rate" || attr[0] === "units" || attr[0]==="creditScore" || attr[0] === "turnaroundTime" || attr[0] === "experienceLevel"? null : "currency"}
+                                                        />
+                                                    </InputGroup>
+                                                    </Col>
+                                                </Form.Row>
+                                            )  
+                                        }
+                                    }   
+                                    
                                 })}
                             </Form>
 

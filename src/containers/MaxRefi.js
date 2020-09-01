@@ -142,16 +142,6 @@ export default class MaxRefi extends Component {
                                             name={"purchasePrice"}
                                             input="currency"
                                         />
-                                        {/* <InputNumber
-                                            name={"purchasePrice"}
-                                            formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                            parser={ value => value.replace(/\$\s?|(,*)/g, '')}
-                                            style={{ fontSize: 17, display: "table-cell"  }}
-                                            value={ this.state.purchasePrice? this.state.purchasePrice.toFixed(2) : 0}
-                                            onChange={e => this.handleNumberChange(this.props.name,e)}
-                                            
-
-                                        /> */}
                                     </InputGroup>
                                     </Col>
                                 </Form.Row>
@@ -321,7 +311,7 @@ export default class MaxRefi extends Component {
                                                     name={"rate"}
                                                     formatter={value => `${value}%`}
                                                     parser={value => value.replace('%', '')}
-                                                    style={{ fontSize: 17, paddingTop: 3 }}
+                                                    style={{ width: "35%",fontSize: 17, paddingTop: 3 }}
                                                     value={this.state.rate? this.state.rate : 0} 
                                                     min={0}
                                                     max={100}

@@ -120,14 +120,6 @@ export default class FixAndFlip extends Component {
                                             input="currency"
 
                                         />
-                                        {/* <InputNumber
-                                            name={'purchasePrice'}
-                                            formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                            parser={ value => value.replace(/\$\s?|(,*)/g, '')}
-                                            style={{ width: "100%" }}
-                                            value={ this.state.purchasePrice? this.state.purchasePrice : 0}
-                                            onChange={e => this.handleNumberChange("purchasePrice",e)}
-                                        /> */}
                                     </InputGroup>
                                 </Form.Row>
                                 <Form.Row>
@@ -139,14 +131,6 @@ export default class FixAndFlip extends Component {
                                             name={"renovation"}
                                             input="currency"
                                         />
-                                        {/* <InputNumber
-                                            name={'renovation'}
-                                            formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                            parser={ value => value.replace(/\$\s?|(,*)/g, '')}
-                                            style={{ width: "100%" }}
-                                            value={ this.state.renovation? this.state.renovation : 0}
-                                            onChange={e => this.handleNumberChange("renovation",e)}
-                                        /> */}
                                     </InputGroup>
                                 </Form.Row>
                                 <Form.Row>
