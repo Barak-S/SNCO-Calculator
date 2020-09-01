@@ -94,17 +94,20 @@ export default class SingleLoan extends Component {
     }
 
     changeExperience=(e)=>{
-        let expCopy = this.state.loan.loan
-        let changeExp = expCopy.experienceLevel = e
-        console.log(expCopy)
+        let stateCopy = this.state.loan.loan
+        stateCopy.experienceLevel = e
+        console.log(stateCopy)
         this.setState({
-            editedLoan: expCopy
+            editedLoan: stateCopy
         })
     }
 
     changeturnaroundTime=(e)=>{
+        let stateCopy = this.state.loan.loan
+        stateCopy.turnaroundTime = e
+        console.log(stateCopy)
         this.setState({
-            turnaroundTime: e
+            editedLoan: stateCopy
         })
     }
 
@@ -192,9 +195,8 @@ export default class SingleLoan extends Component {
                                                     <Col>
                                                     <InputGroup className="mb-3">
                                                         <Input
-                                                            handleChange = {this.handleChange}
+                                                            changeturnaroundTime = {this.changeturnaroundTime}
                                                             value={attr[1]}
-                                                            name={attr[0]}
                                                             input={"turnaroundTime"}
                                                         />
                                                     </InputGroup>
@@ -209,7 +211,6 @@ export default class SingleLoan extends Component {
                                                         <Input
                                                             changeExperience = {this.changeExperience}
                                                             value={attr[1]}
-                                                            name={attr[0]}
                                                             input={"experienceLevel"}
                                                         />
                                                     </InputGroup>
