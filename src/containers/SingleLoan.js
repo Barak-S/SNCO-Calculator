@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, Modal, Form, Button } from 'react-bootstrap';
+import { InputNumber } from "antd";
 
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
   
@@ -96,7 +97,6 @@ export default class SingleLoan extends Component {
     changeExperience=(e)=>{
         let stateCopy = this.state.loan.loan
         stateCopy.experienceLevel = e
-        console.log(stateCopy)
         this.setState({
             editedLoan: stateCopy
         })
@@ -105,7 +105,14 @@ export default class SingleLoan extends Component {
     changeturnaroundTime=(e)=>{
         let stateCopy = this.state.loan.loan
         stateCopy.turnaroundTime = e
-        console.log(stateCopy)
+        this.setState({
+            editedLoan: stateCopy
+        })
+    }
+
+    handleRateChange=(rate, value)=>{
+        let stateCopy = this.state.loan.loan
+        stateCopy.rate = value
         this.setState({
             editedLoan: stateCopy
         })
@@ -217,7 +224,23 @@ export default class SingleLoan extends Component {
                                                     </Col>
                                                 </Form.Row>
                                             )
-                                        } else {
+                                        } else if (attr[0] === "rate"){
+                                            return(
+                                                <Form.Row>
+                                                    <Col>
+                                                    <InputGroup className="mb-3">
+                                                        <Form.Label>{this.parseKeyString(attr[0])}</Form.Label>
+                                                        <Input
+                                                            handleRateChange = {this.handleRateChange}
+                                                            value={attr[1]}
+                                                            name={attr[0]}
+                                                            input={"rate"}
+                                                        />
+                                                    </InputGroup>
+                                                    </Col>
+                                                </Form.Row>
+                                            )
+                                        }else {
                                             return(
                                                 <Form.Row>
                                                     <Col>
