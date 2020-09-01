@@ -339,38 +339,12 @@ export default class FixAndFlip extends Component {
                                     <Form.Row>
                                         <Col xs={12} md={6}>
                                             <InputGroup className="mb-3">
-                                                <DropdownButton
-                                                    as={InputGroup.Append}
-                                                    variant="outline-secondary"
-                                                    onSelect= {(e)=>this.changeExperience(e)}
-                                                    title="Experience Level"
-                                                    id="input-group-dropdown-1"
-                                                    >
-                                                    <Dropdown.Item eventKey="0 properties">0 properties</Dropdown.Item>
-                                                    <Dropdown.Item eventKey="3 properties">3 properties</Dropdown.Item>
-                                                    <Dropdown.Item eventKey="6 properties">6 properties</Dropdown.Item>
-                                                </DropdownButton>
-
-                                                <FormControl name="experienceLevel" value={ this.state.experienceLevel || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)}></FormControl>
+                                                <Input input="experienceLevel" value={this.state.experienceLevel} changeExperience={this.changeExperience}/>
                                             </InputGroup>
                                         </Col>  
                                         <Col xs={12} md={6}>
                                             <InputGroup className="mb-3">
-                                                <DropdownButton
-                                                as={InputGroup.Append}
-                                                variant="outline-secondary"
-                                                onSelect= {(e)=>this.changeturnaroundTime(e)}
-                                                title="Turnaround Time"
-                                                id="input-group-dropdown-1"
-                                                >
-                                                <Dropdown.Item eventKey="3 Months">3 Months</Dropdown.Item>
-                                                <Dropdown.Item eventKey="6 Months">6 Months</Dropdown.Item>
-                                                <Dropdown.Item eventKey="12 Months">12 Months</Dropdown.Item>
-                                                <Dropdown.Item eventKey="18 Months">18 Months</Dropdown.Item>
-                                                <Dropdown.Item eventKey="24 Months">24 Months</Dropdown.Item>
-                                            </DropdownButton>
-                                            <FormControl name="turnaroundTime" value={ this.state.turnaroundTime || undefined} type="text" disabled={true} onChange={(e)=>this.handleNumberChange(e)}></FormControl>
-
+                                                <Input input="turnaroundTime" value={this.state.turnaroundTime} changeturnaroundTime={this.changeturnaroundTime}/>
                                             </InputGroup>
                                         </Col>
                                     </Form.Row>
@@ -405,14 +379,6 @@ export default class FixAndFlip extends Component {
                                                 disabled={true}
                                                 input="currency"
                                             />
-                                            {/* <InputNumber
-                                                formatter={ value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                                parser={ value => value.replace(/\$\s?|(,*)/g, '')}
-                                                style={{ width: "100%" }}
-                                                value={ totalIn ? totalIn : 0}
-                                                disabled={true}                                            
-
-                                            /> */}
                                         </InputGroup>
                                     </Form.Row>
                                     <Form.Row>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GoogleMap, Marker } from "@react-google-maps/api"
+import { GoogleMap, Marker, InfoBox } from "@react-google-maps/api"
 
 const MapContainer = (props) => {
   
@@ -19,7 +19,7 @@ const MapContainer = (props) => {
           zoom={19}
           center={defaultCenter}
         >
-            <Marker position={{ lat: props.lat, lng: props.lng }} />
+            <Marker position={defaultCenter} />
         </GoogleMap>
      
   )

@@ -91,13 +91,9 @@ div.SingleLoan.Card{
   min-height: 100vh;
 }
 
-/* div.googleMap{
-  height: 100px;
-  width: 100px;
-} */
-
 div.react-date-picker__wrapper{
   background-color: white;
+  height: 37px;
 }
 
 div.react-date-picker__inputGroup{

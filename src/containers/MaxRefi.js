@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FormControl, InputGroup, Card, Col, Row, Container, Button, Form } from 'react-bootstrap';
-import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+// import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import { InputNumber } from "antd";
 
 import DatePicker from 'react-date-picker';
@@ -45,17 +45,10 @@ export default class MaxRefi extends Component {
     handleRateChange=(rate, e)=>{
         this.setState({ rate: e})
     }
-    
-    // numberFormat = (value) =>
-    // new Intl.NumberFormat('en-US', {
-    //     style: 'currency',
-    //     currency: 'USD'
-    // }).format(value);
 
-
-    myFormat(num) {
-        return num + '$';
-    }
+    // myFormat(num) {
+    //     return num + '$';
+    // }
 
     createLoan=(address,properyType, date, loan,officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)=>{
         if (address !== ""){
@@ -370,18 +363,6 @@ export default class MaxRefi extends Component {
                                         />
                                     </InputGroup>
                                 </Form.Row>
-                                {/* <Form.Row>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text style={{fontWeight: "600"}}>Cap Rate:</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                            <Input
-                                                value={capRate}
-                                                disabled={true}
-                                                input="percent"
-                                            />
-                                    </InputGroup>
-                                </Form.Row> */}
                                 <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>

@@ -78,7 +78,10 @@ export default class SingleLoan extends Component {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id: this.state.loan._id, loan })
-        }).then(this.mapLoanAttributes(this.state.loan.loan))
+        })
+        // .then(resp=>resp.json())
+        // .then(updatedLoan => console.log(updatedLoan))
+        .then(this.mapLoanAttributes(this.state.loan.loan))
     
     }
 
@@ -167,21 +170,23 @@ export default class SingleLoan extends Component {
                         <Modal.Body>
                             <Form>
                                 {Object.entries(this.state.editedLoan).map(attr=>{
-                                    return(
-                                        <Form.Row>
-                                            <Col>
-                                            <InputGroup className="mb-3">
-                                                <Form.Label>{this.parseKeyString(attr[0])}</Form.Label>
-                                                <Input
-                                                    handleChange = {this.handleChange}
-                                                    value={attr[1]}
-                                                    name={attr[0]}
-                                                    input={attr[0] === "arm" || attr[0] === "rate" || attr[0] === "units" || attr[0]==="creditScore" || attr[0]==="exitStrategy" || attr[0] === "turnaroundTime" || attr[0] === "experienceLevel"? null : "currency"}
-                                                />
-                                            </InputGroup>
-                                            </Col>
-                                        </Form.Row>
-                                    )
+                                    if (attr[0] !== "exitStrategy"){
+                                        return(
+                                            <Form.Row>
+                                                <Col>
+                                                <InputGroup className="mb-3">
+                                                    <Form.Label>{this.parseKeyString(attr[0])}</Form.Label>
+                                                    <Input
+                                                        handleChange = {this.handleChange}
+                                                        value={attr[1]}
+                                                        name={attr[0]}
+                                                        input={attr[0] === "arm" || attr[0] === "rate" || attr[0] === "units" || attr[0]==="creditScore" || attr[0]==="exitStrategy" || attr[0] === "turnaroundTime" || attr[0] === "experienceLevel"? null : "currency"}
+                                                    />
+                                                </InputGroup>
+                                                </Col>
+                                            </Form.Row>
+                                        )
+                                    }
                                 })}
                             </Form>
 
