@@ -67,7 +67,7 @@ export default class CurrencyInput extends Component {
                             <Dropdown.Item eventKey="3 properties">3 properties</Dropdown.Item>
                             <Dropdown.Item eventKey="6 properties">6 properties</Dropdown.Item>
                         </DropdownButton>
-                        <FormControl name="experienceLevel" value={ this.state.value || undefined} type="text" disabled={true}></FormControl>
+                        <FormControl name="experienceLevel" value={ this.props.value || undefined} type="text" disabled={true}></FormControl>
                     </div>
         
         } else {
