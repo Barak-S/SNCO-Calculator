@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, Modal, Form, Button } from 'react-bootstrap';
+import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, Modal, Form, Button, Table } from 'react-bootstrap';
 import { InputNumber } from "antd";
 
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
@@ -148,15 +148,21 @@ export default class SingleLoan extends Component {
                         <Col xs={12} md={4} style={{textAlign: "left"}}>
                             <Card style={{ border: '1px solid #B98757', borderRadius: 10, padding: 7, margin: 5 }}>
                             <Card.Text style={{fontSize: 20, textAlign: "center", fontWeight: "600"}}>Loan Details</Card.Text>
-                            {this.state.loanAttributes.map(loan=>{
-                                if (loan.key === "rate" || loan.key === "capRate"){
-                                    return(<Card.Text style={{fontSize: 18}}><strong>{this.parseKeyString(loan.key)}: </strong>{this.myFormat(loan.value)}</Card.Text>)
-                                } else{
-                                    return(
-                                        <Card.Text style={{fontSize: 18}}><strong>{this.parseKeyString(loan.key)}: </strong>{loan.key === "arm" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel" ? loan.value : this.numberFormat(loan.value)}</Card.Text>
-                                    )
-                                }
-                            })}
+                            <Table hover responsive> 
+                                <tbody>
+                                    {this.state.loanAttributes.map(loan=>{
+                                        if (loan.key === "rate" || loan.key === "capRate"){
+                                            return(
+                                                <tr><td style={{fontSize: 16}}><strong>{this.parseKeyString(loan.key)}: </strong> </td> <td style={{fontSize: 15}}>{this.myFormat(loan.value)}</td></tr>
+                                                )
+                                        } else{
+                                            return(
+                                                <tr><td style={{fontSize: 16}}><strong>{this.parseKeyString(loan.key)}: </strong></td> <td style={{fontSize: 15}}>{loan.key === "arm" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel" ? loan.value : this.numberFormat(loan.value)}</td></tr>
+                                            )
+                                        }
+                                    })}
+                                </tbody>
+                            </Table>
                             </Card>
                         </Col>
                     </Row>

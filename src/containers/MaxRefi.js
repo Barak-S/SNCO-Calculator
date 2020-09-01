@@ -382,6 +382,18 @@ export default class MaxRefi extends Component {
                                         />
                                     </InputGroup>
                                 </Form.Row>
+                                <Form.Row>
+                                    <InputGroup className="mb-3">
+                                        <InputGroup.Prepend>
+                                        <InputGroup.Text style={{fontWeight: "600"}}>SNCO Max Loan:</InputGroup.Text>
+                                        </InputGroup.Prepend>
+                                        <Input
+                                            value={0}
+                                            disabled={true}
+                                            input="currency"
+                                        />
+                                    </InputGroup>
+                                </Form.Row>
                                 </Form>
                                 </Card.Body>
                             </Card>
