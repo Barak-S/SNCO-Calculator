@@ -112,7 +112,7 @@ export default class SingleLoan extends Component {
 
     handleRateChange=(rate, value)=>{
         let stateCopy = this.state.loan.loan
-        stateCopy.rate = value
+        stateCopy[rate] = value
         this.setState({
             editedLoan: stateCopy
         })
@@ -121,6 +121,10 @@ export default class SingleLoan extends Component {
     parseKeyString=(str)=>{
         let result = str.replace(/([a-z])([A-Z]+[a-z])/g, "$1 $2");
         return result.charAt(0).toUpperCase() + result.slice(1)
+    }
+
+    myFormat(num) {
+        return num + '%';
     }
 
 
@@ -145,9 +149,13 @@ export default class SingleLoan extends Component {
                             <Card style={{ border: '1px solid #B98757', borderRadius: 10, padding: 7, margin: 5 }}>
                             <Card.Text style={{fontSize: 20, textAlign: "center", fontWeight: "600"}}>Loan Details</Card.Text>
                             {this.state.loanAttributes.map(loan=>{
-                                return(
-                                    <Card.Text style={{fontSize: 18}}><strong>{this.parseKeyString(loan.key)}: </strong>{loan.key === "arm" || loan.key === "rate" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel" ? loan.value : this.numberFormat(loan.value)}</Card.Text>
-                                )
+                                if (loan.key === "rate" || loan.key === "capRate"){
+                                    return(<Card.Text style={{fontSize: 18}}><strong>{this.parseKeyString(loan.key)}: </strong>{this.myFormat(loan.value)}</Card.Text>)
+                                } else{
+                                    return(
+                                        <Card.Text style={{fontSize: 18}}><strong>{this.parseKeyString(loan.key)}: </strong>{loan.key === "arm" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel" ? loan.value : this.numberFormat(loan.value)}</Card.Text>
+                                    )
+                                }
                             })}
                             </Card>
                         </Col>
@@ -224,7 +232,7 @@ export default class SingleLoan extends Component {
                                                     </Col>
                                                 </Form.Row>
                                             )
-                                        } else if (attr[0] === "rate"){
+                                        } else if (attr[0] === "rate" || attr[0] === "capRate"){
                                             return(
                                                 <Form.Row>
                                                     <Col>
@@ -265,7 +273,6 @@ export default class SingleLoan extends Component {
                         </Modal.Body>
                         <Modal.Footer>
                         <Button variant="success" onClick={()=>{this.saveEdit(this.state.editedLoan); this.editModal()}}>
-                            {/* onclick not ready */}
                             Save
                         </Button>
                         <Button variant="secondary" onClick={this.editModal}>

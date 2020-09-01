@@ -26,6 +26,7 @@ export default class MaxRefi extends Component {
         rate: 0,
         arm: 0,
         payoff: 0,
+        capRate: 0
         }
         this.baseState = this.state 
     }
@@ -42,8 +43,8 @@ export default class MaxRefi extends Component {
         })
     }
 
-    handleRateChange=(rate, e)=>{
-        this.setState({ rate: e})
+    handleRateChange=(key, e)=>{
+        this.setState({ [key]: e})
     }
 
     // myFormat(num) {
@@ -302,15 +303,24 @@ export default class MaxRefi extends Component {
                                     <Col>
                                         <InputGroup className="mb-3">
                                             <Form.Label style={{width: "100%", textAlign: "left"}}>Rate</Form.Label>
-                                                <InputNumber
+                                                <Input
                                                     name={"rate"}
-                                                    formatter={value => `${value}%`}
-                                                    parser={value => value.replace('%', '')}
-                                                    style={{ width: "55%",fontSize: 17, paddingTop: 3 }}
-                                                    value={this.state.rate? this.state.rate : 0} 
-                                                    min={0}
-                                                    max={100}
-                                                    onChange={e => this.handleRateChange("rate", e)}
+                                                    value={this.state.rate}
+                                                    handleRateChange = {this.handleRateChange}
+                                                    input={"rate"}
+                                                />
+                                        </InputGroup>
+                                    </Col>
+                                </Form.Row>
+                                <Form.Row>
+                                    <Col xs lg="6">
+                                        <InputGroup className="mb-3">
+                                            <Form.Label style={{width: "100%", textAlign: "left"}}>Market Cap Rate</Form.Label>
+                                                <Input
+                                                    name={"capRate"}
+                                                    value={this.state.capRate}
+                                                    handleRateChange = {this.handleRateChange}
+                                                    input={"rate"}
                                                 />
                                         </InputGroup>
                                     </Col>

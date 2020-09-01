@@ -72,14 +72,13 @@ export default class CurrencyInput extends Component {
         
         } else if (this.props.input === "rate") {
             input = (<InputNumber
-                        name={"rate"}
                         formatter={value => `${value}%`}
                         parser={value => value.replace('%', '')}
                         style={{ width: "100%",fontSize: 17, paddingTop: 3 }}
                         value={this.props.value? this.props.value : 0} 
                         min={0}
                         max={100}
-                        onChange={e => this.props.handleRateChange("rate", e)}
+                        onChange={e => this.props.handleRateChange(this.props.name, e)}
                     />)
         
         }else {
