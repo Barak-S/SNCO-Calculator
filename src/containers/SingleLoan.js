@@ -146,9 +146,9 @@ export default class SingleLoan extends Component {
                             </Card> */}
                         </Col>
                         <Col xs={12} md={4} style={{textAlign: "left"}}>
-                            <Card style={{ border: '1px solid #B98757', borderRadius: 10, padding: 7, margin: 5 }}>
+                            <Card style={{ border: '1.5px solid #B98757', borderRadius: 10, padding: 7, margin: 5 }}>
                             <Card.Text style={{fontSize: 20, textAlign: "center", fontWeight: "600"}}>Loan Details</Card.Text>
-                            <Table hover responsive> 
+                            <Table responsive> 
                                 <tbody>
                                     {this.state.loanAttributes.map(loan=>{
                                         if (loan.key === "rate" || loan.key === "capRate"){
