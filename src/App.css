@@ -123,4 +123,53 @@ div.react-date-picker__inputGroup.react-date-picker__inputGroup__input.react-dat
 /* svg.react-date-picker__clear-button__icon.react-date-picker__button__icon{
   display: none;
 } */
+.notification-container {
+  font-size: 14px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.top-right {
+  top: 12px;
+  right: 12px;
+  -webkit-transition: -webkit-transform .6s ease-in-out;
+  transition: -webkit-transform .6s ease-in-out;
+  transition: transform .6s ease-in-out;
+  transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out;
+  -webkit-animation: toast-in-right .7s;
+          animation: toast-in-right .7s;
+}
+
+.bottom-right {
+  bottom: 12px;
+  right: 12px;
+  -webkit-transition: -webkit-transform .6s ease-in-out;
+  transition: -webkit-transform .6s ease-in-out;
+  transition: transform .6s ease-in-out;
+  transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out;
+  -webkit-animation: toast-in-right .7s;
+          animation: toast-in-right .7s;
+}
+
+.top-left {
+  top: 12px;
+  left: 12px;
+  -webkit-transition: -webkit-transform .6s ease-in;
+  transition: -webkit-transform .6s ease-in;
+  transition: transform .6s ease-in;
+  transition: transform .6s ease-in, -webkit-transform .6s ease-in;
+  -webkit-animation: toast-in-left .7s;
+          animation: toast-in-left .7s;
+}
+
+.bottom-left {
+  bottom: 12px;
+  left: 12px;
+  -webkit-transition: -webkit-transform .6s ease-in;
+  transition: -webkit-transform .6s ease-in;
+  transition: transform .6s ease-in;
+  transition: transform .6s ease-in, -webkit-transform .6s ease-in;
+  -webkit-animation: toast-in-left .7s;
+          animation: toast-in-left .7s;
+}
 /*# sourceMappingURL=App.css.map */

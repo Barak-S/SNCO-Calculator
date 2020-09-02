@@ -8,6 +8,8 @@ import DatePicker from 'react-date-picker';
 import Input from '../components/InputComponent';
 import LocationSearchInput from'../components/LocationSearchInput';
 
+import Notification from '../components/Notification'
+
 export default class MaxRefi extends Component {
 
     constructor(props){
@@ -28,6 +30,22 @@ export default class MaxRefi extends Component {
         payoff: 0,
         capRate: 0,
         alert: false,
+        testList: [
+                {
+                id: 1,
+                title: 'Success',
+                description: 'This is a success toast component',
+                backgroundColor: '#5cb85c',
+                
+                },
+                {
+                id: 2,
+                title: 'Danger',
+                description: 'This is an error toast component',
+                backgroundColor: '#d9534f',
+                
+                },
+            ]
         }
         this.baseState = this.state 
     }
@@ -115,7 +133,7 @@ export default class MaxRefi extends Component {
 
                 <Container fluid>
                     {this.state.alert && <Alert variant={"success"} style={{ margin: "1rem" }}>Loan Saved! Click here to see loan deatails.</Alert>}
-
+                    {/* {this.state.alert && <Notification/>} */}
                     <Row>
                         <Col md={7}>
                             <Card style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15  }}>
