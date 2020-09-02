@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputGroup, Card, Col, Row, Container, Button, Form } from 'react-bootstrap';
+import { FormControl, InputGroup, Card, Col, Row, Container, Button, Form, Alert } from 'react-bootstrap';
 // import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import { InputNumber } from "antd";
 
@@ -26,7 +26,8 @@ export default class MaxRefi extends Component {
         rate: 0,
         arm: 0,
         payoff: 0,
-        capRate: 0
+        capRate: 0,
+        alert: false,
         }
         this.baseState = this.state 
     }
@@ -64,12 +65,22 @@ export default class MaxRefi extends Component {
             })
           })
           .then(res=>res.json())
-          .then(loans=>this.resetForm())
+          .then(loans=>{
+              this.resetForm()
+              this.alertMessage()
+            })
           .catch(() => console.log("Can’t POST loan data"))
     
         } else {
           console.log("wont post without an address")
         }
+    }
+
+    alertMessage=()=>{
+        this.setState({ alert: true})
+        setTimeout(() => {
+            this.setState({ alert: false })
+        }, 4000)
     }
 
 
@@ -103,8 +114,9 @@ export default class MaxRefi extends Component {
         return (
 
                 <Container fluid>
-                    <Row>
+                    {this.state.alert && <Alert variant={"success"} style={{ margin: "1rem" }}>Loan Saved! Click here to see loan deatails.</Alert>}
 
+                    <Row>
                         <Col md={7}>
                             <Card style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15  }}>
                                 <Card.Body>

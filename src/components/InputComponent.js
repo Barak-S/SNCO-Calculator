@@ -51,7 +51,7 @@ export default class CurrencyInput extends Component {
                         <Dropdown.Item eventKey="18 Months">18 Months</Dropdown.Item>
                         <Dropdown.Item eventKey="24 Months">24 Months</Dropdown.Item>
                     </DropdownButton>
-                    <FormControl name="turnaroundTime" value={ this.props.value || undefined} type="text" disabled={true}></FormControl>
+                    <FormControl name="turnaroundTime" value={ this.props.value || 0 } type="text" disabled={true}></FormControl>
                     </div>
         
         } else if (this.props.input === "experienceLevel"){
@@ -67,7 +67,7 @@ export default class CurrencyInput extends Component {
                             <Dropdown.Item eventKey="3 properties">3 properties</Dropdown.Item>
                             <Dropdown.Item eventKey="6 properties">6 properties</Dropdown.Item>
                         </DropdownButton>
-                        <FormControl name="experienceLevel" value={ this.props.value || undefined} type="text" disabled={true}></FormControl>
+                        <FormControl name="experienceLevel" value={ this.props.value || 0 } type="text" disabled={true}></FormControl>
                     </div>
         
         } else if (this.props.input === "rate") {

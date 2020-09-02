@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownButton, Form, Button } from 'react-bootstrap';
+import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownButton, Form, Button, Alert } from 'react-bootstrap';
 
 import { InputNumber } from "antd";
 // import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
@@ -29,6 +29,7 @@ export default class FixAndFlip extends Component {
         titleBill: 0,
         legalClosing: 0,
         legalLender:0,
+        alert: false,
         }
         this.baseState = this.state 
     }
@@ -63,6 +64,13 @@ export default class FixAndFlip extends Component {
         })
     }
 
+    alertMessage=()=>{
+        this.setState({ alert: true})
+        setTimeout(() => {
+            this.setState({ alert: false })
+        }, 4000)
+    }
+
     createLoan=(address,properyType, loan, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent)=>{
         if (address !== ""){
           fetch('https://snco-calculator-backend.herokuapp.com/loans',{
@@ -71,7 +79,10 @@ export default class FixAndFlip extends Component {
             body: JSON.stringify({address: address, properyType: properyType, loan, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent })
           })
           .then(res=>res.json())
-          .then(loans=>this.resetForm())
+          .then(loans=>{
+              this.resetForm()
+              this.alertMessage()
+            })
           .catch(() => console.log("Can’t POST loan data"))
     
         } else {
@@ -99,8 +110,9 @@ export default class FixAndFlip extends Component {
 
 
                 <Container fluid>
+                    {this.state.alert && <Alert variant={"success"} style={{ margin: "1rem" }}>Loan Saved! Click here to see loan deatails.</Alert>}
+                    
                     <Row>
-
                         <Col md={7}>
                             <Card style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15  }}>
                                 <Card.Body>
