@@ -82,7 +82,7 @@ export default class CurrencyInput extends Component {
                     />)
         
         }else {
-            input = <FormControl autoComplete="new-password" style={{width: "100%"}} name={this.props.name} value={this.props.value || undefined} onChange={this.props.handleChange && (e =>this.props.handleChange(this.props.name ,e.target.value))}></FormControl>
+            input = <FormControl autoComplete="new-password" style={{width: "100%"}} name={this.props.name} value={this.props.value || 0 } onChange={this.props.handleChange && (e =>this.props.handleChange(this.props.name ,e.target.value))}></FormControl>
         }
         return (
                 input

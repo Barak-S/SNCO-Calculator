@@ -120,7 +120,7 @@ export default class MaxRefi extends Component {
                                     <Col>
                                     <InputGroup className="mb-3">
                                         <Form.Label>Units</Form.Label>
-                                        <Input name="units" value={this.state.units || undefined} type="number" handleChange={this.handleNumberChange}/>
+                                        <Input name="units" value={this.state.units} type="number" handleChange={this.handleNumberChange}/>
                                     </InputGroup>
                                     </Col>
                                     <Col>
