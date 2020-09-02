@@ -65,7 +65,7 @@ export default class SingleLoan extends Component {
 
 
     deleteLoan=(loanID)=>{
-        fetch('https://snco-calculator-backend.herokuapp.com/loans',{
+        fetch('https://snco-calculator-backend.herokuapp.com/loans/delete',{
         method: 'delete',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: loanID })
