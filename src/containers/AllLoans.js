@@ -11,14 +11,16 @@ export default class AllLoans extends Component {
 
     state={
         allLoans: [],
-        start: 0
+        start: 0,
+        loading: true,
     }
 
     componentDidMount(){
         fetch("https://snco-calculator-backend.herokuapp.com/loans")
         .then(resp=>resp.json())
         .then(allLoans=>this.setState({
-          allLoans
+          allLoans,
+          loading: false
         }))
     }
 
@@ -69,7 +71,7 @@ export default class AllLoans extends Component {
                     <Card.Text className="appHeader">All Loans</Card.Text>
                     {/* <Card.Text>results: {this.state.allLoans.length}</Card.Text> */}
                 </div>
-                {this.mapLoans()}
+                {this.state.loading? <Button variant="secondary" style={{opacity: "0.5", marginTop: 7}}>Loading...</Button> : this.mapLoans()}
                 {/* <Button variant="dark" onClick={()=>this.loadMoreLoans()}>Load More</Button> */}
 
 
