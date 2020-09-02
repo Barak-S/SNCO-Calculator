@@ -29,7 +29,7 @@ export default class FixAndFlip extends Component {
         titleBill: 0,
         legalClosing: 0,
         legalLender:0,
-        alert: false,
+        // alert: false,
         }
         this.baseState = this.state 
     }
@@ -81,7 +81,7 @@ export default class FixAndFlip extends Component {
           .then(res=>res.json())
           .then(loans=>{
               this.resetForm()
-              this.alertMessage()
+            //   this.alertMessage()
             })
           .catch(() => console.log("Can’t POST loan data"))
     
@@ -110,7 +110,7 @@ export default class FixAndFlip extends Component {
 
 
                 <Container fluid>
-                    {this.state.alert && <Alert variant={"success"} style={{ margin: "1rem" }}>Loan Saved! Click here to see loan deatails.</Alert>}
+                    {/* {this.state.alert && <Alert variant={"success"} style={{ margin: "1rem" }}>Loan Saved! Click here to see loan deatails.</Alert>} */}
                     
                     <Row>
                         <Col md={7}>

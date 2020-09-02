@@ -129,6 +129,11 @@ div.react-date-picker__inputGroup.react-date-picker__inputGroup__input.react-dat
           box-sizing: border-box;
 }
 
+button.btn {
+  -webkit-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
 .top-right {
   top: 12px;
   right: 12px;
