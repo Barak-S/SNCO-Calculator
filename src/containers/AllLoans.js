@@ -42,21 +42,21 @@ export default class AllLoans extends Component {
         let loanGroupLength = this.state.allLoans.length
         return(
             this.state.allLoans.map((loan, i)=>{
-                // if (loanGroupLength === i+1){
-                //     return(<Link to={`/loans/${loan._id}`}>
-                //         <LoanCard
-                //         key={loan._id}
-                //         loan={loan}
-                //         new={"New"}
+                if (loanGroupLength === i+1){
+                    return(<Link to={`/loans/${loan._id}`}>
+                        <LoanCard
+                        key={loan._id}
+                        loan={loan}
+                        new={"New"}
                         
-                //     /></Link>)
-                // } else {
+                    /></Link>)
+                } else {
                     return(<Link to={`/loans/${loan._id}`}>
                         <LoanCard
                         key={loan._id}
                         loan={loan}
                     /></Link>)
-                    // }
+                    }
                 })
         ) 
     }
