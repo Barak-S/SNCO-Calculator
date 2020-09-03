@@ -10,7 +10,8 @@ export default class CalculatorContainer extends Component {
     state={
         propertyType: "Multifamily Max Refi",
         address: "",
-        date: new Date(),    
+        date: new Date(),  
+        loan: {}  
     }
     
     handleAddressChange= (address) => {
@@ -28,6 +29,25 @@ export default class CalculatorContainer extends Component {
     clearAddressFromState=()=>{
         this.setState({ address: "" },()=>console.log(this.state.address))
     }
+
+    // createLoan=( loan, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent)=>{
+    //     if (address !== ""){
+    //       fetch('https://snco-calculator-backend.herokuapp.com/loans',{
+    //         method: "POST",
+    //         headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
+    //         body: JSON.stringify({address: address, properyType: properyType, loan, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent })
+    //       })
+    //       .then(res=>res.json())
+    //       .then(loans=>{
+    //           this.resetForm()
+    //         //   this.alertMessage()
+    //         })
+    //       .catch(() => console.log("Can’t POST loan data"))
+    
+    //     } else {
+    //       console.log("wont post without an address")
+    //     }
+    // }
 
 
     render(){

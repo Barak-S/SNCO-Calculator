@@ -32,6 +32,15 @@ export default class MaxRefi extends Component {
         payoff: 0,
         capRate: 0,
         // alert: false,
+        officeExpenses: 0,
+        replacementReserves: 0,
+        management: 0,
+        vacancy: 0,
+        totalProjectCost: 0,
+        noi: 0,
+        capRate: 0,
+        annualDebtService: 0,
+        dscr: 0,
         }
         this.baseState = this.state 
     }
@@ -39,7 +48,6 @@ export default class MaxRefi extends Component {
     resetForm = () => {
         this.setState(this.baseState)
         this.props.clearAddressFromState()
-
     }
 
     handleNumberChange= (key, e) =>{
@@ -57,6 +65,9 @@ export default class MaxRefi extends Component {
     // }
 
     createLoan=(address,properyType, date, loan,officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)=>{
+        this.setState({
+            officeExpenses, replacementReserves, management, vacancy, totalProjectCost, noi, capRate, annualDebtService, dscr
+        })
         if (address !== ""){
           fetch('https://snco-calculator-backend.herokuapp.com/loans',{
             method: "POST",
@@ -65,7 +76,6 @@ export default class MaxRefi extends Component {
                 purchaseDate: date,
                 properyType: properyType, 
                 loan,
-                officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr
             })
           })
           .then(res=>res.json())
@@ -416,7 +426,7 @@ export default class MaxRefi extends Component {
                             <Button 
                                 variant="outline-dark" 
                                 style={{ marginBottom: 15 }} 
-                                onClick={()=>this.createLoan(this.props.address, this.props.propertyType, this.props.date, this.state, officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)}
+                                onClick={()=>this.createLoan( this.props.address, this.props.propertyType, this.props.date, this.state )}
                             >Save</Button>                        
                         </Col>
                     </Row>

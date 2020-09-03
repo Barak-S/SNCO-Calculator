@@ -30,6 +30,12 @@ export default class FixAndFlip extends Component {
         legalClosing: 0,
         legalLender:0,
         // alert: false,
+        carryingCosts: 0,
+        resaleCosts: 0,
+        closingCosts: 0,
+        totalIn: 0,
+        totalProfit: 0,
+        profitPercent: 0,
         }
         this.baseState = this.state 
     }
@@ -71,23 +77,26 @@ export default class FixAndFlip extends Component {
         }, 4000)
     }
 
-    createLoan=(address,properyType, loan, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent)=>{
+    createLoan=(address, properyType, loan, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent)=>{
         if (address !== ""){
-          fetch('https://snco-calculator-backend.herokuapp.com/loans',{
-            method: "POST",
-            headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-            body: JSON.stringify({address: address, properyType: properyType, loan, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent })
-          })
-          .then(res=>res.json())
-          .then(loans=>{
-              this.resetForm()
-            //   this.alertMessage()
+            this.setState({
+                carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent
             })
-          .catch(() => console.log("Can’t POST loan data"))
-    
-        } else {
-          console.log("wont post without an address")
-        }
+            fetch('https://snco-calculator-backend.herokuapp.com/loans',{
+                method: "POST",
+                headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
+                body: JSON.stringify({address: address, properyType: properyType, loan })
+            })
+            .then(res=>res.json())
+            .then(loans=>{
+                this.resetForm()
+                //   this.alertMessage()
+                })
+            .catch(() => console.log("Can’t POST loan data"))
+        
+            } else {
+            console.log("wont post without an address")
+            }
     }
 
     numberFormat = (value) =>
@@ -407,7 +416,7 @@ export default class FixAndFlip extends Component {
                             <Button 
                                 variant="outline-dark" 
                                 style={{ marginBottom: 15 }} 
-                                onClick={()=>this.createLoan(this.props.address,this.props.propertyType,this.state, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent )}
+                                onClick={()=>this.createLoan(this.props.address,this.props.propertyType, this.state, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent )}
                             >Save</Button>
                         </Col>
                     </Row>
