@@ -114,7 +114,7 @@ export default class FixAndFlip extends Component {
                     
                     <Row>
                         <Col md={7}>
-                            <Card style={{ border: '2px solid #B98757', margin: "1rem", borderRadius: 15  }}>
+                            <Card style={{ margin: "1rem", borderRadius: 15  }}>
                                 <Card.Body>
                                 <Form>
                                     <LocationSearchInput 
@@ -176,7 +176,7 @@ export default class FixAndFlip extends Component {
                                 </Form.Row>
 
 
-                                <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 7.5, marginBottom: 10 }}>
+                                <Card style={{ borderRadius: 7, padding: 10, marginBottom: 10 }}>
                                 <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
@@ -226,7 +226,7 @@ export default class FixAndFlip extends Component {
                                 </Form.Row>
                                 </Card>
 
-                                    <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 7.5, marginBottom: 10 }}>
+                                    <Card style={{ borderRadius: 7, padding: 10, marginBottom: 10 }}>
                                     <Form.Row>
                                         <InputGroup className="mb-3">   
                                                 <InputGroup.Prepend>
@@ -285,7 +285,7 @@ export default class FixAndFlip extends Component {
                                     </Form.Row>
                                     </Card>
 
-                                    <Card style={{ border: '1px solid #B98757', borderRadius: 7, padding: 7.5, marginBottom: 10 }}>
+                                    <Card style={{ borderRadius: 7, padding: 10, marginBottom: 10 }}>
                                     <Form.Row>
                                         <InputGroup className="mb-3">   
                                             <InputGroup.Prepend>
@@ -362,7 +362,7 @@ export default class FixAndFlip extends Component {
                         </Col>
 
                         <Col md={5}>
-                            <Card style={{  border: '2px solid #B98757', margin: "1rem", borderRadius: 15 }}>
+                            <Card style={{ margin: "1rem", borderRadius: 15 }}>
                                 <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
                                     <Form>
                                     <Form.Row>
