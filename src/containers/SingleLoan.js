@@ -133,10 +133,12 @@ export default class SingleLoan extends Component {
         return (
             <div style={{paddingBottom: 25}}>
                 <Card className="SingleLoan" style={{ border: '1px solid #B98757', borderRadius: 12, margin: "1rem", padding: 15 }}>
-                    <Card.Text style={{ fontWeight: "600", fontSize: 22, margin: 2.5 }}>{this.state.loan.address}</Card.Text>
-                    <Card.Text style={{fontSize: 17}}><strong>Type: </strong>{this.state.loan.properyType}</Card.Text>
+                    {/* <Card.Text style={{ fontWeight: "600", fontSize: 22, margin: 2.5 }}>{this.state.loan.address}</Card.Text>
+                    <Card.Text style={{fontSize: 17}}><strong>Type: </strong>{this.state.loan.properyType}</Card.Text> */}
                     <Row>
                         <Col xs={12} md={8}>
+                            <Card.Text style={{ fontWeight: "600", fontSize: 22, margin: 2.5 }}>{this.state.loan.address}</Card.Text>
+                            <Card.Text style={{fontSize: 17}}><strong>Type: </strong>{this.state.loan.properyType}</Card.Text>
                             <MapContainer
                                 lat={this.state.lat}
                                 lng={this.state.lng}
@@ -146,7 +148,7 @@ export default class SingleLoan extends Component {
                             </Card> */}
                         </Col>
                         <Col xs={12} md={4} style={{textAlign: "left"}}>
-                            <Card style={{ border: '1.5px solid #B98757', borderRadius: 10, padding: 7, margin: 5 }}>
+                        <Card style={{ padding: 12.5, marginBottom: 5, borderRadius: 10}}>
                             <Card.Text style={{fontSize: 20, textAlign: "center", fontWeight: "600"}}>Loan Details</Card.Text>
                             <Table responsive> 
                                 <tbody>
