@@ -153,7 +153,7 @@ export default class SingleLoan extends Component {
                             <Table responsive> 
                                 <tbody>
                                     {this.state.loanAttributes.map(loan=>{
-                                        if (loan.key === "rate" || loan.key === "capRate"){
+                                        if (loan.key === "rate" || loan.key === "capRate" || loan.key === "dscr" || loan.key === "profitPercent" ){
                                             return(
                                                 <tr><td style={{fontSize: 16}}><strong>{this.parseKeyString(loan.key)}: </strong> </td> <td style={{fontSize: 15}}>{this.myFormat(loan.value)}</td></tr>
                                                 )
@@ -240,7 +240,7 @@ export default class SingleLoan extends Component {
                                                     </Col>
                                                 </Form.Row>
                                             )
-                                        } else if (attr[0] === "rate" || attr[0] === "capRate"){
+                                        } else if (attr[0] === "rate" || attr[0] === "capRate" ){
                                             return(
                                                 <Form.Row>
                                                     <Col>
