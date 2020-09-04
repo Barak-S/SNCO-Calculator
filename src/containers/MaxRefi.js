@@ -83,7 +83,6 @@ export default class MaxRefi extends Component {
                 console.log(loan[0]._id)
                 this.resetForm()
                 //   this.alertMessage()
-                this.props.clearAddressFromState()
                 })
             .catch(() => console.log("Can’t POST loan data"))
         } else {
