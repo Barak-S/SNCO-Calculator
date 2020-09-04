@@ -30,23 +30,23 @@ export default class CalculatorContainer extends Component {
         this.setState({ address: "" },()=>console.log(this.state.address))
     }
 
-    // createLoan=( loan, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent)=>{
-    //     if (address !== ""){
-    //       fetch('https://snco-calculator-backend.herokuapp.com/loans',{
-    //         method: "POST",
-    //         headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-    //         body: JSON.stringify({address: address, properyType: properyType, loan, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent })
-    //       })
-    //       .then(res=>res.json())
-    //       .then(loans=>{
-    //           this.resetForm()
-    //         //   this.alertMessage()
+    // createLoan=( loan )=>{
+    //     if (this.state.address !== ""){
+    //         fetch('https://snco-calculator-backend.herokuapp.com/loans',{
+    //             method: "POST",
+    //             headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
+    //             body: JSON.stringify({address: this.state.address, properyType: this.state.properyType, loan })
     //         })
-    //       .catch(() => console.log("Can’t POST loan data"))
-    
-    //     } else {
-    //       console.log("wont post without an address")
-    //     }
+    //         .then(res=>res.json())
+    //         .then(loans=>{
+    //             //   this.resetForm()
+    //             //   this.alertMessage()
+    //             })
+    //         .catch(() => console.log("Can’t POST loan data"))
+        
+    //         } else {
+    //         console.log("wont post without an address")
+    //         }
     // }
 
 
@@ -55,8 +55,6 @@ export default class CalculatorContainer extends Component {
 
         return (
             <div className="App">
-            {/* <SNCOLogo/> */}
-
                 <Card.Text className="appHeader">SNCO Calculator</Card.Text>
                     <DropdownButton 
                         variant="dark"
@@ -70,24 +68,27 @@ export default class CalculatorContainer extends Component {
                     </DropdownButton>
 
                 {this.state.propertyType === "Multifamily Max Refi" &&
-                <MaxRefi
-                    date= {this.state.date}
-                    dateChange = {this.dateChange}
-                    address= {this.state.address}
-                    handleAddressChange = {this.handleAddressChange}
-                    handleAddressSelect = {this.handleAddressSelect}
-                    propertyType = {this.state.propertyType}
-                    clearAddressFromState={this.clearAddressFromState}
-                />
+                    <MaxRefi
+                        date= {this.state.date}
+                        dateChange = {this.dateChange}
+                        address= {this.state.address}
+                        handleAddressChange = {this.handleAddressChange}
+                        handleAddressSelect = {this.handleAddressSelect}
+                        propertyType = {this.state.propertyType}
+                        // clearAddressFromState={this.clearAddressFromState}
+                        // createLoan = {this.createLoan}
+                    />
                 }
 
-                {this.state.propertyType === "1-4 Calculator"&&
+                {this.state.propertyType === "1-4 Calculator" &&
                     <FixAndFlip 
                         address = {this.state.address}
                         handleAddressChange = {this.handleAddressChange}
                         handleAddressSelect = {this.handleAddressSelect}
                         propertyType = {this.state.propertyType}
-                        clearAddressFromState={this.clearAddressFromState}
+                        // clearAddressFromState={this.clearAddressFromState}
+                        // createLoan = {this.createLoan}
+
                     /> 
                 }
 

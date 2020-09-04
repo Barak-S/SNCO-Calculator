@@ -377,7 +377,7 @@ export default class FixAndFlip extends Component {
                                     <Form.Row>
                                         <InputGroup className="mb-3">
                                             <InputGroup.Prepend>
-                                            <InputGroup.Text style={{fontWeight: "600"}}>Total In:</InputGroup.Text>
+                                            <Form.Label style={{fontWeight: "600"}}>Total In:</Form.Label>
                                             </InputGroup.Prepend>
                                             <Input
                                                 value={totalIn ? totalIn : 0}
@@ -389,7 +389,7 @@ export default class FixAndFlip extends Component {
                                     <Form.Row>
                                         <InputGroup className="mb-3">
                                             <InputGroup.Prepend>
-                                            <InputGroup.Text style={{fontWeight: "600"}}>Total Profit on Flip:</InputGroup.Text>
+                                            <Form.Label style={{fontWeight: "600"}}>Total Profit on Flip:</Form.Label>
                                             </InputGroup.Prepend>
                                                 <Input
                                                     value={totalProfit ? totalProfit : 0}
@@ -401,7 +401,7 @@ export default class FixAndFlip extends Component {
                                     <Form.Row>
                                         <InputGroup className="mb-3">
                                             <InputGroup.Prepend>
-                                            <InputGroup.Text style={{fontWeight: "600"}}>Profit Percent: %</InputGroup.Text>
+                                            <Form.Label style={{fontWeight: "600"}}>Profit Percent:</Form.Label>
                                             </InputGroup.Prepend>
                                                 <Input
                                                     value={profitPercent? profitPercent.toFixed(2) : 0}

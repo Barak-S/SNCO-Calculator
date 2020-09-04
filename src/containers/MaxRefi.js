@@ -69,23 +69,22 @@ export default class MaxRefi extends Component {
             officeExpenses, replacementReserves, management, vacancy, totalProjectCost, noi, capRate, annualDebtService, dscr
         })
         if (address !== ""){
-          fetch('https://snco-calculator-backend.herokuapp.com/loans',{
-            method: "POST",
-            headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-            body: JSON.stringify({address: address,
+            fetch('https://snco-calculator-backend.herokuapp.com/loans',{
+                method: "POST",
+                headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
+                body: JSON.stringify({address: address,
                 purchaseDate: date,
                 properyType: properyType, 
                 loan,
+                })
             })
-          })
-          .then(res=>res.json())
-          .then(loan=>{
-              console.log(loan[0]._id)
-              this.resetForm()
-            //   this.alertMessage()
-            })
-          .catch(() => console.log("Can’t POST loan data"))
-    
+            .then(res=>res.json())
+            .then(loan=>{
+                console.log(loan[0]._id)
+                this.resetForm()
+                //   this.alertMessage()
+                })
+            .catch(() => console.log("Can’t POST loan data"))
         } else {
           console.log("wont post without an address")
         }
@@ -363,7 +362,7 @@ export default class MaxRefi extends Component {
                                 <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
-                                        <InputGroup.Text style={{fontWeight: "600"}}>Gross Annual Income: </InputGroup.Text>
+                                        <Form.Label style={{fontWeight: "600"}}>Gross Annual Income:</Form.Label>
                                         </InputGroup.Prepend>
                                         <Input
                                             value={ grossAnnualIncome? grossAnnualIncome.toFixed(2) : 0}
@@ -375,7 +374,7 @@ export default class MaxRefi extends Component {
                                 <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
-                                        <InputGroup.Text style={{fontWeight: "600"}}>NOI:</InputGroup.Text>
+                                        <Form.Label style={{fontWeight: "600"}}>NOI:</Form.Label>
                                         </InputGroup.Prepend>
                                         <Input
                                             value={ noi? noi.toFixed(2) : 0}
@@ -387,7 +386,7 @@ export default class MaxRefi extends Component {
                                 <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
-                                        <InputGroup.Text style={{fontWeight: "600"}}>Annual Debt Service:</InputGroup.Text>
+                                        <Form.Label style={{fontWeight: "600"}}>Annual Debt Service:</Form.Label>
                                         </InputGroup.Prepend>
                                         <Input
                                             value={ annualDebtService? annualDebtService.toFixed(2) : 0}
@@ -399,7 +398,7 @@ export default class MaxRefi extends Component {
                                 <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
-                                        <InputGroup.Text style={{fontWeight: "600"}}>Debt Service Coverage Ratio (DSCR):</InputGroup.Text>
+                                        <Form.Label style={{fontWeight: "600"}}>Debt Service Coverage Ratio (DSCR):</Form.Label>
                                         </InputGroup.Prepend>
                                         <Input
                                             value={dscr? dscr.toFixed(2) : 0}
@@ -411,7 +410,7 @@ export default class MaxRefi extends Component {
                                 <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
-                                        <InputGroup.Text style={{fontWeight: "600"}}>SNCO Max Loan:</InputGroup.Text>
+                                        <Form.Label style={{fontWeight: "600"}}>SNCO Max Loan:</Form.Label>
                                         </InputGroup.Prepend>
                                         <Input
                                             value={0}
