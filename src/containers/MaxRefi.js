@@ -83,6 +83,7 @@ export default class MaxRefi extends Component {
                 console.log(loan[0]._id)
                 this.resetForm()
                 //   this.alertMessage()
+                this.props.clearAddressFromState()
                 })
             .catch(() => console.log("Can’t POST loan data"))
         } else {
@@ -134,12 +135,10 @@ export default class MaxRefi extends Component {
                             <Card style={{ margin: "1rem", borderRadius: 15  }}>
                                 <Card.Body>
                                 <Form>
-                                
-                                    {/* <GeoCode handleAddressChange={this.props.handleAddressChange}></GeoCode> */}
                                     <LocationSearchInput 
                                         handleAddressChange={this.props.handleAddressChange} 
+                                        handleAddressSelect = {this.props.handleAddressSelect}
                                         address={this.props.address} 
-                                        // handleAddressSelect={this.props.handleAddressSelect}
                                     />
                                 <Form.Row>
                                     <Col>

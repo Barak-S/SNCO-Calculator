@@ -5,6 +5,10 @@ import MaxRefi from '../containers/MaxRefi'
 import FixAndFlip from '../containers/FixAndFlip'
 import { FormControl, InputGroup, Dropdown, DropdownButton, Form, Card, Col, Row, Container } from 'react-bootstrap';
 
+import PlacesAutocomplete, {
+    geocodeByAddress,
+    getLatLng,
+  } from 'react-places-autocomplete';  
 
 export default class CalculatorContainer extends Component {
     state={
@@ -15,19 +19,25 @@ export default class CalculatorContainer extends Component {
     }
     
     handleAddressChange= (address) => {
-    this.setState({ address })
+        this.setState({ address },()=>console.log(this.state.address))
+    }
+
+    handleAddressSelect = (address) => {
+        geocodeByAddress(address)
+        .then(results => getLatLng(results[0]))
+        this.setState({ address})
     }
     
     changePropertyType=(e)=>{
-    this.setState({
-        propertyType: e
-    })
+        this.setState({
+            propertyType: e
+        })
     }
     
     dateChange = date => this.setState({ date })
 
     clearAddressFromState=()=>{
-        this.setState({ address: "" },()=>console.log(this.state.address))
+        this.setState({ address: "" })
     }
 
     // createLoan=( loan )=>{
@@ -75,7 +85,8 @@ export default class CalculatorContainer extends Component {
                         handleAddressChange = {this.handleAddressChange}
                         handleAddressSelect = {this.handleAddressSelect}
                         propertyType = {this.state.propertyType}
-                        // clearAddressFromState={this.clearAddressFromState}
+                        clearAddressFromState={this.clearAddressFromState}
+                        handleAddressSelect = {this.handleAddressSelect}
                         // createLoan = {this.createLoan}
                     />
                 }
@@ -86,7 +97,9 @@ export default class CalculatorContainer extends Component {
                         handleAddressChange = {this.handleAddressChange}
                         handleAddressSelect = {this.handleAddressSelect}
                         propertyType = {this.state.propertyType}
-                        // clearAddressFromState={this.clearAddressFromState}
+                        clearAddressFromState={this.clearAddressFromState}
+                        handleAddressSelect = {this.handleAddressSelect}
+
                         // createLoan = {this.createLoan}
 
                     /> 

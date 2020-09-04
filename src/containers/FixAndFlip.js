@@ -119,8 +119,7 @@ export default class FixAndFlip extends Component {
 
 
                 <Container fluid>
-                    {/* {this.state.alert && <Alert variant={"success"} style={{ margin: "1rem" }}>Loan Saved! Click here to see loan deatails.</Alert>} */}
-                    
+                    {/* {this.state.alert && <Alert variant={"success"} style={{ margin: "1rem" }}>Loan Saved! Click here to see loan deatails.</Alert>} */}             
                     <Row>
                         <Col md={7}>
                             <Card style={{ margin: "1rem", borderRadius: 15  }}>
@@ -128,8 +127,8 @@ export default class FixAndFlip extends Component {
                                 <Form>
                                     <LocationSearchInput 
                                         handleAddressChange={this.props.handleAddressChange} 
+                                        handleAddressSelect = {this.props.handleAddressSelect}
                                         address={this.props.address} 
-                                        // handleAddressSelect={this.props.handleAddressSelect}
                                     />
                                 <Form.Row>
                                     <InputGroup className="mb-3">
