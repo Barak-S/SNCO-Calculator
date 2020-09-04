@@ -211,7 +211,7 @@ export default class SingleLoan extends Component {
                         <Modal.Body>
                             <Form>
                                 {Object.entries(this.state.editedLoan).map(attr=>{
-                                    if (attr[0] !== "exitStrategy" ){
+                                    if (attr[0] !== "exitStrategy" && attr[0] !== "noi" && attr[0] !== "annualDebtService" && attr[0] !== "dscr" && attr[0] !== "totalIn" && attr[0] !== "totalProfit" && attr[0] !== "profitPercent"){
                                         if (attr[0] === "turnaroundTime"){
                                             return (
                                                 <Form.Row>
@@ -256,7 +256,7 @@ export default class SingleLoan extends Component {
                                                     </Col>
                                                 </Form.Row>
                                             )
-                                        }else {
+                                        } else {
                                             return(
                                                 <Form.Row>
                                                     <Col>
