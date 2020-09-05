@@ -64,30 +64,40 @@ export default class MaxRefi extends Component {
     //     return num + '$';
     // }
 
-    createLoan=(address,properyType, date, loan,officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)=>{
+    createLoan=(address,properyType, date, officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)=>{
         this.setState({
-            officeExpenses, replacementReserves, management, vacancy, totalProjectCost, noi, capRate, annualDebtService, dscr
+            officeExpenses: officeExpenses,
+            replacementReserves: replacementReserves,
+            management: management,
+            vacancy: vacancy,
+            totalProjectCost: totalProjectCost,
+            noi: noi,
+            capRate: capRate,
+            annualDebtService: annualDebtService,
+            dscr: dscr
+        },()=>{
+            if (address !== ""){
+                fetch('https://snco-calculator-backend.herokuapp.com/loans',{
+                    method: "POST",
+                    headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
+                    body: JSON.stringify({address: address,
+                    purchaseDate: date,
+                    properyType: properyType, 
+                    loan: this.state,
+                    })
+                })
+                .then(res=>res.json())
+                .then(loan=>{
+                    console.log(loan[0]._id)
+                    this.resetForm()
+                    //   this.alertMessage()
+                    })
+                .catch(() => console.log("Can’t POST loan data"))
+            } else {
+              console.log("wont post without an address")
+            }
+
         })
-        if (address !== ""){
-            fetch('https://snco-calculator-backend.herokuapp.com/loans',{
-                method: "POST",
-                headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-                body: JSON.stringify({address: address,
-                purchaseDate: date,
-                properyType: properyType, 
-                loan,
-                })
-            })
-            .then(res=>res.json())
-            .then(loan=>{
-                console.log(loan[0]._id)
-                this.resetForm()
-                //   this.alertMessage()
-                })
-            .catch(() => console.log("Can’t POST loan data"))
-        } else {
-          console.log("wont post without an address")
-        }
     }
 
     alertMessage=()=>{
@@ -423,7 +433,7 @@ export default class MaxRefi extends Component {
                             <Button 
                                 variant="outline-dark" 
                                 style={{ marginBottom: 15 }} 
-                                onClick={()=>this.createLoan( this.props.address, this.props.propertyType, this.props.date, this.state )}
+                                onClick={()=>this.createLoan( this.props.address, this.props.propertyType, this.props.date, officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr )}
                             >Save</Button>                        
                         </Col>
                     </Row>

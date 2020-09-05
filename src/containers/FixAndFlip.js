@@ -77,26 +77,28 @@ export default class FixAndFlip extends Component {
         }, 4000)
     }
 
-    createLoan=(address, properyType, loan, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent)=>{
-        if (address !== ""){
-            this.setState({
-                carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent
-            })
-            fetch('https://snco-calculator-backend.herokuapp.com/loans',{
-                method: "POST",
-                headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-                body: JSON.stringify({address: address, properyType: properyType, loan })
-            })
-            .then(res=>res.json())
-            .then(loans=>{
-                this.resetForm()
-                //   this.alertMessage()
+    createLoan=(address, properyType, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent)=>{
+        this.setState({
+            carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent
+        },()=>{
+            if (address !== ""){
+                fetch('https://snco-calculator-backend.herokuapp.com/loans',{
+                    method: "POST",
+                    headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
+                    body: JSON.stringify({address: address, properyType: properyType, loan: this.state })
                 })
-            .catch(() => console.log("Can’t POST loan data"))
-        
-            } else {
-            console.log("wont post without an address")
-            }
+                .then(res=>res.json())
+                .then(loans=>{
+                    this.resetForm()
+                    //   this.alertMessage()
+                    })
+                .catch(() => console.log("Can’t POST loan data"))
+            
+                } else {
+                console.log("wont post without an address")
+                }
+
+        })
     }
 
     numberFormat = (value) =>
@@ -415,7 +417,7 @@ export default class FixAndFlip extends Component {
                             <Button 
                                 variant="outline-dark" 
                                 style={{ marginBottom: 15 }} 
-                                onClick={()=>this.createLoan(this.props.address,this.props.propertyType, this.state, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent )}
+                                onClick={()=>this.createLoan(this.props.address,this.props.propertyType, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent )}
                             >Save</Button>
                         </Col>
                     </Row>
