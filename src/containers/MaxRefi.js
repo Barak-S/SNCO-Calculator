@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputGroup, Card, Col, Row, Container, Button, Form, Alert } from 'react-bootstrap';
+import { FormControl, InputGroup, Card, Col, Row, Container, Button, Form, Alert, Table } from 'react-bootstrap';
 // import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import { InputNumber } from "antd";
 
@@ -30,7 +30,7 @@ export default class MaxRefi extends Component {
         rate: 0,
         arm: 0,
         payoff: 0,
-        capRate: 0,
+        marketCapRate: 0,
         // alert: false,
         officeExpenses: 0,
         replacementReserves: 0,
@@ -107,6 +107,12 @@ export default class MaxRefi extends Component {
         }, 4000)
     }
 
+    numberFormat = (value) =>
+        new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+    }).format(value);
+
 
     render() {
         
@@ -133,7 +139,7 @@ export default class MaxRefi extends Component {
         let arm = this.state.arm ? this.state.arm : 1;
         
         let annualDebtService = ((requestLoanAmount + (requestLoanAmount * ratePercent))/ arm)
-        let dscr = noi / annualDebtService
+        let dscr = annualDebtService === 0 ? 0 : noi / annualDebtService
         
         return (
 
@@ -350,8 +356,8 @@ export default class MaxRefi extends Component {
                                         <InputGroup className="mb-3">
                                             <Form.Label style={{width: "100%", textAlign: "left"}}>Market Cap Rate</Form.Label>
                                                 <Input
-                                                    name={"capRate"}
-                                                    value={this.state.capRate}
+                                                    name={"marketCapRate"}
+                                                    value={this.state.marketCapRate}
                                                     handleRateChange = {this.handleRateChange}
                                                     input={"rate"}
                                                 />
@@ -366,68 +372,25 @@ export default class MaxRefi extends Component {
                         <Col md={5}>
                             <Card style={{ margin: "1rem", borderRadius: 15 }}>
                                 <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
-                                <Form>
-                                <Form.Row>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <Form.Label style={{fontWeight: "600"}}>Gross Annual Income:</Form.Label>
-                                        </InputGroup.Prepend>
-                                        <Input
-                                            value={ grossAnnualIncome? grossAnnualIncome.toFixed(2) : 0}
-                                            disabled={true}
-                                            input="currency"
-                                        />
-                                    </InputGroup>
-                                </Form.Row>
-                                <Form.Row>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <Form.Label style={{fontWeight: "600"}}>NOI:</Form.Label>
-                                        </InputGroup.Prepend>
-                                        <Input
-                                            value={ noi? noi.toFixed(2) : 0}
-                                            disabled={true}
-                                            input="currency"
-                                        />
-                                    </InputGroup>
-                                </Form.Row>
-                                <Form.Row>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <Form.Label style={{fontWeight: "600"}}>Annual Debt Service:</Form.Label>
-                                        </InputGroup.Prepend>
-                                        <Input
-                                            value={ annualDebtService? annualDebtService.toFixed(2) : 0}
-                                            disabled={true}
-                                            input="currency"
-                                        />
-                                    </InputGroup>
-                                </Form.Row>
-                                <Form.Row>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <Form.Label style={{fontWeight: "600"}}>Debt Service Coverage Ratio (DSCR):</Form.Label>
-                                        </InputGroup.Prepend>
-                                        <Input
-                                            value={dscr? dscr.toFixed(2) : 0}
-                                            disabled={true}
-                                            input="percent"
-                                        />
-                                    </InputGroup>
-                                </Form.Row>
-                                <Form.Row>
-                                    <InputGroup className="mb-3">
-                                        <InputGroup.Prepend>
-                                        <Form.Label style={{fontWeight: "600"}}>SNCO Max Loan:</Form.Label>
-                                        </InputGroup.Prepend>
-                                        <Input
-                                            value={0}
-                                            disabled={true}
-                                            input="currency"
-                                        />
-                                    </InputGroup>
-                                </Form.Row>
-                                </Form>
+                                    <Table responsive>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Gross Annual Income:</strong></td><td>{ grossAnnualIncome? this.numberFormat(grossAnnualIncome.toFixed(2)) : 0 }</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>NOI:</strong></td><td>{ noi? this.numberFormat(noi.toFixed(2)) : 0}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Annual Debt Service:</strong></td><td>{ annualDebtService? this.numberFormat(annualDebtService.toFixed(2)) : 0}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Debt Service Coverage Ratio (DSCR):</strong></td><td>{dscr? dscr.toFixed(2) : 0}%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>SNCO Max Loan:</strong></td><td>{0}</td>
+                                            </tr>
+                                    </tbody>
+                                    </Table>
                                 </Card.Body>
                             </Card>
                             <Button 

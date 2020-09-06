@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownButton, Form, Button, Alert } from 'react-bootstrap';
+import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownButton, Form, Button, Alert, Table } from 'react-bootstrap';
 
 import { InputNumber } from "antd";
 // import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
@@ -374,44 +374,19 @@ export default class FixAndFlip extends Component {
                         <Col md={5}>
                             <Card style={{ margin: "1rem", borderRadius: 15 }}>
                                 <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
-                                    <Form>
-                                    <Form.Row>
-                                        <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <Form.Label style={{fontWeight: "600"}}>Total In:</Form.Label>
-                                            </InputGroup.Prepend>
-                                            <Input
-                                                value={totalIn ? totalIn : 0}
-                                                disabled={true}
-                                                input="currency"
-                                            />
-                                        </InputGroup>
-                                    </Form.Row>
-                                    <Form.Row>
-                                        <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <Form.Label style={{fontWeight: "600"}}>Total Profit on Flip:</Form.Label>
-                                            </InputGroup.Prepend>
-                                                <Input
-                                                    value={totalProfit ? totalProfit : 0}
-                                                    disabled={true}
-                                                    input="currency"
-                                                />
-                                        </InputGroup>
-                                    </Form.Row>
-                                    <Form.Row>
-                                        <InputGroup className="mb-3">
-                                            <InputGroup.Prepend>
-                                            <Form.Label style={{fontWeight: "600"}}>Profit Percent:</Form.Label>
-                                            </InputGroup.Prepend>
-                                                <Input
-                                                    value={profitPercent? profitPercent.toFixed(2) : 0}
-                                                    disabled={true}
-                                                    input="percent"
-                                                />
-                                        </InputGroup>
-                                    </Form.Row>
-                                    </Form>
+                                    <Table responsive>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Total In:</strong></td><td>{ totalIn? this.numberFormat(totalIn.toFixed(2)) : 0 }</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Total Profit on Flip:</strong></td><td>{ totalProfit? this.numberFormat(totalProfit.toFixed(2)) : 0}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Profit Percent:</strong></td><td>{ profitPercent > 0 && profitPercent ? profitPercent.toFixed(2) : 0 }%</td>
+                                            </tr>
+                                        </tbody>
+                                    </Table>
                                 </Card.Body>
                             </Card>
                             <Button 

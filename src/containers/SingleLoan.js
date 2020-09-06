@@ -153,7 +153,7 @@ export default class SingleLoan extends Component {
                             <Table responsive> 
                                 <tbody>
                                     {this.state.loanAttributes.map(loan=>{
-                                        if (loan.key === "rate" || loan.key === "capRate" || loan.key === "dscr" || loan.key === "profitPercent" ){
+                                        if (loan.key === "rate" || loan.key === "capRate" || loan.key === "dscr" || loan.key === "profitPercent" || loan.key === "marketCapRate" ){
                                             return(
                                                 <tr><td style={{fontSize: 16}}><strong>{this.parseKeyString(loan.key)}: </strong> </td> <td style={{fontSize: 15}}>{this.myFormat(loan.value)}</td></tr>
                                                 )
@@ -211,7 +211,7 @@ export default class SingleLoan extends Component {
                         <Modal.Body>
                             <Form>
                                 {Object.entries(this.state.editedLoan).map(attr=>{
-                                    if (attr[0] !== "exitStrategy" && attr[0] !== "noi" && attr[0] !== "annualDebtService" && attr[0] !== "dscr" && attr[0] !== "totalIn" && attr[0] !== "totalProfit" && attr[0] !== "profitPercent"){
+                                    if (attr[0] !== "exitStrategy" && attr[0] !== "noi" && attr[0] !== "annualDebtService" && attr[0] !== "dscr" && attr[0] !== "totalIn" && attr[0] !== "totalProfit" && attr[0] !== "profitPercent" && attr[0] !== "marketCapRate"){
                                         if (attr[0] === "turnaroundTime"){
                                             return (
                                                 <Form.Row>
