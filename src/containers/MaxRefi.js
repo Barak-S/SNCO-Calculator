@@ -375,19 +375,19 @@ export default class MaxRefi extends Component {
                                     <Table responsive>
                                         <tbody>
                                             <tr>
-                                                <td><strong>Gross Annual Income:</strong></td><td>{ grossAnnualIncome? this.numberFormat(grossAnnualIncome.toFixed(2)) : 0 }</td>
+                                                <td style={{fontSize: 16}}><strong>Gross Annual Income:</strong></td><td style={{fontSize: 15}}>{ grossAnnualIncome? this.numberFormat(grossAnnualIncome.toFixed(2)) : 0 }</td>
                                             </tr>
                                             <tr>
-                                                <td><strong>NOI:</strong></td><td>{ noi? this.numberFormat(noi.toFixed(2)) : 0}</td>
+                                                <td style={{fontSize: 16}}><strong>NOI:</strong></td><td style={{fontSize: 15}}>{ noi? this.numberFormat(noi.toFixed(2)) : 0}</td>
                                             </tr>
                                             <tr>
-                                                <td><strong>Annual Debt Service:</strong></td><td>{ annualDebtService? this.numberFormat(annualDebtService.toFixed(2)) : 0}</td>
+                                                <td style={{fontSize: 16}}><strong>Annual Debt Service:</strong></td><td style={{fontSize: 15}}>{ annualDebtService? this.numberFormat(annualDebtService.toFixed(2)) : 0}</td>
                                             </tr>
                                             <tr>
-                                                <td><strong>Debt Service Coverage Ratio (DSCR):</strong></td><td>{dscr? dscr.toFixed(2) : 0}%</td>
+                                                <td style={{fontSize: 16}}><strong>Debt Service Coverage Ratio (DSCR):</strong></td><td style={{fontSize: 15}}>{dscr? dscr.toFixed(2) : 0}%</td>
                                             </tr>
                                             <tr>
-                                                <td><strong>SNCO Max Loan:</strong></td><td>{0}</td>
+                                                <td style={{fontSize: 16}}><strong>SNCO Max Loan:</strong></td><td style={{fontSize: 15}}>{0}</td>
                                             </tr>
                                     </tbody>
                                     </Table>
