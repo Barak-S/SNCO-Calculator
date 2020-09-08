@@ -74,7 +74,7 @@ export default class MaxRefi extends Component {
             noi: noi,
             capRate: capRate,
             annualDebtService: annualDebtService,
-            dscr: dscr
+            dscr: dscr.toFixed(2)
         },()=>{
             if (address !== ""){
                 fetch('https://snco-calculator-backend.herokuapp.com/loans',{

@@ -79,7 +79,12 @@ export default class FixAndFlip extends Component {
 
     createLoan=(address, properyType, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent)=>{
         this.setState({
-            carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent
+            carryingCosts: carryingCosts,
+            resaleCosts: resaleCosts,
+            closingCosts: closingCosts,
+            totalIn: totalIn,
+            totalProfit: totalIn,
+            profitPercent: profitPercent.toFixed(2)
         },()=>{
             if (address !== ""){
                 fetch('https://snco-calculator-backend.herokuapp.com/loans',{
