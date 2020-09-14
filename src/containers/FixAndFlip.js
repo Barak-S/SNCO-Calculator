@@ -14,6 +14,8 @@ export default class FixAndFlip extends Component {
         this.state = {
         purchasePrice: 0,
         renovation: 0,
+
+        //fix and flip
         experienceLevel: "",
         creditScore: 0,
         arv: 0,
@@ -30,6 +32,22 @@ export default class FixAndFlip extends Component {
         legalClosing: 0,
         legalLender:0,
         alert: false,
+
+        // fix and refi
+        requestLoanAmount: 0,
+        annualGrossRent: 0,
+        taxes: 0,
+        insurance: 0,
+        waterSewer: 0,
+        utilities: 0,
+        hardCosts: 0,
+        softCosts: 0,
+        rate: 0,
+        arm: 0,
+        payoff: 0,
+        marketCapRate: 0,
+
+        // calculations
         carryingCosts: 0,
         resaleCosts: 0,
         closingCosts: 0,
@@ -51,6 +69,11 @@ export default class FixAndFlip extends Component {
           [key]: parseInt(e)
         })
     }
+
+    handleRateChange=(key, e)=>{
+        this.setState({ [key]: e})
+    }
+    // handle percent ^^
 
     changeExitStrategy=(e)=>{
         this.setState({
@@ -363,7 +386,7 @@ export default class FixAndFlip extends Component {
                                     </Form.Row>
 
                                 </div> 
-                                
+
                                 } 
                                 {this.state.exitStrategy === "Fix & Refinance" &&
 
