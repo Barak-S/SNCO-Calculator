@@ -109,7 +109,7 @@ export default class MaxRefi extends Component {
     render() {
         
         let officeExpenses = (this.state.units ) * 500
-        let replacementReserves = (this.state.units  ) * 250
+        let replacementReserves = (this.state.units ) * 250
         
         let management = (this.state.annualGrossRent * .04)
         let vacancy = (this.state.annualGrossRent * .03)
@@ -132,6 +132,8 @@ export default class MaxRefi extends Component {
         
         let annualDebtService = ((requestLoanAmount + (requestLoanAmount * ratePercent))/ arm)
         let dscr = annualDebtService === 0 ? 0 : noi / annualDebtService
+
+        let sncoMaxLoan = this.state.marketCapRate / noi;
         
         return (
 
@@ -379,7 +381,7 @@ export default class MaxRefi extends Component {
                                                 <td style={{fontSize: 16}}><strong>Debt Service Coverage Ratio (DSCR):</strong></td><td style={{fontSize: 15}}>{dscr? dscr.toFixed(2) : 0}%</td>
                                             </tr>
                                             <tr>
-                                                <td style={{fontSize: 16}}><strong>SNCO Max Loan:</strong></td><td style={{fontSize: 15}}>{0}</td>
+                                                <td style={{fontSize: 16}}><strong>SNCO Max Loan:</strong></td><td style={{fontSize: 15}}>{ sncoMaxLoan }</td>
                                             </tr>
                                     </tbody>
                                     </Table>
