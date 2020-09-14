@@ -31,7 +31,6 @@ export default class MaxRefi extends Component {
         arm: 0,
         payoff: 0,
         marketCapRate: 0,
-        alert: false,
         officeExpenses: 0,
         replacementReserves: 0,
         management: 0,
@@ -90,7 +89,7 @@ export default class MaxRefi extends Component {
                 .then(loan=>{
                         console.log(loan[0]._id)
                         this.resetForm()
-                        this.alertMessage()
+                        this.props.alertMessage()
                     })
                 .catch(() => console.log("Can’t POST loan data"))
             } else {
@@ -98,13 +97,6 @@ export default class MaxRefi extends Component {
             }
 
         })
-    }
-
-    alertMessage=()=>{
-        this.setState({ alert: true})
-        setTimeout(() => {
-            this.setState({ alert: false })
-        }, 4000)
     }
 
     numberFormat = (value) =>
@@ -144,7 +136,7 @@ export default class MaxRefi extends Component {
         return (
 
                 <Container fluid>
-                    {this.state.alert && <Alert variant={"success"} style={{ margin: "1rem" }}>Loan Saved! Click here to see loan deatails.</Alert>}
+                    {this.props.alert && <Alert variant={"success"} style={{ margin: "1rem" }}> <Alert.Heading>Loan Saved!</Alert.Heading>Click here to see loan deatails.</Alert>}             
                     <Row>
                         <Col md={7}>
                             <Card style={{ margin: "1rem", borderRadius: 15  }}>

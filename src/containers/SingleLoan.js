@@ -80,8 +80,6 @@ export default class SingleLoan extends Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id: this.state.loan._id, loan })
         })
-        // .then(resp=>resp.json())
-        // .then(updatedLoan => console.log(updatedLoan))
         .then(this.mapLoanAttributes(this.state.loan.loan))
     
     }

@@ -15,7 +15,8 @@ export default class CalculatorContainer extends Component {
         propertyType: "Multifamily Max Refi",
         address: "",
         date: new Date(),  
-        loan: {}  
+        loan: {},
+        alert: false  
     }
     
     handleAddressChange= (address) => {
@@ -38,6 +39,13 @@ export default class CalculatorContainer extends Component {
 
     clearAddressFromState=()=>{
         this.setState({ address: "" })
+    }
+
+    alertMessage=()=>{
+        this.setState({ alert: true})
+        setTimeout(() => {
+            this.setState({ alert: false })
+        }, 5000)
     }
 
     // createLoan=( loan )=>{
@@ -87,6 +95,8 @@ export default class CalculatorContainer extends Component {
                         propertyType = {this.state.propertyType}
                         clearAddressFromState={this.clearAddressFromState}
                         handleAddressSelect = {this.handleAddressSelect}
+                        alertMessage = {this.alertMessage}
+                        alert = {this.state.alert}
                         // createLoan = {this.createLoan}
                     />
                 }
@@ -99,7 +109,8 @@ export default class CalculatorContainer extends Component {
                         propertyType = {this.state.propertyType}
                         clearAddressFromState={this.clearAddressFromState}
                         handleAddressSelect = {this.handleAddressSelect}
-
+                        alertMessage = {this.alertMessage}
+                        alert = {this.state.alert}
                         // createLoan = {this.createLoan}
 
                     /> 
