@@ -580,17 +580,37 @@ export default class FixAndFlip extends Component {
                             <Card style={{ margin: "1rem", borderRadius: 15 }}>
                                 <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
                                     <Table responsive>
-                                        <tbody>
-                                            <tr>
-                                                <td><strong>Total In:</strong></td><td>{ totalIn? this.numberFormat(totalIn.toFixed(2)) : 0 }</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Total Profit on Flip:</strong></td><td>{ totalProfit? this.numberFormat(totalProfit.toFixed(2)) : 0}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Profit Percent:</strong></td><td>{ profitPercent > 0 && profitPercent ? profitPercent.toFixed(2) : 0 }%</td>
-                                            </tr>
-                                        </tbody>
+                                            {this.state.exitStrategy === "" || this.state.exitStrategy === "Fix & Flip" ?
+                                            <tbody>
+                                                <tr>
+                                                    <td style={{fontSize: 16}}><strong>Total In:</strong></td><td>{ totalIn? this.numberFormat(totalIn.toFixed(2)) : 0 }</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style={{fontSize: 16}}><strong>Total Profit on Flip:</strong></td><td>{ totalProfit? this.numberFormat(totalProfit.toFixed(2)) : 0}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style={{fontSize: 16}}><strong>Profit Percent:</strong></td><td>{ profitPercent > 0 && profitPercent ? profitPercent.toFixed(2) : 0 }%</td>
+                                                </tr>
+                                            </tbody>
+                                            :
+                                            <tbody>
+                                                <tr>
+                                                    <td style={{fontSize: 16}}><strong>Gross Annual Income:</strong></td><td style={{fontSize: 15}}>{ "grossAnnualIncome"}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style={{fontSize: 16}}><strong>NOI:</strong></td><td style={{fontSize: 15}}>{ "noi" }</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style={{fontSize: 16}}><strong>Annual Debt Service:</strong></td><td style={{fontSize: 15}}>{ "annualDebtService" }</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style={{fontSize: 16}}><strong>Debt Service Coverage Ratio (DSCR):</strong></td><td style={{fontSize: 15}}>{ "dscr"}%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style={{fontSize: 16}}><strong>SNCO Max Loan:</strong></td><td style={{fontSize: 15}}>{ "sncoMaxLoan" }</td>
+                                                </tr>
+                                            </tbody>                                      
+                                            }
                                     </Table>
                                 </Card.Body>
                             </Card>

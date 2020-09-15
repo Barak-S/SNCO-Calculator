@@ -22,7 +22,7 @@ export default class LocationSearchInput extends React.Component {
             <div>
                   <InputGroup className="mb-3">
                   <Form.Label style={{width: "100%", textAlign: "left"}}>Address</Form.Label>
-                      <FormControl {...getInputProps({
+                      <FormControl placeholder= "Address" {...getInputProps({
                           autoComplete: "new-password"
                       })}>
                       </FormControl>
