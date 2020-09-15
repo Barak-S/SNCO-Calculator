@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
-import { Card, Button, OverlayTrigger, Tooltip  } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import LoanCard from '../components/LoanCard'
 
 import { Link } from 'react-router-dom';
@@ -11,6 +11,7 @@ export default class AllLoans extends Component {
 
     state={
         allLoans: [],
+        amountInProgress: 0,
         start: 0,
     }
 
@@ -19,7 +20,7 @@ export default class AllLoans extends Component {
         .then(resp=>resp.json())
         .then(allLoans=>this.setState({
           allLoans
-        }))
+        },()=>this.getAmountInProgress(this.state.allLoans)))
     }
 
     loadMoreLoans=()=>{
@@ -61,13 +62,43 @@ export default class AllLoans extends Component {
         ) 
     }
 
+    getAmountInProgress(allLoans){
+        let amountInProgress = 0
+        allLoans.map((loan)=>{
+            if (loan.loan.requestLoanAmount){
+                amountInProgress += loan.loan.requestLoanAmount
+            }
+        })
+        this.setState({
+            amountInProgress
+        })
+    }
+
+    numberFormat = (value) =>
+    new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(value);
+
+
     render() {
 
         return (
             <div className="AllLoans" style={{paddingBottom: 25}}>
                 <div>
                     <Card.Text className="appHeader">All Loans</Card.Text>
-                    {/* <Card.Text>results: {this.state.allLoans.length}</Card.Text> */}
+                    <Col xs={12} md={4} lg={4} className="processDiv">
+                        <Card style={{textAlign: "left", padding: "0.5rem", borderRadius: 6}}>
+                            <Row>
+                                <Col>
+                                    <Card.Text style={{fontSize: 11}}>Amount In Proccess</Card.Text><Card.Text style={{ fontSize: 18,color:"#0F9D58" }}>{this.numberFormat(this.state.amountInProgress)}</Card.Text>
+                                </Col>
+                                <Col>
+                                    <Card.Text style={{fontSize: 11}}>Loan In Proccess</Card.Text><Card.Text style={{ fontSize: 18, color:"#FFB74D" }}>{this.state.allLoans.length}</Card.Text>
+                                </Col>
+                            </Row>
+                        </Card>
+                    </Col>
                 </div>
                 {/* {this.state.loading? <Button variant="secondary" style={{opacity: "0.5", marginTop: 7}}>Loading...</Button> : this.mapLoans()} */}
                 {this.mapLoans()}

@@ -82,7 +82,7 @@ export default class CalculatorContainer extends Component {
                         id="nav-dropdown">
                     
                         <Dropdown.Item eventKey="Multifamily Max Refi">Multifamily Max Refi</Dropdown.Item>
-                        <Dropdown.Item eventKey="1-4 Calculator">1-4 Calculator</Dropdown.Item>
+                        <Dropdown.Item eventKey="1-4 Family">1-4 Family</Dropdown.Item>
                     </DropdownButton>
 
                 {this.state.propertyType === "Multifamily Max Refi" &&
@@ -101,7 +101,7 @@ export default class CalculatorContainer extends Component {
                     />
                 }
 
-                {this.state.propertyType === "1-4 Calculator" &&
+                {this.state.propertyType === "1-4 Family" &&
                     <FixAndFlip 
                         address = {this.state.address}
                         handleAddressChange = {this.handleAddressChange}

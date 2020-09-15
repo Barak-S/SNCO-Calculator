@@ -63,6 +63,8 @@ div.ant-input-number-handler-wrap {
 
 .LoanCard {
   margin: 1rem;
+  border: 2px solid #B98757;
+  border-radius: 15;
   cursor: pointer;
 }
 
@@ -79,6 +81,11 @@ label.form-label {
   color: #b98757;
 }
 
+/* .AllLoans{
+  min-height: 110vh;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+} */
 div.SingleLoan.Card {
   margin-bottom: 0px;
   padding-bottom: 0px;
@@ -91,7 +98,6 @@ div.SingleLoan.Card {
 div.react-date-picker__wrapper {
   background-color: white;
   height: 37px;
-  border-radius: 3px;
 }
 
 div.react-date-picker__inputGroup {
@@ -99,6 +105,9 @@ div.react-date-picker__inputGroup {
   width: 100% !important;
 }
 
+/* .react-date-picker__button{
+  padding: 2px, 2px !important;
+} */
 div.react-date-picker__inputGroup.react-date-picker__inputGroup__input.react-date-picker__inputGroup__year {
   max-width: 45px !important;
 }
@@ -111,6 +120,9 @@ div.react-date-picker__inputGroup.react-date-picker__inputGroup__input.react-dat
   max-width: 23px !important;
 }
 
+/* svg.react-date-picker__clear-button__icon.react-date-picker__button__icon{
+  display: none;
+} */
 .notification-container {
   font-size: 14px;
   -webkit-box-sizing: border-box;
@@ -122,17 +134,51 @@ button.btn {
           box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
-div.ant-input-number{
-  border-radius: 3px;
+.top-right {
+  top: 12px;
+  right: 12px;
+  -webkit-transition: -webkit-transform .6s ease-in-out;
+  transition: -webkit-transform .6s ease-in-out;
+  transition: transform .6s ease-in-out;
+  transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out;
+  -webkit-animation: toast-in-right .7s;
+          animation: toast-in-right .7s;
 }
 
-input.form-control{
-  border-radius: 3px;
+.bottom-right {
+  bottom: 12px;
+  right: 12px;
+  -webkit-transition: -webkit-transform .6s ease-in-out;
+  transition: -webkit-transform .6s ease-in-out;
+  transition: transform .6s ease-in-out;
+  transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out;
+  -webkit-animation: toast-in-right .7s;
+          animation: toast-in-right .7s;
 }
 
-.input-group>.form-control:not(:first-child) {
-  border-top-left-radius: 3px !important;
-  border-bottom-left-radius: 3px !important;
+.top-left {
+  top: 12px;
+  left: 12px;
+  -webkit-transition: -webkit-transform .6s ease-in;
+  transition: -webkit-transform .6s ease-in;
+  transition: transform .6s ease-in;
+  transition: transform .6s ease-in, -webkit-transform .6s ease-in;
+  -webkit-animation: toast-in-left .7s;
+          animation: toast-in-left .7s;
 }
 
+.bottom-left {
+  bottom: 12px;
+  left: 12px;
+  -webkit-transition: -webkit-transform .6s ease-in;
+  transition: -webkit-transform .6s ease-in;
+  transition: transform .6s ease-in;
+  transition: transform .6s ease-in, -webkit-transform .6s ease-in;
+  -webkit-animation: toast-in-left .7s;
+          animation: toast-in-left .7s;
+}
 
+.processDiv {
+  margin: 0 auto;
+}
+/*# sourceMappingURL=App.css.map */
