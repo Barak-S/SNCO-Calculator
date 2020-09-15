@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
-import { Card, Button, Alert } from 'react-bootstrap';
+import { Card, Button, OverlayTrigger, Tooltip  } from 'react-bootstrap';
 import LoanCard from '../components/LoanCard'
 
 import { Link } from 'react-router-dom';
@@ -72,8 +72,6 @@ export default class AllLoans extends Component {
                 {/* {this.state.loading? <Button variant="secondary" style={{opacity: "0.5", marginTop: 7}}>Loading...</Button> : this.mapLoans()} */}
                 {this.mapLoans()}
                 {/* <Button variant="dark" onClick={()=>this.loadMoreLoans()}>Load More</Button> */}
-
-
             </div>
         )
     }
