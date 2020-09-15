@@ -25,8 +25,9 @@ div.card{
 }
 
 div.react-datepicker__wrapper{
-margin: 25px;
-
+  background-color: white;
+  height: 37px;
+  border-radius: 3px;
 }
 
 .main-navigation {
@@ -62,7 +63,6 @@ div.ant-input-number-handler-wrap{
 
 .LoanCard{
   margin: 1rem;
-  border: 2px solid #B98757;
   border-radius: 15;
   cursor: pointer;
 }
@@ -99,6 +99,7 @@ div.SingleLoan.Card{
 div.react-date-picker__wrapper{
   background-color: white;
   height: 37px;
+  border-radius: 3px;
 }
 
 div.react-date-picker__inputGroup{
@@ -137,34 +138,19 @@ button.btn{
 
 }
 
-.top-right {
-  top: 12px;
-  right: 12px;
-  transition: transform .6s ease-in-out;
-  animation: toast-in-right .7s;
-}
-
-.bottom-right {
-  bottom: 12px;
-  right: 12px;
-  transition: transform .6s ease-in-out;
-  animation: toast-in-right .7s;
-}
-
-.top-left {
-  top: 12px;
-  left: 12px;
-  transition: transform .6s ease-in;
-  animation: toast-in-left .7s;
-}
-
-.bottom-left {
-  bottom: 12px;
-  left: 12px;
-  transition: transform .6s ease-in;
-  animation: toast-in-left .7s;
-}
-
 .processDiv{
   margin: 0 auto;
+}
+
+div.ant-input-number{
+  border-radius: 3px;
+}
+  
+input.form-control{
+  border-radius: 3px;
+}
+  
+.input-group>.form-control:not(:first-child) {
+  border-top-left-radius: 3px !important;
+  border-bottom-left-radius: 3px !important;
 }
