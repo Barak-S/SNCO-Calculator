@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownButton, Form, Button, Alert, Table } from 'react-bootstrap';
 
-import { InputNumber } from "antd";
-// import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
-
-// import GeoCode from '../components/GeoCode';
 import LocationSearchInput from'../components/LocationSearchInput';
 import Input from '../components/InputComponent';
 export default class FixAndFlip extends Component {
@@ -138,13 +134,40 @@ export default class FixAndFlip extends Component {
         let totalProfit = this.state.arv - totalIn - resaleCosts
         let profitPercent = (totalProfit / totalIn) * 100
 
+
+        let officeExpenses = (this.state.units ) * 500
+        let replacementReserves = (this.state.units ) * 250
+        let management = (this.state.annualGrossRent * .04)
+        let vacancy = (this.state.annualGrossRent * .03)
+        
+        let taxes = (this.state.taxes )
+        let utilities = (this.state.utilities )
+        let waterSewer = (this.state.waterSewer )
+        
+        let totalProjectCost  = (this.state.purchasePrice + this.state.hardCosts + this.state.softCosts);
+        
+        let grossAnnualIncome = ( this.state.annualGrossRent );
+        let grossAnnualOperatingExpenses = (taxes + utilities + waterSewer + management);
+        let effectiveAnnualGross = grossAnnualIncome - vacancy
+        let noi = (grossAnnualIncome - grossAnnualOperatingExpenses);
+        let capRate = ((noi / totalProjectCost) * 100)
+        
+        let requestLoanAmount = this.state.requestLoanAmount? this.state.requestLoanAmount : 0;
+        let ratePercent = this.state.rate? (this.state.rate / 100) : 0;
+        let arm = this.state.arm ? this.state.arm : 1;
+        
+        let annualDebtService = ((requestLoanAmount + (requestLoanAmount * ratePercent))/ arm)
+        let dscr = annualDebtService === 0 ? 0 : noi / annualDebtService
+
+        let sncoMaxLoan = this.state.marketCapRate / noi;
+
         return (
 
                 <Container fluid>
                     {this.props.alert && <Alert variant={"success"} style={{ margin: "1rem" }}> <Alert.Heading>Loan Saved!</Alert.Heading>Click here to see loan deatails.</Alert>}             
                     <Row>
                         <Col md={7}>
-                            <Card style={{ margin: "1rem", borderRadius: 15  }}>
+                            <Card style={{ margin: "1rem", borderRadius: 10 }}>
                                 <Card.Body>
                                 <Form>
                                     <LocationSearchInput 
@@ -577,7 +600,7 @@ export default class FixAndFlip extends Component {
                         </Col>
 
                         <Col md={5}>
-                            <Card style={{ margin: "1rem", borderRadius: 15 }}>
+                            <Card style={{ margin: "1rem", borderRadius: 10 }}>
                                 <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
                                     <Table responsive>
                                             {this.state.exitStrategy === "" || this.state.exitStrategy === "Fix & Flip" ?
@@ -595,19 +618,19 @@ export default class FixAndFlip extends Component {
                                             :
                                             <tbody>
                                                 <tr>
-                                                    <td style={{fontSize: 16}}><strong>Gross Annual Income:</strong></td><td style={{fontSize: 15}}>{ "grossAnnualIncome"}</td>
+                                                    <td style={{fontSize: 16}}><strong>Gross Annual Income:</strong></td><td style={{fontSize: 15}}>{ grossAnnualIncome? this.numberFormat(grossAnnualIncome.toFixed(2)) : 0 }</td>
                                                 </tr>
                                                 <tr>
-                                                    <td style={{fontSize: 16}}><strong>NOI:</strong></td><td style={{fontSize: 15}}>{ "noi" }</td>
+                                                    <td style={{fontSize: 16}}><strong>NOI:</strong></td><td style={{fontSize: 15}}>{ noi? this.numberFormat(noi.toFixed(2)) : 0}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td style={{fontSize: 16}}><strong>Annual Debt Service:</strong></td><td style={{fontSize: 15}}>{ "annualDebtService" }</td>
+                                                    <td style={{fontSize: 16}}><strong>Annual Debt Service:</strong></td><td style={{fontSize: 15}}>{ annualDebtService? this.numberFormat(annualDebtService.toFixed(2)) : 0}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td style={{fontSize: 16}}><strong>Debt Service Coverage Ratio (DSCR):</strong></td><td style={{fontSize: 15}}>{ "dscr"}%</td>
+                                                    <td style={{fontSize: 16}}><strong>Debt Service Coverage Ratio (DSCR):</strong></td><td style={{fontSize: 15}}>{dscr? dscr.toFixed(2) : 0}%</td>
                                                 </tr>
                                                 <tr>
-                                                    <td style={{fontSize: 16}}><strong>SNCO Max Loan:</strong></td><td style={{fontSize: 15}}>{ "sncoMaxLoan" }</td>
+                                                    <td style={{fontSize: 16}}><strong>SNCO Max Loan:</strong></td><td style={{fontSize: 15}}>{ sncoMaxLoan? sncoMaxLoan : 0 }</td>
                                                 </tr>
                                             </tbody>                                      
                                             }

@@ -7,7 +7,7 @@ export default class LoanCard extends Component {
     render() {
         
         return (
-            <Card className="LoanCard" style={{ borderRadius: 12 }}>
+            <Card className="LoanCard" style={{ borderRadius: 8 }}>
                 <Card.Body style={{color: "#000000"}}>
                     <Row>
                         <Col xs lg="4">

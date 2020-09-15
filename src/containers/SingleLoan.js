@@ -131,8 +131,6 @@ export default class SingleLoan extends Component {
         return (
             <div style={{paddingBottom: 25}}>
                 <Card className="SingleLoan" style={{ borderRadius: 12, margin: "1rem", padding: 15 }}>
-                    {/* <Card.Text style={{ fontWeight: "600", fontSize: 22, margin: 2.5 }}>{this.state.loan.address}</Card.Text>
-                    <Card.Text style={{fontSize: 17}}><strong>Type: </strong>{this.state.loan.properyType}</Card.Text> */}
                     <Row>
                         <Col xs={12} md={8}>
                             <Card.Text style={{ fontWeight: "600", fontSize: 22, margin: 2.5 }}>{this.state.loan.address}</Card.Text>

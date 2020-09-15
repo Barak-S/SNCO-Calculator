@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import { FormControl, InputGroup, Card, Col, Row, Container, Button, Form, Alert, Table } from 'react-bootstrap';
-// import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
-import { InputNumber } from "antd";
-
-import { Link } from 'react-router-dom';
 
 import DatePicker from 'react-date-picker';
-// import GeoCode from '../components/GeoCode';
 import Input from '../components/InputComponent';
 import LocationSearchInput from'../components/LocationSearchInput';
 
@@ -58,10 +53,6 @@ export default class MaxRefi extends Component {
     handleRateChange=(key, e)=>{
         this.setState({ [key]: e})
     }
-
-    // myFormat(num) {
-    //     return num + '$';
-    // }
 
     createLoan=(address,properyType, date, officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)=>{
         this.setState({
@@ -141,7 +132,7 @@ export default class MaxRefi extends Component {
                     {this.props.alert && <Alert variant={"success"} style={{ margin: "1rem" }}> <Alert.Heading>Loan Saved!</Alert.Heading>Click here to see loan deatails.</Alert>}             
                     <Row>
                         <Col md={7}>
-                            <Card style={{ margin: "1rem", borderRadius: 15  }}>
+                            <Card style={{ margin: "1rem", borderRadius: 10 }}>
                                 <Card.Body>
                                 <Form>
                                     <LocationSearchInput 
@@ -364,7 +355,7 @@ export default class MaxRefi extends Component {
                         </Col>
 
                         <Col md={5}>
-                            <Card style={{ margin: "1rem", borderRadius: 15 }}>
+                            <Card style={{ margin: "1rem", borderRadius: 10 }}>
                                 <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
                                     <Table responsive>
                                         <tbody>
