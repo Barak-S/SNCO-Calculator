@@ -91,10 +91,10 @@ export default class AllLoans extends Component {
                         <Card style={{textAlign: "left", padding: "0.5rem", borderRadius: 6}}>
                             <Row>
                                 <Col>
-                                    <Card.Text style={{fontSize: 11}}>Amount In Proccess</Card.Text><Card.Text style={{ fontSize: 18,color:"#0F9D58" }}>{this.numberFormat(this.state.amountInProgress)}</Card.Text>
+                                    <Card.Text style={{fontSize: 11.5}}>Amount In Proccess</Card.Text><Card.Text style={{ fontSize: 18.5, color:"#0F9D58", fontWeight: "600" }}>{this.numberFormat(this.state.amountInProgress)}</Card.Text>
                                 </Col>
                                 <Col>
-                                    <Card.Text style={{fontSize: 11}}>Loan In Proccess</Card.Text><Card.Text style={{ fontSize: 18, color:"#FFB74D" }}>{this.state.allLoans.length}</Card.Text>
+                                    <Card.Text style={{fontSize: 11.5}}>Loan In Proccess</Card.Text><Card.Text style={{ fontSize: 18.5, color:"#FFB74D", fontWeight: "600" }}>{this.state.allLoans.length}</Card.Text>
                                 </Col>
                             </Row>
                         </Card>
