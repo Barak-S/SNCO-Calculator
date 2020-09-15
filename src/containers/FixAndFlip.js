@@ -14,6 +14,7 @@ export default class FixAndFlip extends Component {
         this.state = {
         purchasePrice: 0,
         renovation: 0,
+        taxes: 0,
 
         //fix and flip
         experienceLevel: "",
@@ -22,7 +23,6 @@ export default class FixAndFlip extends Component {
         turnaroundTime: "",
         exitStrategy : "",
         interest: 0,
-        taxes: 0,
         insurance: 0,
         legalResale: 0,
         transferTax: 0,
@@ -36,7 +36,6 @@ export default class FixAndFlip extends Component {
         // fix and refi
         requestLoanAmount: 0,
         annualGrossRent: 0,
-        taxes: 0,
         insurance: 0,
         waterSewer: 0,
         utilities: 0,

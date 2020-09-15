@@ -20,7 +20,7 @@ export default class CalculatorContainer extends Component {
     }
     
     handleAddressChange= (address) => {
-        this.setState({ address },()=>console.log(this.state.address))
+        this.setState({ address })
     }
 
     handleAddressSelect = (address) => {

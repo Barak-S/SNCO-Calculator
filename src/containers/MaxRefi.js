@@ -381,7 +381,7 @@ export default class MaxRefi extends Component {
                                                 <td style={{fontSize: 16}}><strong>Debt Service Coverage Ratio (DSCR):</strong></td><td style={{fontSize: 15}}>{dscr? dscr.toFixed(2) : 0}%</td>
                                             </tr>
                                             <tr>
-                                                <td style={{fontSize: 16}}><strong>SNCO Max Loan:</strong></td><td style={{fontSize: 15}}>{ sncoMaxLoan }</td>
+                                                <td style={{fontSize: 16}}><strong>SNCO Max Loan:</strong></td><td style={{fontSize: 15}}>{ sncoMaxLoan? sncoMaxLoan : 0 }</td>
                                             </tr>
                                     </tbody>
                                     </Table>
