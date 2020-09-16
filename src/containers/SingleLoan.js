@@ -146,11 +146,12 @@ export default class SingleLoan extends Component {
                                     <Row>
                                         <Col>
                                             <Card.Text style={{ fontSize: 22, fontWeight: "600"}}>Loan Calculation Details</Card.Text> 
-                                            {this.state.editedLoan.annualDebtService && <p>Annual Debt Service: {this.state.editedLoan.annualDebtService}</p>}      
-                                            {this.state.editedLoan.noi && <p>NOI: {this.state.editedLoan.noi}</p>}                     
+                                            {this.state.editedLoan.totalProjectCost || this.state.editedLoan.totalProjectCost !== 0 && <p>Total Project Cost: {this.numberFormat(this.state.editedLoan.totalProjectCost)}</p>}      
+                                            {this.state.editedLoan.annualDebtService && <p>Annual Debt Service: {this.numberFormat(this.state.editedLoan.annualDebtService)}</p>}      
+                                            {this.state.editedLoan.noi && <p>NOI: {this.numberFormat(this.state.editedLoan.noi)}</p>}                     
                                             {this.state.editedLoan.dscr && <p>DSCR: {this.state.editedLoan.dscr}</p>}                     
-                                            {this.state.editedLoan.totalIn && <p>Total In: {this.state.editedLoan.totalIn}</p>}                     
-                                            {this.state.editedLoan.totalProfit && <p>Total Profit on Flip: {this.state.editedLoan.totalProfit}</p>}                     
+                                            {this.state.editedLoan.totalIn && <p>Total In: {this.numberFormat(this.state.editedLoan.totalIn)}</p>}                     
+                                            {this.state.editedLoan.totalProfit && <p>Total Profit on Flip: {this.numberFormat(this.state.editedLoan.totalProfit)}</p>}                     
                                             {this.state.editedLoan.profitPercent && <p>Profit Percent: {this.state.editedLoan.profitPercent}</p>}                     
                                         </Col>
                                     </Row>
@@ -163,14 +164,17 @@ export default class SingleLoan extends Component {
                             <Table responsive> 
                                 <tbody>
                                     {this.state.loanAttributes.map(loan=>{
-                                        if (loan.key === "rate" || loan.key === "capRate" || loan.key === "dscr" || loan.key === "profitPercent" || loan.key === "marketCapRate" ){
-                                            return(
-                                                <tr><td style={{fontSize: 16}}><strong>{this.parseKeyString(loan.key)}: </strong> </td> <td style={{fontSize: 15}}>{this.myFormat(loan.value)}</td></tr>
+                                        if (loan.key !== "dscr" && loan.key !== "noi" && loan.key !== "totalIn" && loan.key !== "totalProfit" && loan.key !== "totalProjectCost" && loan.key !== "profitPercent"){
+
+                                            if (loan.key === "rate" || loan.key === "capRate" || loan.key === "dscr" || loan.key === "profitPercent" || loan.key === "marketCapRate" ){
+                                                return(
+                                                    <tr><td style={{fontSize: 16}}><strong>{this.parseKeyString(loan.key)}: </strong> </td> <td style={{fontSize: 15}}>{this.myFormat(loan.value)}</td></tr>
+                                                    )
+                                            }else{
+                                                return(
+                                                    <tr><td style={{fontSize: 16}}><strong>{this.parseKeyString(loan.key)}: </strong></td> <td style={{fontSize: 15}}>{loan.key === "arm" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel" ? loan.value : this.numberFormat(loan.value)}</td></tr>
                                                 )
-                                        } else{
-                                            return(
-                                                <tr><td style={{fontSize: 16}}><strong>{this.parseKeyString(loan.key)}: </strong></td> <td style={{fontSize: 15}}>{loan.key === "arm" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel" ? loan.value : this.numberFormat(loan.value)}</td></tr>
-                                            )
+                                            }
                                         }
                                     })}
                                 </tbody>
@@ -221,7 +225,7 @@ export default class SingleLoan extends Component {
                         <Modal.Body>
                             <Form>
                                 {Object.entries(this.state.editedLoan).map(attr=>{
-                                    if (attr[0] !== "exitStrategy" && attr[0] !== "noi" && attr[0] !== "annualDebtService" && attr[0] !== "dscr" && attr[0] !== "totalIn" && attr[0] !== "totalProfit" && attr[0] !== "profitPercent" && attr[0] !== "marketCapRate"){
+                                    if (attr[0] !== "exitStrategy" && attr[0] !== "noi" && attr[0] !== "dscr" && attr[0] !== "totalIn" && attr[0] !== "totalProfit" && attr[0] !== "profitPercent" && attr[0] !== "marketCapRate"){
                                         if (attr[0] === "turnaroundTime"){
                                             return (
                                                 <Form.Row>
