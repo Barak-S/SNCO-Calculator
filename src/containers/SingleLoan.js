@@ -124,7 +124,7 @@ export default class SingleLoan extends Component {
     myFormat(num) {
         // return (Math.round(parseInt(num) * 10) /10 ).toFixed(2) + '%';
         // return Math.round(num) + '%';
-        return parseInt(num).toFixed(2) + '%';
+        return num + '%';
     }
 
 
