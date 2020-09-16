@@ -141,9 +141,16 @@ export default class SingleLoan extends Component {
                                 lat={this.state.lat}
                                 lng={this.state.lng}
                             />
-                            {/* <Card style={{ border: '1px solid #B98757', borderRadius: 10, padding: 7, margin: 5 }}>
-                                <Card.Text>Loan Calculation Details...</Card.Text>                                
-                            </Card> */}
+                            <Card style={{ border: '1px solid #B98757', borderRadius: 10, padding: 7, margin: 5 }}>
+                                <Card.Text>Loan Calculation Details</Card.Text> 
+                                {this.state.editedLoan.annualDebtService && <p>Annual Debt Service: {this.state.editedLoan.annualDebtService}</p>}      
+                                {this.state.editedLoan.noi && <p>NOI: {this.state.editedLoan.noi}</p>}                     
+                                {this.state.editedLoan.dscr && <p>DSCR: {this.state.editedLoan.dscr}</p>}                     
+                                {this.state.editedLoan.totalIn && <p>Total In: {this.state.editedLoan.totalIn}</p>}                     
+                                {this.state.editedLoan.totalProfit && <p>Total Profit on Flip: {this.state.editedLoan.totalProfit}</p>}                     
+                                {this.state.editedLoan.profitPercent && <p>Profit Percent: {this.state.editedLoan.profitPercent}</p>}                     
+               
+                            </Card>
                         </Col>
                         <Col xs={12} md={4} style={{textAlign: "left"}}>
                         <Card style={{ padding: 12.5, marginBottom: 5, borderRadius: 10}}>
