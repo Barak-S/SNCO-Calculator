@@ -132,7 +132,7 @@ export default class SingleLoan extends Component {
 
         return (
             <div style={{paddingBottom: 25}}>
-                <Card className="SingleLoan" style={{ borderRadius: 12, margin: "1rem", padding: 15 }}>
+                <Card className="SingleLoan" style={{ borderRadius: 10, margin: "1rem", padding: 15 }}>
                     <Row>
                         <Col xs={12} md={8}>
                             <Card.Text style={{ fontWeight: "600", fontSize: 22, margin: 2.5 }}>{this.state.loan.address}</Card.Text>
@@ -141,15 +141,20 @@ export default class SingleLoan extends Component {
                                 lat={this.state.lat}
                                 lng={this.state.lng}
                             />
-                            <Card style={{ border: '1px solid #B98757', borderRadius: 10, padding: 7, margin: 5 }}>
-                                <Card.Text>Loan Calculation Details</Card.Text> 
-                                {this.state.editedLoan.annualDebtService && <p>Annual Debt Service: {this.state.editedLoan.annualDebtService}</p>}      
-                                {this.state.editedLoan.noi && <p>NOI: {this.state.editedLoan.noi}</p>}                     
-                                {this.state.editedLoan.dscr && <p>DSCR: {this.state.editedLoan.dscr}</p>}                     
-                                {this.state.editedLoan.totalIn && <p>Total In: {this.state.editedLoan.totalIn}</p>}                     
-                                {this.state.editedLoan.totalProfit && <p>Total Profit on Flip: {this.state.editedLoan.totalProfit}</p>}                     
-                                {this.state.editedLoan.profitPercent && <p>Profit Percent: {this.state.editedLoan.profitPercent}</p>}                     
-               
+                            <Card style={{ textAlign: "left", padding: "0.5rem", borderRadius: 10, marginBottom: 12}}>
+                                <Col xs={12} md={4} lg={4}>
+                                    <Row>
+                                        <Col>
+                                            <Card.Text style={{ fontSize: 22, fontWeight: "600"}}>Loan Calculation Details</Card.Text> 
+                                            {this.state.editedLoan.annualDebtService && <p>Annual Debt Service: {this.state.editedLoan.annualDebtService}</p>}      
+                                            {this.state.editedLoan.noi && <p>NOI: {this.state.editedLoan.noi}</p>}                     
+                                            {this.state.editedLoan.dscr && <p>DSCR: {this.state.editedLoan.dscr}</p>}                     
+                                            {this.state.editedLoan.totalIn && <p>Total In: {this.state.editedLoan.totalIn}</p>}                     
+                                            {this.state.editedLoan.totalProfit && <p>Total Profit on Flip: {this.state.editedLoan.totalProfit}</p>}                     
+                                            {this.state.editedLoan.profitPercent && <p>Profit Percent: {this.state.editedLoan.profitPercent}</p>}                     
+                                        </Col>
+                                    </Row>
+                                </Col>
                             </Card>
                         </Col>
                         <Col xs={12} md={4} style={{textAlign: "left"}}>
