@@ -146,7 +146,8 @@ export default class SingleLoan extends Component {
                                     <Row>
                                         <Col>
                                             <Card.Text style={{ fontSize: 22, fontWeight: "600"}}>Loan Calculation Details</Card.Text> 
-                                            {this.state.editedLoan.totalProjectCost || this.state.editedLoan.totalProjectCost !== 0 && <p>Total Project Cost: {this.numberFormat(this.state.editedLoan.totalProjectCost)}</p>}      
+                                            {/* {this.state.editedLoan.totalProjectCost && this.state.editedLoan.totalProjectCost !== 0 && <p>Total Project Cost: {this.numberFormat(this.state.editedLoan.totalProjectCost)}</p>}       */}
+                                            {/* {this.state.editedLoan.totalProjectCost && <p>Total Project Cost: {this.numberFormat(this.state.editedLoan.totalProjectCost)}</p>}       */}
                                             {this.state.editedLoan.annualDebtService && <p>Annual Debt Service: {this.numberFormat(this.state.editedLoan.annualDebtService)}</p>}      
                                             {this.state.editedLoan.noi && <p>NOI: {this.numberFormat(this.state.editedLoan.noi)}</p>}                     
                                             {this.state.editedLoan.dscr && <p>DSCR: {this.state.editedLoan.dscr}</p>}                     
