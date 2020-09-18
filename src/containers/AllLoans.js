@@ -88,7 +88,7 @@ export default class AllLoans extends Component {
                 <div>
                     <Card.Text className="appHeader">All Loans</Card.Text>
                     <Col xs={12} md={4} lg={4} className="processDiv">
-                        <Card style={{textAlign: "left", padding: "0.5rem", borderRadius: 6}}>
+                        <Card style={{textAlign: "left", padding: "0.5rem", borderRadius: 8}}>
                             <Row>
                                 <Col>
                                     <Card.Text style={{fontSize: 11.5}}>Amount In Proccess</Card.Text><Card.Text style={{ fontSize: 18.5, color:"#0F9D58", fontWeight: "600" }}>{this.numberFormat(this.state.amountInProgress)}</Card.Text>
@@ -101,7 +101,18 @@ export default class AllLoans extends Component {
                     </Col>
                 </div>
                 {/* {this.state.loading? <Button variant="secondary" style={{opacity: "0.5", marginTop: 7}}>Loading...</Button> : this.mapLoans()} */}
-                {this.mapLoans()}
+                <Row>
+                    <Col xs={12} md={9} lg={9}>
+                        {this.mapLoans()}
+                    </Col>
+                    <Col >
+                        <Card style={{textAlign: "left", margin: "1rem", borderRadius: 8}}>
+                            <Card.Body>
+                                <Card.Text style={{fontSize: 19, fontWeight: "600", textAlign: "center"}}>History</Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
                 {/* <Button variant="dark" onClick={()=>this.loadMoreLoans()}>Load More</Button> */}
             </div>
         )
