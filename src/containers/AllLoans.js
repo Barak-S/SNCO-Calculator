@@ -102,16 +102,16 @@ export default class AllLoans extends Component {
                 </div>
                 {/* {this.state.loading? <Button variant="secondary" style={{opacity: "0.5", marginTop: 7}}>Loading...</Button> : this.mapLoans()} */}
                 <Row>
-                    <Col xs={12} md={9} lg={9}>
+                    <Col className="processDiv" xs={12} sm={12} md={10} lg={10}>
                         {this.mapLoans()}
                     </Col>
-                    <Col >
+                    {/* <Col >
                         <Card style={{textAlign: "left", margin: "1rem", borderRadius: 8}}>
                             <Card.Body>
                                 <Card.Text style={{fontSize: 19, fontWeight: "600", textAlign: "center"}}>History</Card.Text>
                             </Card.Body>
                         </Card>
-                    </Col>
+                    </Col> */}
                 </Row>
                 {/* <Button variant="dark" onClick={()=>this.loadMoreLoans()}>Load More</Button> */}
             </div>
