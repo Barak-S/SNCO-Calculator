@@ -48,24 +48,25 @@ export default class CalculatorContainer extends Component {
         }, 5000)
     }
 
-    // createLoan=( loan )=>{
-    //     if (this.state.address !== ""){
-    //         fetch('https://snco-calculator-backend.herokuapp.com/loans',{
-    //             method: "POST",
-    //             headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-    //             body: JSON.stringify({address: this.state.address, properyType: this.state.properyType, loan })
-    //         })
-    //         .then(res=>res.json())
-    //         .then(loans=>{
-    //             //   this.resetForm()
-    //             //   this.alertMessage()
-    //             })
-    //         .catch(() => console.log("Can’t POST loan data"))
+
+    createLoan=( loan, puchaseDate )=>{
+        if (this.state.address !== ""){
+            fetch('https://snco-calculator-backend.herokuapp.com/loans',{
+                method: "POST",
+                headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
+                body: JSON.stringify({address: this.state.address, propertyType: this.state.propertyType, puchaseDate, loan })
+            })
+            .then(res=>res.json())
+            .then(loans=>{
+                //   this.resetForm()
+                //   this.alertMessage()
+                })
+            .catch(() => console.log("Can’t POST loan data"))
         
-    //         } else {
-    //         console.log("wont post without an address")
-    //         }
-    // }
+            } else {
+            console.log("wont post without an address")
+            }
+    }
 
 
     render(){
@@ -97,7 +98,7 @@ export default class CalculatorContainer extends Component {
                         handleAddressSelect = {this.handleAddressSelect}
                         alertMessage = {this.alertMessage}
                         alert = {this.state.alert}
-                        // createLoan = {this.createLoan}
+                        createLoan = {this.createLoan}
                     />
                 }
 
@@ -111,7 +112,7 @@ export default class CalculatorContainer extends Component {
                         handleAddressSelect = {this.handleAddressSelect}
                         alertMessage = {this.alertMessage}
                         alert = {this.state.alert}
-                        // createLoan = {this.createLoan}
+                        createLoan = {this.createLoan}
 
                     /> 
                 }

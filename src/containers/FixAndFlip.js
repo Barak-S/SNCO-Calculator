@@ -88,7 +88,7 @@ export default class FixAndFlip extends Component {
         })
     }
 
-    createLoan=(address, properyType, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent)=>{
+    createLoan=(address, propertyType, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent)=>{
         this.setState({
             carryingCosts: carryingCosts,
             resaleCosts: resaleCosts,
@@ -101,7 +101,7 @@ export default class FixAndFlip extends Component {
                 fetch('https://snco-calculator-backend.herokuapp.com/loans',{
                     method: "POST",
                     headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-                    body: JSON.stringify({address: address, properyType: properyType, loan: this.state })
+                    body: JSON.stringify({address: address, propertyType: propertyType, loan: this.state })
                 })
                 .then(res=>res.json())
                 .then(loan=>{

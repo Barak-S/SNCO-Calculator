@@ -54,7 +54,7 @@ export default class MaxRefi extends Component {
         this.setState({ [key]: e})
     }
 
-    createLoan=(address,properyType, date, officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)=>{
+    createLoan=(address,propertyType, date, officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)=>{
         this.setState({
             officeExpenses: officeExpenses,
             replacementReserves: replacementReserves,
@@ -66,29 +66,45 @@ export default class MaxRefi extends Component {
             annualDebtService: annualDebtService,
             dscr: dscr.toFixed(2)
         },()=>{
-            if (address !== ""){
-                fetch('https://snco-calculator-backend.herokuapp.com/loans',{
-                    method: "POST",
-                    headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-                    body: JSON.stringify({address: address,
-                    purchaseDate: date,
-                    properyType: properyType, 
-                    loan: this.state,
-                    })
-                })
-                .then(res=>res.json())
-                .then(loan=>{
-                        console.log(loan[0]._id)
-                        this.resetForm()
-                        this.props.alertMessage()
-                    })
-                .catch(() => console.log("Can’t POST loan data"))
-            } else {
-              console.log("wont post without an address")
-            }
+            this.props.createLoan(this.state, this.props.date)
 
         })
     }
+    // createLoan=(address,propertyType, date, officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)=>{
+    //     this.setState({
+    //         officeExpenses: officeExpenses,
+    //         replacementReserves: replacementReserves,
+    //         management: management,
+    //         vacancy: vacancy,
+    //         totalProjectCost: totalProjectCost,
+    //         noi: noi,
+    //         capRate: capRate,
+    //         annualDebtService: annualDebtService,
+    //         dscr: dscr.toFixed(2)
+    //     },()=>{
+    //         if (address !== ""){
+    //             fetch('https://snco-calculator-backend.herokuapp.com/loans',{
+    //                 method: "POST",
+    //                 headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
+    //                 body: JSON.stringify({address: address,
+    //                 purchaseDate: date,
+    //                 propertyType: propertyType, 
+    //                 loan: this.state,
+    //                 })
+    //             })
+    //             .then(res=>res.json())
+    //             .then(loan=>{
+    //                     console.log(loan[0]._id)
+    //                     this.resetForm()
+    //                     this.props.alertMessage()
+    //                 })
+    //             .catch(() => console.log("Can’t POST loan data"))
+    //         } else {
+    //           console.log("wont post without an address")
+    //         }
+
+    //     })
+    // }
 
     numberFormat = (value) =>
         new Intl.NumberFormat('en-US', {

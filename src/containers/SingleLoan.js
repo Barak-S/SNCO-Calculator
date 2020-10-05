@@ -136,7 +136,7 @@ export default class SingleLoan extends Component {
                     <Row>
                         <Col xs={12} md={8}>
                             <Card.Text style={{ fontWeight: "600", fontSize: 22, margin: 2.5 }}>{this.state.loan.address}</Card.Text>
-                            <Card.Text style={{fontSize: 17}}><strong>Type: </strong>{this.state.loan.properyType}</Card.Text>
+                            <Card.Text style={{fontSize: 17}}><strong>Type: </strong>{this.state.loan.propertyType}</Card.Text>
                             <MapContainer
                                 lat={this.state.lat}
                                 lng={this.state.lng}
@@ -145,9 +145,7 @@ export default class SingleLoan extends Component {
                                 <Col xs={12} md={4} lg={4}>
                                     <Row>
                                         <Col>
-                                            <Card.Text style={{ fontSize: 22, fontWeight: "600"}}>Loan Calculation Details</Card.Text> 
-                                            {/* {this.state.editedLoan.totalProjectCost && this.state.editedLoan.totalProjectCost !== 0 && <p>Total Project Cost: {this.numberFormat(this.state.editedLoan.totalProjectCost)}</p>}       */}
-                                            {/* {this.state.editedLoan.totalProjectCost && <p>Total Project Cost: {this.numberFormat(this.state.editedLoan.totalProjectCost)}</p>}       */}
+                                            {this.state.editedLoan.totalProjectCost && this.state.editedLoan.totalProjectCost !== 0 && <p>Total Project Cost: {this.numberFormat(this.state.editedLoan.totalProjectCost)}</p>}      
                                             {this.state.editedLoan.annualDebtService && <p>Annual Debt Service: {this.numberFormat(this.state.editedLoan.annualDebtService)}</p>}      
                                             {this.state.editedLoan.noi && <p>NOI: {this.numberFormat(this.state.editedLoan.noi)}</p>}                     
                                             {this.state.editedLoan.dscr && <p>DSCR: {this.state.editedLoan.dscr}</p>}                     
