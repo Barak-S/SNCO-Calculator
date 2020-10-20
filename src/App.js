@@ -6,6 +6,7 @@ import NavBar from './containers/NavBar'
 import Calculators from './containers/CalculatorContainer'
 import AllLoans from './containers/AllLoans'
 import SingleLoan from './containers/SingleLoan'
+import Footer from './components/Footer'
 
 class App extends React.Component {
 
@@ -23,6 +24,7 @@ class App extends React.Component {
             <Route exact path = "/Calculator" render={(routerProps) => <Calculators {...routerProps} />}/>
           </Switch>
         </div>
+        <Footer/>
       </Router>
     );
 
