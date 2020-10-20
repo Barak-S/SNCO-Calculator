@@ -629,16 +629,13 @@ export default class FixAndFlip extends Component {
                                                 <tr>
                                                     <td style={{fontSize: 16}}><strong>Debt Service Coverage Ratio (DSCR):</strong></td><td style={{fontSize: 15}}>{dscr? dscr.toFixed(2) : 0}%</td>
                                                 </tr>
-                                                <tr>
-                                                    <td style={{fontSize: 16}}><strong>SNCO Max Loan:</strong></td><td style={{fontSize: 15}}>{ sncoMaxLoan? sncoMaxLoan : 0 }</td>
-                                                </tr>
                                             </tbody>                                      
                                             }
                                     </Table>
                                 </Card.Body>
                             </Card>
                             <Button 
-                                variant="outline-dark" 
+                                variant="primary" 
                                 style={{ marginBottom: 15 }} 
                                 onClick={()=>this.createLoan(this.props.address,this.props.propertyType, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent )}
                             >Save</Button>
@@ -649,18 +646,3 @@ export default class FixAndFlip extends Component {
         )
     }
 }
-
-{/* <Form.File
-
-    FOR UPLOADING FILES
-
-    className="position-relative"
-    required
-    name="file"
-    label="File"
-    onChange={handleChange}
-    isInvalid={!!errors.file}
-    feedback={errors.file}
-    id="validationFormik107"
-    feedbackTooltip
-/>  */}

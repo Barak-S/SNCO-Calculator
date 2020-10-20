@@ -31,7 +31,7 @@ export default class LocationSearchInput extends React.Component {
                 {loading && <div>Loading...</div>}
                 {suggestions.map(suggestion => {
                   const style={
-                      backgroundColor: suggestion.active ? "#B98757" : "#ffffff"
+                      backgroundColor: suggestion.active ? "#1A7BFF" : "#ffffff"
                   };
                   return(<div {...getSuggestionItemProps(suggestion, { style })} key={suggestion.description}>{suggestion.description }</div>)
                 })}

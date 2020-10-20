@@ -6,9 +6,9 @@
       -ms-flex-pack: center;
           justify-content: center;
   min-height: 100vh;
-  background: #b98757;
-  background: -webkit-gradient(linear, left bottom, left top, from(#b98757), color-stop(90%, #f8f9fa));
-  background: linear-gradient(0deg, #b98757 0%, #f8f9fa 90%);
+  background: #343A40;
+  background: -webkit-gradient(linear, left bottom, left top, from(#343A40), color-stop(90%, #f8f9fa));
+  background: linear-gradient(0deg, #343A40 0%, #f8f9fa 90%);
 }
 
 .CalculatorCard {
@@ -78,7 +78,7 @@ label.form-label {
 }
 
 #LoanAddress:hover {
-  color: #b98757;
+  color: #1A7BFF;
 }
 
 /* .AllLoans{
