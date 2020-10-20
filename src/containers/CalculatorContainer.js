@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import MaxRefi from '../containers/MaxRefi'
 import FixAndFlip from '../containers/FixAndFlip'
-import { FormControl, InputGroup, Dropdown, DropdownButton, Form, Card, Col, Row, Container } from 'react-bootstrap';
+import { Dropdown, DropdownButton, Form, Card, Col, Row, Container } from 'react-bootstrap';
 
 import PlacesAutocomplete, {
     geocodeByAddress,

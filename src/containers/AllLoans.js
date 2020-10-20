@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { Card, Col, Row } from 'react-bootstrap';
 import LoanCard from '../components/LoanCard'
-
 import { Link } from 'react-router-dom';
 
 
@@ -94,26 +93,17 @@ export default class AllLoans extends Component {
                                     <Card.Text style={{fontSize: 11.5}}>Amount In Proccess</Card.Text><Card.Text style={{ fontSize: 18.5, color:"#0F9D58", fontWeight: "600" }}>{this.numberFormat(this.state.amountInProgress)}</Card.Text>
                                 </Col>
                                 <Col>
-                                    <Card.Text style={{fontSize: 11.5}}>Loan In Proccess</Card.Text><Card.Text style={{ fontSize: 18.5, color:"#FFB74D", fontWeight: "600" }}>{this.state.allLoans.length}</Card.Text>
+                                    <Card.Text style={{fontSize: 11.5}}>Loans In Proccess</Card.Text><Card.Text style={{ fontSize: 18.5, color:"#FFB74D", fontWeight: "600" }}>{this.state.allLoans.length}</Card.Text>
                                 </Col>
                             </Row>
                         </Card>
                     </Col>
                 </div>
-                {/* {this.state.loading? <Button variant="secondary" style={{opacity: "0.5", marginTop: 7}}>Loading...</Button> : this.mapLoans()} */}
                 <Row>
                     <Col className="processDiv" xs={12} sm={12} md={10} lg={10}>
                         {this.mapLoans()}
                     </Col>
-                    {/* <Col >
-                        <Card style={{textAlign: "left", margin: "1rem", borderRadius: 8}}>
-                            <Card.Body>
-                                <Card.Text style={{fontSize: 19, fontWeight: "600", textAlign: "center"}}>History</Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col> */}
                 </Row>
-                {/* <Button variant="dark" onClick={()=>this.loadMoreLoans()}>Load More</Button> */}
             </div>
         )
     }

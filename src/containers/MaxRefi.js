@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputGroup, Card, Col, Row, Container, Button, Form, Alert, Table } from 'react-bootstrap';
+import { InputGroup, Card, Col, Row, Container, Button, Form, Alert, Table } from 'react-bootstrap';
 
 import DatePicker from 'react-date-picker';
 import Input from '../components/InputComponent';
