@@ -1,3 +1,4 @@
+MORTGAE CALCULATOR JAVASCRIPT APPLICATION
 Full Stack web application created for calculating commercial and residential property mortgages.
 
 Technologies: 
