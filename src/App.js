@@ -7,6 +7,7 @@ import Calculators from './containers/CalculatorContainer'
 import AllLoans from './containers/AllLoans'
 import SingleLoan from './containers/SingleLoan'
 import Footer from './components/Footer'
+import Home from './containers/Home'
 
 class App extends React.Component {
 
@@ -18,10 +19,10 @@ class App extends React.Component {
         <div className="App">
           <NavBar/>
           <Switch>
-            <Redirect exact from="/" to="/loans" />
+            <Route exact path = '/' render={(routerProps) => <Home {...routerProps} />}/>
             <Route exact path = "/loans" render={(routerProps) => <AllLoans {...routerProps} />}/>
             <Route exact path = "/loans/:id" render={(routerProps) => <SingleLoan {...routerProps} />}/>
-            <Route exact path = "/Calculator" render={(routerProps) => <Calculators {...routerProps} />}/>
+            <Route exact path = "/calculator" render={(routerProps) => <Calculators {...routerProps} />}/>
           </Switch>
         </div>
         <Footer/>

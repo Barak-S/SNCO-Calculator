@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, DropdownButton, Form, Badge} from 'react-bootstrap';
+import { Card, Col, Row, Badge} from 'react-bootstrap';
 
 export default class LoanCard extends Component {
 

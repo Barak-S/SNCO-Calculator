@@ -9,6 +9,18 @@
   background: linear-gradient(0deg, #343A40 0%, #f8f9fa 90%);
 }
 
+.home{
+  min-height: 100vh;
+}
+
+.home-img{
+  background-image: url('https://images.unsplash.com/photo-1460317442991-0ec209397118?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80');
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
 .CalculatorCard {
   min-height: 100vh;
 }

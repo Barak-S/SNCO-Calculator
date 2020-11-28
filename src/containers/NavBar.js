@@ -10,14 +10,14 @@ export default class Navigator extends React.Component{
         return(
             <div>
                 <Navbar inverse collapseOnSelect expand="lg">
-                    <Navbar.Brand href="/loans" style={{color: "#1A7BFF",fontWeight: "700", fontSize: 20}}>MLC</Navbar.Brand>
+                    <Navbar.Brand href="/" style={{color: "#1A7BFF",fontWeight: "700", fontSize: 20}}><img style={{height: 22}} src={require('../images/calculator.svg')}></img>MLC</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="justify-content-center" style={{flex:1}}>
                         <Link to="/loans" style={{ textDecoration: 'none' }}>
                             <Nav.Link href="#link" className="NavLinks" style={{color: "#1A7BFF",fontWeight: "600", fontSize: 17}}>All Loans</Nav.Link>   
                         </Link>
-                        <Link to="/Calculator" style={{ textDecoration: 'none' }}>
+                        <Link to="/calculator" style={{ textDecoration: 'none' }}>
                             <Nav.Link href="#link" className="NavLinks" style={{color: "#1A7BFF",fontWeight: "600", fontSize: 17}}>Calculator</Nav.Link>   
                         </Link>
                     </Nav>
