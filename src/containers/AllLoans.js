@@ -99,11 +99,10 @@ export default class AllLoans extends Component {
                         </Card>
                     </Col>
                 </div>
-                <Row>
-                    <Col className="processDiv" xs={12} sm={12} md={10} lg={10}>
-                        {this.mapLoans()}
-                    </Col>
-                </Row>
+                <Col className="processDiv" xs={12} sm={12} md={10} lg={10}>
+                    {this.mapLoans()}
+                </Col>
+                
             </div>
         )
     }

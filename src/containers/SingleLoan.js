@@ -131,56 +131,59 @@ export default class SingleLoan extends Component {
     render() {
 
         return (
-            <div style={{paddingBottom: 25}}>
-                <Card className="SingleLoan" style={{ borderRadius: 10, margin: "1rem", padding: 15 }}>
-                    <Row>
-                        <Col xs={12} md={8}>
+            <Col style={{paddingBottom: 25}} xs={12} sm={12} md={7} lg={7} className="align-center">
+                <Card className="SingleLoan" style={{ padding: 12.5, marginBottom: 5}}>
+                    
+                        <Col>
                             <Card.Text style={{ fontWeight: "600", fontSize: 22, margin: 2.5 }}>{this.state.loan.address}</Card.Text>
                             <Card.Text style={{fontSize: 17}}><strong>Type: </strong>{this.state.loan.propertyType}</Card.Text>
                             <MapContainer
                                 lat={this.state.lat}
                                 lng={this.state.lng}
                             />
+                        </Col>
+                        <Col>
                             <Card style={{ textAlign: "left", padding: "0.5rem", borderRadius: 10, marginBottom: 12}}>
                                 <Col xs={12} md={4} lg={4}>
                                     <Row>
                                         <Col>
-                                            {this.state.editedLoan.totalProjectCost && this.state.editedLoan.totalProjectCost !== 0 && <p>Total Project Cost: {this.numberFormat(this.state.editedLoan.totalProjectCost)}</p>}      
-                                            {this.state.editedLoan.annualDebtService && <p>Annual Debt Service: {this.numberFormat(this.state.editedLoan.annualDebtService)}</p>}      
-                                            {this.state.editedLoan.noi && <p>NOI: {this.numberFormat(this.state.editedLoan.noi)}</p>}                     
-                                            {this.state.editedLoan.dscr && <p>DSCR: {this.state.editedLoan.dscr}</p>}                     
-                                            {this.state.editedLoan.totalIn && <p>Total In: {this.numberFormat(this.state.editedLoan.totalIn)}</p>}                     
-                                            {this.state.editedLoan.totalProfit && <p>Total Profit on Flip: {this.numberFormat(this.state.editedLoan.totalProfit)}</p>}                     
-                                            {this.state.editedLoan.profitPercent && <p>Profit Percent: {this.state.editedLoan.profitPercent}</p>}                     
+                                            {this.state.editedLoan.totalProjectCost && this.state.editedLoan.totalProjectCost !== 0 && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#0F9D58"}}>Total Project Cost: </strong>{this.numberFormat(this.state.editedLoan.totalProjectCost)}</p>}      
+                                            {this.state.editedLoan.annualDebtService && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#FFB74D"}}>Annual Debt Service: </strong>{this.numberFormat(this.state.editedLoan.annualDebtService)}</p>}      
+                                            {this.state.editedLoan.noi && <p style={{fontSize: 16, fontWeight: '600'}}><strong>NOI: </strong>{this.numberFormat(this.state.editedLoan.noi)}</p>}                     
+                                            {this.state.editedLoan.dscr && <p style={{fontSize: 16, fontWeight: '600'}}><strong>DSCR: </strong>{this.state.editedLoan.dscr}</p>}                     
+                                            {this.state.editedLoan.totalIn && <p style={{fontSize: 16, fontWeight: '600'}}><strong>Total In: </strong>{this.numberFormat(this.state.editedLoan.totalIn)}</p>}                     
+                                            {this.state.editedLoan.totalProfit && <p style={{fontSize: 16, fontWeight: '600'}}><strong>Total Profit on Flip: </strong>{this.numberFormat(this.state.editedLoan.totalProfit)}</p>}                     
+                                            {this.state.editedLoan.profitPercent && <p style={{fontSize: 16, fontWeight: '600'}}><strong>Profit Percent: </strong>{this.state.editedLoan.profitPercent}</p>}                     
                                         </Col>
                                     </Row>
                                 </Col>
                             </Card>
                         </Col>
-                        <Col xs={12} md={4} style={{textAlign: "left"}}>
-                        <Card style={{ padding: 12.5, marginBottom: 5, borderRadius: 10}}>
-                            <Card.Text style={{fontSize: 20, textAlign: "center", fontWeight: "600"}}>Loan Details</Card.Text>
-                            <Table responsive> 
-                                <tbody>
-                                    {this.state.loanAttributes.map(loan=>{
-                                        if (loan.key !== "dscr" && loan.key !== "noi" && loan.key !== "totalIn" && loan.key !== "totalProfit" && loan.key !== "totalProjectCost" && loan.key !== "profitPercent"){
+                        <Col style={{textAlign: "left"}}>
+                            <Card style={{ textAlign: "left", padding: "0.5rem", borderRadius: 10, marginBottom: 12}}>
+                                <Card.Text style={{fontSize: 20, textAlign: "center", fontWeight: "600"}}>Loan Details</Card.Text>
+                                <Table responsive> 
+                                    <tbody>
+                                        {this.state.loanAttributes.map(loan=>{
+                                            if (loan.key !== "dscr" && loan.key !== "noi" && loan.key !== "totalIn" && loan.key !== "totalProfit" && loan.key !== "totalProjectCost" && loan.key !== "profitPercent"){
 
-                                            if (loan.key === "rate" || loan.key === "capRate" || loan.key === "dscr" || loan.key === "profitPercent" || loan.key === "marketCapRate" ){
-                                                return(
-                                                    <tr><td style={{fontSize: 16}}><strong>{this.parseKeyString(loan.key)}: </strong> </td> <td style={{fontSize: 15}}>{this.myFormat(loan.value)}</td></tr>
+                                                if (loan.key === "rate" || loan.key === "capRate" || loan.key === "dscr" || loan.key === "profitPercent" || loan.key === "marketCapRate" ){
+                                                    return(
+                                                        <tr><td style={{fontSize: 16}}><strong>{this.parseKeyString(loan.key)}: </strong> </td> <td style={{fontSize: 15}}>{this.myFormat(loan.value)}</td></tr>
+                                                        )
+                                                }else{
+                                                    return(
+                                                        <tr><td style={{fontSize: 16}}><strong>{this.parseKeyString(loan.key)}: </strong></td> <td style={{fontSize: 15}}>{loan.key === "arm" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel" ? loan.value : this.numberFormat(loan.value)}</td></tr>
                                                     )
-                                            }else{
-                                                return(
-                                                    <tr><td style={{fontSize: 16}}><strong>{this.parseKeyString(loan.key)}: </strong></td> <td style={{fontSize: 15}}>{loan.key === "arm" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel" ? loan.value : this.numberFormat(loan.value)}</td></tr>
-                                                )
+                                                }
                                             }
-                                        }
-                                    })}
-                                </tbody>
-                            </Table>
+                                        })}
+                                    </tbody>
+                                </Table>
                             </Card>
                         </Col>
-                    </Row>
+                        
+                    
                     
                     <Row style={{ justifyContent: "center", marginTop: 7 }} >
                         <Button variant="danger" style={{marginLeft: "1rem", marginRight: "0.5rem" }} onClick={()=>this.handleClose()}>Delete</Button>
@@ -305,7 +308,7 @@ export default class SingleLoan extends Component {
                     }
 
                 </Card>
-            </div>
+            </Col>
         )
     }
 }
