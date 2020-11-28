@@ -142,262 +142,262 @@ export default class MaxRefi extends Component {
         
         return (
 
-                <Container fluid>
-                    {this.props.alert && <Alert variant={"success"} style={{ margin: "1rem" }}> <Alert.Heading>Loan Saved!</Alert.Heading>Click here to see loan deatails.</Alert>}             
-                    <Row>
-                        <Col md={7}>
-                            <Card style={{ margin: "1rem", borderRadius: 10 }}>
-                                <Card.Body>
-                                <Form>
-                                    <LocationSearchInput 
-                                        handleAddressChange={this.props.handleAddressChange} 
-                                        handleAddressSelect = {this.props.handleAddressSelect}
-                                        address={this.props.address} 
-                                    />
-                                <Form.Row>
-                                    <Col>
-                                    <InputGroup className="mb-3">
-                                        <Form.Label>Units</Form.Label>
-                                        <Input name="units" value={this.state.units} type="number" handleChange={this.handleNumberChange}/>
-                                    </InputGroup>
-                                    </Col>
-                                    <Col>
-                                    <InputGroup className="mb-3">
-                                    <Form.Label style={{width: "100%", textAlign: "left"}}>Purchase Date</Form.Label>
-                                        <DatePicker
-                                            onChange={this.props.dateChange}
-                                            value={this.props.date}
-                                        />
-                                    </InputGroup>
-                                    </Col>
-                                </Form.Row>
-                                <Form.Row>
-                                    <Col>
-                                    <InputGroup className="mb-3">
-                                        <Form.Label>Puchase Price</Form.Label>
+          
+                    // {this.props.alert && <Alert variant={"success"} style={{ margin: "1rem" }}> <Alert.Heading>Loan Saved!</Alert.Heading>Click here to see loan deatails.</Alert>}             
+                <div style={{paddingBottom: 50}}>
+                <Col sm={12} md={12} md={7} lg={7} className="align-center">
+                    <Card style={{marginTop: "1rem", marginBottom: '1rem', borderRadius: 10 }}>
+                        <Card.Body>
+                        <Form>
+                            <LocationSearchInput 
+                                handleAddressChange={this.props.handleAddressChange} 
+                                handleAddressSelect = {this.props.handleAddressSelect}
+                                address={this.props.address} 
+                            />
+                        <Form.Row>
+                            <Col>
+                            <InputGroup className="mb-3">
+                                <Form.Label>Units</Form.Label>
+                                <Input name="units" value={this.state.units} type="number" handleChange={this.handleNumberChange}/>
+                            </InputGroup>
+                            </Col>
+                            <Col>
+                            <InputGroup className="mb-3">
+                            <Form.Label style={{width: "100%", textAlign: "left"}}>Purchase Date</Form.Label>
+                                <DatePicker
+                                    onChange={this.props.dateChange}
+                                    value={this.props.date}
+                                />
+                            </InputGroup>
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Col>
+                            <InputGroup className="mb-3">
+                                <Form.Label>Puchase Price</Form.Label>
+                                <Input
+                                    handleChange={this.handleNumberChange}
+                                    value={this.state.purchasePrice}
+                                    name={"purchasePrice"}
+                                    input="currency"
+                                />
+                            </InputGroup>
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Col>
+                                <InputGroup className="mb-3">
+                                    <Form.Label>Hard Costs</Form.Label>
+                                    <Input
+                                        handleChange={this.handleNumberChange}
+                                        value={this.state.hardCosts}
+                                        name={"hardCosts"}
+                                        input="currency"
+                                    /> 
+                                </InputGroup>
+                            </Col>
+                            <Col>   
+                                <InputGroup className="mb-3">                                    
+                                    <Form.Label>Soft Costs</Form.Label>
+                                    <Input
+                                        handleChange={this.handleNumberChange}
+                                        value={this.state.softCosts}
+                                        name={"softCosts"}
+                                        input="currency"
+                                    />                                    
+                                </InputGroup>
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Col>
+                                <InputGroup className="mb-3">
+                                    <Form.Label>Payoff</Form.Label>
+                                    <Input
+                                        handleChange={this.handleNumberChange}
+                                        value={this.state.payoff}
+                                        name={"payoff"}
+                                        input="currency"
+                                    /> 
+                                </InputGroup> 
+                            </Col> 
+                            <Col>
+                                <InputGroup className="mb-3">                                     
+                                    <Form.Label>Annual Gross Rent</Form.Label>
+                                    <Input
+                                        handleChange={this.handleNumberChange}
+                                        value={this.state.annualGrossRent}
+                                        name={"annualGrossRent"}
+                                        input="currency"
+                                    />                                        
+                                </InputGroup>
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Col>
+                                <InputGroup className="mb-3">
+                                <Form.Label>Vacancy</Form.Label>
+                                    <Input
+                                        handleChange={this.handleNumberChange}
+                                        value={ vacancy }
+                                        name={"vacancy"}
+                                        disabled={true}
+                                        input="currency"
+                                    /> 
+                                </InputGroup> 
+                            </Col> 
+                            <Col>
+                                <InputGroup className="mb-3">                                                    
+                                <Form.Label>Taxes</Form.Label>
+                                    <Input
+                                        handleChange={this.handleNumberChange}
+                                        value={this.state.taxes}
+                                        name={"taxes"}
+                                        input="currency"
+                                    />                                      
+                                </InputGroup>
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Col>
+                                <InputGroup className="mb-3">
+                                    <Form.Label>Utilities</Form.Label>
+                                    <Input
+                                        handleChange={this.handleNumberChange}
+                                        value={this.state.utilities}
+                                        name={"utilities"}
+                                        input="currency"
+                                    /> 
+                                </InputGroup> 
+                            </Col> 
+                            <Col>
+                                <InputGroup className="mb-3">                                                
+                                    <Form.Label>Insurance</Form.Label>
+                                    <Input
+                                        handleChange={this.handleNumberChange}
+                                        value={this.state.insurance}
+                                        name={"insurance"}
+                                        input="currency"
+                                    />                                    
+                                </InputGroup>
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Col>
+                                <InputGroup className="mb-3">
+                                    <Form.Label>Water Sewer</Form.Label>
+                                    <Input
+                                        handleChange={this.handleNumberChange}
+                                        value={this.state.waterSewer}
+                                        name={"waterSewer"}
+                                        input="currency"
+                                    />     
+                                </InputGroup> 
+                            </Col> 
+                            <Col>
+                                <InputGroup className="mb-3">                                          
+                                    <Form.Label>Management</Form.Label>
+                                    <Input
+                                        handleChange={this.handleNumberChange}
+                                        value={ management }
+                                        name={"management"}
+                                        disabled={true}
+                                        input="currency"
+                                    />                                          
+                                </InputGroup>
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Col>
+                                <InputGroup className="mb-3">
+                                    <Form.Label>Replacement Reserves</Form.Label>
+                                    <Input
+                                        handleChange={ this.handleNumberChange }
+                                        value={ replacementReserves }
+                                        name={"replacementReserves"}
+                                        disabled={true}
+                                        input="currency"
+                                    />  
+                                </InputGroup> 
+                            </Col> 
+                            <Col>
+                                <InputGroup className="mb-3" >                                         
+                                    <Form.Label>Loan Amount</Form.Label>
+                                    <Input
+                                        handleChange={this.handleNumberChange}
+                                        value={this.state.requestLoanAmount}
+                                        name={"requestLoanAmount"}
+                                        input="currency"
+                                    />                                     
+                                </InputGroup>
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Col>
+                                <InputGroup className="mb-3">
+                                    <Form.Label>ARM</Form.Label>
+                                    <Input type="number" name="arm" value={ this.state.arm } handleChange={this.handleNumberChange}/>
+                                </InputGroup>
+                            </Col>
+                            <Col>
+                                <InputGroup className="mb-3">
+                                    <Form.Label style={{width: "100%", textAlign: "left"}}>Rate</Form.Label>
                                         <Input
-                                            handleChange={this.handleNumberChange}
-                                            value={this.state.purchasePrice}
-                                            name={"purchasePrice"}
-                                            input="currency"
+                                            name={"rate"}
+                                            value={this.state.rate}
+                                            handleRateChange = {this.handleRateChange}
+                                            input={"rate"}
                                         />
-                                    </InputGroup>
-                                    </Col>
-                                </Form.Row>
-                                <Form.Row>
-                                    <Col>
-                                        <InputGroup className="mb-3">
-                                            <Form.Label>Hard Costs</Form.Label>
-                                            <Input
-                                                handleChange={this.handleNumberChange}
-                                                value={this.state.hardCosts}
-                                                name={"hardCosts"}
-                                                input="currency"
-                                            /> 
-                                        </InputGroup>
-                                    </Col>
-                                    <Col>   
-                                        <InputGroup className="mb-3">                                    
-                                            <Form.Label>Soft Costs</Form.Label>
-                                            <Input
-                                                handleChange={this.handleNumberChange}
-                                                value={this.state.softCosts}
-                                                name={"softCosts"}
-                                                input="currency"
-                                            />                                    
-                                        </InputGroup>
-                                    </Col>
-                                </Form.Row>
-                                <Form.Row>
-                                    <Col>
-                                        <InputGroup className="mb-3">
-                                            <Form.Label>Payoff</Form.Label>
-                                            <Input
-                                                handleChange={this.handleNumberChange}
-                                                value={this.state.payoff}
-                                                name={"payoff"}
-                                                input="currency"
-                                            /> 
-                                        </InputGroup> 
-                                    </Col> 
-                                    <Col>
-                                        <InputGroup className="mb-3">                                     
-                                            <Form.Label>Annual Gross Rent</Form.Label>
-                                            <Input
-                                                handleChange={this.handleNumberChange}
-                                                value={this.state.annualGrossRent}
-                                                name={"annualGrossRent"}
-                                                input="currency"
-                                            />                                        
-                                        </InputGroup>
-                                    </Col>
-                                </Form.Row>
-                                <Form.Row>
-                                    <Col>
-                                        <InputGroup className="mb-3">
-                                        <Form.Label>Vacancy</Form.Label>
-                                            <Input
-                                                handleChange={this.handleNumberChange}
-                                                value={ vacancy }
-                                                name={"vacancy"}
-                                                disabled={true}
-                                                input="currency"
-                                            /> 
-                                        </InputGroup> 
-                                    </Col> 
-                                    <Col>
-                                        <InputGroup className="mb-3">                                                    
-                                        <Form.Label>Taxes</Form.Label>
-                                            <Input
-                                                handleChange={this.handleNumberChange}
-                                                value={this.state.taxes}
-                                                name={"taxes"}
-                                                input="currency"
-                                            />                                      
-                                        </InputGroup>
-                                    </Col>
-                                </Form.Row>
-                                <Form.Row>
-                                    <Col>
-                                        <InputGroup className="mb-3">
-                                            <Form.Label>Utilities</Form.Label>
-                                            <Input
-                                                handleChange={this.handleNumberChange}
-                                                value={this.state.utilities}
-                                                name={"utilities"}
-                                                input="currency"
-                                            /> 
-                                        </InputGroup> 
-                                    </Col> 
-                                    <Col>
-                                        <InputGroup className="mb-3">                                                
-                                            <Form.Label>Insurance</Form.Label>
-                                            <Input
-                                                handleChange={this.handleNumberChange}
-                                                value={this.state.insurance}
-                                                name={"insurance"}
-                                                input="currency"
-                                            />                                    
-                                        </InputGroup>
-                                    </Col>
-                                </Form.Row>
-                                <Form.Row>
-                                    <Col>
-                                        <InputGroup className="mb-3">
-                                            <Form.Label>Water Sewer</Form.Label>
-                                            <Input
-                                                handleChange={this.handleNumberChange}
-                                                value={this.state.waterSewer}
-                                                name={"waterSewer"}
-                                                input="currency"
-                                            />     
-                                        </InputGroup> 
-                                    </Col> 
-                                    <Col>
-                                        <InputGroup className="mb-3">                                          
-                                            <Form.Label>Management</Form.Label>
-                                            <Input
-                                                handleChange={this.handleNumberChange}
-                                                value={ management }
-                                                name={"management"}
-                                                disabled={true}
-                                                input="currency"
-                                            />                                          
-                                        </InputGroup>
-                                    </Col>
-                                </Form.Row>
-                                <Form.Row>
-                                    <Col>
-                                        <InputGroup className="mb-3">
-                                            <Form.Label>Replacement Reserves</Form.Label>
-                                            <Input
-                                                handleChange={ this.handleNumberChange }
-                                                value={ replacementReserves }
-                                                name={"replacementReserves"}
-                                                disabled={true}
-                                                input="currency"
-                                            />  
-                                        </InputGroup> 
-                                    </Col> 
-                                    <Col>
-                                        <InputGroup className="mb-3" >                                         
-                                            <Form.Label>Loan Amount</Form.Label>
-                                            <Input
-                                                handleChange={this.handleNumberChange}
-                                                value={this.state.requestLoanAmount}
-                                                name={"requestLoanAmount"}
-                                                input="currency"
-                                            />                                     
-                                        </InputGroup>
-                                    </Col>
-                                </Form.Row>
-                                <Form.Row>
-                                    <Col>
-                                        <InputGroup className="mb-3">
-                                            <Form.Label>ARM</Form.Label>
-                                            <Input type="number" name="arm" value={ this.state.arm } handleChange={this.handleNumberChange}/>
-                                        </InputGroup>
-                                    </Col>
-                                    <Col>
-                                        <InputGroup className="mb-3">
-                                            <Form.Label style={{width: "100%", textAlign: "left"}}>Rate</Form.Label>
-                                                <Input
-                                                    name={"rate"}
-                                                    value={this.state.rate}
-                                                    handleRateChange = {this.handleRateChange}
-                                                    input={"rate"}
-                                                />
-                                        </InputGroup>
-                                    </Col>
-                                </Form.Row>
-                                <Form.Row>
-                                    <Col xs lg="6">
-                                        <InputGroup className="mb-3">
-                                            <Form.Label style={{width: "100%", textAlign: "left"}}>Market Cap Rate</Form.Label>
-                                                <Input
-                                                    name={"marketCapRate"}
-                                                    value={this.state.marketCapRate}
-                                                    handleRateChange = {this.handleRateChange}
-                                                    input={"rate"}
-                                                />
-                                        </InputGroup>
-                                    </Col>
-                                </Form.Row>
-                                </Form>
-                                </Card.Body>
-                            </Card>
-                        </Col>
+                                </InputGroup>
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Col xs lg="6">
+                                <InputGroup className="mb-3">
+                                    <Form.Label style={{width: "100%", textAlign: "left"}}>Market Cap Rate</Form.Label>
+                                        <Input
+                                            name={"marketCapRate"}
+                                            value={this.state.marketCapRate}
+                                            handleRateChange = {this.handleRateChange}
+                                            input={"rate"}
+                                        />
+                                </InputGroup>
+                            </Col>
+                        </Form.Row>
+                        </Form>
+                        </Card.Body>
+                    </Card>
+                </Col>
 
-                        <Col md={5}>
-                            <Card style={{ margin: "1rem", borderRadius: 10 }}>
-                                <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
-                                    <Table responsive>
-                                        <tbody>
-                                            <tr>
-                                                <td style={{fontSize: 16}}><strong>Gross Annual Income:</strong></td><td style={{fontSize: 15}}>{ grossAnnualIncome? this.numberFormat(grossAnnualIncome.toFixed(2)) : 0 }</td>
-                                            </tr>
-                                            <tr>
-                                                <td style={{fontSize: 16}}><strong>NOI:</strong></td><td style={{fontSize: 15}}>{ noi? this.numberFormat(noi.toFixed(2)) : 0}</td>
-                                            </tr>
-                                            <tr>
-                                                <td style={{fontSize: 16}}><strong>Annual Debt Service:</strong></td><td style={{fontSize: 15}}>{ annualDebtService? this.numberFormat(annualDebtService.toFixed(2)) : 0}</td>
-                                            </tr>
-                                            <tr>
-                                                <td style={{fontSize: 16}}><strong>Debt Service Coverage Ratio (DSCR):</strong></td><td style={{fontSize: 15}}>{dscr? dscr.toFixed(2) : 0}%</td>
-                                            </tr>
-                                    </tbody>
-                                    </Table>
-                                </Card.Body>
-                            </Card>
-                            <Button 
-                                variant="primary" 
-                                style={{ marginBottom: 15 }} 
-                                onClick={()=>this.createLoan( this.props.address, this.props.propertyType, this.props.date, officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr )}
-                            >Save</Button>                        
-                        </Col>
-                    </Row>
+                <Col sm={12} md={12} md={7} lg={7} className="align-center">
+                    <Card style={{ marginTop: "1rem", marginBottom: '1rem', borderRadius: 10 }}>
+                        <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
+                            <Table responsive>
+                                <tbody>
+                                    <tr>
+                                        <td style={{fontSize: 16}}><strong>Gross Annual Income:</strong></td><td style={{fontSize: 15}}>{ grossAnnualIncome? this.numberFormat(grossAnnualIncome.toFixed(2)) : 0 }</td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{fontSize: 16}}><strong>NOI:</strong></td><td style={{fontSize: 15}}>{ noi? this.numberFormat(noi.toFixed(2)) : 0}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{fontSize: 16}}><strong>Annual Debt Service:</strong></td><td style={{fontSize: 15}}>{ annualDebtService? this.numberFormat(annualDebtService.toFixed(2)) : 0}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{fontSize: 16}}><strong>Debt Service Coverage Ratio (DSCR):</strong></td><td style={{fontSize: 15}}>{dscr? dscr.toFixed(2) : 0}%</td>
+                                    </tr>
+                            </tbody>
+                            </Table>
+                        </Card.Body>
+                    </Card>
+                    <Button 
+                        variant="primary" 
+                        style={{ marginBottom: 15 }} 
+                        onClick={()=>this.createLoan( this.props.address, this.props.propertyType, this.props.date, officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr )}
+                    >Save</Button>                        
+                </Col>
+            </div>
 
-                </Container>
+                
                 
         )
     }

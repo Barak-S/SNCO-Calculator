@@ -74,7 +74,9 @@ export default class CalculatorContainer extends Component {
 
         return (
             <div className="App">
-                <Card.Text className="appHeader">Mortgage Calculator</Card.Text>
+                <div className="align-center">
+
+                <Card.Text className="appHeader">Mortgage Loan Calculator</Card.Text>
                     <DropdownButton 
                         variant="dark"
                         title={this.state.propertyType} 
@@ -117,6 +119,7 @@ export default class CalculatorContainer extends Component {
                     /> 
                 }
 
+                </div>
             </div>
         );
 

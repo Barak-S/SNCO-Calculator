@@ -2,9 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap");
 .App {
   text-align: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   min-height: 100vh;
   background: #343A40;
   background: -webkit-gradient(linear, left bottom, left top, from(#343A40), color-stop(90%, #f8f9fa));
@@ -36,15 +34,12 @@ div.react-datepicker__wrapper {
           box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
-.NavLinks {
-  font-weight: 500;
-}
-
 a.NavLinks.nav-link {
   font-family: 'Comfortaa', cursive;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
-  margin-right: 12px;
+  margin: 0rem 1rem;
+
 }
 
 a.NavLinks.nav-link:hover {
@@ -152,3 +147,7 @@ input.form-control {
   border-bottom-left-radius: 3px !important;
 }
 /*# sourceMappingURL=App.css.map */
+
+.align-center{
+  margin: 0 auto;
+}

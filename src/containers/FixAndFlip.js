@@ -163,11 +163,9 @@ export default class FixAndFlip extends Component {
 
         return (
 
-                <Container fluid>
-                    {this.props.alert && <Alert variant={"success"} style={{ margin: "1rem" }}> <Alert.Heading>Loan Saved!</Alert.Heading>Click here to see loan deatails.</Alert>}             
-                    <Row>
-                        <Col md={7}>
-                            <Card style={{ margin: "1rem", borderRadius: 10 }}>
+            <div style={{paddingBottom: 50}}>
+                <Col sm={12} md={12} md={7} lg={7} className="align-center">
+                            <Card style={{ marginTop: "1rem", marginBottom: '1rem', borderRadius: 10 }}>
                                 <Card.Body>
                                 <Form>
                                     <LocationSearchInput 
@@ -339,7 +337,7 @@ export default class FixAndFlip extends Component {
                                     </Form.Row>
                                     </Card>
 
-                                    <Card style={{ borderRadius: 7, padding: 10, marginBottom: 10 }}>
+                                    <Card style={{ marginTop: "1rem", marginBottom: '1rem', borderRadius: 10}}>
                                     <Form.Row>
                                         <InputGroup className="mb-3">   
                                             <InputGroup.Prepend>
@@ -599,9 +597,9 @@ export default class FixAndFlip extends Component {
                             </Card>
                         </Col>
 
-                        <Col md={5}>
-                            <Card style={{ margin: "1rem", borderRadius: 10 }}>
-                                <Card.Body style={{textAlign: "left", fontWeight: "600"}}>
+                        <Col sm={12} md={12} md={7} lg={7} className="align-center">
+                            <Card style={{ marginTop: "1rem", marginBottom: '1rem', borderRadius: 10 }}>
+                                <Card.Body style={{ borderRadius: 10, textAlign: "left", fontWeight: "600"}}>
                                     <Table responsive>
                                             {this.state.exitStrategy === "" || this.state.exitStrategy === "Fix & Flip" ?
                                             <tbody>
@@ -640,8 +638,8 @@ export default class FixAndFlip extends Component {
                                 onClick={()=>this.createLoan(this.props.address,this.props.propertyType, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent )}
                             >Save</Button>
                         </Col>
-                    </Row>
-                </Container>
+                    </div>
+                
 
         )
     }

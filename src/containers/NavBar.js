@@ -9,10 +9,11 @@ export default class Navigator extends React.Component{
 
         return(
             <div>
-                <Navbar bg="light" expand="xl" className="main-navigation">
+                <Navbar inverse collapseOnSelect expand="lg">
+                    <Navbar.Brand href="/loans" style={{color: "#1A7BFF",fontWeight: "700", fontSize: 20}}>MLC</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
+                    <Nav className="justify-content-center" style={{flex:1}}>
                         <Link to="/loans" style={{ textDecoration: 'none' }}>
                             <Nav.Link href="#link" className="NavLinks" style={{color: "#1A7BFF",fontWeight: "600", fontSize: 17}}>All Loans</Nav.Link>   
                         </Link>
