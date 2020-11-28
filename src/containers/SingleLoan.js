@@ -151,9 +151,9 @@ export default class SingleLoan extends Component {
                                         {this.state.editedLoan.totalIn && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#FFB74D"}} style={{color:"#0F9D58"}}>Total Project Cost: </strong>{this.numberFormat(this.state.editedLoan.totalIn)}</p>}                     
                                         {this.state.editedLoan.annualDebtService && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#FFB74D"}}>Annual Debt Service: </strong>{this.numberFormat(this.state.editedLoan.annualDebtService)}</p>}      
                                         {this.state.editedLoan.noi && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#1A7BFF"}}>NOI: </strong>{this.numberFormat(this.state.editedLoan.noi)}</p>}                     
-                                        {this.state.editedLoan.dscr && <p style={{fontSize: 16, fontWeight: '600'}}><strong>DSCR: </strong>{this.state.editedLoan.dscr.toFixed(2)}</p>}                     
+                                        {this.state.editedLoan.dscr && <p style={{fontSize: 16, fontWeight: '600'}}><strong>DSCR: </strong>{this.state.editedLoan.dscr}</p>}                     
                                         {this.state.editedLoan.totalProfit && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#FFB74D"}}>Total Profit on Flip: </strong>{this.numberFormat(this.state.editedLoan.totalProfit)}</p>}                     
-                                        {this.state.editedLoan.profitPercent && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#1A7BFF"}}>Profit Percent: </strong>{this.state.editedLoan.profitPercent.toFixed(2)}%</p>}                     
+                                        {this.state.editedLoan.profitPercent && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#1A7BFF"}}>Profit Percent: </strong>{this.state.editedLoan.profitPercent}%</p>}                     
                                     </Col>
                                 </Row>
                             </Col>

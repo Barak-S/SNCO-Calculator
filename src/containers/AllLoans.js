@@ -129,8 +129,8 @@ export default class AllLoans extends Component {
                       <option value="Multifamily">Multi Family</option>
                   </Form.Control>
                 </Col>
-                <hr/>
                 <Col className="processDiv" xs={12} sm={12} md={10} lg={10}>
+                    <hr/>
                     {this.mapLoans()}
                 </Col>
             </div>
