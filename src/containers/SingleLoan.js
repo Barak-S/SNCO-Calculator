@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { FormControl, InputGroup, Card, Col, Row, Container, Dropdown, Modal, Form, Button, Table } from 'react-bootstrap';
-import { InputNumber } from "antd";
-
+// import { InputNumber } from "antd";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
   
 import MapContainer from '../components/MapComponent'
@@ -99,14 +98,6 @@ export default class SingleLoan extends Component {
         })
     }
 
-    changeExperience=(e)=>{
-        let stateCopy = this.state.loan.loan
-        stateCopy.experienceLevel = e
-        this.setState({
-            editedLoan: stateCopy
-        })
-    }
-
     changeturnaroundTime=(e)=>{
         let stateCopy = this.state.loan.loan
         stateCopy.turnaroundTime = e
@@ -134,16 +125,6 @@ export default class SingleLoan extends Component {
         return num + '%';
     }
 
-    // calculateProjectTotal=(loan)=>{
-    //     let total = 0;
-    //     [loan.purchasePrice, loan.renovation, loan.interest, loan.taxes, loan.insurance, loan.points, loan.titleBill, loan.legalClosing, loan.legalLender, loan.hardCosts, loan.softCosts].forEach(attr=>{
-    //         if (attr > 0){
-    //             total+= attr
-    //         }
-    //         this.setState({total})
-    //     })
-    // }
-
     calculateCosts=(loan)=>{
         let total = 0;
         [loan.purchasePrice, loan.renovation, loan.interest, loan.taxes, loan.insurance, loan.points, loan.titleBill, loan.legalClosing, loan.legalLender, loan.hardCosts, loan.softCosts].forEach(attr=>{
@@ -158,7 +139,7 @@ export default class SingleLoan extends Component {
 
         
         let grossAnnualIncome = ( loan.annualGrossRent );
-        let grossAnnualOperatingExpenses = (loan.taxes + loan.utilities + loan.waterSewer + loan.management);
+        let grossAnnualOperatingExpenses = (loan.taxes + loan.utilities + loan.waterSewer + (grossAnnualIncome * .04));
         let noi = (grossAnnualIncome - grossAnnualOperatingExpenses);
         let requestLoanAmount = loan.requestLoanAmount? loan.requestLoanAmount : 0;
         let ratePercent = loan.rate? (loan.rate / 100) : 0;
@@ -211,7 +192,7 @@ export default class SingleLoan extends Component {
                                                     )
                                             }else{
                                                 return(
-                                                    <tr><td style={{fontSize: 16}}><strong>{this.parseKeyString(loan.key)}: </strong></td> <td style={{fontSize: 15}}>{loan.key === "arm" || loan.key === "units" || loan.key==="creditScore" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel" ? loan.value : this.numberFormat(loan.value)}</td></tr>
+                                                    <tr><td style={{fontSize: 16}}><strong>{this.parseKeyString(loan.key)}: </strong></td> <td style={{fontSize: 15}}>{loan.key === "arm" || loan.key === "units" || loan.key==="exitStrategy" || loan.key === "turnaroundTime" || loan.key === "experienceLevel" ? loan.value : this.numberFormat(loan.value)}</td></tr>
                                                 )
                                             }
                                         }
@@ -273,20 +254,6 @@ export default class SingleLoan extends Component {
                                                             changeturnaroundTime = {this.changeturnaroundTime}
                                                             value={attr[1]}
                                                             input={"turnaroundTime"}
-                                                        />
-                                                    </InputGroup>
-                                                    </Col>
-                                                </Form.Row>
-                                            )
-                                        } else if (attr[0] === "experienceLevel"){
-                                            return(
-                                                <Form.Row>
-                                                    <Col>
-                                                    <InputGroup className="mb-3">
-                                                        <Input
-                                                            changeExperience = {this.changeExperience}
-                                                            value={attr[1]}
-                                                            input={"experienceLevel"}
                                                         />
                                                     </InputGroup>
                                                     </Col>

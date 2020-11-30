@@ -30,11 +30,6 @@ export default class MaxRefi extends Component {
         replacementReserves: 0,
         management: 0,
         vacancy: 0,
-        totalProjectCost: 0,
-        noi: 0,
-        capRate: 0,
-        annualDebtService: 0,
-        dscr: 0,
         }
         this.baseState = this.state 
     }
@@ -54,22 +49,6 @@ export default class MaxRefi extends Component {
         this.setState({ [key]: e})
     }
 
-    createLoan=(address,propertyType, date, officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)=>{
-        this.setState({
-            officeExpenses: officeExpenses,
-            replacementReserves: replacementReserves,
-            management: management,
-            vacancy: vacancy,
-            totalProjectCost: totalProjectCost,
-            noi: noi,
-            capRate: capRate,
-            annualDebtService: annualDebtService,
-            dscr: dscr.toFixed(2)
-        },()=>{
-            this.props.createLoan(this.state, this.props.date)
-
-        })
-    }
     // createLoan=(address,propertyType, date, officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr)=>{
     //     this.setState({
     //         officeExpenses: officeExpenses,
@@ -82,26 +61,7 @@ export default class MaxRefi extends Component {
     //         annualDebtService: annualDebtService,
     //         dscr: dscr.toFixed(2)
     //     },()=>{
-    //         if (address !== ""){
-    //             fetch('https://snco-calculator-backend.herokuapp.com/loans',{
-    //                 method: "POST",
-    //                 headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-    //                 body: JSON.stringify({address: address,
-    //                 purchaseDate: date,
-    //                 propertyType: propertyType, 
-    //                 loan: this.state,
-    //                 })
-    //             })
-    //             .then(res=>res.json())
-    //             .then(loan=>{
-    //                     console.log(loan[0]._id)
-    //                     this.resetForm()
-    //                     this.props.alertMessage()
-    //                 })
-    //             .catch(() => console.log("Can’t POST loan data"))
-    //         } else {
-    //           console.log("wont post without an address")
-    //         }
+    //         this.props.createLoan(this.state, this.props.date)
 
     //     })
     // }
@@ -391,7 +351,7 @@ export default class MaxRefi extends Component {
                     <Button 
                         variant="primary" 
                         style={{ marginBottom: 15 }} 
-                        onClick={()=>this.createLoan( this.props.address, this.props.propertyType, this.props.date, officeExpenses,replacementReserves,management,vacancy,totalProjectCost,noi,capRate,annualDebtService,dscr )}
+                        onClick={()=>this.props.createLoan(this.state, this.props.date)}
                     >Save</Button>                        
                 </Col>
             </div>

@@ -13,8 +13,6 @@ export default class FixAndFlip extends Component {
         taxes: 0,
 
         //fix and flip
-        experienceLevel: "",
-        creditScore: 0,
         arv: 0,
         turnaroundTime: "",
         exitStrategy : "",
@@ -40,14 +38,6 @@ export default class FixAndFlip extends Component {
         // arm: 0,
         // payoff: 0,
         // marketCapRate: 0,
-
-        // calculations
-        // carryingCosts: 0,
-        // resaleCosts: 0,
-        // closingCosts: 0,
-        // totalIn: 0,
-        // totalProfit: 0,
-        // profitPercent: 0,
         }
         this.baseState = this.state 
     }
@@ -75,46 +65,13 @@ export default class FixAndFlip extends Component {
         })
     }
 
-    changeExperience=(e)=>{
-        this.setState({
-            experienceLevel: e
-        })
-    }
-
     changeturnaroundTime=(e)=>{
         this.setState({
             turnaroundTime: e
         })
     }
 
-    createLoan=(address, propertyType, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent)=>{
-        // this.setState({
-        //     carryingCosts: carryingCosts,
-        //     resaleCosts: resaleCosts,
-        //     closingCosts: closingCosts,
-        //     totalIn: totalIn,
-        //     totalProfit: totalIn,
-        //     profitPercent: profitPercent.toFixed(2)
-        // },()=>{
-        //     if (address !== ""){
-        //         fetch('https://snco-calculator-backend.herokuapp.com/loans',{
-        //             method: "POST",
-        //             headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-        //             body: JSON.stringify({address: address, propertyType: propertyType, loan: this.state })
-        //         })
-        //         .then(res=>res.json())
-        //         .then(loan=>{
-        //                 console.log(loan[0]._id)
-        //                 this.resetForm()
-        //                 this.props.alertMessage()
-        //             })
-        //         .catch(() => console.log("Can’t POST loan data"))
-            
-        //         } else {
-        //         console.log("wont post without an address")
-        //         }
-
-        // })
+    createLoan=(address, propertyType)=>{
         if (address !== ""){
             fetch('https://snco-calculator-backend.herokuapp.com/loans',{
                 method: "POST",
@@ -244,7 +201,7 @@ export default class FixAndFlip extends Component {
                                 </Form.Row>
 
 
-                                <Card style={{ borderRadius: 7, padding: 10, marginBottom: 10 }}>
+                                <Card style={{ borderRadius: 7, padding: '1rem', marginBottom: 10 }}>
                                 <Form.Row>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Prepend>
@@ -294,7 +251,7 @@ export default class FixAndFlip extends Component {
                                 </Form.Row>
                                 </Card>
 
-                                    <Card style={{ borderRadius: 7, padding: 10, marginBottom: 10 }}>
+                                    <Card style={{ borderRadius: 7, padding: '1rem', marginBottom: 10 }}>
                                     <Form.Row>
                                         <InputGroup className="mb-3">   
                                                 <InputGroup.Prepend>
@@ -353,7 +310,7 @@ export default class FixAndFlip extends Component {
                                     </Form.Row>
                                     </Card>
 
-                                    <Card style={{ marginTop: "1rem", marginBottom: '1rem', borderRadius: 10}}>
+                                    <Card style={{ borderRadius: 7, padding: '1rem', marginBottom: 10 }}>
                                     <Form.Row>
                                         <InputGroup className="mb-3">   
                                             <InputGroup.Prepend>
@@ -401,25 +358,13 @@ export default class FixAndFlip extends Component {
                                     </Form.Row> 
                                     </Card>
                                     <Form.Row>
-                                        <Col xs={12} md={6}>
-                                            <InputGroup className="mb-3">
-                                                <Input input="experienceLevel" value={this.state.experienceLevel} changeExperience={this.changeExperience}/>
-                                            </InputGroup>
-                                        </Col>  
-                                        <Col xs={12} md={6}>
+                                        <Col xs lg="6">
                                             <InputGroup className="mb-3">
                                                 <Input input="turnaroundTime" value={this.state.turnaroundTime} changeturnaroundTime={this.changeturnaroundTime}/>
                                             </InputGroup>
                                         </Col>
                                     </Form.Row>
-                                    <Form.Row>
-                                        <Col xs lg="6">
-                                            <InputGroup className="mb-3">
-                                                <Form.Label>Credit Score</Form.Label>
-                                                <Input name="creditScore" value={ this.state.creditScore || undefined} type="number" handleChange={this.handleNumberChange} />
-                                            </InputGroup>
-                                        </Col>
-                                    </Form.Row>
+                                    
 
                                 </div> 
 
@@ -651,7 +596,7 @@ export default class FixAndFlip extends Component {
                             <Button 
                                 variant="primary" 
                                 style={{ marginBottom: 15 }} 
-                                onClick={()=>this.createLoan(this.props.address,this.props.propertyType, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent )}
+                                onClick={()=>this.createLoan(this.props.address,this.props.propertyType)}
                             >Save</Button>
                         </Col>
                     </div>
