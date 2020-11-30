@@ -10,6 +10,12 @@ import Input from '../components/InputComponent'
 export default class SingleLoan extends Component {
 
     state={
+        total: 0,
+        annualDebtService: 0,
+        dscr: 0,
+        totalProfit: 0,
+        profitPercent: 0,
+        noi: 0,
         lat: 0,
         lng: 0,
         loan: {},
@@ -25,6 +31,7 @@ export default class SingleLoan extends Component {
         .then(loan=>this.setState({ loan: loan, editedLoan: loan.loan },()=>{
             this.mapLoanAttributes(this.state.loan.loan)
             this.getAddressCoordinates(this.state.loan.address)
+            this.calculateCosts(this.state.editedLoan)
         }))
     }
 
@@ -81,7 +88,7 @@ export default class SingleLoan extends Component {
             body: JSON.stringify({ id: this.state.loan._id, loan })
         })
         .then(this.mapLoanAttributes(this.state.loan.loan))
-    
+        .then(this.calculateCosts(this.state.loan.loan))
     }
 
     handleChange=(key, value)=>{
@@ -127,6 +134,42 @@ export default class SingleLoan extends Component {
         return num + '%';
     }
 
+    // calculateProjectTotal=(loan)=>{
+    //     let total = 0;
+    //     [loan.purchasePrice, loan.renovation, loan.interest, loan.taxes, loan.insurance, loan.points, loan.titleBill, loan.legalClosing, loan.legalLender, loan.hardCosts, loan.softCosts].forEach(attr=>{
+    //         if (attr > 0){
+    //             total+= attr
+    //         }
+    //         this.setState({total})
+    //     })
+    // }
+
+    calculateCosts=(loan)=>{
+        let total = 0;
+        [loan.purchasePrice, loan.renovation, loan.interest, loan.taxes, loan.insurance, loan.points, loan.titleBill, loan.legalClosing, loan.legalLender, loan.hardCosts, loan.softCosts].forEach(attr=>{
+            if (attr > 0){
+                total+= attr
+            }
+        }) 
+
+        let resaleCosts = loan.legalResale + loan.transferTax + loan.broker
+        let totalProfit = loan.arv - total - resaleCosts
+        let profitPercent = ((totalProfit / total) * 100).toFixed(2)
+
+        
+        let grossAnnualIncome = ( loan.annualGrossRent );
+        let grossAnnualOperatingExpenses = (loan.taxes + loan.utilities + loan.waterSewer + loan.management);
+        let noi = (grossAnnualIncome - grossAnnualOperatingExpenses);
+        let requestLoanAmount = loan.requestLoanAmount? loan.requestLoanAmount : 0;
+        let ratePercent = loan.rate? (loan.rate / 100) : 0;
+        let arm = loan.arm ? loan.arm : 1;
+        
+        let annualDebtService = ((requestLoanAmount + (requestLoanAmount * ratePercent))/ arm)
+        let dscr = (annualDebtService === 0 ? 0 : noi / annualDebtService).toFixed(2)
+
+        this.setState({ total, annualDebtService, dscr, totalProfit, profitPercent, noi })
+    }
+
 
     render() {
 
@@ -144,18 +187,13 @@ export default class SingleLoan extends Component {
                     </Col>
                     <Col>
                         <Card style={{ textAlign: "left", padding: "0.5rem", borderRadius: 10, marginBottom: 12}}>
-                            <Col xs={12} md={4} lg={4}>
-                                <Row>
-                                    <Col>
-                                        {this.state.editedLoan.totalProjectCost && this.state.editedLoan.totalProjectCost !== 0 && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#0F9D58"}}>Total Project Cost: </strong>{this.numberFormat(this.state.editedLoan.totalProjectCost)}</p>}      
-                                        {this.state.editedLoan.totalIn && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#FFB74D"}} style={{color:"#0F9D58"}}>Total Project Cost: </strong>{this.numberFormat(this.state.editedLoan.totalIn)}</p>}                     
-                                        {this.state.editedLoan.annualDebtService && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#FFB74D"}}>Annual Debt Service: </strong>{this.numberFormat(this.state.editedLoan.annualDebtService)}</p>}      
-                                        {this.state.editedLoan.noi && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#1A7BFF"}}>NOI: </strong>{this.numberFormat(this.state.editedLoan.noi)}</p>}                     
-                                        {this.state.editedLoan.dscr && <p style={{fontSize: 16, fontWeight: '600'}}><strong>DSCR: </strong>{this.state.editedLoan.dscr}</p>}                     
-                                        {this.state.editedLoan.totalProfit && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#FFB74D"}}>Total Profit on Flip: </strong>{this.numberFormat(this.state.editedLoan.totalProfit)}</p>}                     
-                                        {this.state.editedLoan.profitPercent && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#1A7BFF"}}>Profit Percent: </strong>{this.state.editedLoan.profitPercent}%</p>}                     
-                                    </Col>
-                                </Row>
+                            <Col >
+                                {this.state.total > 0 && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#0F9D58"}}>Total Project Cost: </strong>{this.numberFormat(this.state.total)}</p>}      
+                                {this.state.noi > 0 && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#1A7BFF"}}>NOI: </strong>{this.numberFormat(this.state.noi)}</p>}      
+                                {this.state.annualDebtService > 0 && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#FFB74D"}}>Annual Debt Service: </strong>{this.numberFormat(this.state.annualDebtService)}</p>}
+                                {this.state.dscr > 0 && <p style={{fontSize: 16, fontWeight: '600'}}><strong>DSCR: </strong>{this.state.dscr}</p>}
+                                {this.state.totalProfit > 0 && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#FFB74D"}}>Total Profit on Flip: </strong>{this.numberFormat(this.state.totalProfit)}</p>}                     
+                                {this.state.profitPercent > 0 && <p style={{fontSize: 16, fontWeight: '600'}}><strong style={{color:"#1A7BFF"}}>Profit Percent: </strong>{this.state.profitPercent}%</p>}                 
                             </Col>
                         </Card>
                     </Col>

@@ -84,13 +84,13 @@ export default class AllLoans extends Component {
 
     handleSort=(e)=>{
         let sorted = [];
-        if (e.target.value === "1-4"){
-            sorted = this.state.allLoans.filter(loan=>loan.propertyType.includes("1-4"))
+        if (e.target.value === "residential"){
+            sorted = this.state.allLoans.filter(loan=>loan.propertyType.includes("residential"))
             this.setState({
                 sortedLoans: sorted
             })
-        } else if (e.target.value === "Multifamily"){
-            sorted = this.state.allLoans.filter(loan=>loan.propertyType.includes("Multifamily"))
+        } else if (e.target.value === "commercial"){
+            sorted = this.state.allLoans.filter(loan=>loan.propertyType.includes("commercial"))
             this.setState({
                 sortedLoans: sorted
             })
@@ -125,8 +125,8 @@ export default class AllLoans extends Component {
                       custom
                   >
                       <option value="all">Sort</option>
-                      <option value="1-4">1-4</option>
-                      <option value="Multifamily">Multi Family</option>
+                      <option value="residential">Residential</option>
+                      <option value="commercial">Commercial</option>
                   </Form.Control>
                 </Col>
                 <Col className="processDiv" xs={12} sm={12} md={10} lg={10}>

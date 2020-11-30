@@ -27,28 +27,27 @@ export default class FixAndFlip extends Component {
         titleBill: 0,
         legalClosing: 0,
         legalLender:0,
-        alert: false,
 
         // fix and refi
-        requestLoanAmount: 0,
-        annualGrossRent: 0,
-        insurance: 0,
-        waterSewer: 0,
-        utilities: 0,
-        hardCosts: 0,
-        softCosts: 0,
-        rate: 0,
-        arm: 0,
-        payoff: 0,
-        marketCapRate: 0,
+        // requestLoanAmount: 0,
+        // annualGrossRent: 0,
+        // insurance: 0,
+        // waterSewer: 0,
+        // utilities: 0,
+        // hardCosts: 0,
+        // softCosts: 0,
+        // rate: 0,
+        // arm: 0,
+        // payoff: 0,
+        // marketCapRate: 0,
 
         // calculations
-        carryingCosts: 0,
-        resaleCosts: 0,
-        closingCosts: 0,
-        totalIn: 0,
-        totalProfit: 0,
-        profitPercent: 0,
+        // carryingCosts: 0,
+        // resaleCosts: 0,
+        // closingCosts: 0,
+        // totalIn: 0,
+        // totalProfit: 0,
+        // profitPercent: 0,
         }
         this.baseState = this.state 
     }
@@ -89,33 +88,50 @@ export default class FixAndFlip extends Component {
     }
 
     createLoan=(address, propertyType, carryingCosts, resaleCosts, closingCosts, totalIn, totalProfit, profitPercent)=>{
-        this.setState({
-            carryingCosts: carryingCosts,
-            resaleCosts: resaleCosts,
-            closingCosts: closingCosts,
-            totalIn: totalIn,
-            totalProfit: totalIn,
-            profitPercent: profitPercent.toFixed(2)
-        },()=>{
-            if (address !== ""){
-                fetch('https://snco-calculator-backend.herokuapp.com/loans',{
-                    method: "POST",
-                    headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-                    body: JSON.stringify({address: address, propertyType: propertyType, loan: this.state })
-                })
-                .then(res=>res.json())
-                .then(loan=>{
-                        console.log(loan[0]._id)
-                        this.resetForm()
-                        this.props.alertMessage()
-                    })
-                .catch(() => console.log("Can’t POST loan data"))
+        // this.setState({
+        //     carryingCosts: carryingCosts,
+        //     resaleCosts: resaleCosts,
+        //     closingCosts: closingCosts,
+        //     totalIn: totalIn,
+        //     totalProfit: totalIn,
+        //     profitPercent: profitPercent.toFixed(2)
+        // },()=>{
+        //     if (address !== ""){
+        //         fetch('https://snco-calculator-backend.herokuapp.com/loans',{
+        //             method: "POST",
+        //             headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
+        //             body: JSON.stringify({address: address, propertyType: propertyType, loan: this.state })
+        //         })
+        //         .then(res=>res.json())
+        //         .then(loan=>{
+        //                 console.log(loan[0]._id)
+        //                 this.resetForm()
+        //                 this.props.alertMessage()
+        //             })
+        //         .catch(() => console.log("Can’t POST loan data"))
             
-                } else {
-                console.log("wont post without an address")
-                }
+        //         } else {
+        //         console.log("wont post without an address")
+        //         }
 
-        })
+        // })
+        if (address !== ""){
+            fetch('https://snco-calculator-backend.herokuapp.com/loans',{
+                method: "POST",
+                headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
+                body: JSON.stringify({address: address, propertyType: propertyType, loan: this.state })
+            })
+            .then(res=>res.json())
+            .then(loan=>{
+                    console.log(loan[0]._id)
+                    this.resetForm()
+                    this.props.alertMessage()
+                })
+            .catch(() => console.log("Can’t POST loan data"))
+        
+        } else {
+            console.log("wont post without an address")
+        }
     }
 
     numberFormat = (value) =>

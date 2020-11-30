@@ -143,7 +143,6 @@ export default class MaxRefi extends Component {
         return (
 
           
-                    // {this.props.alert && <Alert variant={"success"} style={{ margin: "1rem" }}> <Alert.Heading>Loan Saved!</Alert.Heading>Click here to see loan deatails.</Alert>}             
                 <div style={{paddingBottom: 50}}>
                 <Col sm={12} md={12} md={7} lg={7} className="align-center">
                     <Card style={{marginTop: "1rem", marginBottom: '1rem', borderRadius: 10 }}>

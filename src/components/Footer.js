@@ -7,7 +7,7 @@ const Footer = () => {
             <Container style={{paddingTop: 12}}>
                 <Row>
                     <Col>
-                        <h4 style={{ color: "#1A7BFF", fontWeight: "700", fontSize: 20}}><img style={{height: 22}} src={require('../images/calculator.svg')}></img>Mortage Loan Calculator</h4>
+                        <h4 style={{ color: "#1A7BFF", fontWeight: "700", fontSize: 20}}><img style={{height: 22}} src={require('../images/calculator.svg')}></img>Mortgage Loan Calculator</h4>
                         <h3 className="list-unstyled">
                         <li style={{ color: "#1A7BFF"}}>New York, NY</li>
                         </h3>

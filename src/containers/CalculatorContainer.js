@@ -12,7 +12,7 @@ import PlacesAutocomplete, {
 
 export default class CalculatorContainer extends Component {
     state={
-        propertyType: "Multifamily Max Refi",
+        propertyType: "commericial",
         address: "",
         date: new Date(),  
         loan: {},
@@ -74,21 +74,25 @@ export default class CalculatorContainer extends Component {
 
         return (
             <div className="App">
-                <div className="align-center">
+                <div>
+                    <Col xs={12} sm={12} md={7} lg={7} className="align-center">
+                        <Card.Text className="appHeader">Mortgage Loan Calculator</Card.Text>
+                        <h5 style={{padding: '0.5rem'}}>
+                            Use our Mortgage Calculators to estimate your monthly mortgage payment. You can input a different home price, down payment, loan term and interest rate to see how your monthly payment changes.
+                        </h5>
+                        <DropdownButton 
+                            variant="dark"
+                            title={this.state.propertyType} 
+                            onSelect= {(e)=>this.changePropertyType(e)}
+                            style={{ margin:5 }}
+                            id="nav-dropdown">
+                        
+                            <Dropdown.Item eventKey="commericial">Commericial</Dropdown.Item>
+                            <Dropdown.Item eventKey="residential">Residential</Dropdown.Item>
+                        </DropdownButton>
+                    </Col>
 
-                <Card.Text className="appHeader">Mortgage Loan Calculator</Card.Text>
-                    <DropdownButton 
-                        variant="dark"
-                        title={this.state.propertyType} 
-                        onSelect= {(e)=>this.changePropertyType(e)}
-                        style={{ margin:5 }}
-                        id="nav-dropdown">
-                    
-                        <Dropdown.Item eventKey="Multifamily Max Refi">Multifamily Max Refi</Dropdown.Item>
-                        <Dropdown.Item eventKey="1-4 Family">1-4 Family</Dropdown.Item>
-                    </DropdownButton>
-
-                {this.state.propertyType === "Multifamily Max Refi" &&
+                {this.state.propertyType === "commericial" &&
                     <MaxRefi
                         date= {this.state.date}
                         dateChange = {this.dateChange}
@@ -104,7 +108,7 @@ export default class CalculatorContainer extends Component {
                     />
                 }
 
-                {this.state.propertyType === "1-4 Family" &&
+                {this.state.propertyType === "residential" &&
                     <FixAndFlip 
                         address = {this.state.address}
                         handleAddressChange = {this.handleAddressChange}

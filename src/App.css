@@ -32,6 +32,10 @@
   align-items: center;
 } 
 
+.home-container{
+  overflow: hidden;
+}
+
 .CalculatorCard {
   min-height: 100vh;
 }
@@ -76,6 +80,7 @@ a.NavLinks.nav-link:hover {
   font-weight: 600;
   font-size: 22px;
   padding-top: 15px;
+  margin:0px;
 }
 
 div.ant-input-number-handler-wrap {
@@ -103,6 +108,16 @@ label.form-label {
 hr{
   background-color: #1A7BFF;
   opacity: 0.7;
+}
+
+button.navbar-toggler.collapsed {
+  color: #1A7BFF;
+  border-color: #1A7BFF;
+}
+button.navbar-toggler{
+  color: #1A7BFF;
+  border-color: #1A7BFF !important;
+
 }
 
 /* .AllLoans{

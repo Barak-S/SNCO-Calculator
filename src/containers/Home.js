@@ -6,7 +6,7 @@ const Home = () => {
         return (
             <div className="home">
                 <Col xs={12} sm={12} md={11} lg={11} className="align-center" style={{padding:20}}>
-                    <Card style={{padding: '0rem' }}>
+                    <Card style={{padding: '0rem' }} className="home-container">
                         <div className="home-img">
                             <h1 style={{ fontWeight: '700', color: "#fff"}}><img style={{height: 45}} src={require('../images/calculator.svg')}></img>Mortgage Loan Calculator</h1>
                         </div>
