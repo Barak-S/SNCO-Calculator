@@ -11,9 +11,10 @@ const Home = () => {
                             <h1 style={{ fontWeight: '700', color: "#fff"}}><img style={{height: 45}} src={require('../images/calculator.svg')}></img>Mortgage Loan Calculator</h1>
                         </div>
                         <div style={{padding: '1.5rem'}}>
-                            <h5>
+                            <h5 >
                             When you shop for a business loan, interest rates are just one part of the big picture. You also need to consider how much you’re borrowing and how long you’ll need to pay it back. The Mortgage Loan Calculator helps you answer all those questions and more.
                             </h5>
+                            <h3 style={{paddingTop: '1.5rem'}}>Want to find the home of your dreams?</h3>
                             <p style={{margin:22}}>
                                 <Link to="/calculator">
                                     <Button variant="primary">Get Started</Button>
@@ -21,6 +22,9 @@ const Home = () => {
                             </p>
                         </div>
                     </Card>
+                    <div style={{paddingTop: 120}}>
+                        <img style={{height: 150, width: '100%'}} src={require('../images/undraw.svg')}></img>
+                    </div>
                 </Col>
             </div>
         );

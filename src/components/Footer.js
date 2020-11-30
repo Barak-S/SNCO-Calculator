@@ -3,11 +3,11 @@ import { Col, Row, Container } from 'react-bootstrap';
 
 const Footer = () => {
     return (
-        <div style={{color: "#1A7BFF", backgroundColor: '#343A40'}}>
+        <div style={{color: "#1A7BFF", backgroundColor: '#191919'}}>
             <Container style={{paddingTop: 12}}>
                 <Row>
                     <Col>
-                        <h4 style={{ color: "#1A7BFF", fontWeight: "700", fontSize: 20}}><img style={{height: 22}} src={require('../images/calculator.svg')}></img>Mortgage Loan Calculator</h4>
+                        <h4 style={{ color: "#1A7BFF", fontWeight: "700", fontSize: 20}}>Mortgage Loan Calculator</h4>
                         <h3 className="list-unstyled">
                         <li style={{ color: "#1A7BFF"}}>New York, NY</li>
                         </h3>
